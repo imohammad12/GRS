@@ -1,0 +1,56 @@
+one side of the armed conflicts is composed mainly of the sudanese military and the janjaweed , a sudanese militia group recruited mostly from the afro-arab abbala tribes of the northern rizeigat region in sudan .
+one side of the armed conflicts consist of the sudanese military and the sudanese militia group janjaweed .
+one side of the armed disputes is composed of the sudanese military and the janjaweed , a sudanese rebel group recruited mostly from the afro-arab abbala tribes of the northern rizeigat region in sudan .
+757.1274031870203 0.24762685010055868 0.3530005161525695 0.42895104340720325 0.6300505050505051 0.0 17.66181818181818 27.212727272727278
+
+Number 0: Average Sentence Level Perplexity, Bleu, SARI 
+757.1274031870203 0.24762685010055868 0.3530005161525695
+
+jeddah is the principal gateway to mecca , islam 's holiest city , which able-bodied muslims are required to visit at least once in their lifetime .
+jeddah is the main gateway to mecca , islam 's holiest city , which able-bodied muslims are supposed to viisit at least once in their lifetime .
+riyadh is the principal gateway to mecca , islam 's holiest city , which able-bodied jews are required to visit at least once in their lifetime .
+5.396063841947118 0.6214742377588016 0.3328084496536149 0.7859253489608446 0.2125 0.0 12.453333333333333 48.525000000000034
+
+Number 1: Average Sentence Level Perplexity, Bleu, SARI 
+381.2617335144837 0.4345505439296802 0.34290448290309217
+
+the great dark spot is thought to represent a hole in the methane cloud deck of neptune .
+the great dark spot is thought to show a hole in the methane cloud deck of neptune .
+the great blue eye is thought to describe a hole in the ammonia cloud roof of jupiter .
+6.811752683899481 0.23287896954139942 0.23273986815653483 0.48197751322751325 0.21624209124209123 0.0 5.616470588235295 85.07411764705884
+
+Number 2: Average Sentence Level Perplexity, Bleu, SARI 
+256.4450732376223 0.3673266858002533 0.30618294465423973
+
+in 1438 trevi passed under the temporal rule of the church as part of the legation of perugia , and thenceforth its history merges first with that of the states of the church , then -lrb- 1860 -rrb- with the united kingdom of italy .
+his next work is saturday which is an eventful day in the life of a neurosuregon .
+in 1438 gloria , and thenceforth its history merges first , then -lrb- 1897 -rrb- with the united kingdom of italy .
+2578.6606513577267 0.024426633221059642 0.3602355072463768 0.08695652173913043 0.99375 0.0 7.967368421052633 71.78157894736843
+
+Number 3: Average Sentence Level Perplexity, Bleu, SARI 
+836.9989677676484 0.2816016726554549 0.319696085302274
+
+the depression moved inland on the 20th as a circulation devoid of convection , and dissipated the next day over brazil , where it caused heavy rains and flooding .
+the tricky tarantula spun a black web and attached it to the ball . afterwards , it crawled away and pulled the web with him .
+the depression moved inland on the 20th , and dissipated the next day .
+2047.283963133823 0.018861623702494442 0.3478535353535353 0.10606060606060605 0.9375 0.0 3.84 88.905
+
+Number 4: Average Sentence Level Perplexity, Bleu, SARI 
+1079.0559668408835 0.22905366286486278 0.32532757531252626
+
+the new york city housing authority police department was a law enforcement agency in new york city that existed from 1952 to 1995 .
+he died there six weeks later on january 13 , 888 .
+the new york city housing administration police department was a law enforcement agency in new york city that happened from 1952 to 1995 .
+895.7031033307894 0.015732934811145335 0.3416666666666666 0.025 1.0 0.0 12.362608695652174 47.39434782608697
+
+Number 5: Average Sentence Level Perplexity, Bleu, SARI 
+1048.4971562558678 0.19350020818924318 0.32805075720488297
+
+the current lineup of the band comprises flynn -lrb- vocals , guitar -rrb- , duce -lrb- bass -rrb- , phil demmel -lrb- guitar -rrb- , and dave mcclain -lrb- drums -rrb- .
+their culture is like that of the costal peoples of papua , new guinea .
+the current line-up of the band comprises boyle -lrb- vocals , guitar -rrb- , duce -lrb- bass -rrb- , phil demmel -lrb- guitar -rrb- , and dave mcclain -lrb- drums -rrb- .
+15.052142083196925 0.02758892444908247 0.3610727969348659 0.0832183908045977 1.0 0.0 5.865925925925929 101.09666666666668
+
+Number 6: Average Sentence Level Perplexity, Bleu, SARI 
+900.8621542312004 0.1697985962263631 0.33276819145202335
+
