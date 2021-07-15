@@ -43,7 +43,7 @@ model_config = {
     'elmo': False,
     'min_length_of_edited_sent': 6,
     'lexical_simplification': False,  # changed
-    'constrained_paraphrasing': True, #changed added
+    'constrained_paraphrasing': False, #changed added
     'delete_leaves': True,
     'leaves_as_sent': False,
     'reorder_leaves': False,  # changed
