@@ -25,7 +25,7 @@ model_config = {
     'num_layers': 2,
     'freq':0,
     'min_length': 100,
-    'dataset': 'Wikilarge',  # 'Wikilarge', #Wikilarge, Newsela  #  changed
+    'dataset': 'Newsela',  # 'Wikilarge', #Wikilarge, Newsela  #  changed
     'ver':'glove.6B.',
     'dropout':0.4,
     'batch_size':64,
