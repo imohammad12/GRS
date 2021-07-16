@@ -1120,8 +1120,7 @@ def paraph(sent, leaves, entities, rest_pos_const=False):
 
     print('new: ', sent)
     if sent != -1 and sent != 1:
-        # return correct(all_norms(sent))
-        return correct(sent)
+        return correct(all_norms(sent))
     else:
         return sent
 
