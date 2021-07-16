@@ -1177,10 +1177,9 @@ def correct(sent):
 
 
 def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
-    # todo
-    # tree = next(parser.raw_parse(sent))
-    tree = []
-    # print(tree)
+
+    sent = sent.replace('%', ' percent')
+    tree = next(parser.raw_parse(sent))
 
     return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict)
 
