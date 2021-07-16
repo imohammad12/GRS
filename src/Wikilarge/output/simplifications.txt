@@ -1,0 +1,1576 @@
+one side of the armed conflicts is composed mainly of the sudanese military and the janjaweed , a sudanese militia group recruited mostly from the afro - arab abbala tribes of the northern rizeigat region in sudan .
+on one side of the conflicts are the sudanese military and the janjaweed , a sudanese militia group . they are mostly recruited from the afro - arab abbala tribes .
+one of the military conflicts is that of the sudanese army and the janjaweed of the sudanese militia group mostly hired from the afro arab abbala tribes of the northern rizeigat region in sudan .
+0.11417818069458008 0.1352102459252932 0.2813319035632465 0.38340380484527603 0.4605919058444634 0.0 16.064117647058826 40.448529411764724
+
+Number 0: Average Sentence Level Perplexity, Bleu, SARI 
+0.11417818069458008 0.1352102459252932 0.2813319035632465
+
+jeddah is the principal gateway to mecca , islam ` s holiest city , which able - bodied muslims are required to visit at least once in their lifetime .
+muslims are required to visit mecca once in their lifetime .
+jeddah is the principal gateway to mecca , islam ` s holiest city , which able - bodied muslims are required to visit at least once in their lifetime .
+0.062163710594177246 0.23804727615014665 0.13240772254054986 0.3972231676216496 0.0 0.0 13.040000000000003 46.10000000000002
+
+Number 1: Average Sentence Level Perplexity, Bleu, SARI 
+0.08817094564437866 0.18662876103771991 0.20686981305189817
+
+the great dark spot is thought to represent a hole in the methane cloud deck of neptune .
+the dark spot on ne ; tune may be a hole in the methane clouds .
+the great dark spot is thought to be a hole in the methanol - cloudy deck of neptune .
+0.7590869665145874 0.2321091111741996 0.45085858772004284 0.4225713012477718 0.8031746031746032 0.1268298587377535 3.5341176470588245 100.00352941176472
+
+Number 2: Average Sentence Level Perplexity, Bleu, SARI 
+0.31180961926778156 0.20178887774987983 0.2881994046079464
+
+his next work , saturday , follows an especially eventful day in the life of a successful neurosurgeon .
+next saturday is a presentation of a successful neurosurgeon .
+his next saturday job is a particularly eventful day in the life of a successful neurosurgeon .
+0.6630592942237854 0.2744348133674281 0.5854136604136605 0.5653318903318904 1.0 0.19090909090909092 11.3 42.545000000000016
+
+Number 3: Average Sentence Level Perplexity, Bleu, SARI 
+0.39962203800678253 0.2199503616542669 0.3625029685593749
+
+the tarantula , the trickster character , spun a black cord and , attaching it to the ball , crawled away fast to the east , pulling on the cord with all his strength .
+the tarantula spun a black cord and attached it to the ball . it crawled away fast to the east , pulling on the cord .
+the tarantula a stray form twisted a black rope and tied it to the ball quickly to the east pulling the rope with all its strength .
+0.3075684905052185 0.16536955122214075 0.3298217109424415 0.42177696078431376 0.5676881720430107 0.0 7.257692307692309 89.33730769230772
+
+Number 4: Average Sentence Level Perplexity, Bleu, SARI 
+0.3812113285064697 0.20903419956784167 0.35596671703598826
+
+there he died six weeks later , on 13 january 888 .
+he died there six weeks later on 13 january 888 .
+that ` s where he died six weeks later on 13 january 888 .
+0.4161722660064697 0.5622008276590377 0.6606296481296482 0.8380952380952381 0.875 0.26879370629370625 -0.09333333333333371 117.105
+
+Number 5: Average Sentence Level Perplexity, Bleu, SARI 
+0.3870381514231364 0.26789530424970764 0.40674387221826486
+
+they are culturally akin to the coastal peoples of papua new guinea .
+they are culturally similar to the coastal peoples of papua new guinea .
+they are culturally related to the coastal peoples of papua ` s new guinea .
+0.714967668056488 0.4935578819979933 0.5257727652464493 0.8677944862155388 0.7095238095238094 0.0 6.726153846153846 69.99384615384618
+
+Number 6: Average Sentence Level Perplexity, Bleu, SARI 
+0.4338852252279009 0.3001328153566056 0.4237479997937198
+
+since 2000 , the recipient of the kate greenaway medal has also been presented with the colin mears award to the value of £ 5000 .
+since 2000 , the recipient of the kate greenaway medal has also won the £ 5000 colin mears award .
+since 2000 the recipient of the kate greenaway prize has also received the colone mears prize of 5,000 .
+0.06658041477203369 0.3122836902405722 0.4040886044642305 0.617821368948247 0.5944444444444446 0.0 5.196666666666669 89.865
+
+Number 7: Average Sentence Level Perplexity, Bleu, SARI 
+0.3879721239209175 0.3016516747171014 0.4212905753775336
+
+following the drummers are dancers , who often play the sogo -lrb- a tiny drum that makes almost no sound -rrb- and tend to have more elaborate — even acrobatic — choreography .
+after the drummers are dancers , who often play the sogo -lrb- a tiny drum making almost no sound -rrb- and usually hav more elaborate — even acrobatic — choreography .
+there are drummers who often do sogo lrb with a small drum that makes almost no sound rrb and tend to have more complicated acrobatics .
+0.4196157455444336 0.07083980787230137 0.11846621762490435 0.2131375806136408 0.14226107226107226 0.0 10.208000000000002 66.40400000000001
+
+Number 8: Average Sentence Level Perplexity, Bleu, SARI 
+0.39148808187908596 0.27600591173434585 0.3876434245161304
+
+the spacecraft consists of two main elements : the nasa cassini orbiter , named after the italian - french astronomer giovanni domenico cassini , and the esa huygens probe , named after the dutch astronomer , mathematician and physicist christiaan huygens .
+the spacecraft ` s two main elements are the nasa cassini orbiter , named after the italian - french astronomer giovanni domenico cassini , and the esa huygens probe , named after the dutch astronomer , mathematician and physicist christiaan huygens .
+the spacecraft consists of two main elements : the nasa cassini orbiter , named after the italian - french astronomer giovanni domenico cassini , and the esa huygens probe , named after the dutch astronomer , mathematician and physicist christiaan huygens .
+0.05658674240112305 0.855108550313141 0.3046613063381191 0.9139839190143574 0.0 0.0 22.671428571428574 0
+
+Number 9: Average Sentence Level Perplexity, Bleu, SARI 
+0.3579979479312897 0.33391617559222536 0.37934521269832927
+
+alessandro -lrb- `` sandro `` -rrb- mazzola -lrb- born 8 november 1942 -rrb- is an italian former football player .
+alessandro -lrb- `` sandro `` -rrb- mazzola -lrb- born 8 november 1942 -rrb- is an italian former footballer .
+alessandro -lrb- `` sandro `` -rrb- mazzola -lrb- born 8 november 1942 -rrb- is an italian former football player .
+0.8385708779096603 0.8492326635760689 0.305341869152353 0.9160256074570591 0.0 0.0 6.085714285714285 88.83428571428574
+
+Number 10: Average Sentence Level Perplexity, Bleu, SARI 
+0.40168639611114154 0.380763129045302 0.37261763601233144
+
+it was originally thought that the debris thrown up by the collision filled in the smaller craters .
+the smaller craters were originally thought to be filled by collision debris .
+originally , it was thought that the rubble thrown up by the crash filled with smaller craters .
+0.6877709329128265 0.06074588070876682 0.316387807309595 0.21305231081767395 0.736111111111111 0.0 6.137499999999999 79.5575
+
+Number 11: Average Sentence Level Perplexity, Bleu, SARI 
+0.42552677417794865 0.3540950250172574 0.36793181695377003
+
+graham attended wheaton college from 1939 to 1943 , when he graduated with a ba in anthropology .
+graham graduated with a ba in anthropology from wheaton college .
+graham went to wheaton school from 1939 to 1943 when he graduated with an anthropologist .
+0.5964772999286652 0.0643716525407242 0.24826562326562326 0.178030303030303 0.5667665667665668 0.0 6.780000000000001 73.17000000000003
+
+Number 12: Average Sentence Level Perplexity, Bleu, SARI 
+0.43867681462031144 0.3318086117498318 0.3587267251316049
+
+however , the bzo differs a bit in comparison to the freedom party , as is in favor of a referendum about the lisbon treaty but against an eu - withdrawal .
+however , the bzo is not the same as the freedom party .
+but bzo is a little different from the free party as it is in favor of the lisbon treaty referenda but against the eu withdrawal .
+0.09107106924057007 0.04085892079136996 0.33437779812779816 0.12000000000000002 0.8631333943833944 0.02 10.208000000000002 66.40400000000001
+
+Number 13: Average Sentence Level Perplexity, Bleu, SARI 
+0.4138478328074728 0.3110264909670845 0.3569875160599044
+
+many species had vanished by the end of the nineteenth century , with european settlement .
+many species had vanished with european settlement .
+many have disappeared in the late nineteenth century with a european settlement .
+0.7961132824420929 0.13065113298388567 0.36470797720797715 0.36736111111111114 0.7267628205128205 0.0 11.706666666666667 32.504999999999995
+
+Number 14: Average Sentence Level Perplexity, Bleu, SARI 
+0.43933219611644747 0.2990014671015379 0.35750221346977595
+
+in 1987 wexler was inducted into the rock and roll hall of fame .
+in 1987 wexler was recognized into the rock and roll hall of fame .
+in 1987 wexler was inducted into the rock and roll hall of fame .
+0.14034509658813477 0.7825422900366437 0.29287918871252205 0.8786375661375662 0.0 0.0 3.0953846153846136 96.02461538461542
+
+Number 15: Average Sentence Level Perplexity, Bleu, SARI 
+0.4206455023959279 0.32922276853498206 0.35346327442244757
+
+in its pure form , dextromethorphan occurs as a white powder .
+dextromethorphan appears as a white powder in its natural form .
+in its pure form , dextromethorphan is a white powder .
+0.8489455580711365 0.19729406277958836 0.35906432748538014 0.3980263157894737 0.6791666666666667 0.0 6.2755555555555596 66.10000000000002
+
+Number 16: Average Sentence Level Perplexity, Bleu, SARI 
+0.445839623317999 0.3214622564317236 0.3537927481320318
+
+admission to tsinghua is extremely competitive .
+it is very hard to be admitted to tsinghua .
+admission to tsinghua is extremely competitive .
+0.5363371968269348 0.10175282441454783 0.08441558441558443 0.2532467532467533 0.0 0.0 14.283333333333335 3.344999999999999
+
+Number 17: Average Sentence Level Perplexity, Bleu, SARI 
+0.45086726629071766 0.3092561768752138 0.33882735014778476
+
+today nrc is organised as an independent , private foundation .
+nrc is run as an independent , private foundation .
+nrc is now organized as a separate private foundation .
+0.7194233536720276 0.20556680845025987 0.2968253968253968 0.43333333333333335 0.45714285714285713 0.0 8.89777777777778 47.30000000000004
+
+Number 18: Average Sentence Level Perplexity, Bleu, SARI 
+0.4650017972055234 0.3037988416949531 0.3366167210255538
+
+it is situated at the coast of the baltic sea , where it encloses the city of stralsund .
+it is located at the coast of the baltic sea and encloses the city of stralsund .
+it is located on the coast of the baltic sea where it encloses the city of stralsund .
+0.5094171166419983 0.6031612036218008 0.6277441909036157 0.8543635250917992 0.799702380952381 0.22916666666666666 5.616470588235295 85.07411764705884
+
+Number 19: Average Sentence Level Perplexity, Bleu, SARI 
+0.46722256317734717 0.31876695979129543 0.3511730945194569
+
+he was also named 1982 `` sportsman of the year `` by sports illustrated .
+he was sports illustrated ` s `` sportsman of the year `` in 1982 .
+he was also named in 1982 as an athlete of the year .
+0.8887191936373711 0.1498256391684761 0.34142616642616647 0.3714285714285715 0.5457070707070707 0.10714285714285715 0.8900000000000006 110.055
+
+Number 20: Average Sentence Level Perplexity, Bleu, SARI 
+0.48729383129449116 0.3107221349997326 0.35070895508644306
+
+fives is a british sport believed to derive from the same origins as many racquet sports .
+fives is a british sport .
+fives is a british sport believed to be based on the same background as many racquet sports .
+0.8158361464738846 0.21042990347620458 0.5148989898989899 0.5446969696969697 1.0 0.0 7.004705882352944 75.12117647058825
+
+Number 21: Average Sentence Level Perplexity, Bleu, SARI 
+0.5022275728935545 0.3061633972032086 0.35817213848701335
+
+for example , king bhumibol was born on monday , so on his birthday throughout thailand will be decorated with yellow color .
+king bhumibol was born on a monday , so his birthday in thailand would be decorated with yellow .
+for example , king bhumibol was born on monday to be decorated in yellow on his birthday in thailand .
+0.7536815702915192 0.3527295712700594 0.5051258926258927 0.5758838383838384 0.7085414585414584 0.23095238095238096 9.130000000000003 61.665000000000006
+
+Number 22: Average Sentence Level Perplexity, Bleu, SARI 
+0.5131603553891182 0.30818801346698477 0.36456143214522546
+
+both names became defunct in 2007 when they were merged into the national museum of scotland .
+both names became unused when they joined the national museum of scotland .
+both names became extinct in 2007 when they joined the national museum of scotland .
+0.7517499178647995 0.6475445426291286 0.7830026455026454 0.8740079365079365 1.0 0.475 6.727142857142859 71.76785714285715
+
+Number 23: Average Sentence Level Perplexity, Bleu, SARI 
+0.5231015871589383 0.32232786884874076 0.3819964827017846
+
+nevertheless , tagore emulated numerous styles , including craftwork from northern new ireland , haida carvings from the west coast of canada -lrb- british columbia -rrb- , and woodcuts by max pechstein .
+nevertheless , tagore emulated numerous styles , including craftwork from northern new ireland , haida carvings from british columbia , and woodcuts by max pechstein .
+but tagore emulated many styles including craftwork from northern new ireland haida carvings from the western coast of canada lrb british columbia rrrb and woodcuts by max pechstein .
+0.04839515686035156 0.4035660856614615 0.36944587294166537 0.6512724014336917 0.45706521739130435 0.0 15.55857142857143 33.38642857142861
+
+Number 24: Average Sentence Level Perplexity, Bleu, SARI 
+0.5041133299469948 0.3255773975212496 0.3814944583113798
+
+on october 14 , 1960 , presidential candidate john f . kennedy proposed the concept of what became the peace corps on the steps of michigan union .
+on october 14 , 1960 , presidential candidate john f . kennedy proposed the concept for the peace corps at the michigan union .
+on october 14 1960 , presidential candidate john f kennedy proposed the idea of what had become the peace corps on the steps of the michigan union .
+0.22120606899261475 0.37362613411058726 0.37441430764918787 0.6215894837941243 0.4236111111111111 0.07804232804232804 10.434615384615388 66.56038461538463
+
+Number 25: Average Sentence Level Perplexity, Bleu, SARI 
+0.4932322814487494 0.3274254258516087 0.38122214482437244
+
+she performed for president reagan in 1988 ` s great performances at the white house series , which aired on the public broadcasting service .
+she performed for reagan in 1988 ` s great performances at the white house series , which aired on the public broadcasting service .
+she played for president reagan in 1988 ` s great show on a series of public television broadcasts .
+0.8072396963834763 0.22797979039517882 0.14637722616821305 0.3950140314458156 0.044117647058823525 0.0 7.004705882352944 75.12117647058825
+
+Number 26: Average Sentence Level Perplexity, Bleu, SARI 
+0.5048621857055912 0.32374225416803726 0.3725241848741443
+
+perry saturn -lrb- with terri -rrb- defeated eddie guerrero -lrb- with chyna -rrb- to win the wwf european championship -lrb- 8 : 10 -rrb- saturn pinned guerrero after a diving elbow drop .
+perry saturn -lrb- with terri -rrb- defeated eddie guerrero -lrb- with chyna -rrb- in the wwf european championship -lrb- 8 : 10 -rrb- saturn pinned guerrero after a diving elbow drop .
+perry saturn -lrb- with terri -rrb- defeated eddie guerrero -lrb- with chyna -rrb- to win the wwf european championship -lrb- 8 : 10 -rrb- saturn pinned guerrero after a diving elbow drop .
+0.3078218698501587 0.8866029039778043 0.3124398278518676 0.9373194835556028 0.0 0.0 12.106451612903225 63.47967741935486
+
+Number 27: Average Sentence Level Perplexity, Bleu, SARI 
+0.4978250315678971 0.34384442023267175 0.37037831498049156
+
+she remained in the united states until 1927 when she and her husband returned to france .
+she remained in the united states until returning to france with her husband in 1927 .
+she stayed in the usa until 1927 when she and her husband returned to france .
+0.5749074220657349 0.0962580721719678 0.13044136475310564 0.2663240942593169 0.125 0.0 2.8466666666666676 101.37000000000002
+
+Number 28: Average Sentence Level Perplexity, Bleu, SARI 
+0.5004830450333398 0.3353069599547165 0.36210462704161617
+
+despina was discovered in late july , 1989 from the images taken by the voyager 2 probe .
+in 1989 , despina was discovered from the images that were taken by the voyager 2 probe .
+desperate was discovered at the end of july 1989 from pictures taken by voyager 2 .
+0.8862881287932396 0.08494745054052602 0.2562801876959539 0.29378332865562723 0.47505723443223447 0.0 7.566666666666666 67.53000000000003
+
+Number 29: Average Sentence Level Perplexity, Bleu, SARI 
+0.5133432144920032 0.32696164297424346 0.3585771457300941
+
+the first italian grand prix motor racing championship took place on 4 september 1921 at brescia .
+the first grand prix championship took place on september 4 , 1921 at brescia .
+the first italian grand prix motor race championship was held on 4 september 1921 in brescia .
+0.45048725605010986 0.0921847194955832 0.2549188193796037 0.29193899782135074 0.47281746031746036 0.0 7.612500000000001 68.9825
+
+Number 30: Average Sentence Level Perplexity, Bleu, SARI 
+0.5113156029293614 0.3193881938297705 0.355233328751046
+
+he also completed two collections of short stories entitled the ribbajack &amp; other curious yarns and seven strange and ghostly tales .
+he also completed two short story collections . these were titled the ribbajack &amp; other curious yarns and seven strange and ghostly tales .
+he also finished two collections of short stories called the ribbajack amp of other curious yarns and seven strange and ghostly stories .
+0.3612695336341858 0.36152523418875304 0.3303872053872054 0.6502525252525253 0.34090909090909094 0.0 11.762727272727272 49.91409090909093
+
+Number 31: Average Sentence Level Perplexity, Bleu, SARI 
+0.5066266632638872 0.3207049763409887 0.354456887395926
+
+at the voyager 2 images ophelia appears as an elongated object , the major axis pointing towards uranus .
+ophelia looks like a long item from voyager 2 images with the large part pointing toward uranus .
+on the voyager , 2 pictures of ophelia are displayed as an elongated item the main axes pointing to uranium .
+0.09295046329498291 0.029540011999676513 0.3518429487179487 0.15865384615384617 0.871875 0.025000000000000005 11.693684210526317 45.06578947368425
+
+Number 32: Average Sentence Level Perplexity, Bleu, SARI 
+0.49409102084058704 0.3118817956033732 0.354377677132957
+
+the british decided to eliminate him and take the land by force .
+the british decided to take him out and land by force .
+the british decided to take him out and take the country by force .
+0.8658549785614014 0.6162607099729586 0.7164150614262077 0.7787481976051658 0.7615079365079365 0.6089890501655207 3.0953846153846136 96.02461538461542
+
+Number 33: Average Sentence Level Perplexity, Bleu, SARI 
+0.5050252548911992 0.3208341166142434 0.36502583549452317
+
+some towns on the eyre highway in the south - east corner of western australia , between the south australian border almost as far as caiguna , do not follow official western australian time .
+some towns on the eyre highway in southeast western australia between australia and caiguna don ` t follow western australia time .
+some of the eyre motorway cities in the south east of western australia between the southern australian border almost as far as caiguna do not follow official western australian times .
+0.054568588733673096 0.06836931703536832 0.3006947801951831 0.17698630136986299 0.6899465240641711 0.03515151515151515 16.170000000000005 32.565000000000026
+
+Number 34: Average Sentence Level Perplexity, Bleu, SARI 
+0.49215506442955564 0.31362083662627555 0.36318780534311346
+
+in architectural decoration small pieces of colored and iridescent shell have been used to create mosaics and inlays , which have been used to decorate walls , furniture and boxes .
+in designing small pieces of colored shells are used to make decorations which are used to decorate walls , furniture , and boxes .
+small chunks of colorful and iridescent skin have been used to create mosaics and inlays that have been used to decorate furniture and boxes .
+0.2079959511756897 0.11601529016234949 0.3038429163429164 0.29763986013986016 0.6138888888888889 0.0 12.453333333333333 48.525000000000034
+
+Number 35: Average Sentence Level Perplexity, Bleu, SARI 
+0.48426175572805935 0.3081317936689443 0.3615393362042191
+
+the other incorporated cities on the palos verdes peninsula include rancho palos verdes , rolling hills estates and rolling hills .
+the other cities on the peninsula are rancho palos verdes , rolling hills estates and rolling hills .
+the other incorporated cities on the palos verdes peninsula include rancho palos verdes , rolling hills estates and rolling hills .
+0.046694397926330566 0.5923136157487711 0.24843771074045765 0.745313132221373 0.0 0.0 14.177894736842106 27.255263157894774
+
+Number 36: Average Sentence Level Perplexity, Bleu, SARI 
+0.4724356109226072 0.31581238345488555 0.35848253551600934
+
+fearing that drek will destroy the galaxy , clank asks ratchet to help him find the famous superhero captain qwark , in an effort to stop drek .
+fearing that drek will destroy the galaxy , a search is underway for captain qwark , to help stop drek .
+fearing that drek will destroy the galaxy , clank asks ratchet to help him find the famous superhero captain qwark , in an effort to stop drek .
+0.33150041103363037 0.3535749730730369 0.17683407389289743 0.5305022216786923 0.0 0.0 10.208000000000002 66.40400000000001
+
+Number 37: Average Sentence Level Perplexity, Bleu, SARI 
+0.4687267898728973 0.31680613581325795 0.3537023128417169
+
+it is not actually a true louse .
+it is not a louse .
+it ` s not really a real louse .
+0.8880939409136772 0.1199014838091355 0.3813131313131313 0.3522727272727273 0.7916666666666666 0.0 -1.0599999999999987 115.13000000000002
+
+Number 38: Average Sentence Level Perplexity, Bleu, SARI 
+0.4794797937457378 0.31175729858238305 0.3544102825461121
+
+he advocates applying a user - centered design process in product development cycles and also works towards popularizing interaction design as a mainstream discipline .
+he recommends using a user - centered design process in product development cycles and also to popularize interaction design as a mainstream discipline .
+he advocates applying a user - centered design process in product development cycles and also works towards popularizing interaction design as a mainstream discipline .
+0.07011890411376953 0.6836013949954282 0.26997065835320005 0.8099119750596002 0.0 0.0 18.519130434782614 3.2552173913043703
+
+Number 39: Average Sentence Level Perplexity, Bleu, SARI 
+0.4692457715049386 0.3210534009927092 0.35229929194128934
+
+it is theoretically possible that the other editors who may have reported you , and the administrator who blocked you , are part of a conspiracy against someone half a world away they ` ve never met in person .
+it may be possible that others are a part of a conspiracy against you .
+there ` s a theory that the other publishers who may have told you and the manager who blocked you are part of a plot against someone half a world away they ` ve never met .
+0.13146525621414185 0.05011724662824516 0.3470519408449486 0.18969478357380687 0.8514610389610389 0.0 11.899411764705885 70.3073529411765
+
+Number 40: Average Sentence Level Perplexity, Bleu, SARI 
+0.46100722235150454 0.31444520210577104 0.3521713077682079
+
+working group i : assesses scientific aspects of the climate system and climate change .
+working group i : looks at the aspects of climate change and the climate
+the working group will evaluate the scientific impact of the climate system and climate change .
+0.05371236801147461 0.09375572291917328 0.28750000000000003 0.28214285714285714 0.5803571428571429 0.0 6.780000000000001 73.17000000000003
+
+Number 41: Average Sentence Level Perplexity, Bleu, SARI 
+0.45130972581959905 0.3091906906965663 0.35063151472610765
+
+the island chain forms part of the hebrides , separated from the scottish mainland and from the inner hebrides by the stormy waters of the minch , the little minch and the sea of the hebrides .
+the island chain is part of the hebrides . it is separated from the scottish mainland and from the inner hebrides .
+the island chain forms part of the hebrides , separated from the scottish mainland and from the inner hebrides by the stormy waters of the minch , the little minch and the sea of the hebrides .
+0.07642453908920288 0.36828504465726397 0.18181727119011218 0.5454518135703366 0.0 0.0 11.55235294117647 72.79558823529413
+
+Number 42: Average Sentence Level Perplexity, Bleu, SARI 
+0.4425914656630782 0.3105649779979779 0.3467056020857357
+
+orton and his wife welcomed alanna marie orton on july 12 , 2008 .
+orton and his wife had a child named alanna marie orton on july 12 , 2088 .
+orton and his wife welcomed alanna marie orton on july 12 , 2008 .
+0.6396234929561615 0.508333248980831 0.25805754917597024 0.7741726475279107 0.0 0.0 6.790000000000003 67.75500000000001
+
+Number 43: Average Sentence Level Perplexity, Bleu, SARI 
+0.44706946628337557 0.31505971142940636 0.3446908736105137
+
+formal minor planet designations are number - name combinations overseen by the minor planet center , a branch of the iau .
+the minor planet center gives number name combinations to minor planets .
+formal minor planet designations are number - name combinations overseen by the minor planet center , a branch of the iau .
+0.05775761604309082 0.1423071532720465 0.09317933839210435 0.27953801517631305 0.0 0.0 12.935789473684213 36.1605263157895
+
+Number 44: Average Sentence Level Perplexity, Bleu, SARI 
+0.4384180918335915 0.3112207656925762 0.339101728383438
+
+by early on september 30 , wind shear began to dramatically increase and a weakening trend began .
+on september 30 the wind increased .
+in the early september of 30 the wind shear started to grow dramatically and a decreasing tendency started .
+0.05222505331039429 0.08562365224473284 0.3926752645502645 0.13333333333333333 0.915327380952381 0.12936507936507938 9.785555555555558 56.965
+
+Number 45: Average Sentence Level Perplexity, Bleu, SARI 
+0.43002259099613066 0.306316480617623 0.34026637047402114
+
+each entry has a datum -lrb- a nugget of data -rrb- which is a copy of the datum in some backing store .
+there is a copy of each datum entry in some backing store .
+each item has a datum lrb a nugget rrb that is a copy of the datum in some backup store .
+0.8057821094989777 0.1624355752882384 0.410788983458475 0.4718691148775895 0.7604978354978355 0.0 5.780000000000001 89.24500000000003
+
+Number 46: Average Sentence Level Perplexity, Bleu, SARI 
+0.43801747436853167 0.30325518475955104 0.34176685160135
+
+as a result , although many mosques will not enforce violations , both men and women when attending a mosque must adhere to these guidelines .
+men and women attending a mosque must follow certain guidelines .
+as a result although many mosques will not cause breaches both men and women must follow these guidelines when attending a mosque .
+0.05949127674102783 0.1238490128281054 0.472909893469104 0.3507177033492823 0.9295504385964912 0.13846153846153847 11.22636363636364 53.759545454545474
+
+Number 47: Average Sentence Level Perplexity, Bleu, SARI 
+0.4301315119179587 0.2995175561776459 0.3444989983069282
+
+mariel of redwall is a fantasy novel by brian jacques , published in 1991 .
+mariel of redwall is a novel written by brian jacques . it was published in 1991 .
+mariel redwall is a fantasy book by brian jacques published in 1991 .
+0.8686772733926773 0.26907867898601556 0.44840017825311945 0.7077005347593582 0.6375 0.0 7.773333333333333 60.70500000000001
+
+Number 48: Average Sentence Level Perplexity, Bleu, SARI 
+0.4390814254174427 0.2988963546023065 0.346619430550728
+
+ryan prosser -lrb- born 10 july , 1988 -rrb- is a professional rugby union player for bristol rugby in the guinness premiership .
+born in 1988 , ryan prosser is a professional rugby player . he plays for bristol rugby in the guinness premiership .
+ryan prosser -lrb- born 10 july , 1988 -rrb- is a professional rugby union player for bristol rugby in the guinness premiership .
+0.16003698110580444 0.45986108016994914 0.21264367816091956 0.6379310344827587 0.0 0.0 7.771428571428572 76.74857142857144
+
+Number 49: Average Sentence Level Perplexity, Bleu, SARI 
+0.43350053653120996 0.30211564911365935 0.34393991550293185
+
+like previous assessment reports , it consists of four reports , three of them from its working groups .
+it consists of four reports . three of them are from its working groups .
+as with past evaluation reports , it is composed of four reports from three of its working groups .
+0.11766034364700317 0.21479172459878046 0.434942488067488 0.6150838744588744 0.6897435897435897 0.0 8.39294117647059 65.16823529411766
+
+Number 50: Average Sentence Level Perplexity, Bleu, SARI 
+0.4273075915726961 0.30040341529964215 0.34572427967086433
+
+their granddaughter helene langevin - joliot is a professor of nuclear physics at the university of paris , and their grandson pierre joliot , who was named after pierre curie , is a noted biochemist .
+their granddaughter is a professor of nuclear physics at the university of paris and their grandson is a renowned biochemist .
+their granddaughter helene langevin - joliot is a professor of nuclear physics at the university of paris , and their grandson pierre joliot , who was named after pierre curie , is a noted biochemist .
+0.09304416179656982 0.3609623953161198 0.17961628479921163 0.5388488543976349 0.0 0.0 17.816129032258065 22.544193548387113
+
+Number 51: Average Sentence Level Perplexity, Bleu, SARI 
+0.42087944869238597 0.3015680110691898 0.3425298951541018
+
+this stamp remained the standard letter stamp for the remainder of victoria ` s reign , and vast quantities were printed .
+this remained the standard letter stamp for the rest of victoria ` s reign . vast quantities were printed .
+for the rest of the triumph of the power and the large quantities were printed .
+0.5448940098285675 0.24559903655373172 0.35316660019833396 0.3835897435897436 0.43280228758169936 0.2431077694235589 2.8466666666666676 101.37000000000002
+
+Number 52: Average Sentence Level Perplexity, Bleu, SARI 
+0.42321934607231393 0.30051199268210566 0.34273058770210624
+
+the international fight league was an american mixed martial arts -lrb- mma -rrb- promotion billed as the world ` s first mma league .
+the international fight league was an american mma promotion , known as the world ` s first mma league .
+the ifl was an american mixed martial arts lrb mma rrb s promotion as the world s first mma .
+0.7088557481765747 0.17810257956881337 0.27939837125088246 0.40342328835582203 0.4347718253968254 0.0 4.241052631578949 98.49736842105266
+
+Number 53: Average Sentence Level Perplexity, Bleu, SARI 
+0.42850890907424466 0.29824515169852617 0.3415577688789354
+
+giardia lamblia -lrb- synonymous with lamblia intestinalis and giardia duodenalis -rrb- is a flagellated protozoan parasite that colonises and reproduces in the small intestine , causing giardiasis .
+giardia lamblia is a flagellated protozoan parasite that colonises and reproduces in the small intestine , causing giardiasis .
+giardia lamblia -lrb- synonymous with lamblia intestinalis and giardia duodenalis -rrb- is a flagellated protozoan parasite that colonises and reproduces in the small intestine , causing giardiasis .
+0.04728728532791138 0.609532218277021 0.253826059959489 0.7614781798784669 0.0 0.0 21.780769230769227 0
+
+Number 54: Average Sentence Level Perplexity, Bleu, SARI 
+0.42157760682431134 0.3039049165454079 0.33996264689858186
+
+aside from this , cameron has often worked in christian - themed productions , among them the post - rapture films left behind : the movie , left behind ii : tribulation force , and left behind : world at war , in which he plays cameron `` buck `` williams .
+cameron has often worked in christian productions . they include left behind : the movie , left behind ii : tribulation force , and left behind : world at war .
+aside from this cameron has often been involved in christian themed productions among them the post - rapture films left behind by the ii tribulation force and left behind the world at war where he plays cameron dollar williams .
+0.04594302177429199 0.10399066671417613 0.26283438393087916 0.29685838863624653 0.49164476315639105 0.0 16.930000000000003 41.36500000000002
+
+Number 55: Average Sentence Level Perplexity, Bleu, SARI 
+0.4148698463769896 0.300335019226993 0.3385853564884443
+
+this was the area east of the mouth of the vistula river , later sometimes called `` prussia proper `` .
+prussia proper was the area east of the mouth of the vistual river .
+this was the area east of the mouth of the vistula river , later sometimes called `` prussia proper `` .
+0.18298685550689697 0.4300707823114161 0.19764957264957264 0.592948717948718 0.0 0.0 6.647619047619049 84.8057142857143
+
+Number 56: Average Sentence Level Perplexity, Bleu, SARI 
+0.41080172373014584 0.302611085246018 0.33611279887723605
+
+after graduation he returned to yerevan to teach at the local conservatory and later he was appointed artistic director of the armenian philarmonic orchestra .
+after graduation he returned to yerevan to teach at the conservatory . later he was appointed artistic director of the armenian philarmonic orchestra .
+after graduating , he went back to yerevan to teach at the local conservatory and later became art director of the armenian philarmonic orchestra .
+0.05957162380218506 0.44383351844821595 0.23379397271934335 0.6309273727034846 0.07045454545454546 0.0 14.927826086956525 29.003043478260906
+
+Number 57: Average Sentence Level Perplexity, Bleu, SARI 
+0.40474603235207757 0.3050459547839869 0.3343486811848586
+
+the story of christmas is based on the biblical accounts given in the gospel of matthew , namely - and the gospel of luke , specifically - .
+the story of christmas is based on the gospel of matthew and luke .
+the christmas story is based on the biblical accounts of matthew s gospel specially luke s gospel .
+0.05897599458694458 0.19014488240052468 0.40082390319232425 0.4738888888888889 0.7285828206880838 0.0 7.698823529411765 70.14470588235295
+
+Number 58: Average Sentence Level Perplexity, Bleu, SARI 
+0.3988855232374143 0.3030984789808774 0.33547537986295123
+
+weelkes was later to find himself in trouble with the chichester cathedral authorities for his heavy drinking and immoderate behaviour .
+weelkes was in trouble with chinchester cathedral authorities for his heavy drinking and poor behaviour .
+weelkes later found himself in trouble with the chichester caves for his heavy drinking and immoderate behavior .
+0.28591763973236084 0.28433291815307693 0.4038276857242374 0.5652709359605911 0.6462121212121212 0.0 12.55764705882353 35.309411764705914
+
+Number 59: Average Sentence Level Perplexity, Bleu, SARI 
+0.3970027251789967 0.30278571963374734 0.33661458496063934
+
+so far the ` celebrity ` episodes have included vic reeves , nancy sorrell , gaby roslin , scott mills , mark chapman , simon gregson , sue cleaver , carol thatcher , paul o ` grady and lee ryan .
+the ` celebrity ` shows have included the following individuals : vic reeves , nancy sorrell , gaby roslin , scott mills , mark chapman , simon gregson , sue cleaver , carol thatcher , paul o ` grady and lee ryan .
+nancy sorrell gaby roslin scott millmarks chapman simon gregson suing cleaver carol thatcher paul o grady and lee ryan .
+0.07011520862579346 0.09574181500487244 0.18864330257175144 0.3678692318319978 0.19806067588325652 0.0 11.07263157894737 49.518421052631595
+
+Number 60: Average Sentence Level Perplexity, Bleu, SARI 
+0.3916439134322229 0.29939155726278216 0.33418882623295265
+
+it was discovered by stephen p . synnott in images from the voyager 1 space probe taken on march 5 , 1979 while orbiting around jupiter .
+stephen p . synnott discovered it . he found it in images from the voyager 1 space probe taken on march 5 , 1979 while spinning around jupiter .
+it was discovered by stephen p synnott in pictures of the voyager 1 spacecraft taken on march 5 1979 , orbiting around jupiter .
+0.47147828340530396 0.17700369826057072 0.20198800137278772 0.43052540762713515 0.17543859649122806 0.0 10.690000000000001 57.605000000000004
+
+Number 61: Average Sentence Level Perplexity, Bleu, SARI 
+0.39293156456082096 0.29741755953694005 0.3320565548642403
+
+gomaespuma was a spanish radio show , hosted by juan luis cano and guillermo fesser .
+gomaespuma was a spanish radio show . it was hosted by juan luis cano and guillermo fesser .
+gomaespuma was a spanish radio show with juan luis cano and guillermo fesser .
+0.8516077399253845 0.5880627618336722 0.4766865079365079 0.9050595238095238 0.5249999999999999 0.0 9.44923076923077 50.470769230769264
+
+Number 62: Average Sentence Level Perplexity, Bleu, SARI 
+0.4002121387729569 0.302030975446412 0.33435226840506993
+
+on 16 june 2009 , the official release date of the resistance was announced on the band ` s website .
+on june 16 , 2009 the official release date of the resistance was announced . it was announced on the band ` s website .
+the notice of opposition was published on the group ` s website on 16 june 2009 .
+0.8011525869369507 0.08490587252467165 0.14766851508045079 0.2868868477623608 0.1561186974789916 0.0 3.633333333333333 95.73000000000002
+
+Number 63: Average Sentence Level Perplexity, Bleu, SARI 
+0.4064768332755193 0.2986383957132598 0.33143533475937276
+
+he is also a member of another jungiery boyband 183 club .
+he ` s also a member of another jungiery boyband , 183 club .
+he is also a member of another jungiery boyband 183 club .
+0.8882532268762589 0.5496509142160036 0.26366763480607874 0.7910029044182363 0.0 0.0 5.863636363636363 72.61545454545457
+
+Number 64: Average Sentence Level Perplexity, Bleu, SARI 
+0.41388877779245375 0.3025001267671481 0.33039275476009133
+
+the apostolic tradition , attributed to the theologian hippolytus , attests the singing of hallel psalms with alleluia as the refrain in early christian agape feasts .
+: the apostolic tradition , attributed to the theologian hippolytus , cites of hallel psalms with alleluia as the refrain in early christian agape feasts .
+the apostolic tradition , attributed to the theologian hippolytus , attests the singing of hallel psalms with alleluia as the refrain in early christian agape feasts .
+0.04561769962310791 0.8196189957582152 0.30093915343915345 0.9028174603174604 0.0 0.0 15.895 23.850000000000023
+
+Number 65: Average Sentence Level Perplexity, Bleu, SARI 
+0.40830891297170613 0.3103352611458007 0.3299464880734104
+
+in return , rollo swore fealty to charles , converted to christianity , and undertook to defend the northern region of france against the incursions of other viking groups .
+in return , rollo swore fealty to charles , converted to christianity , and began defending the northern region of france against the incursions of other viking groups .
+rollo had sworn fealty to charles had turned to christianity and promised to defend the northern part of france against the invasion of other vile groups .
+0.06514471769332886 0.1687178836641996 0.17527054161178354 0.3876473736276211 0.13816425120772946 0.0 12.250000000000004 53.54500000000003
+
+Number 66: Average Sentence Level Perplexity, Bleu, SARI 
+0.4031870593108348 0.30822156894458275 0.32763789185756526
+
+it is derived from voice of america -lrb- voa -rrb- special english .
+it is derived from voice of america special english .
+this is based on the voice of america lrb voa rrb special english .
+0.8877307698130608 0.1847686042052219 0.3333333333333333 0.48611111111111105 0.513888888888889 0.0 4.003076923076925 89.51692307692309
+
+Number 67: Average Sentence Level Perplexity, Bleu, SARI 
+0.4103127021123381 0.3064060841690039 0.32772164834985595
+
+disney received a full - size oscar statuette and seven miniature ones , presented to him by 10 - year - old child actress shirley temple .
+disney got a full - size oscar statue and seven little ones given to him by 10 year old actress shirley temple .
+disney was given a full - sized oscar statuette and seven miniaturized ones from ten - year - old baby actress shirts .
+0.34471315145492554 0.0978720536077519 0.32266852992427025 0.30373791300513403 0.6226010101010101 0.041666666666666664 12.314736842105265 40.613157894736844
+
+Number 68: Average Sentence Level Perplexity, Bleu, SARI 
+0.40936198398686835 0.30338385184202926 0.3276484147494852
+
+it was the first asteroid to be discovered by a spacecraft .
+it was the first asteroid found by a spaceship .
+it was the first asteroid to be discovered by a spacecraft .
+0.8878515213727951 0.37700638045494705 0.18751456876456876 0.5625437062937063 0.0 0.0 5.863636363636363 72.61545454545457
+
+Number 69: Average Sentence Level Perplexity, Bleu, SARI 
+0.4161975488066673 0.3044356022507852 0.32564650266398637
+
+hinterrhein is an administrative district in the canton of graubunden , switzerland .
+hinterrhein is a leading district in the place of graubunden , switzerland .
+hinterrhein is a county of the canton of graubunden switzerland .
+0.8883069083094597 0.17676084425360003 0.3485449735449735 0.3194444444444444 0.5404761904761904 0.18571428571428572 8.370000000000001 52.86500000000001
+
+Number 70: Average Sentence Level Perplexity, Bleu, SARI 
+0.4228469764052982 0.30263736622265586 0.3259690163383665
+
+it continues as the bohemian switzerland in the czech republic .
+it goes on as the bohemian switzerland in the czech republic .
+it continues to be the bohemian switzerland of the czech republic .
+0.8882421404123306 0.317023313852343 0.2743814192343604 0.6058823529411764 0.21726190476190474 0.0 6.936363636363637 64.9245454545455
+
+Number 71: Average Sentence Level Perplexity, Bleu, SARI 
+0.4293107981276181 0.30283717105084595 0.32525252193414417
+
+this leads to consumer confusion when 220 -lrb- 1,048,576 -rrb- bytes is referenced as 1 mb -lrb- megabyte -rrb- instead of 1 mib .
+people get confused when the term mb is used instead of mib .
+220 lrb 1048576 rrb by tes is called 1 mb lrb megabyte rrb instead of 1 mib .
+0.6302827596664429 0.06722636787666482 0.4365079365079365 0.3303571428571429 0.9791666666666666 0.0 -0.6305882352941161 129.86235294117648
+
+Number 72: Average Sentence Level Perplexity, Bleu, SARI 
+0.4320638386966431 0.29960962580188455 0.32677656870912763
+
+the incident has been the subject of numerous reports as to ethics in scholarship .
+the incident has raised concerns about ethics in scholarships .
+the event has been the subject of a number of reports on ethics in scholarships .
+0.4501833915710449 0.16943571815930883 0.4298611111111111 0.21875 0.8694444444444445 0.2013888888888889 5.993333333333336 78.81000000000003
+
+Number 73: Average Sentence Level Perplexity, Bleu, SARI 
+0.43230869751927015 0.2978505189418497 0.3281696030659112
+
+they are castrated so that the animal may be more docile or may put on weight more quickly .
+the animals are castrated so they become more calm and put on weight .
+they are castrated so that the animal may be more docile or may put on weight more quickly .
+0.4438827633857727 0.14400124446705304 0.10759531762510909 0.32278595287532724 0.0 0.0 5.852222222222224 85.16499999999999
+
+Number 74: Average Sentence Level Perplexity, Bleu, SARI 
+0.4324630183974902 0.2957991952821858 0.32522861259336716
+
+seventh sons have strong `` knacks `` -lrb- specific magical abilities -rrb- , and seventh sons of seventh sons are both extraordinarily rare and powerful .
+seventh sons have magical abilities , and seventh sons of seven sons are even more powerful .
+the seventh sons have strong knacks of lrb special magical powers rrb and the seventh sons are both extremely rare and powerful .
+0.5059554874897003 0.10665549155965788 0.36591842195874125 0.3536580436540016 0.7440972222222222 0.0 8.008181818181821 76.83227272727274
+
+Number 75: Average Sentence Level Perplexity, Bleu, SARI 
+0.4334300245697561 0.2933104623384683 0.32576400482185897
+
+benchmarking conducted by passmark software highlights the 2009 version ` s 52 second install time , 32 second scan time , and 7 mb memory utilization .
+benchmarking done by passmark software highlights the 2009 version ` s 52 second install time , 32 second scan time , and 7 mb memory utilization .
+benchmarking by passmark software underlines the 2009 version s 52 second installation time 32 second scan time and 7 mb memory usage .
+0.052687108516693115 0.29799254028814565 0.2266357851723705 0.549274099883856 0.13063325563325562 0.0 9.61727272727273 65.29590909090909
+
+Number 76: Average Sentence Level Perplexity, Bleu, SARI 
+0.42848531137426177 0.29337126854560697 0.32447662534589156
+
+volterra is a town in the tuscany region of italy .
+volterra is an italian town in the tuscany region .
+volterra is a town in the tuscany region of italy .
+0.8886955603957176 0.4172261448611506 0.2007309941520468 0.6021929824561404 0.0 0.0 7.190000000000001 61.32500000000002
+
+Number 77: Average Sentence Level Perplexity, Bleu, SARI 
+0.4343854427719728 0.2949591515752934 0.3228901428946884
+
+historically , the sensations of itch and pain have not been considered to be independent of each other until recently , where it was found that itch has several features in common with pain , but exhibits notable differences .
+historically , the sensations of itch and pain have not been considered to be independent of each other until recently . it was found that itch has several features in common with pain , but exhibits notable differences .
+historically , the sensations of itch and pain have not been considered to be independent of each other until recently , where it was found that itch has several features in common with pain , but exhibits notable differences .
+0.045622050762176514 0.9076141716697395 0.31771360005002897 0.9531408001500868 0.0 0.0 18.772222222222222 24.595000000000027
+
+Number 78: Average Sentence Level Perplexity, Bleu, SARI 
+0.42946438717691204 0.30271427841193194 0.32282461703589527
+
+the tongue is sticky because of the presence of glycoprotein - rich mucous , which both lubricates movement in and out of the snout and helps to catch ants and termites , which adhere to it .
+the tongue is sticky because of the presence of glycoprotein - rich mucous . this lubricates movement in and out of the snout and helps to catch ants and termites , which adhere to it .
+the tongue is sticky because of the presence of glycoprotein - rich mucous which both lubricates move in and out of the snout and help catch the ants and termites that follow .
+0.07606714963912964 0.54919256107229 0.30708494936436115 0.740728021978022 0.1805268261150614 0.0 12.106451612903225 63.47967741935486
+
+Number 79: Average Sentence Level Perplexity, Bleu, SARI 
+0.42504692170768976 0.3057952569451864 0.32262787119000114
+
+the same tram had derailed on 30 may 2006 at starr gate loop during previous trials .
+the same tram had derailed on 30 may 2006 at during previous trials .
+the same tractor was released on 30 may 2006 at starr gateway free during prior studies .
+0.5232377052307129 0.26220676436185975 0.2918049543049543 0.524440836940837 0.35097402597402594 0.0 6.137499999999999 79.5575
+
+Number 80: Average Sentence Level Perplexity, Bleu, SARI 
+0.42625915360303573 0.30525712740712063 0.32224734135191413
+
+there are statues of sir alf ramsey and sir bobby robson , both former ipswich town and england managers , outside the ground .
+there are statues of former ipswich town and england managerssir alf ramsey and sir bobby robson outside the ground .
+there are statues of sir alf ramsey and sir bobby robson , both former ipswich city and england managers outside the country .
+0.05172765254974365 0.3812091008246405 0.3456381528793395 0.6098311253046853 0.42708333333333326 0.0 10.580952380952379 56.6057142857143
+
+Number 81: Average Sentence Level Perplexity, Bleu, SARI 
+0.42169169627311753 0.3061833709853831 0.32253259515102906
+
+take the square root of the variance .
+take the variance ` s square root .
+take the square root of the variance .
+0.7756731510162354 0.1913014708139224 0.12333333333333334 0.37 0.0 0.0 -1.0599999999999987 115.13000000000002
+
+Number 82: Average Sentence Level Perplexity, Bleu, SARI 
+0.42595653307725145 0.30479925170620886 0.32013260404479177
+
+volunteers provided food , blankets , water , children ` s toys , massages , and a live rock band performance for those at the stadium .
+volunteers provided food , blankets , water , toys , massages , and a rock performance for those at the stadium .
+volunteers supplied food blankets for water children ` s toy massages and a live rock band show for those in the stadium .
+0.563828706741333 0.10517036597271202 0.1707945467749389 0.2796296296296297 0.23275401069518714 0.0 8.895238095238096 68.69142857142859
+
+Number 83: Average Sentence Level Perplexity, Bleu, SARI 
+0.42759786847801434 0.30242271735223863 0.3183547700296745
+
+vouvray - sur - huisne is a commune in the sarthe department in the region of pays - de - la - loire in northwestern france .
+vouvray - sur - huisne is a place people work together in the sarthe place of pays - de - la - loire in northwestern france .
+vouvray suru huisne is a community in the sarthe area of paying de la loire in northwest france .
+0.3507087230682373 0.11377850800716562 0.25432165861513684 0.39222222222222214 0.37074275362318837 0.0 6.507777777777779 80.46500000000002
+
+Number 84: Average Sentence Level Perplexity, Bleu, SARI 
+0.42669329029672287 0.30020337371288486 0.3176014393071505
+
+if there are no strong land use controls , buildings are built along a bypass , converting it into an ordinary town road , and the bypass may eventually become as congested as the local streets it was intended to avoid .
+buildings are built along a road that goes over other roads if not controlled and may become busy anyway .
+unless there are strong land - use buildings built along a pass that turns it into an ordinary city road and the bypass can eventually become as congested as the local streets it was meant to avoid .
+0.1316017508506775 0.04874286287450101 0.36243080313934034 0.1913377192982456 0.8665429254138932 0.029411764705882353 15.166666666666668 50.44500000000002
+
+Number 85: Average Sentence Level Perplexity, Bleu, SARI 
+0.42326199332642 0.2972794142845316 0.3181227109796178
+
+it is also a starting point for people wanting to explore cooktown , cape york peninsula , and the atherton tableland .
+it is the start for people looking at cooktown , cape york peninsula , and the atherton tableland .
+it is also a starting point for people who want to explore the cooktown coat york peninsulo and atherton tableland .
+0.38950544595718384 0.11124661907380255 0.21118565574210735 0.29957844574780057 0.3339785214785215 0.0 9.910000000000004 59.63500000000003
+
+Number 86: Average Sentence Level Perplexity, Bleu, SARI 
+0.4228739870348196 0.29514110629360363 0.3168935494251637
+
+bruises often induce pain but are not normally dangerous .
+bruises are painful but not bad for you .
+bruises often cause pain but are not usually dangerous .
+0.8879241645336151 0.06274655310994741 0.3974358974358974 0.19230769230769232 1.0 0.0 7.58666666666667 56.70000000000002
+
+Number 87: Average Sentence Level Perplexity, Bleu, SARI 
+0.42815864814276045 0.2925002590983348 0.3178088033798311
+
+none of the authors , contributors , sponsors , administrators , vandals , or anyone else connected with wikipedia , in any way whatsoever , can be responsible for your use of the information contained in or linked from these web pages .
+none of the people connected with wikipedia in any way can be responsible for how you use the information you learn here .
+none of the developers sponsorship managers of vandals or anyone else connected to wikipedia in any way can be responsible for your use of the information contained in or linked to these web sites .
+0.05247342586517334 0.25837130980300244 0.5086928426409696 0.45361977752298194 0.9398795648795649 0.132579185520362 17.452352941176475 30.49558823529415
+
+Number 88: Average Sentence Level Perplexity, Bleu, SARI 
+0.42393746586997855 0.2921167877579378 0.3199535678659113
+
+george frideric handel also served as kapellmeister for george , elector of hanover -lrb- who eventually became george i of great britain -rrb- .
+george frideric handel also served as kapellmeister for george , elector of hanover .
+george frideric handel was also a kapellmeister for george ` s hanover electron lrb who eventually became george i of the great britain rrrb .
+0.507840096950531 0.10713701843513149 0.23175695545881003 0.3072023376829014 0.3880685286935287 0.0 11.336521739130436 54.750869565217414
+
+Number 89: Average Sentence Level Perplexity, Bleu, SARI 
+0.42486971732642914 0.29006145698768443 0.31897360550583237
+
+their eyes are quite small , and their visual acuity is poor .
+their eyes are small , and their visual acuity is poor .
+their eyes are quite small and their visual acuity is poor .
+0.4451286792755127 0.6493358309501979 0.3299242424242424 0.7814393939393939 0.20833333333333331 0.0 3.7181818181818187 87.99727272727276
+
+Number 90: Average Sentence Level Perplexity, Bleu, SARI 
+0.4250923432819136 0.2940095270312285 0.31909394217526543
+
+they are rivaled as biological materials in toughness only by chitin .
+they are rivaled only by chitin in toughness .
+they are rivaled as biological materials in solid form only by chitin .
+0.6636543273925781 0.2078060434846712 0.3596560846560846 0.45396825396825397 0.625 0.0 12.690000000000001 25.455000000000013
+
+Number 91: Average Sentence Level Perplexity, Bleu, SARI 
+0.42768540832659474 0.2930725326448529 0.3195348350283178
+
+oregano is an indispensable ingredient in greek cuisine .
+oregano is an essentlal ingredient in greek cooking .
+oregano is an essential part of greek cooking .
+0.8876422196626663 0.2984745896009823 0.5068181818181817 0.5416666666666666 0.75 0.2287878787878788 8.180000000000003 50.66500000000002
+
+Number 92: Average Sentence Level Perplexity, Bleu, SARI 
+0.43263118049149873 0.29313061927878975 0.3215486344561658
+
+tickets can be retailed for national rail services , the docklands light railway and on oyster card .
+tickets can be purchased for national rail services , the docklands light railway or an oyster card .
+tickets can be retailed for national rail services , the docklands light railway and on oyster card .
+0.06794178485870361 0.6031612036218008 0.2523421406180027 0.757026421854008 0.0 0.0 8.350000000000005 63.69500000000001
+
+Number 93: Average Sentence Level Perplexity, Bleu, SARI 
+0.4287515060698732 0.29642881698456647 0.32081239516001514
+
+these works he produced and published himself , whilst his much larger woodcuts were mostly commissioned work .
+some works he made himself . his larger woodcuts were commissioned .
+these works he made and published himself while his much larger woodcuts were mostly ordered work .
+0.6576808393001556 0.15844501337268932 0.4872394312611705 0.3607262302914477 0.9375 0.16349206349206352 7.612500000000001 68.9825
+
+Number 94: Average Sentence Level Perplexity, Bleu, SARI 
+0.43116128852492885 0.29497635589391513 0.32256425869792205
+
+the historical method comprises the techniques and guidelines by which historians use primary sources and other evidence to research and then to write history .
+the historical method is the way in which historians use primary sources and other evidence to research and record history .
+the historical method comprises the techniques and guidelines by which historians use primary sources and other evidence to research and then to write history .
+0.05295836925506592 0.49124158433111575 0.22064865382400925 0.6619459614720278 0.0 0.0 15.403333333333332 27.37500000000003
+
+Number 95: Average Sentence Level Perplexity, Bleu, SARI 
+0.4272216747825344 0.29702078535680265 0.32150263781381877
+
+the sheer weight of the continental icecap sitting on top of lake vostok is believed to contribute to the high oxygen concentration .
+high oxygen concentration is caused from the weight of the icecap on lake vostok .
+the absolute weight of the continental icecap sitting at the top of the lake vostok is believed to give rise to high oxygen concentrations .
+0.073932945728302 0.0922635643555325 0.39708439708439713 0.3568376068376069 0.8344155844155845 0.0 11.470000000000002 55.57500000000003
+
+Number 96: Average Sentence Level Perplexity, Bleu, SARI 
+0.4235795229366145 0.29490988617122255 0.32228183120836085
+
+as of 2000 , the population was 89,148 .
+as of 2000 , the population was 89,148 .
+as of 2000 , the population was 89,148 .
+0.8826413378119469 1.0 0.3333333333333333 1.0 0.0 0.0 -1.0599999999999987 115.13000000000002
+
+Number 97: Average Sentence Level Perplexity, Bleu, SARI 
+0.4282638271700363 0.30210468325110806 0.3223946016382075
+
+aliteracy -lrb- sometimes spelled alliteracy -rrb- is the state of being able to read but being uninterested in doing so .
+aliteracy is being able to read but choosing not to .
+aliteracy lrb sometimes written alliteracy rrb is the state of being able to read but not interested in doing so .
+0.6703242063522339 0.19692215902857166 0.5191798941798942 0.5361111111111111 0.95 0.07142857142857144 11.68 46.94500000000005
+
+Number 98: Average Sentence Level Perplexity, Bleu, SARI 
+0.43070888150521 0.30104223351148646 0.32438233186590126
+
+mifepristone is a synthetic steroid compound used as a pharmaceutical .
+mifepristone is a synthetic steroid compound used as medicine .
+mifepristone is a synthetic steroid compound used as a pharmaceutical .
+0.09952473640441895 0.6989307622784944 0.2759732583261995 0.8279197749785985 0.0 0.0 14.270000000000007 10.564999999999998
+
+Number 99: Average Sentence Level Perplexity, Bleu, SARI 
+0.4273970400542021 0.3050211187991565 0.32389824113050425
+
+it will then dislodge itself and sink back to the river bed in order to digest its food and wait for its next meal .
+it will move itself and sink back to the river bed so that it can digest its food and wait for its next meal .
+then he dissolves and falls back into the river bed to eat and wait for his next meal .
+0.8413481563329697 0.13460511409341538 0.2645146047000267 0.4020034100596761 0.391540404040404 0.0 4.541111111111114 94.565
+
+Number 100: Average Sentence Level Perplexity, Bleu, SARI 
+0.43149556595795224 0.30333383162385213 0.32331028433416287
+
+furthermore , research has shown children are less likely to report a crime if it involves someone that he or she knows , trusts , and / or cares about .
+research has shown that children are less likely to report a crime if it involves someone that he or she knows .
+furthermore , research has shown that children are less likely to commit a crime if it concerns someone he or she knows trusts and cares about .
+0.4565277695655823 0.4855332614117322 0.46548769187302863 0.6311404755138771 0.5181096681096681 0.24721293199554067 9.736 69.78800000000001
+
+Number 101: Average Sentence Level Perplexity, Bleu, SARI 
+0.43174097971881137 0.30512010054334116 0.3247041804865047
+
+today , landis ` father has become a hearty supporter of his son and regards himself as one of floyd ` s biggest fans .
+today , floyd ` s father has become a strong supporter of his son .
+today ` s landis father became a hearted fan of his son and considered himself one of the biggest floyd ` s fans .
+0.5877209901809692 0.11191021613657744 0.37654885963709495 0.40734265734265734 0.7223039215686274 0.0 8.333333333333332 72.72000000000003
+
+Number 102: Average Sentence Level Perplexity, Bleu, SARI 
+0.43325534875242455 0.30324427642288715 0.325207526886025
+
+shortly after attaining category 4 status , the outer convection of the hurricane became ragged .
+shortly after reaching category 4 status , the hurricane decreased in strength .
+shortly after reaching category 4 , the outer convection of the hurricane became ragged .
+0.36894041299819946 0.31535540524901323 0.4125532142038744 0.2925741725261533 0.5416666666666666 0.40341880341880343 10.356923076923078 43.963076923076954
+
+Number 103: Average Sentence Level Perplexity, Bleu, SARI 
+0.43263693590863395 0.3033607295846768 0.3260473892640813
+
+the equilibrium price for a certain type of labor is the wage .
+the price for a certain type of labor is the wage .
+the balance price for a certain type of labour is the wage .
+0.7305550277233124 0.5923033072023249 0.4201058201058201 0.826984126984127 0.4333333333333333 0.0 1.8733333333333313 103.00500000000001
+
+Number 104: Average Sentence Level Perplexity, Bleu, SARI 
+0.43547425106877374 0.30611256365722583 0.3269431838435264
+
+convinced that the grounds were haunted , they decided to publish their findings in a book an adventure -lrb- 1911 -rrb- , under the pseudonyms of elizabeth morison and frances lamont .
+convinced that the grounds were haunted , they decided to publish their findings in the book `` an adventure `` . it was published in 1911 under the pseudonyms of elizabeth morison and frances lamont .
+convinced that the grounds were persecuted they decided to publish their findings in the lrb 1911 book under elizabeth morison and frances lamont ` s pseudonyms .
+0.07389146089553833 0.39077232128394335 0.4297724631284307 0.74494449379242 0.4895533871443314 0.05481950844854071 12.568000000000001 49.48400000000001
+
+Number 105: Average Sentence Level Perplexity, Bleu, SARI 
+0.43206309267091303 0.3069112406159684 0.32791327138395
+
+he settled in london , devoting himself chiefly to practical teaching .
+he settled in london , devoting himself mostly to practical teaching .
+he settled in london and spent most of his time teaching .
+0.8838970735669136 0.2521193618434983 0.28553547487371017 0.5247611865258923 0.3318452380952381 0.0 2.645454545454548 95.68818181818183
+
+Number 106: Average Sentence Level Perplexity, Bleu, SARI 
+0.43628584015592237 0.30639916698258085 0.3275172172109571
+
+brunstad has several fast food restaurants , a cafeteria - style restaurant , coffee bar , and its own grocery store .
+brunstad has several fast food restaurants as well as a cafeteria - style restaurant . they also have a coffee bar and a grocery store .
+brunstad has a few fast - food restaurants with a cafeteria - style coffee bar and its own grocery store .
+0.6726185977458954 0.19832767637184898 0.39151643196312036 0.5571996914707912 0.5773809523809524 0.039968652037617555 9.785555555555558 56.965
+
+Number 107: Average Sentence Level Perplexity, Bleu, SARI 
+0.4384741064299036 0.30539850503248145 0.32810980253273636
+
+he left a detachment of 11,000 troops to garrison the newly conquered region .
+he left 11,000 troops there to defend the region .
+he left a unit of 11,000 soldiers to crew the newly occupied area .
+0.8886990547180176 0.07474875887495341 0.36411453470277005 0.24789915966386555 0.8444444444444444 0.0 4.003076923076925 89.51692307692309
+
+Number 108: Average Sentence Level Perplexity, Bleu, SARI 
+0.4426046105426386 0.3032824523154399 0.3284401211764982
+
+in 1438 trevi passed under the temporal rule of the church as part of the legation of perugia , and thenceforth its history merges first with that of the states of the church , then -lrb- 1860 -rrb- with the united kingdom of italy .
+in 1438 , trevi was temporarily ruled by the church as part of perugia . from that time , its history merges with the states of the church until 1860 , then becoming part of the united kingdom of italy .
+in 1438 trevi passed under the temporary rule of the church as part of the legation of perugia and thenceforth its history merges first with the state of the church then with the united kingdom of italy .
+0.055884361267089844 0.30581892733523 0.4389799930996821 0.5879115658741798 0.7290284134248666 0.0 15.104864864864865 52.66918918918921
+
+Number 109: Average Sentence Level Perplexity, Bleu, SARI 
+0.4390889719128609 0.3033055111792562 0.32944502910307255
+
+the depression moved inland on the 20th as a circulation devoid of convection , and dissipated the next day over brazil , where it caused heavy rains and flooding .
+the tropical depression moved inland on the 20th barely formed . it dissolved the next day over brazil , causing heavy rains and flooding .
+the depression moved inland on the 20th as a circulation devoid of convection , and dissipated the next day over brazil , where it caused heavy rains and flooding .
+0.04555743932723999 0.43434098825795264 0.20285941448732148 0.6085782434619644 0.0 0.0 12.858518518518522 50.96333333333334
+
+Number 110: Average Sentence Level Perplexity, Bleu, SARI 
+0.43554364279046787 0.3044860109727579 0.32830461816058826
+
+the new york city housing authority police department was a law enforcement agency in new york city that existed from 1952 to 1995 .
+the new york city housing authority police department existed from 1952 to 1995 .
+the new york city housing office police department was a law enforcement agency in new york city that existed between 1952 and 1995 .
+0.7778502702713013 0.19850823739068116 0.16034402274253104 0.36644873489425983 0.11458333333333333 0.0 11.336521739130436 54.750869565217414
+
+Number 111: Average Sentence Level Perplexity, Bleu, SARI 
+0.4385999519644039 0.3035397808514894 0.32680496998721276
+
+the current lineup of the band comprises flynn -lrb- vocals , guitar -rrb- , duce -lrb- bass -rrb- , phil demmel -lrb- guitar -rrb- , and dave mcclain -lrb- drums -rrb- .
+the current lineup of the band is flynn -lrb- vocals , guitar -rrb- , duce -lrb- bass -rrb- , phil demmel -lrb- guitar -rrb- , and dave mcclain -lrb- drums -rrb- .
+the current lineup of the band comprises flynn -lrb- vocals , guitar -rrb- , duce -lrb- bass -rrb- , phil demmel -lrb- guitar -rrb- , and dave mcclain -lrb- drums -rrb- .
+0.2039164900779724 0.9157103753711766 0.3174960992034163 0.9524882976102489 0.0 0.0 5.428888888888888 104.23000000000002
+
+Number 112: Average Sentence Level Perplexity, Bleu, SARI 
+0.43652310716894877 0.3089572197410442 0.3267225905997455
+
+advocacy countries with a minority muslim population are more likely than muslim - majority countries of the greater middle east to use mosques as a way to promote civic participation .
+advocacy countries with a minority of muslims are more likely than countries with a majority of muslims to use mosques to promote civic participation .
+defense countries with a minority muslim population are more likely than muslim majority countries in the larger middle east to use mosques as a way to promote civil involvement .
+0.20090323686599731 0.2196153013796637 0.3514374514374514 0.462004662004662 0.5923076923076923 0.0 16.0648275862069 31.537931034482796
+
+Number 113: Average Sentence Level Perplexity, Bleu, SARI 
+0.434456266201379 0.3081735187027864 0.32693938762463765
+
+the characters are foul - mouthed extensions of their earlier characters pete and dud .
+the characters are vulgar versions of their characters pete and dud .
+the characters are bad mouthed enlargements of their earlier characters , pete and dud .
+0.405145525932312 0.2722589423069702 0.5395833333333333 0.7166666666666666 0.9020833333333333 0.0 8.541538461538462 56.97846153846157
+
+Number 114: Average Sentence Level Perplexity, Bleu, SARI 
+0.4342013901990393 0.307861218038475 0.3287884654134089
+
+johan was also the original bassist of the swedish power metal band hammerfall , but quit before the band ever released a studio album .
+johan was the original bassist of hammerfall . he quit before the band released an album .
+johan was also the original bassist of the swedish power metal band hammerfall but quit before the band ever released the studio album .
+0.3399641513824463 0.24346231042316377 0.49657146969323135 0.48971440907969405 1.0 0.0 12.362608695652174 47.39434782608697
+
+Number 115: Average Sentence Level Perplexity, Bleu, SARI 
+0.4333890002092411 0.30730605504179126 0.3302348706227177
+
+in 1998 , culver ran for iowa secretary of state and was victorious .
+culver became iowa ` s secretary of state in 1998 .
+in 1998 , the culver ran for iowa secretary of state and won .
+0.229500412940979 0.14949751774990683 0.46249999999999997 0.3875 1.0 0.0 4.823333333333334 81.85500000000002
+
+Number 116: Average Sentence Level Perplexity, Bleu, SARI 
+0.43164636271122175 0.3059572641247666 0.33136534181397653
+
+in 1990 , mark messier took the hart over ray bourque by a margin of two votes , the difference being a single first - place vote .
+in 1990 , mark messier won the hart trophy over ray bourque by one first - place vote .
+in 1990 marker messier adopted the hart over ray bourque with two votes the difference being one first vote .
+0.21657973527908325 0.13264759167412227 0.36440025923721575 0.3341377091377091 0.6563844971453667 0.10267857142857144 7.346315789473689 76.2342105263158
+
+Number 117: Average Sentence Level Perplexity, Bleu, SARI 
+0.42982376417366125 0.30448853808704923 0.3316452987412921
+
+shade sets the main plot of the novel in motion when he impetuously defies that law , and inadvertently initiates a chain of events that leads to the destruction of his colony ` s home , forcing their premature migration , and his separation from them .
+shade sets the plot of the novel in motion by defying the law . this starts a chain of events that leads to the destruction of his home , forcing him to leave and his separation from the group .
+shade sets the main plot of the novel in motion when he impetuously defies that law , and inadvertently initiates a chain of events that leads to the destruction of his colony ` s home , forcing their premature migration , and his separation from them .
+0.04992020130157471 0.4175730787132176 0.19783386958073143 0.5935016087421943 0.0 0.0 18.770952380952384 35.2907142857143
+
+Number 118: Average Sentence Level Perplexity, Bleu, SARI 
+0.42663129725876975 0.305438828344412 0.33052083295002693
+
+the female equivalent is a daughter .
+if the child is a female , it is a daughter .
+the woman ` s equal is the daughter .
+0.8886806666851044 0.08125165710854508 0.2986111111111111 0.325 0.5708333333333333 0.0 -1.0599999999999987 115.13000000000002
+
+Number 119: Average Sentence Level Perplexity, Bleu, SARI 
+0.4304817086706559 0.30357060191744645 0.3302549186013693
+
+he was diagnosed with inoperable abdominal cancer in april 1999 .
+he found out he had stomach cancer in april 1999 .
+he was diagnosed with inoperable abdominal cancer in april 1999 .
+0.08579319715499878 0.3672056269893592 0.18144257703081232 0.5443277310924369 0.0 0.0 11.91 27.485000000000014
+
+Number 120: Average Sentence Level Perplexity, Bleu, SARI 
+0.427633043286229 0.30409651121556147 0.32902506453880276
+
+prior to the arrival of the storm , the national park service closed visitor centers and campgrounds along the outer banks .
+campgrounds around the outer banks were closed for the storm .
+before the storm arrived the national park service had shut down visitor centers and campgrounds along the outer banks .
+0.48651236295700073 0.0974812453975988 0.4076824497504384 0.2944759206798867 0.9285714285714286 0.0 9.209473684210526 62.87631578947371
+
+Number 121: Average Sentence Level Perplexity, Bleu, SARI 
+0.42811566066057954 0.30240294346295515 0.32966979720447187
+
+the form of chess played is speed chess in which each competitor has a total of twelve minutes for the whole game .
+speed chess gives each player 12 minutes for the game .
+the form of chess played is speed chess in which each competitor has a total of twelve minutes for the whole game .
+0.48067915439605713 0.09314939614341392 0.07642665975999309 0.22927997927997928 0.0 0.0 6.935454545454547 84.52318181818181
+
+Number 122: Average Sentence Level Perplexity, Bleu, SARI 
+0.42854300613810375 0.30070169511076383 0.3276109099081753
+
+the amazon basin is the part of south america drained by the amazon river and its tributaries .
+the amazon basin is at the end of the amazon river .
+the amazon basin is a part of south america that is drained of the amazon river and its tributaries .
+0.053630173206329346 0.24688498672025874 0.48824121964221184 0.49369633099141297 0.875 0.09602732793522267 10.451578947368422 53.97105263157897
+
+Number 123: Average Sentence Level Perplexity, Bleu, SARI 
+0.42551951554994427 0.3002676893979372 0.3289063156318369
+
+the two former presidents were later separately charged with mutiny and treason for their roles in the 1979 coup and the 1980 gwangju massacre .
+the two former presidents were charged with mutiny and treason . the charges came from their actions in the 1979 coup and the 1980 gwangju massacer .
+the two former presidents were later separately charged with mutiny and treason for their roles in the 1979 coup and the 1980 gwangju massacre .
+0.04976153373718262 0.5276151436342643 0.2422820906691874 0.7268462720075622 0.0 0.0 9.995000000000001 66.15000000000003
+
+Number 124: Average Sentence Level Perplexity, Bleu, SARI 
+0.4225134516954422 0.3020864690318278 0.3282133218321357
+
+moderate to severe damage extended up the atlantic coastline and as far inland as west virginia .
+places along the atlantic coast had moderate to severe damage . there was inland damage as far away from the coast as west virginia , too .
+moderate to severe damage spread up the coast of the atlantic and inland to the west of virginia .
+0.36923348903656006 0.12439007351913621 0.5491797628894404 0.8121794871794872 0.7807692307692308 0.05459057071960298 7.818888888888889 71.06500000000001
+
+Number 125: Average Sentence Level Perplexity, Bleu, SARI 
+0.4220905948489431 0.30067618017855247 0.3299670237452889
+
+because the owner tends to be unaware , these computers are metaphorically compared to zombies .
+usually the owner doesn ` t know about this . their computer is compared to a zombie .
+because the owner tends to ignore that these computers are metaphorically compared to zombie computers .
+0.06462806463241577 0.06755622089826714 0.42313457152166833 0.23607038123167157 1.0 0.03333333333333333 13.073333333333338 28.05000000000001
+
+Number 126: Average Sentence Level Perplexity, Bleu, SARI 
+0.419275929256687 0.29884058994799906 0.33070062648368553
+
+the wave traveled across the atlantic , and organized into a tropical depression off the northern coast of haiti on september 13 .
+the wave traveled across the atlantic . on september 13 , it became a tropical depression near haiti ` s northern coast .
+the wave traveled across the atlantic and organized into a tropical depressor off the northern coast of haiti on september 13 .
+0.07330900430679321 0.31315489566590804 0.4076605860134059 0.5771484247068841 0.6458333333333334 0.0 11.704761904761906 48.54857142857145
+
+Number 127: Average Sentence Level Perplexity, Bleu, SARI 
+0.41657306265551597 0.29895242046142023 0.3313018761675115
+
+for example , the stylebook of the associated press is updated annually .
+for example , the designs used by the associated press are updated every year .
+for example , the stylebook of the related press is up - to - date each year .
+0.6762336790561676 0.17181529671327242 0.4276381942790612 0.5264705882352941 0.6916666666666667 0.06477732793522267 4.19857142857143 89.89642857142859
+
+Number 128: Average Sentence Level Perplexity, Bleu, SARI 
+0.4185859356508699 0.29796686136259737 0.33204866933116695
+
+the four canonical texts are the gospel of matthew , gospel of mark , gospel of luke and gospel of john , probably written between ad 65 and 100 -lrb- see also the gospel according to the hebrews -rrb- .
+the four canonical texts are the gospel of matthew , gospel of mark , gospel of luke and gospel of john . they were probably written between ad 65 and 100 -lrb- see also the gospel according to the hebrews -rrb- .
+four canons are geese of matthew s luke and john s geese probably written between ad 65 and 100 lrb see geese of rrb hebrews .
+0.6145382821559906 0.16176213513547377 0.16014176777044423 0.40050955933308874 0.07991574397824398 0.0 6.432000000000002 93.47600000000001
+
+Number 129: Average Sentence Level Perplexity, Bleu, SARI 
+0.42009326139321695 0.2969191326993118 0.3307263085499306
+
+since the end of the 19th century eschelbronn is well known for its furniture manufacturing industry .
+eschelbronn has been known for furniture manufacturing since the end of the 19th century .
+since the end of the 19th century eschelbronn is well known for its furniture manufacturing industry .
+0.08352452516555786 0.43683636444615426 0.2056878306878307 0.6170634920634921 0.0 0.0 9.087500000000002 58.4075
+
+Number 130: Average Sentence Level Perplexity, Bleu, SARI 
+0.4175240343991127 0.29798720317066174 0.32977181635251
+
+the upper half also resembles the coat of arms of the former district oberbarnim .
+the upper half also looks like the coat of arms of the earlier district oberbarnim .
+the upper half is also similar to the coat of arms of the former district oberbarnim .
+0.24264752864837646 0.43819512537676897 0.5268037518037518 0.7762445887445887 0.8041666666666667 0.0 6.8750000000000036 74.27000000000001
+
+Number 131: Average Sentence Level Perplexity, Bleu, SARI 
+0.4161992123858495 0.2990493843994959 0.33126448253017093
+
+unlike the clouds on earth , however , which are composed of crystals of ice , neptune ` s cirrus clouds are made up of crystals of frozen methane .
+neptune ` s cirrus clouds are made up of crystals of frozen methane , not like the clouds on earth which are made up of crystals of ice .
+unlike the clouds on earth that are made up of crystals of ice neptune s cirrus clouds are made up of crystals of frozen methane .
+0.7705700844526291 0.638900214671366 0.5334397084397086 0.856962481962482 0.7433566433566434 0.0 8.32 79.94000000000001
+
+Number 132: Average Sentence Level Perplexity, Bleu, SARI 
+0.4188636550329682 0.30160465380003626 0.3327845970106938
+
+their participation is limited until they reach legal adulthood .
+they can not fully participate until the are a legal adult .
+their involvement is limited until they reach legal maturity .
+0.37227290868759155 0.048585141716065296 0.3888888888888889 0.16666666666666666 1.0 0.0 12.831111111111113 19.100000000000023
+
+Number 133: Average Sentence Level Perplexity, Bleu, SARI 
+0.41851596289606235 0.2997164484859768 0.3332032857560534
+
+development stable releases are rare , but there are often subversion snapshots which are stable enough to use .
+development stable output are rare but there are s lot of subversion snapshots that are good enough to use .
+development stable releases are rare , but there are often subversion snapshots which are stable enough to use .
+0.05149787664413452 0.2325832648230379 0.15578294254764843 0.4673488276429453 0.0 0.0 11.169411764705881 45.26235294117649
+
+Number 134: Average Sentence Level Perplexity, Bleu, SARI 
+0.4157973104053073 0.29921916564402906 0.3318890609915467
+
+finally in 1482 the order dispatched him to florence , the ‘ city of his destiny ’ .
+finally in 1482 , they order to release him to florence , the ` city of his destiny ` .
+finally , in 1482 , the order sent him to florence the city of his fate .
+0.057726144790649414 0.1887956924783517 0.4453596928367431 0.5486918604651163 0.7410714285714286 0.04631578947368421 3.355714285714285 95.93928571428573
+
+Number 135: Average Sentence Level Perplexity, Bleu, SARI 
+0.4131644341875525 0.29840722834134026 0.3327234038727614
+
+in the soviet years , the bolsheviks demolished two of rostov ` s principal landmarks - st alexander nevsky cathedral -lrb- 1908 -rrb- and st george cathedral in nakhichevan -lrb- 1783 - 1807 -rrb- .
+the bolsheviks destroyed two of rostov ` s principal landmarks . namely , st alexander nevsky cathedral -lrb- 1908 -rrb- and st george cathedral in nakhichevan -lrb- 1783 - 1807 -rrb- .
+in the soviet years , the bolsheviks demolished two of rostov ` s principal landmarks - st alexander nevsky cathedral -lrb- 1908 -rrb- and st george cathedral in nakhichevan -lrb- 1783 - 1807 -rrb- .
+0.09052050113677979 0.709814637375763 0.2774424796310595 0.8323274388931785 0.0 0.0 12.236666666666668 60.76500000000003
+
+Number 136: Average Sentence Level Perplexity, Bleu, SARI 
+0.41080936898280235 0.3014102021299127 0.3323198934768366
+
+he died on may 29 , 1518 in madrid , spain and was buried in the church of san benito d ` alcantara .
+he died on may 29 , 1518 in madrid spain . he was buried in the church of san benito d ` alcantara .
+he died on may 29th 1518 in madrid spain and died in the church of san benito d alcantara .
+0.8797429576516151 0.4634056837916356 0.3590577137287663 0.6830263157894736 0.2830357142857143 0.11111111111111112 4.241052631578949 98.49736842105266
+
+Number 137: Average Sentence Level Perplexity, Bleu, SARI 
+0.4142074384659097 0.30258408243180923 0.33251364579750275
+
+this was demonstrated in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
+this was shown in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
+this was shown in the miller urey test of stanley l miller and harold c urey in 1953 .
+0.8424761891365051 0.46473028418412615 0.387353419249971 0.5592527711188969 0.189572192513369 0.4132352941176471 4.541111111111114 94.565
+
+Number 138: Average Sentence Level Perplexity, Bleu, SARI 
+0.417288508614619 0.3037506018688763 0.3329081765417651
+
+cogeneration -lrb- also combined heat and power , chp -rrb- is the use of a heat engine or a power station to simultaneously generate both electricity and useful heat .
+cogeneration uses a heat engine or power station to generate electricity and heat at the same time .
+cogeneration -lrb- also combined heat and power , chp -rrb- is the use of a heat engine or a power station to simultaneously generate both electricity and useful heat .
+0.1274486780166626 0.13990713819229092 0.1021121351766513 0.3063364055299539 0.0 0.0 15.55857142857143 33.38642857142861
+
+Number 139: Average Sentence Level Perplexity, Bleu, SARI 
+0.41521822411034787 0.3025802914140436 0.33125963338915715
+
+on occasion the male `` den master `` will also allow a second male into the den ; the reason for this is unclear .
+on occasion the male `` den master `` will also allow a second male into the den . the reason for this is unknown .
+occasionally the male lair master will also allow a second male to enter the lair because this is not clear .
+0.5576082170009613 0.24406980379263402 0.24636432403490263 0.4855326005876801 0.2535603715170278 0.0 8.73 68.09500000000004
+
+Number 140: Average Sentence Level Perplexity, Bleu, SARI 
+0.4162280822159551 0.3021653234167286 0.3306575389965738
+
+a wikipedia gadget is a javascript and / or a css snippet that can be enabled simply by checking an option in your wikipedia preferences .
+a wikipedia gadget is a javascript and / or a css snippet . it can be enabled simply by checking an option in your wikipedia preferences .
+wikipedia is a javascript or a css snipper that can be turned on simply by checking your wikipedia settings .
+0.6558222770690918 0.13977799347075515 0.14893370086539462 0.3626978417266187 0.08410326086956521 0.0 11.693684210526317 45.06578947368425
+
+Number 141: Average Sentence Level Perplexity, Bleu, SARI 
+0.4179153652783011 0.3010217506706302 0.3293777936576218
+
+below are some useful links to facilitate your involvement .
+below are some useful links to to help you get involved .
+below are some useful links to make it easier for you to participate .
+0.1457918882369995 0.3872015705071016 0.6833333333333332 1.0 1.0 0.05 7.633846153846157 63.486153846153854
+
+Number 142: Average Sentence Level Perplexity, Bleu, SARI 
+0.4160124039003899 0.30162440675340274 0.33185300722178757
+
+he served as the prime minister of egypt between 1945 and 1946 and again from 1946 and 1948 .
+he served as the prime minister of egypt between 1945 and 1946 . he than served again from 1946 and 1948 .
+he served as head of egypt in 1945 and 1946 and again in 1946 and 1948 .
+0.8252386301755905 0.21769207140039215 0.18397166722166722 0.4907261904761905 0.06118881118881119 0.0 0.9750000000000014 116.57000000000001
+
+Number 143: Average Sentence Level Perplexity, Bleu, SARI 
+0.4188542526939677 0.3010415433134513 0.3308260534717868
+
+she was left behind -lrb- explanations for this vary -rrb- when the rest of the nicolenos were moved to the mainland .
+when the rest of the nicolenos moved to the mainland , she was left behind . no one knows why .
+she was left with lrb explaining for this different rrb when the rest of the nicolenos were moved to the mainland .
+0.6087103188037872 0.3865584077322271 0.5342871066555276 0.7413533834586465 0.8615079365079364 0.0 6.085714285714285 88.83428571428574
+
+Number 144: Average Sentence Level Perplexity, Bleu, SARI 
+0.4201636048740354 0.30163131479220145 0.332229233148916
+
+james i appointed him a gentleman of the chapel royal , where he served as an organist from at least 1615 until his death .
+james i appointed him a gentleman of the chapel royal . he was the chapel ` s organist from 1615 until he died .
+james i appointed him a master of the church king where he served as an organist from at least 1615 to his death .
+0.431989848613739 0.20287366424876008 0.2830791893291893 0.41527777777777775 0.4339597902097902 0.0 7.232173913043479 84.17695652173914
+
+Number 145: Average Sentence Level Perplexity, Bleu, SARI 
+0.42024460654348544 0.3009548925282053 0.33189258901316443
+
+chauvin was embarrassed to receive his award and initially indicated that he may not accept it .
+chauvin was embarrassed to receive his award . at first , he said he wouldn ` t accept it .
+the driver was embarrassed to accept his award and at first suggested that he might not accept it .
+0.6911249160766602 0.15483873945149523 0.3970175356044921 0.45190217391304344 0.6384178321678322 0.10073260073260072 7.818888888888889 71.06500000000001
+
+Number 146: Average Sentence Level Perplexity, Bleu, SARI 
+0.42208732973758867 0.29996090509230927 0.33233561586072446
+
+later , esperanto speakers began to see the language and the culture that had grown up around it as ends in themselves , even if esperanto is never adopted by the united nations or other international organizations .
+esperanto might never be recognized by the united nations or other international organizations . however , esperanto speakers started to think that the language and its culture were important anyways .
+later esperanto speakers began to see the language and culture that had grown around it as a result of themselves even though esperanto is never adopted by the un or other international organisations .
+0.05627673864364624 0.09636995939393289 0.3179240893125886 0.29934336350886137 0.6544289044289043 0.0 18.3769696969697 22.085454545454553
+
+Number 147: Average Sentence Level Perplexity, Bleu, SARI 
+0.4196156365545215 0.29858529059434724 0.33223824068134516
+
+dry air wrapping around the southern periphery of the cyclone eroded most of the deep convection by early on september 12 .
+dry air wrapping around the southern part of the cyclone took away parts on september 12 .
+dry air envelopes around the southern fringe of the cyclone erosed most of the deep convection at the beginning of september 12 .
+0.053916335105895996 0.15268470848781104 0.39542997398389557 0.4748753561253561 0.7114145658263306 0.0 9.61727272727273 65.29590909090909
+
+Number 148: Average Sentence Level Perplexity, Bleu, SARI 
+0.41716127882667836 0.2976060920567195 0.3326623462739797
+
+calvin baker is an american novelist .
+calvin baker is a writer .
+calvin baker is an american novelist .
+0.8877389430999756 0.2626909894424158 0.13005050505050506 0.39015151515151514 0.0 0.0 12.316666666666666 17.44500000000002
+
+Number 149: Average Sentence Level Perplexity, Bleu, SARI 
+0.420298463255167 0.2973733247059575 0.33131160066582327
+
+eva anna paula braun , died eva anna paula hitler -lrb- 6 february 1912 – 30 april 1945 -rrb- was the longtime companion and , for a brief time , wife of adolf hitler .
+eva anna paula braun was the girlfriend and wife of adolf hitler .
+eva anna paula braun was killed by eva anna paula hitler lrb 6 february 1912 .
+0.7995758503675461 0.24903286388467735 0.4555299859498152 0.42655360531309305 0.8334706959706959 0.10656565656565657 7.566666666666666 67.53000000000003
+
+Number 150: Average Sentence Level Perplexity, Bleu, SARI 
+0.4228102340307457 0.29705318920382984 0.33213423897896227
+
+each version of the license is given a distinguishing version number .
+every version of the license is given a different number .
+each version of the licence is given a unique version number .
+0.827591210603714 0.24088562704853508 0.33491210104113334 0.5047363031233999 0.5 0.0 6.936363636363637 64.9245454545455
+
+Number 151: Average Sentence Level Perplexity, Bleu, SARI 
+0.42547326677135733 0.2966836657685976 0.33215251438726606
+
+most irc servers do not require users to register an account but a user will have to set a nickname before being connected .
+the irc servers usually don ` t make you register for an account but you will have to set a nickname in order to connect .
+most irc servers do not require users to register an account but a user will have to set a nickname before being connected .
+0.07408291101455688 0.26211438158017025 0.15509475698232125 0.4652842709469638 0.0 0.0 10.823478260869567 58.429130434782635
+
+Number 152: Average Sentence Level Perplexity, Bleu, SARI 
+0.4231765977794828 0.29645772273468635 0.3309952741427893
+
+that same year he also received a mechanics certificate , becoming the youngest certificated airplane mechanic in new york .
+also in that year he received a mechanics certificate . this made him the youngest certificated airplane mechanic in new york .
+that same year he was also given a mechanical license to become the youngest certified airplane engineer in new york .
+0.6487785577774048 0.16210476195714543 0.30488427264743057 0.4640575798470536 0.45059523809523805 0.0 10.500000000000004 55.40500000000003
+
+Number 153: Average Sentence Level Perplexity, Bleu, SARI 
+0.4246415455716771 0.2955853009114555 0.3308257221850272
+
+summerslam -lrb- 2009 -rrb- is an upcoming professional wrestling pay - per - view event produced by world wrestling entertainment -lrb- wwe -rrb- , which will take place on august 23 , 2009 at staples center in los angeles , california .
+on august 23 , 2009 there will be a pay - per - view event for wrestling from the wwe called summerslam . it will take place at the staples center in la .
+summerslam -lrb- 2009 -rrb- is an upcoming professional wrestling pay - per - view event produced by world wrestling entertainment -lrb- wwe -rrb- , which will take place on august 23 , 2009 at staples center in los angeles , california .
+0.053029000759124756 0.26309052061873833 0.1489797991039592 0.4469393973118776 0.0 0.0 15.494444444444444 48.09500000000003
+
+Number 154: Average Sentence Level Perplexity, Bleu, SARI 
+0.4222440452825639 0.2953756571676316 0.32965252268127837
+
+usually portrayed as being bald , with long whiskers , he is said to be an incarnation of the southern polestar .
+most often show bald , bearing long whiskers . many call him the incarnation of the southern polestar .
+usually he was called bald with long whiskers as a prisoner of the southern polestar .
+0.5742175877094269 0.225710590857476 0.5520983305909777 0.7616258741258741 0.8946691176470589 0.0 7.566666666666666 67.53000000000003
+
+Number 155: Average Sentence Level Perplexity, Bleu, SARI 
+0.423218234657095 0.29492908622974595 0.33107845734736624
+
+a few animals have chromatic response , changing color in changing environments , either seasonally -lrb- ermine , snowshoe hare -rrb- or far more rapidly with chromatophores in their integument -lrb- the cephalopod family -rrb- .
+some animals have chromatic response . this means that they change colour in changing environments . the change can be seasonal -lrb- e . g . ermine , snowshoe hare -rrb- or more quickly -lrb- e . g . chromatophores -rrb- .
+a few animals have chromatic response , changing color in changing environments , either seasonally -lrb- ermine , snowshoe hare -rrb- or far more rapidly with chromatophores in their integument -lrb- the cephalopod family -rrb- .
+0.05304449796676636 0.21748129676372843 0.14508137263655013 0.4352441179096504 0.0 0.0 18.277500000000007 21.01750000000004
+
+Number 156: Average Sentence Level Perplexity, Bleu, SARI 
+0.42086044015588275 0.2944357882076694 0.3298937625402909
+
+val venis defeated rikishi in a steel cage match to retain the wwf intercontinental championship -lrb- 14 : 10 -rrb- venis pinned rikishi after tazz hit rikishi with a tv camera .
+val venis beat rikishi in a steel cage match . venis kept the wwf intercontinential championship title with a score of 14 : 10 . venis pinned rikishi after tazz hit rikishi with a tv camera .
+val venis beat rikishi in a steel box game to keep the wwf intercontinental championship lrb 14 10 rrb venis pinned rikishi after tazz hit rikishi with a tv camera .
+0.08933508396148682 0.476225721664921 0.5861575263409172 0.8557444044195773 0.7412812881562881 0.16144688644688643 13.023333333333337 55.12500000000003
+
+Number 157: Average Sentence Level Perplexity, Bleu, SARI 
+0.41876217840781693 0.2955863574067659 0.3315156850959911
+
+this closely resembles the unix philosophy of having multiple programs each doing one thing well and working together over universal interfaces .
+this resembles the unix philosophy . according to the unix philosophy there are multiple programs . each program does one thing well and the programs work together over universal systems .
+this closely resembles the unix philosophy of having multiple programs each doing one thing well and working together over universal interfaces .
+0.04619252681732178 0.1999025368624079 0.16938178780284044 0.5081453634085213 0.0 0.0 15.07619047619048 24.3771428571429
+
+Number 158: Average Sentence Level Perplexity, Bleu, SARI 
+0.4164189730519019 0.29498457237189574 0.33049597505012224
+
+he came from a musical family ; his mother , larue , was an administrative assistant and singer , and his father , keith brion , was a band director at yale .
+he can from a musical family . his mother , larue was a secretary and singer . his father , keith brion was a band director at yale .
+he was a member of the musical family whose mother larue was a clerk and a singer and his father keith brion was a band director in yale .
+0.058624863624572754 0.2693438281097403 0.4103929820523268 0.48519519519519516 0.6472293615097213 0.09875438945206387 10.922857142857143 66.62214285714289
+
+Number 159: Average Sentence Level Perplexity, Bleu, SARI 
+0.4141827598679811 0.2948243177202573 0.33099533134388603
+
+the largest populations of mennonites are in canada , democratic republic of congo and the united states , but mennonites can also be found in tight - knit communities in at least 51 countries on six continents or scattered amongst the populace of those countries .
+most mennonites live in canada , the democratic republic of congo , and the united states , but they can also be found in 51 other countries .
+the largest number of mennon ites are in canada ` s drc and we are but mennonites are also found in tight knit communities in at least 51 countries on six continents or scattered among the population of those countries .
+0.16042691469192505 0.03833688419060659 0.24307359307359308 0.16634199134199132 0.5628787878787879 0.0 16.56358974358975 45.77307692307693
+
+Number 160: Average Sentence Level Perplexity, Bleu, SARI 
+0.412606636606018 0.29323122807100477 0.3304492335906544
+
+naas is a major `` dublin suburb `` town , with many people living in naas and working in dublin .
+naas is a suburb of dublin . most people who live in naas work in dublin .
+naas is a major dublin suburban city with a lot of people living in naas and working in dublin .
+0.45927363634109497 0.14747364570390473 0.47590488215488214 0.42215909090909093 0.95 0.05555555555555556 8.588421052631581 67.32894736842107
+
+Number 161: Average Sentence Level Perplexity, Bleu, SARI 
+0.4128947045056172 0.2923314899082449 0.33134710796450767
+
+acanthopholis ` s armour consisted of oval plates set almost horizontally into the skin , with spikes protruding from the neck and shoulder area , along the spine .
+acanthopholis ` s armour was made up of oval plates and spikes .
+aceropholis ` s armor was made up of ovaloid plates set almost horizontally into the skin with spikes protruding from the neck and shoulder area along the spine .
+0.056522369384765625 0.10884267615693707 0.37787924120631816 0.13464235624123422 0.6756410256410257 0.32335434173669464 13.732592592592596 44.69666666666669
+
+Number 162: Average Sentence Level Perplexity, Bleu, SARI 
+0.41070837116131753 0.2912057916643719 0.3316325811745801
+
+origin irmo was chartered on christmas eve in 1890 in response to the opening of the columbia , newberry and laurens railroad .
+origin irmo was started december 24 , 1890 because of the opening of railroads in columbia .
+origin irmo was chartered on christmas eve in 1890 in response to the opening of the columbia newberry and laurens railroad .
+0.07087218761444092 0.1299080632357416 0.35016722408026757 0.30050167224080265 0.75 0.0 11.704761904761906 48.54857142857145
+
+Number 163: Average Sentence Level Perplexity, Bleu, SARI 
+0.40863619931042194 0.29022226893005093 0.3317455972898587
+
+conversely , bills proposed by the law commission , and consolidation bills , start in the house of lords .
+on the other hand , bills proposed by the law commission , and consolidation bills , start in the house of lords .
+conversely , bills proposed by the law commission , and consolidation bills , start in the house of lords .
+0.051802992820739746 0.8140073465061018 0.3234867041318654 0.9704601123955963 0.0 0.0 8.350000000000005 63.69500000000001
+
+Number 164: Average Sentence Level Perplexity, Bleu, SARI 
+0.4064735738165451 0.29339672394566335 0.33169554339193147
+
+in the years before his final release in 1474 , when he began preparations for the reconquest of wallachia , vlad resided with his new wife in a house in the hungarian capital .
+in the years before his final release in 1474 , when he began preparing to reconquer wallachia , vlad resided with his new wife in the hungarian capital .
+in the years before his last release in 1474 when he started preparing for the reconquest of wallachia vlad lived with his new wife in the hungarian capital house .
+0.08357220888137817 0.4255023148400758 0.3661520616347349 0.5992408169388367 0.36934523809523806 0.12987012987012989 11.995862068965518 60.71034482758621
+
+Number 165: Average Sentence Level Perplexity, Bleu, SARI 
+0.4045283848711525 0.2941925407582803 0.3319031127789363
+
+you may add a passage of up to five words as a front - cover text , and a passage of up to 25 words as a back - cover text , to the end of the list of cover texts in the modified version .
+you may can a passage of up to five words as a front - cover text , and a passage of up to 25 words as a back - cover text , to the end of the list of cover texts in the modified version .
+you may have up to five words in front cover and up to 25 words in back cover at the end of the list of cover words in the modified version .
+0.5172894895076752 0.3069088505114005 0.2281641648538728 0.5822088407154645 0.10228365384615384 0.0 9.061290322580643 85.31193548387098
+
+Number 166: Average Sentence Level Perplexity, Bleu, SARI 
+0.40520360106658077 0.2942686863256642 0.33128192147399577
+
+he is interred in the restvale cemetery in alsip , illinois .
+his body rests in the restvale cemetery in alsip , illinois .
+he is interred in the restful graveyard of alsip illinois .
+0.71389240026474 0.10234459018728546 0.08688789280894543 0.2249493927125506 0.03571428571428571 0.0 6.010000000000002 69.78500000000001
+
+Number 167: Average Sentence Level Perplexity, Bleu, SARI 
+0.4070410343951413 0.2931262809915072 0.3298271951128943
+
+bone marrow is the flexible tissue found in the hollow interior of bones .
+bone marrow is a flexible tissue . it is found in the hollow inside part of bones .
+bones are the elastic tissue found in the hollow inside of the bone .
+0.19538599252700806 0.23757861320828755 0.4687835873242146 0.6435402029664324 0.6180555555555556 0.14475500345065562 4.003076923076925 89.51692307692309
+
+Number 168: Average Sentence Level Perplexity, Bleu, SARI 
+0.4057886376976967 0.2927975965667544 0.33064942228574234
+
+reflection nebulae are usually blue because the scattering is more efficient for blue light than red -lrb- this is the same scattering process that gives us blue skies and red sunsets -rrb- .
+reflection nebulae are usually blue . this is because the scattering is more effective for blue light than for red .
+reflection nebulae are usually blue because the scattering is more efficient for blue light than red -lrb- this is the same scattering process that gives us blue skies and red sunsets -rrb- .
+0.05200517177581787 0.30626101600123445 0.16080702922808185 0.4824210876842455 0.0 0.0 13.115000000000002 58.03000000000003
+
+Number 169: Average Sentence Level Perplexity, Bleu, SARI 
+0.4037075584863915 0.29287679315166315 0.32965034938540316
+
+monteux is a commune of the vaucluse departement in southern france , in the area provence - alpes - cote d ` azur .
+monteux is a commune in southern france . it is part of the vaucluse departement . the commune is located in provence - alpes - cote d ` azur .
+monteux is a commune of the vaucluse departement in southern france , in the area provence - alpes - cote d ` azur .
+0.05439174175262451 0.4698774360847972 0.25234327594875267 0.7570298278462579 0.0 0.0 8.588421052631581 67.32894736842107
+
+Number 170: Average Sentence Level Perplexity, Bleu, SARI 
+0.40166477593239286 0.2939118846308043 0.32919826123665086
+
+macgruber starts asking for simple objects to make something to defuse the bomb , but he is later distracted by something -lrb- usually involving his personal life -rrb- that makes him run out of time .
+macgruber starts by asking for simple objects to stop the bomb from working . later he is distracted by an event from his personal life . as a result , he runs out of time to stop the bomb .
+macgruber starts asking for simple objects to make something to defuse the bomb , but he is later distracted by something -lrb- usually involving his personal life -rrb- that makes him run out of time .
+0.08741641044616699 0.18809683049181924 0.1389207128568831 0.41676213857064925 0.0 0.0 14.675882352941176 50.40147058823533
+
+Number 171: Average Sentence Level Perplexity, Bleu, SARI 
+0.399837750551659 0.2932966808276707 0.3280919964204894
+
+this was substantially complete when messiaen died , and yvonne loriod undertook the final movement ` s orchestration with advice from george benjamin .
+this was mostly complete when messiaen died , and yvonne loriod undertook the final movement ` s orchestration with advice from george benjamin .
+this was fine when messiaen died and yvonne loriod made the last move with george benjamin ` s help .
+0.7872128933668137 0.14192606852846915 0.1674098440545809 0.3699874686716792 0.13224206349206347 0.0 7.163333333333334 75.76500000000001
+
+Number 172: Average Sentence Level Perplexity, Bleu, SARI 
+0.4020769132268911 0.29242170619010305 0.32716319785190034
+
+shi ` a muslims consider karbala to be one of their holiest cities after mecca , medina , jerusalem and najaf .
+shi ` as consider karbala to be one of their holiest cities after mecca , medina , jerusalem and najaf .
+shi ` a muslims consider karbala to be one of their holiest cities after mecca , medina , jerusalem and najaf .
+0.1505037546157837 0.8375717919273554 0.30369322942852356 0.9110796882855706 0.0 0.0 12.407777777777778 38.16500000000002
+
+Number 173: Average Sentence Level Perplexity, Bleu, SARI 
+0.40063109047625256 0.29555475265985737 0.3270283129759039
+
+the pad called for the resignation of the governments of thaksin shinawatra , samak sundaravej and somchai wongsawat , whom the pad accused of being proxies for thaksin .
+the pad called for the resignation of the governments of thaksin shinawatra , samak sundaravej and somchai wongsawat .
+the pad called for the resignation of the governments of thaksin shinawatra , samak sundaravej and somchai wongsawat , whom the pad accused of being proxies for thaksin .
+0.046995580196380615 0.6072676631518995 0.25312554766193446 0.7593766429858033 0.0 0.0 14.065384615384616 40.529615384615425
+
+Number 174: Average Sentence Level Perplexity, Bleu, SARI 
+0.39861031613179615 0.29733596929124045 0.3266060114598241
+
+however travel through very remote areas , on isolated tracks , requires advance planning and a suitable , reliable vehicle -lrb- usually a four wheel drive -rrb- .
+however travel through very remote areas , on isolated tracks , requires advance planning and a suitable , reliable vehicle .
+however travel through very remote areas , on isolated tracks , requires advance planning and a suitable , reliable vehicle -lrb- usually a four wheel drive -rrb- .
+0.049714744091033936 0.7060164051116968 0.2753639414059204 0.8260918242177613 0.0 0.0 15.403333333333332 27.37500000000003
+
+Number 175: Average Sentence Level Perplexity, Bleu, SARI 
+0.3966279549270191 0.2996580172220385 0.32631486333451787
+
+while at kahn he was chief architect for the fisher building in 1928 .
+in 1928 , he worked at kahn . he was the chief architect for the fisher building .
+while kahn was the chief architect of the fisher building in 1928 .
+0.8800598457455635 0.22310054823354242 0.32631578947368417 0.41369047619047616 0.41964285714285715 0.1456140350877193 1.8733333333333313 103.00500000000001
+
+Number 176: Average Sentence Level Perplexity, Bleu, SARI 
+0.3993592085474629 0.29922548914865715 0.32631486856694253
+
+he excuses himself because he has to leave for rehearsal , and he and dr . schon leave .
+he tells others that he needs to leave for rehearsal . then , he and dr . schon leave .
+he excuses himself because he has to leave for rehearsal , and he and dr . schon leave .
+0.12929081916809082 0.4426936479943904 0.21122509287402905 0.6336752786220872 0.0 0.0 5.400000000000002 84.845
+
+Number 177: Average Sentence Level Perplexity, Bleu, SARI 
+0.3978419704048821 0.3000314900410489 0.3256682967933868
+
+britpop emerged from the british independent music scene of the early 1990s and was characterised by bands influenced by british guitar pop music of the 1960s and 1970s .
+britpop is a type of british independent music . it was invented in the early 1990s . britpop sounded like british guitar pop music from the 1960s and 1970s .
+britpop emerged from the british independent music scene of the early 1990s and was characterised by bands influenced by british guitar pop music of the 1960s and 1970s .
+0.056397974491119385 0.29247555805756603 0.16950382274925882 0.5085114682477765 0.0 0.0 11.765714285714285 60.579285714285746
+
+Number 178: Average Sentence Level Perplexity, Bleu, SARI 
+0.39593446204782196 0.29998927813052667 0.32479586956409
+
+this was absorbed into battalions being formed for xi international brigade .
+it was made a part of the fighting forces that were organized for xi international brigade .
+this was absorbed into battalions being formed for xi international brigade .
+0.09688949584960938 0.2187411438104692 0.16876456876456877 0.5062937062937063 0.0 0.0 12.3 26.470000000000027
+
+Number 179: Average Sentence Level Perplexity, Bleu, SARI 
+0.3942731011244986 0.2995378996065264 0.32392902900409265
+
+the sheppard line currently has fewer users than the other two subway lines , and shorter trains are run .
+the sheppard line has less users than the other two subway lines . shorter trains are run . .
+the sheppard line currently has fewer users than the other two subway lines and shorter trains are running .
+0.24040710926055908 0.46096034934979274 0.4157799399220968 0.6806731530996237 0.5666666666666667 0.0 8.474444444444444 66.36500000000001
+
+Number 180: Average Sentence Level Perplexity, Bleu, SARI 
+0.39342301277165914 0.3004297363454394 0.3244364926003247
+
+it has a capacity of 98,772 , making it the largest stadium in europe , and the eleventh largest in the world .
+it ` s capacity of 98,772 makes it the largest stadium in europe , and the 11th largest in the world .
+it has a capability of 98772 to make it the biggest stage in europe and the 11th largest in the world .
+0.38298577070236206 0.38305978177479755 0.41641053910233655 0.5338841268202004 0.5036899375134669 0.21165755297334246 5.5238095238095255 92.86285714285715
+
+Number 181: Average Sentence Level Perplexity, Bleu, SARI 
+0.3933656652877619 0.3008837475840623 0.3249418445041819
+
+in december , 1967 , ten boom was honored as one of the righteous among the nations by the state of israel .
+ten boom was honored by the state of israel in december of 1967 .
+in december , 1967 , ten boom was honored as one of the righteous among the nations by the state of israel .
+0.07643741369247437 0.2981792160679168 0.16383769380994173 0.4915130814298252 0.0 0.0 6.960000000000001 80.78500000000003
+
+Number 182: Average Sentence Level Perplexity, Bleu, SARI 
+0.3916338169183887 0.3008689687233183 0.3240614939539401
+
+some articles are quite lengthy and rich in content while others are shorter -lrb- possibly stubs -rrb- and of lesser quality .
+longer articles are rich in content while shorter ones are of less quality .
+some of the articles are quite long and rich while some are short lrb with rhb and of low quality .
+0.5156314373016357 0.06108557268562174 0.3712171052631579 0.275 0.8386513157894736 0.0 4.600000000000001 97.70500000000003
+
+Number 183: Average Sentence Level Perplexity, Bleu, SARI 
+0.3923077170291673 0.29956579809267864 0.3243177744501859
+
+about 95 species are currently accepted .
+about 95 species are currently recognized .
+about 95 species are currently accepted .
+0.37749284505844116 0.6434588841607617 0.26164529914529916 0.7849358974358974 0.0 0.0 8.383333333333333 45.64500000000001
+
+Number 184: Average Sentence Level Perplexity, Bleu, SARI 
+0.3922276366401363 0.3014246796389926 0.3239790043134027
+
+eugowra is said to be named after the indigenous australian word meaning `` the place where the sand washes down the hill `` .
+eugowra named after the indigenous australian word meaning `` the place where the sand washes down the hill `` .
+eugowra is said to be named after the native australian word means the place where the sand washes down the hill .
+0.4145185947418213 0.46836246523694947 0.2010596157654981 0.6031788472964943 0.0 0.0 6.647619047619049 84.8057142857143
+
+Number 185: Average Sentence Level Perplexity, Bleu, SARI 
+0.39234748050089807 0.3023221946153257 0.32331814738572584
+
+terms such as `` undies `` for underwear and `` movie `` for `` moving picture `` are oft - heard terms in english .
+terms such as `` undies `` for underwear and `` movie `` for `` moving picture `` are often heard in english .
+terms such as `` undies `` for underwear and `` movie `` for `` moving picture `` are oft - heard terms in english .
+0.086189866065979 0.7697570474571566 0.2886860604689145 0.8660581814067435 0.0 0.0 5.485517241379309 107.38620689655174
+
+Number 186: Average Sentence Level Perplexity, Bleu, SARI 
+0.3907102740065937 0.30482184623480074 0.3231329490599675
+
+jurisdiction draws its substance from public international law , conflict of laws , constitutional law and the powers of the executive and legislative branches of government to allocate resources to best serve the needs of its native society .
+jurisdiction draws its substance from public international law , conflict of laws , and constitutional law . it also includes the powers of the executive and legislative branches of government to allocate resources to best serve the needs of its native society .
+jurisdiction draws its substance from public international law , conflict of laws , constitutional law and the powers of the executive and legislative branches of government to allocate resources to best serve the needs of its native society .
+0.05002415180206299 0.8146477084336801 0.316294270880334 0.948882812641002 0.0 0.0 19.42777777777778 19.89500000000004
+
+Number 187: Average Sentence Level Perplexity, Bleu, SARI 
+0.3888981137821015 0.307533685927348 0.32309657311220347
+
+he followed this with several other pieces about hiawatha : the death of minnehaha , overture to the song of hiawatha and hiawatha ` s departure .
+he then wrote more about hiawatha .
+he watched this with several other bits of hiawatha ` s death in the song of hiawatha and hiawatha ` s passing .
+0.33943796157836914 0.021671320168371852 0.3425189393939394 0.06818181818181819 0.959375 0.0 9.910000000000004 59.63500000000003
+
+Number 188: Average Sentence Level Perplexity, Bleu, SARI 
+0.3886364198550976 0.30602118663761796 0.323199336954964
+
+the capital of the state is aracaju -lrb- pop .
+the capital of the state is aracaju .
+the capital of the state is aracaju -lrb- pop .
+0.8876595571637154 0.6606328636027614 0.26429195804195804 0.7928758741258741 0.0 0.0 2.342222222222226 94.30000000000001
+
+Number 189: Average Sentence Level Perplexity, Bleu, SARI 
+0.3912628574198798 0.30788756388480293 0.32288929811857975
+
+despite this , farrenc was paid less than her male counterparts for nearly a decade .
+still , farrenc was paid less than men .
+despite this farrenc , she ` d been paid less than her male countersides for almost a decade .
+0.04720646142959595 0.08961672320242714 0.32518939393939394 0.29583333333333334 0.6797348484848484 0.0 6.137499999999999 79.5575
+
+Number 190: Average Sentence Level Perplexity, Bleu, SARI 
+0.38946151503249615 0.30674478461421456 0.3229013405050762
+
+gumbasia was created in a style vorkapich taught called kinesthetic film principles .
+gumbasia was made in a style called kinesthetic film principles .
+gumbasia was created in a style vorkapich taught called kinesthetic film principles .
+0.21792560815811157 0.4250281413416978 0.20608949911009408 0.6182684973302822 0.0 0.0 11.706666666666667 32.504999999999995
+
+Number 191: Average Sentence Level Perplexity, Bleu, SARI 
+0.3885680988508587 0.3073608437638369 0.3222929454978106
+
+the lawyer , brandon -lrb- waise lee -rrb- , became his idol , and mk sun grew up to be a lawyer .
+the lawyer , brandon , played by waise lee became his idol . mk sun grew up to be a lawyer .
+the lawyer brandon lrb waise lee rrb became immune and mksun became a lawyer .
+0.6912431120872498 0.09600887809017075 0.2581844081844082 0.31041181041181043 0.4641414141414142 0.0 4.19857142857143 89.89642857142859
+
+Number 192: Average Sentence Level Perplexity, Bleu, SARI 
+0.3901363631681457 0.306265755858792 0.3219607769106945
+
+isbn 1 - 876429 - 14 - 3 is an historic township located near cowra in the central west of new south wales , australia in cabonne shire .
+isbn 1 - 876429 - 14 - 3 is a historic township located near cowra . it is in the central west of new south wales , australia in cabonne shire .
+isbn 1 876429 14 3 is an historic town located close to cowra in the middle west of new south wales australia in cabonne shire .
+0.04855906963348389 0.27991159778963837 0.21257694048717893 0.5385244722551876 0.0992063492063492 0.0 8.32 79.94000000000001
+
+Number 193: Average Sentence Level Perplexity, Bleu, SARI 
+0.3883756554695134 0.30612990968317777 0.32139694270232594
+
+military career donaldson enlisted in the australian army on 18 june 2002 .
+military career donaldson enlisted in the australian army on 18 june 2002 .
+military career donaldson joined the australian army on 18 june 2002 .
+0.5422707498073578 0.676130446299448 0.26818783068783064 0.804563492063492 0.0 0.0 9.081818181818182 49.54272727272729
+
+Number 194: Average Sentence Level Perplexity, Bleu, SARI 
+0.3891648610815024 0.30802734833249196 0.3211240754612259
+
+prospectors from california , europe and china were also digging along the peel river and up the mountain slopes .
+prospectors from california , europe and china were digging along the peel river . they also were digging up the mountain slopes .
+prospectors from california europe and china were also digging along the shellfish river and up the mountain slopes .
+0.5652395784854889 0.36722822673947525 0.24948078920041536 0.6442757009345794 0.10416666666666666 0.0 11.752222222222223 42.86500000000001
+
+Number 195: Average Sentence Level Perplexity, Bleu, SARI 
+0.39006320147642065 0.3083293936304868 0.3207585484905075
+
+before the advent of the pocket calculator , it was the most commonly used calculation tool in science and engineering .
+it was the most commonly used calculation tool before the invention of the pocket calculator .
+it was the most commonly used computing tool in science and engineering .
+0.8883714154362679 0.32468272701011225 0.3436387686387686 0.5218253968253967 0.509090909090909 0.0 8.756666666666668 53.655
+
+Number 196: Average Sentence Level Perplexity, Bleu, SARI 
+0.39259268479601384 0.30841240547505344 0.32087469173999106
+
