@@ -13,9 +13,9 @@ model_config = {
     'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'par': 1},  # For ASSET - all operation
     'epochs': 100,
     'set': 'test',
-    'lm_name': 'Newsela/structured_lm_forward_300_150_0_4', #wikilarge -> Wikilarge/structured_lm_forward_300_150_0_4_freq5, newsela -> Newsela/structured_lm_forward_300_150_0_4
+    # 'lm_name': 'Newsela/structured_lm_forward_300_150_0_4', #wikilarge -> Wikilarge/structured_lm_forward_300_150_0_4_freq5, newsela -> Newsela/structured_lm_forward_300_150_0_4
     # changed
-    # 'lm_name': 'Newsela/structured_lm_forward_300_150_0_4',  # For Newsela
+    'lm_name': 'Wikilarge/structured_lm_forward_300_150_0_4_freq5',  # For wikilarge
     'use_structural_as_standard': False,
     'lm_backward': False,
     'embedding_dim': 300,
