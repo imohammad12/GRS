@@ -10,7 +10,7 @@ model_config = {
     # 'threshold': {'ls': 1.25, 'dl': 1, 'las': 0.75, 'rl':1.25, 'pa': 1.25},  # For ASSET 37.25 without ls and ro
     # 'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'pa': 1.25},  # For ASSET 32.60 only ls
     # 'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'pa': 1.25},  # For ASSET 37.36 only LS+RM
-    'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'par': 1.25},  # For ASSET - all operation
+    'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'par': 1},  # For ASSET - all operation
     'epochs': 100,
     'set': 'test',
     'lm_name': 'Newsela/structured_lm_forward_300_150_0_4', #wikilarge -> Wikilarge/structured_lm_forward_300_150_0_4_freq5, newsela -> Newsela/structured_lm_forward_300_150_0_4
@@ -25,7 +25,7 @@ model_config = {
     'num_layers': 2,
     'freq':0,
     'min_length': 100,
-    'dataset': 'Newsela',  # 'Wikilarge', #Wikilarge, Newsela  #  changed
+    'dataset': 'Wikilarge',  # 'Wikilarge', #Wikilarge, Newsela  #  changed
     'ver':'glove.6B.',
     'dropout':0.4,
     'batch_size':64,
@@ -35,7 +35,7 @@ model_config = {
     'gpu': 1,
     'awd': False,
     # 'file_name': 'Wikilarge/output/simplifications_Asset.txt',#Wikilarge/output/simplifications_Wikilarge.txt , Newsela/output/simplifications_Newsela.txt #changed
-    'file_name': 'Wikilarge/output/simplifications_Asset.txt',
+    'file_name': 'Wikilarge/output/simplifications.txt',
     # Changed
     'fre': True,
     'SLOR': True,
@@ -43,8 +43,8 @@ model_config = {
     'elmo': False,
     'min_length_of_edited_sent': 6,
     'lexical_simplification': False,  # changed
-    'constrained_paraphrasing': False, #changed added
-    'delete_leaves': True,
+    'constrained_paraphrasing': True, #changed added
+    'delete_leaves': False,
     'leaves_as_sent': False,
     'reorder_leaves': False,  # changed
     'check_min_length': True,
