@@ -1433,17 +1433,25 @@ def calcluate_unigram_probability(sent, unigram_prob, input_lang):
 
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
                     embedding_weights, idf, unigram_prob, cs):
-    prob = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent,
-                                    unigram_prob) ** config['sentence_probability_power']
-    if cs:
-        prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
-    prob *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
-    if config['check_min_length']:
-        prob *= check_min_length(input_sent)
-    prob /= len(input_sent.split(' ')) ** config['len_power']
-    if config['fre']:
-        prob *= sentence_fre(input_sent.lower()) ** config['fre_power']
-    return prob
+
+    score = 1 - get_model_out(comp_simp_class_model, tokenizer, input_sent)
+
+    return score
+
+
+# def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
+#                     embedding_weights, idf, unigram_prob, cs):
+#     prob = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent,
+#                                     unigram_prob) ** config['sentence_probability_power']
+#     if cs:
+#         prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
+#     prob *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
+#     if config['check_min_length']:
+#         prob *= check_min_length(input_sent)
+#     prob /= len(input_sent.split(' ')) ** config['len_power']
+#     if config['fre']:
+#         prob *= sentence_fre(input_sent.lower()) ** config['fre_power']
+#     return prob
 
 
 class Dataset(data.Dataset):
