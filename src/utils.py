@@ -1177,10 +1177,12 @@ def correct(sent):
 
 
 def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
-    tree = next(parser.raw_parse(sent))
+    # todo
+    # tree = next(parser.raw_parse(sent))
+    tree = []
     # print(tree)
 
-    return (generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict))
+    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict)
 
 
 def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
@@ -1191,56 +1193,59 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
     # print(sent)
     phrase_tags = ['S', 'ADJP', 'ADVP', 'CONJP', 'FRAG', 'INTJ', 'LST', 'NAC', 'NP', 'NX', 'PP', 'PRN', 'PRT',
                    'QP', 'RRC', 'UCP', 'VP', 'WHADJP', 'WHAVP', 'WHNP', 'WHPP', 'X', 'SBAR']
-    pos = tree.treepositions()
-    for i in range(len(pos) - 1, 1, -1):
-        if not isinstance(tree[pos[i]], str):
-            if tree[pos[i]].label() in phrase_tags:
-                p.append(tree[pos[i]].leaves())
-
-    for i in range(len(p)):
-        if config['lexical_simplification']:
-            simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict)
-            for st in simple:
-                if st not in sent_list:
-                    s.append({st: 'ls'})
-        if config['delete_leaves']:
-            sd = delete_leaves(sent, p[i])
-            if sd not in sent_list:
-                s.append({sd: 'dl'})
-        if config['leaves_as_sent']:
-            sc = construct_sent(p[i])
-            if sc not in sent_list:
-                s.append({sc: 'las'})
-        if config['reorder_leaves']:
-            temp = []
-            reorder_leaves(sent, p, p[i], convert_to_sent(p[i]), sd, temp)
-            for rl in temp:
-                s.append({rl: 'rl'})
-
-        # changed
-        # if config['constrained_paraphrasing']:
-        #
-        #     # creat the negative constraints
-        #     neg_consts = gen_neg_const(entities, p[i])
-        #     if neg_consts not in used_neg_consts:
-        #
-        #         # add the negative constraints to the used_neg_consts to avoid
-        #         # using the same negative constraints in the future
-        #         used_neg_consts.append(neg_consts)
-        #         sp = paraph(sent, p[i], entities, rest_pos_const=False)
-        #
-        #         # new_testing
-        #         # if sp == 1:
-        #         #     all_par_calls += 1
-        #
-        #         if sp not in sent_list and sp != -1:
-        #             s.append({sp: 'par'})
 
     if config['constrained_paraphrasing']:
         sp = paraph(sent, "", entities, rest_pos_const=False)
         if sp not in sent_list and sp != -1:
             s.append({sp: 'par'})
             all_par_calls += 1
+
+    if config['lexical_simplification'] or config['delete_leaves'] or config['reorder_leaves']:
+        pos = tree.treepositions()
+        for i in range(len(pos) - 1, 1, -1):
+            if not isinstance(tree[pos[i]], str):
+                if tree[pos[i]].label() in phrase_tags:
+                    p.append(tree[pos[i]].leaves())
+
+        for i in range(len(p)):
+            if config['lexical_simplification']:
+                simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict)
+                for st in simple:
+                    if st not in sent_list:
+                        s.append({st: 'ls'})
+            if config['delete_leaves']:
+                sd = delete_leaves(sent, p[i])
+                if sd not in sent_list:
+                    s.append({sd: 'dl'})
+            if config['leaves_as_sent']:
+                sc = construct_sent(p[i])
+                if sc not in sent_list:
+                    s.append({sc: 'las'})
+            if config['reorder_leaves']:
+                temp = []
+                reorder_leaves(sent, p, p[i], convert_to_sent(p[i]), sd, temp)
+                for rl in temp:
+                    s.append({rl: 'rl'})
+
+
+            # if config['constrained_paraphrasing']:
+            #
+            #     # creat the negative constraints
+            #     neg_consts = gen_neg_const(entities, p[i])
+            #     if neg_consts not in used_neg_consts:
+            #
+            #         # add the negative constraints to the used_neg_consts to avoid
+            #         # using the same negative constraints in the future
+            #         used_neg_consts.append(neg_consts)
+            #         sp = paraph(sent, p[i], entities, rest_pos_const=False)
+            #
+            #         # new_testing
+            #         # if sp == 1:
+            #         #     all_par_calls += 1
+            #
+            #         if sp not in sent_list and sp != -1:
+            #             s.append({sp: 'par'})
+
 
     # new_testing
     if len(s) > 0:
