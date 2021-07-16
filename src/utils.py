@@ -961,7 +961,7 @@ def cos_similarity(new, old, idf):
 def get_model_out(model, tokenizer, sent):
     """ returns a dict containing : attention mat for all layers, tokens of the input sent, complexity probability """
 
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     model.to(device)
     model.eval()
