@@ -1434,7 +1434,9 @@ def calcluate_unigram_probability(sent, unigram_prob, input_lang):
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
                     embedding_weights, idf, unigram_prob, cs):
 
-    score = 1 - get_model_out(comp_simp_class_model, tokenizer, input_sent)
+    out = get_model_out(model, tokenizer, sent)
+    prob = out["prob"]
+    score = 1 - prob
 
     return score
 
