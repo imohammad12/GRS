@@ -36,6 +36,7 @@ from importlib import reload
 import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from pattern.en import lexeme
+from sentence_transformers import SentenceTransformer, util
 
 print(config)
 '''from allennlp.modules.elmo import Elmo, batch_to_ids
@@ -1435,12 +1436,42 @@ def calcluate_unigram_probability(sent, unigram_prob, input_lang):
     return prob / (len(sent.split(' ')))
 
 
+def semantic_sim(sentA, sentB):
+    """returns the probability that sentA and sentB have the same meaning"""
+
+
+    semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2')
+
+    # Two lists of sentences
+    sentences1 = [sentA]
+
+    sentences2 = [sentB]
+
+    # Compute embedding for both lists
+    embeddings1 = semantic_model.encode(sentences1, convert_to_tensor=True)
+    embeddings2 = semantic_model.encode(sentences2, convert_to_tensor=True)
+
+    # Compute cosine-similarities
+    cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
+
+    # Output the pairs with their score
+    print("similarity of the two sentences: ", cosine_scores[0][0])
+
+    return cosine_scores[0][0]
+
+
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
                     embedding_weights, idf, unigram_prob, cs):
 
     out = get_model_out(comp_simp_class_model, tokenizer, input_sent)
     prob = out["prob"]
     score = 1 - prob
+
+    # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
+    # zero
+    sim_score = semantic_sim(input_sent, orig_sent)
+    if sim_score < .75:  # threshold should be added to config file # TODO
+        score = 0
 
     return score
 
