@@ -958,32 +958,6 @@ def cos_similarity(new, old, idf):
 # changed
 
 
-def get_model_out(model, tokenizer, sent):
-    """ returns a dict containing : attention mat for all layers, tokens of the input sent, complexity probability """
-
-    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-    model.to(device)
-    model.eval()
-
-    toks = tokenizer(text=sent, truncation=True, padding=True, max_length=100, return_tensors='pt')
-
-    input_ids = toks['input_ids'].to(device)
-    attention_mask = toks['attention_mask'].to(device)
-    token_type_ids = toks['token_type_ids'].to(device)
-
-    with torch.no_grad():
-        output = model(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids, output_attentions=True,
-                       return_dict=True)
-
-    tokens = tokenizer.convert_ids_to_tokens(input_ids.squeeze())
-    attention = output.attentions
-
-    out = {"attention": attention, "tokens": tokens, "prob": output.logits.squeeze().softmax(dim=0)[1].item()}
-
-    return out
-
-
 def comp_extract(sent, comp_simp_class_model, tokenizer):
     """ Extracting complex tokens from input sentence
     return a dict of : complex tokens in a sorted way based on their complexity,
@@ -1108,8 +1082,6 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     return f.read()
 
 
-# changed
-
 def paraph(sent, leaves, entities, rest_pos_const=False):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
@@ -1125,6 +1097,8 @@ def paraph(sent, leaves, entities, rest_pos_const=False):
         return sent
 
 
+# changed
+
 def delete_leaves(sent, leaves):
     s = ''
     # print(leaves)
@@ -1138,6 +1112,32 @@ def delete_leaves(sent, leaves):
         if sent[0] == ' ':
             sent = sent[1:]
     return correct(sent)
+
+
+def get_model_out(model, tokenizer, sent):
+    """ returns a dict containing : attention mat for all layers, tokens of the input sent, complexity probability """
+
+    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+    model.to(device)
+    model.eval()
+
+    toks = tokenizer(text=sent, truncation=True, padding=True, max_length=100, return_tensors='pt')
+
+    input_ids = toks['input_ids'].to(device)
+    attention_mask = toks['attention_mask'].to(device)
+    token_type_ids = toks['token_type_ids'].to(device)
+
+    with torch.no_grad():
+        output = model(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids, output_attentions=True,
+                       return_dict=True)
+
+    tokens = tokenizer.convert_ids_to_tokens(input_ids.squeeze())
+    attention = output.attentions
+
+    out = {"attention": attention, "tokens": tokens, "prob": output.logits.squeeze().softmax(dim=0)[1].item()}
+
+    return out
 
 
 def construct_sent(sent):

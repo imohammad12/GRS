@@ -145,7 +145,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
 
                 # calculate score for each candidate sentence using the scoring function
                 p = calculate_score(lm_forward, elmo_tensor, candidate_tensor, candidate_tag_tensor, candidate_dep_tensor, input_lang, sent, orig_sent, embedding_weights, idf, unigram_prob, True)
-                print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p}')
+                print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
 
 
                 if config['double_LM']:
