@@ -70,7 +70,12 @@ if config['constrained_paraphrasing']:
     model_name = "newsela-auto-high-quality"
     path_model = root + '/results' + '/' + model_name + "/whole-high-quality/checkpoint-44361/"
     comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_model)
-    tokenizer = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
+
+root_grammar_checker = "/home/m25dehgh/simplification/grammar-checker"
+model_name_grammar_checker = "deberta-base-cola"
+path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/checkpoint-716"
+model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
+tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
 
 SOS_token = 1
 EOS_token = 2
@@ -1086,7 +1091,7 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
 def paraph(sent, leaves, entities, rest_pos_const=False):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
-    extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer)
+    extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
     neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'])
 
     sent = const_paraph(sent, neg_consts, entities, rest_pos_const)
@@ -1444,7 +1449,6 @@ def semantic_sim(sentA, sentB):
 
     # Two lists of sentences
     sentences1 = [sentA]
-
     sentences2 = [sentB]
 
     # Compute embedding for both lists
@@ -1463,17 +1467,23 @@ def semantic_sim(sentA, sentB):
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
                     embedding_weights, idf, unigram_prob, cs):
 
-    out = get_model_out(comp_simp_class_model, tokenizer, input_sent)
-    prob = out["prob"]
-    score = 1 - prob
+    out_simplicity = get_model_out(comp_simp_class_model, tokenizer_deberta, input_sent)
+    prob_simplicity = out_simplicity["prob"]
+    score_simplicity = 1 - prob_simplicity
+    score_final = score_simplicity
 
     # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
     # zero
     sim_score = semantic_sim(input_sent, orig_sent)
     if sim_score < .75:  # threshold should be added to config file # TODO
-        score = 0
+        score_final = 0
 
-    return score
+    score_grammar = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
+    print("candidate sentence grammar validity probability: ", score_grammar['prob'])
+    if score_grammar["prob"] < .80: # threshold should be added to config file # TODO
+        score_final = 0
+
+    return score_final
 
 
 # def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
