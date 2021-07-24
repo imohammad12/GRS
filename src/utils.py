@@ -37,6 +37,7 @@ import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from pattern.en import lexeme
 from sentence_transformers import SentenceTransformer, util
+from collections import defaultdict
 
 print(config)
 '''from allennlp.modules.elmo import Elmo, batch_to_ids
@@ -265,6 +266,43 @@ class Lang:
         # but as of now we dont use the complex part in our language model
         # return x_train, y_train, x_valid, y_valid, x_test, y_test, output_lang
         return train_simple, train_simple_unique, valid_simple, valid_simple_unique, test_simple, test_simple_unique, train_complex, train_complex_unique, valid_complex, valid_complex_unique, test_complex, test_complex_unique, output_lang, tag_lang, dep_lang
+
+
+# this Class is taken from https://gist.github.com/wassname/7fd4c975883074a99864
+# Reverse Stemming
+class SnowCastleStemmer(nltk.stem.SnowballStemmer):
+    """ A wrapper around snowball stemmer with a reverse lookip table """
+
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+        self._stem_memory = defaultdict(set)
+        # switch stem and memstem
+        self._stem = self.stem
+        self.stem = self.memstem
+
+    def memstem(self, word):
+        """ Wrapper around stem that remembers """
+        stemmed_word = self._stem(word)
+        self._stem_memory[stemmed_word].add(word)
+        return stemmed_word
+
+    def unstem(self, stemmed_word):
+        """ Reverse lookup """
+        return sorted(self._stem_memory[stemmed_word], key=len)
+
+
+def create_reverse_stem():
+    """creates reverse stem for all words in the dictionary
+    It should be called once in the start of program
+    """
+
+    stemmer = SnowCastleStemmer('english')
+    dictionary = nltk.corpus.words.words("en")
+
+    for vocab in dictionary:
+        stemmer.stem(vocab)
+
+    return stemmer
 
 
 def reverse_sent(sent):
@@ -1183,7 +1221,6 @@ def correct(sent):
 
 
 def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
-
     sent = sent.replace('%', ' percent')
     tree = next(parser.raw_parse(sent))
 
@@ -1232,7 +1269,6 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
                 for rl in temp:
                     s.append({rl: 'rl'})
 
-
             # if config['constrained_paraphrasing']:
             #
             #     # creat the negative constraints
@@ -1250,7 +1286,6 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
             #
             #         if sp not in sent_list and sp != -1:
             #             s.append({sp: 'par'})
-
 
     # new_testing
     if len(s) > 0:
@@ -1444,7 +1479,6 @@ def calcluate_unigram_probability(sent, unigram_prob, input_lang):
 def semantic_sim(sentA, sentB):
     """returns the probability that sentA and sentB have the same meaning"""
 
-
     semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2')
 
     # Two lists of sentences
@@ -1466,7 +1500,6 @@ def semantic_sim(sentA, sentB):
 
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
                     embedding_weights, idf, unigram_prob, cs):
-
     out_simplicity = get_model_out(comp_simp_class_model, tokenizer_deberta, input_sent)
     prob_simplicity = out_simplicity["prob"]
     score_simplicity = 1 - prob_simplicity
@@ -1480,7 +1513,7 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
 
     score_grammar = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
     print("candidate sentence grammar validity probability: ", score_grammar['prob'])
-    if score_grammar["prob"] < .90: # threshold should be added to config file # TODO
+    if score_grammar["prob"] < .90:  # threshold should be added to config file # TODO
         score_final = 0
 
     return score_final
