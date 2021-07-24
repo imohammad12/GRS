@@ -1041,7 +1041,7 @@ def comp_extract(sent, comp_simp_class_model, tokenizer):
     return extracted_comps
 
 
-def neg_consts_words(comp_toks, tokens):
+def neg_consts_words(comp_toks, tokens, stemmer):
     """ returns words for negative constraints
         removes some tokens,
         preprocesses the words,
@@ -1072,8 +1072,16 @@ def neg_consts_words(comp_toks, tokens):
     except:
         print("lexeme handled")
 
-    for tok in negs[:max_num_accepted_consts]:
-        new_neg += lexeme(tok)
+    # adding words with similar root to negative constraints
+    # e.g if the initial neg constraint is the word "facilitate"
+    # then the new added words are : 'facilitate', 'facilitator', 'facilitative', 'facilitation', 'facilitate',
+    # 'facilitates', 'facilitating', 'facilitated'
+    for word in negs[:max_num_accepted_consts]:
+        words_with_same_root = stemmer.unstem(stemmer.stem(word))
+        words_with_same_root.remove(word) # the initial word will be added one time in the following
+
+        new_neg += lexeme(word)
+        new_neg += words_with_same_root
 
     return new_neg
 
@@ -1126,13 +1134,13 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     return f.read()
 
 
-def paraph(sent, leaves, entities, rest_pos_const=False):
+def paraph(sent, leaves, entities, stemmer, rest_pos_const=False):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
     extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
     neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'])
 
-    sent = const_paraph(sent, neg_consts, entities, rest_pos_const)
+    sent = const_paraph(sent, neg_consts, entities, rest_pos_const, )
 
     print('new: ', sent)
     if sent != -1 and sent != 1:
@@ -1220,14 +1228,14 @@ def correct(sent):
     return convert_to_sent(s)
 
 
-def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
+def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
     sent = sent.replace('%', ' percent')
     tree = next(parser.raw_parse(sent))
 
-    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict)
+    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer)
 
 
-def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
+def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
     s = []
     p = []
     used_neg_consts = []
@@ -1237,7 +1245,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
                    'QP', 'RRC', 'UCP', 'VP', 'WHADJP', 'WHAVP', 'WHNP', 'WHPP', 'X', 'SBAR']
 
     if config['constrained_paraphrasing']:
-        sp = paraph(sent, "", entities, rest_pos_const=False)
+        sp = paraph(sent, "", entities, stemmer, rest_pos_const=False)
         if sp not in sent_list and sp != -1:
             s.append({sp: 'par'})
             all_par_calls += 1

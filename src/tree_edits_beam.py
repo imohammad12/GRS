@@ -86,7 +86,10 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
     #new_testing
     all_par_calls = 0
     beam_calls = 0
-    #print(spl)
+
+    # creating reverse stem for all words
+    stemmer = create_reverse_stem()
+
     # the for loop below is just in case if the edit operations go for a very long time
     # in almost all the cases this will not be required
 
@@ -123,7 +126,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             beam_calls += 1
 
             # get candidate sentence through different edit operations
-            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict)
+            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict, stemmer)
 
             # new_testing
             all_par_calls += candidates[1]
