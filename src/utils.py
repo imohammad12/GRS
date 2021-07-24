@@ -1138,9 +1138,9 @@ def paraph(sent, leaves, entities, stemmer, rest_pos_const=False):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
     extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
-    neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'])
+    neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
 
-    sent = const_paraph(sent, neg_consts, entities, rest_pos_const, )
+    sent = const_paraph(sent, neg_consts, entities, rest_pos_const )
 
     print('new: ', sent)
     if sent != -1 and sent != 1:
