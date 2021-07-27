@@ -1253,11 +1253,11 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
     # To revert to the previous for (paraphrasing and deletion working in parallel in the beam search) search for
     # paraphrased_sent and change every place it was found.
-    paraphrased_sent = paraph(sent, "", entities, stemmer, rest_pos_const=False)
+    # paraphrased_sent = paraph(sent, "", entities, stemmer, rest_pos_const=False)
 
     if config['lexical_simplification'] or config['delete_leaves'] or config['reorder_leaves']:
 
-        tree = next(parser.raw_parse(paraphrased_sent))
+        # tree = next(parser.raw_parse(paraphrased_sent))
         pos = tree.treepositions()
         for i in range(len(pos) - 1, 1, -1):
             if not isinstance(tree[pos[i]], str):
@@ -1271,8 +1271,8 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
                     if st not in sent_list:
                         s.append({st: 'ls'})
             if config['delete_leaves']:
-                # sd = delete_leaves(sent, p[i])
-                sd = delete_leaves(paraphrased_sent, p[i])
+                sd = delete_leaves(sent, p[i])
+                # sd = delete_leaves(paraphrased_sent, p[i])
                 if sd not in sent_list:
                     s.append({sd: 'dl'})
             if config['leaves_as_sent']:
