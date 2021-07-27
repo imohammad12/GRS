@@ -66,11 +66,10 @@ if config['lexical_simplification']:
 
 device = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
 
-if config['constrained_paraphrasing']:
-    root = "/home/m25dehgh/simplification/complex-classifier"
-    model_name = "newsela-auto-high-quality"
-    path_model = root + '/results' + '/' + model_name + "/whole-high-quality/checkpoint-44361/"
-    comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_model)
+root_comp_simp = "/home/m25dehgh/simplification/complex-classifier"
+model_comp_simp = "newsela-auto-high-quality"
+path_comp_simp = root_comp_simp + '/results' + '/' + model_comp_simp + "/whole-high-quality/checkpoint-44361/"
+comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_comp_simp)
 
 root_grammar_checker = "/home/m25dehgh/simplification/grammar-checker"
 model_name_grammar_checker = "deberta-base-cola"
