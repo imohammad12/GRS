@@ -1244,11 +1244,11 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
                    'QP', 'RRC', 'UCP', 'VP', 'WHADJP', 'WHAVP', 'WHNP', 'WHPP', 'X', 'SBAR']
 
     # comented for testing paraphrasing and deletion in a sequential order instead of a parallel method in beam search
-    # if config['constrained_paraphrasing']:
-    #     sp = paraph(sent, "", entities, stemmer, rest_pos_const=False)
-    #     if sp not in sent_list and sp != -1:
-    #         s.append({sp: 'par'})
-    #         all_par_calls += 1
+    if config['constrained_paraphrasing']:
+        sp = paraph(sent, "", entities, stemmer, rest_pos_const=False)
+        if sp not in sent_list and sp != -1:
+            s.append({sp: 'par'})
+            all_par_calls += 1
 
     # To revert to the previous for (paraphrasing and deletion working in parallel in the beam search) search for
     # paraphrased_sent and change every place it was found.
