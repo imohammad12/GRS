@@ -1286,7 +1286,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
         #             s.append({sp: 'par'})
 
     if config['constrained_paraphrasing']:
-        sp = paraph(sent, "", entities, rest_pos_const=False)
+        sp = paraph(sent, "", entities, stemmer, rest_pos_const=False)
         if sp not in sent_list and sp != -1:
             s.append({sp: 'par'})
             all_par_calls += 1
