@@ -36,6 +36,8 @@ from importlib import reload
 import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from pattern.en import lexeme
+from sentence_transformers import SentenceTransformer, util
+from collections import defaultdict
 
 print(config)
 '''from allennlp.modules.elmo import Elmo, batch_to_ids
@@ -64,12 +66,16 @@ if config['lexical_simplification']:
 
 device = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
 
-if config['constrained_paraphrasing']:
-    root = "/home/m25dehgh/simplification/complex-classifier"
-    model_name = "newsela-auto-high-quality"
-    path_model = root + '/results' + '/' + model_name + "/whole-high-quality/checkpoint-44361/"
-    comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_model)
-    tokenizer = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
+root_comp_simp = "/home/m25dehgh/simplification/complex-classifier"
+model_comp_simp = "newsela-auto-high-quality"
+path_comp_simp = root_comp_simp + '/results' + '/' + model_comp_simp + "/whole-high-quality/checkpoint-44361/"
+comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_comp_simp)
+
+root_grammar_checker = "/home/m25dehgh/simplification/grammar-checker"
+model_name_grammar_checker = "deberta-base-cola"
+path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/checkpoint-716"
+model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
+tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
 
 SOS_token = 1
 EOS_token = 2
@@ -259,6 +265,43 @@ class Lang:
         # but as of now we dont use the complex part in our language model
         # return x_train, y_train, x_valid, y_valid, x_test, y_test, output_lang
         return train_simple, train_simple_unique, valid_simple, valid_simple_unique, test_simple, test_simple_unique, train_complex, train_complex_unique, valid_complex, valid_complex_unique, test_complex, test_complex_unique, output_lang, tag_lang, dep_lang
+
+
+# this Class is taken from https://gist.github.com/wassname/7fd4c975883074a99864
+# Reverse Stemming
+class SnowCastleStemmer(nltk.stem.SnowballStemmer):
+    """ A wrapper around snowball stemmer with a reverse lookip table """
+
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+        self._stem_memory = defaultdict(set)
+        # switch stem and memstem
+        self._stem = self.stem
+        self.stem = self.memstem
+
+    def memstem(self, word):
+        """ Wrapper around stem that remembers """
+        stemmed_word = self._stem(word)
+        self._stem_memory[stemmed_word].add(word)
+        return stemmed_word
+
+    def unstem(self, stemmed_word):
+        """ Reverse lookup """
+        return sorted(self._stem_memory[stemmed_word], key=len)
+
+
+def create_reverse_stem():
+    """creates reverse stem for all words in the dictionary
+    It should be called once in the start of program
+    """
+
+    stemmer = SnowCastleStemmer('english')
+    dictionary = nltk.corpus.words.words("en")
+
+    for vocab in dictionary:
+        stemmer.stem(vocab)
+
+    return stemmer
 
 
 def reverse_sent(sent):
@@ -958,32 +1001,6 @@ def cos_similarity(new, old, idf):
 # changed
 
 
-def get_model_out(model, tokenizer, sent):
-    """ returns a dict containing : attention mat for all layers, tokens of the input sent, complexity probability """
-
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-    model.to(device)
-    model.eval()
-
-    toks = tokenizer(text=sent, truncation=True, padding=True, max_length=100, return_tensors='pt')
-
-    input_ids = toks['input_ids'].to(device)
-    attention_mask = toks['attention_mask'].to(device)
-    token_type_ids = toks['token_type_ids'].to(device)
-
-    with torch.no_grad():
-        output = model(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids, output_attentions=True,
-                       return_dict=True)
-
-    tokens = tokenizer.convert_ids_to_tokens(input_ids.squeeze())
-    attention = output.attentions
-
-    out = {"attention": attention, "tokens": tokens, "prob": output.logits.squeeze().softmax(dim=0)[1].item()}
-
-    return out
-
-
 def comp_extract(sent, comp_simp_class_model, tokenizer):
     """ Extracting complex tokens from input sentence
     return a dict of : complex tokens in a sorted way based on their complexity,
@@ -1023,7 +1040,7 @@ def comp_extract(sent, comp_simp_class_model, tokenizer):
     return extracted_comps
 
 
-def neg_consts_words(comp_toks, tokens):
+def neg_consts_words(comp_toks, tokens, stemmer):
     """ returns words for negative constraints
         removes some tokens,
         preprocesses the words,
@@ -1054,8 +1071,16 @@ def neg_consts_words(comp_toks, tokens):
     except:
         print("lexeme handled")
 
-    for tok in negs[:max_num_accepted_consts]:
-        new_neg += lexeme(tok)
+    # adding words with similar root to negative constraints
+    # e.g if the initial neg constraint is the word "facilitate"
+    # then the new added words are : 'facilitate', 'facilitator', 'facilitative', 'facilitation', 'facilitate',
+    # 'facilitates', 'facilitating', 'facilitated'
+    for word in negs[:max_num_accepted_consts]:
+        words_with_same_root = stemmer.unstem(stemmer.stem(word))
+        words_with_same_root.remove(word) # the initial word will be added one time in the following
+
+        new_neg += lexeme(word)
+        new_neg += words_with_same_root
 
     return new_neg
 
@@ -1108,15 +1133,13 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     return f.read()
 
 
-# changed
-
-def paraph(sent, leaves, entities, rest_pos_const=False):
+def paraph(sent, leaves, entities, stemmer, rest_pos_const=False):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
-    extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer)
-    neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'])
+    extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
+    neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
 
-    sent = const_paraph(sent, neg_consts, entities, rest_pos_const)
+    sent = const_paraph(sent, neg_consts, entities, rest_pos_const )
 
     print('new: ', sent)
     if sent != -1 and sent != 1:
@@ -1138,6 +1161,32 @@ def delete_leaves(sent, leaves):
         if sent[0] == ' ':
             sent = sent[1:]
     return correct(sent)
+
+
+def get_model_out(model, tokenizer, sent):
+    """ returns a dict containing : attention mat for all layers, tokens of the input sent, complexity probability """
+
+    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+    model.to(device)
+    model.eval()
+
+    toks = tokenizer(text=sent, truncation=True, padding=True, max_length=100, return_tensors='pt')
+
+    input_ids = toks['input_ids'].to(device)
+    attention_mask = toks['attention_mask'].to(device)
+    token_type_ids = toks['token_type_ids'].to(device)
+
+    with torch.no_grad():
+        output = model(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids, output_attentions=True,
+                       return_dict=True)
+
+    tokens = tokenizer.convert_ids_to_tokens(input_ids.squeeze())
+    attention = output.attentions
+
+    out = {"attention": attention, "tokens": tokens, "prob": output.logits.squeeze().softmax(dim=0)[1].item()}
+
+    return out
 
 
 def construct_sent(sent):
@@ -1176,14 +1225,14 @@ def correct(sent):
     return convert_to_sent(s)
 
 
-def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
+def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
+    sent = sent.replace('%', ' percent')
     tree = next(parser.raw_parse(sent))
-    # print(tree)
 
-    return (generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict))
+    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer)
 
 
-def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict):
+def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
     s = []
     p = []
     used_neg_consts = []
@@ -1431,18 +1480,53 @@ def calcluate_unigram_probability(sent, unigram_prob, input_lang):
     return prob / (len(sent.split(' ')))
 
 
+def semantic_sim(sentA, sentB):
+    """returns the probability that sentA and sentB have the same meaning"""
+
+    semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2')
+
+    # Two lists of sentences
+    sentences1 = [sentA]
+    sentences2 = [sentB]
+
+    # Compute embedding for both lists
+    embeddings1 = semantic_model.encode(sentences1, convert_to_tensor=True)
+    embeddings2 = semantic_model.encode(sentences2, convert_to_tensor=True)
+
+    # Compute cosine-similarities
+    cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
+
+    # Output the pairs with their score
+    print("similarity of the two sentences: ", cosine_scores[0][0])
+
+    return cosine_scores[0][0]
+
+
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
                     embedding_weights, idf, unigram_prob, cs):
+
+
     prob = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent,
                                     unigram_prob) ** config['sentence_probability_power']
-    if cs:
-        prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
+    # if cs:
+    #     prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
     prob *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
     if config['check_min_length']:
         prob *= check_min_length(input_sent)
     prob /= len(input_sent.split(' ')) ** config['len_power']
     if config['fre']:
         prob *= sentence_fre(input_sent.lower()) ** config['fre_power']
+
+    # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
+    # zero
+    sim_score = semantic_sim(input_sent, orig_sent)
+    if sim_score < .75:  # threshold should be added to config file # TODO
+        prob = 0
+
+    score_grammar = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
+    print("candidate sentence grammar validity probability: ", score_grammar['prob'])
+    if score_grammar["prob"] < .95:  # threshold should be added to config file # TODO
+        prob = 0
     return prob
 
 

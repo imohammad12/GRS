@@ -86,7 +86,10 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
     #new_testing
     all_par_calls = 0
     beam_calls = 0
-    #print(spl)
+
+    # creating reverse stem for all words
+    stemmer = create_reverse_stem()
+
     # the for loop below is just in case if the edit operations go for a very long time
     # in almost all the cases this will not be required
 
@@ -102,12 +105,14 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
         doc=nlp(input_sent)
         elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor = tokenize_sent_special(input_sent.lower(), input_lang, convert_to_sent([(tok.tag_).upper() for 
             tok in doc]), tag_lang, convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang)
-        prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False)
-        if config['double_LM']:
-            elmo_tensor_b, input_sent_tensor_b, tag_tensor_b, dep_tensor_b = tokenize_sent_special(reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for 
-                tok in doc])), tag_lang, reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
-            prob_old += calculate_score(lm_backward, elmo_tensor_b, input_sent_tensor_b, tag_tensor_b, dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, False)
-            prob_old /= 2.0
+
+        prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang,
+                                   input_sent, orig_sent, embedding_weights, idf, unigram_prob, False)
+        # if config['double_LM']:
+        #     elmo_tensor_b, input_sent_tensor_b, tag_tensor_b, dep_tensor_b = tokenize_sent_special(reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
+        #         tok in doc])), tag_lang, reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
+        #     prob_old += calculate_score(lm_backward, elmo_tensor_b, input_sent_tensor_b, tag_tensor_b, dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, False)
+        #     prob_old /= 2.0
         # for the first time step the beam size is 1, just the original complex sentence
         if iter == 0:
             beam[input_sent] = [prob_old, 'original']
@@ -121,7 +126,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             beam_calls += 1
 
             # get candidate sentence through different edit operations
-            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict)
+            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict, stemmer)
 
             # new_testing
             all_par_calls += candidates[1]
@@ -136,11 +141,16 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 sent = list(candidates[i].keys())[0]
                 operation = candidates[i][sent]
                 doc=nlp(list(candidates[i].keys())[0])
-                elmo_tensor, candidate_tensor, candidate_tag_tensor, candidate_dep_tensor = tokenize_sent_special(sent.lower(), input_lang, convert_to_sent([(tok.tag_).upper() for 
+
+                elmo_tensor, candidate_tensor, candidate_tag_tensor, candidate_dep_tensor = tokenize_sent_special(sent.lower(), input_lang, convert_to_sent([(tok.tag_).upper() for
                     tok in doc]), tag_lang, convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang)
+
+
                 # calculate score for each candidate sentence using the scoring function
                 p = calculate_score(lm_forward, elmo_tensor, candidate_tensor, candidate_tag_tensor, candidate_dep_tensor, input_lang, sent, orig_sent, embedding_weights, idf, unigram_prob, True)
-                print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p}')
+                print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
+
+
                 if config['double_LM']:
                     elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b, candidate_dep_tensor_b = tokenize_sent_special(reverse_sent(sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for 
                         tok in doc])), tag_lang, reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
