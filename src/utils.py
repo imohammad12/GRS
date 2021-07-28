@@ -1523,10 +1523,10 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     if sim_score < .75:  # threshold should be added to config file # TODO
         prob = 0
 
-    score_grammar = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
-    print("candidate sentence grammar validity probability: ", score_grammar['prob'])
-    if score_grammar["prob"] < .95:  # threshold should be added to config file # TODO
-        prob = 0
+    # score_grammar = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
+    # print("candidate sentence grammar validity probability: ", score_grammar['prob'])
+    # if score_grammar["prob"] < .95:  # threshold should be added to config file # TODO
+    #     prob = 0
     return prob
 
 
