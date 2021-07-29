@@ -1088,7 +1088,7 @@ def neg_consts_words(comp_toks, tokens, stemmer):
 def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     stp_words = nltk.corpus.stopwords.words('english')
 
-    sent = sent.translate(str.maketrans('', '', string.punctuation))
+    # sent = sent.translate(str.maketrans('', '', string.punctuation))
 
     print("neg constraints: ", " ".join(neg_const))
     # neg_const = neg_const.split(" ")
