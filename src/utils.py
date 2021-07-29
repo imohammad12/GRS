@@ -1093,7 +1093,7 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     print("neg constraints: ", " ".join(neg_const))
     # neg_const = neg_const.split(" ")
     pos_const = []
-
+    print("entities are: ", entities)
     neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
 
     # if len(neg_const) >= 5:
