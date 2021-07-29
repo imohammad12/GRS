@@ -52,7 +52,7 @@ model_config = {
     'cos_value_for_synonym_acceptance': 0.5, #Newsela ->0.5 WIKILARGE->0.45  # changed
     'min_idf_value_for_ls': 11,  #Wikilarge -> 9, NEwsela -> 11  # changed
     'sentence_probability_power': 1.0, #Wikilarge=0.5, Newsela->1.0 # changed
-    'named_entity_score_power': 1.0,
+    'named_entity_score_power': 0.0,
     'len_power': 0, #Wikilarge=0.25, Newsela -> 1.0  ASSET -> 0.5 # changed
     'fre_power': 1.0,
     'operation': 'sample' # or sample or train_lm,
