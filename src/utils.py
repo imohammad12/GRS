@@ -1108,7 +1108,7 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     # else:
     #     pos_const = entities
 
-    inp = sent + '.' + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
+    inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
 
     print("input: ", inp)
 
