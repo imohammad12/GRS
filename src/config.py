@@ -35,7 +35,7 @@ model_config = {
     'gpu': 1,
     'awd': False,
     # 'file_name': 'Wikilarge/output/simplifications_Asset.txt',#Wikilarge/output/simplifications_Wikilarge.txt , Newsela/output/simplifications_Newsela.txt #changed
-    'file_name': '/home/m25dehgh/simplification/outputs/asset',
+    'file_name': 'Wikilarge/output/simplifications_Wikilarge.txt',
     # Changed
     'fre': True,
     'SLOR': True,
