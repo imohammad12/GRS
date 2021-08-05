@@ -56,7 +56,7 @@ elif config['operation'] == "sample":
 		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time)
 
 	end = time.time()
-	print(f"Runtime of the program is {end - start}")
+	print(f"Runtime of the program is {end - start_time}")
 
 else:
 	print('incorrect operation')
