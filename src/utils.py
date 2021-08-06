@@ -239,10 +239,10 @@ class Lang:
         # print("normalizing")
         # train_src = [all_norms(i) for i in train_src]
         # train_dst = [all_norms(i) for i in train_dst]
-        # valid_src = [all_norms(i) for i in valid_src]
-        # valid_dst = [all_norms(i) for i in valid_dst]
-        # test_src = [all_norms(i) for i in test_src]
-        # test_dst = [all_norms(i) for i in test_dst]
+        valid_src = [all_norms(i) for i in valid_src]
+        valid_dst = [all_norms(i) for i in valid_dst]
+        test_src = [all_norms(i) for i in test_src]
+        test_dst = [all_norms(i) for i in test_dst]
         # changed
         # lexical_simplification
         # train_src = [normalize(s, lowercase=True, tokenizer='moses') for s in train_src]
@@ -1088,7 +1088,7 @@ def neg_consts_words(comp_toks, tokens, stemmer):
 def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     stp_words = nltk.corpus.stopwords.words('english')
 
-    sent = sent.translate(str.maketrans('', '', string.punctuation))
+    # sent = sent.translate(str.maketrans('', '', string.punctuation))
 
     print("neg constraints: ", " ".join(neg_const))
     # neg_const = neg_const.split(" ")
@@ -1108,7 +1108,7 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     # else:
     #     pos_const = entities
 
-    inp = sent + '.' + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
+    inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
 
     print("input: ", inp)
 
