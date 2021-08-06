@@ -10,7 +10,7 @@ model_config = {
     # 'threshold': {'ls': 1.25, 'dl': 1, 'las': 0.75, 'rl':1.25, 'pa': 1.25},  # For ASSET 37.25 without ls and ro
     # 'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'pa': 1.25},  # For ASSET 32.60 only ls
     # 'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'pa': 1.25},  # For ASSET 37.36 only LS+RM
-    'threshold': {'ls': .8, 'dl': 1.1, 'las': 3.0, 'rl':1.25, 'par': 1.1},  # For ASSET - all operation
+    'threshold': {'ls': .8, 'dl': 1, 'las': 3.0, 'rl':1.25, 'par': 1},  # For ASSET - all operation
     'epochs': 100,
     'set': 'test',
     # 'lm_name': 'Newsela/structured_lm_forward_300_150_0_4', #wikilarge -> Wikilarge/structured_lm_forward_300_150_0_4_freq5, newsela -> Newsela/structured_lm_forward_300_150_0_4
