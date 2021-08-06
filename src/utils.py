@@ -1523,7 +1523,7 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
     # zero
     sim_score = semantic_sim(input_sent, orig_sent)
-    if sim_score < .75:  # threshold should be added to config file # TODO
+    if sim_score < config['sim_threshold']:  # threshold should be added to config file # TODO
         score_final = 0
 
     # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
