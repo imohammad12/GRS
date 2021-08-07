@@ -26,6 +26,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     for i in range(len(complex_sentences)):
         if len(complex_sentences[i].split(' ')) <= config['min_length']:
 
+            print(f'length of complex and simple sent list: {len(complex_sentences)}, {len(simple_sentences)}')
             # new_testing
             sl, kl, dl, al, bl, pl, fkl, frl, par_calls, b_calls = mcmc(complex_sentences[i], simple_sentences[i], input_lang, tag_lang, dep_lang, lm_forward, lm_backward, embedding_weights, idf, unigram_prob, stats)
 
