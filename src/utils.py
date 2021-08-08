@@ -397,11 +397,9 @@ def getvocab(pairs, min_freq_inp, min_freq_out, outputvocab, outputword2count):
 
 def convert_to_sent(sent):
     s = ''
-    # print(sent)
     for i in range(len(sent)):
         if sent[i] not in '':
             s = s + sent[i] + ' '
-    # print(s)
     return s[:-1]
 
 
@@ -409,7 +407,6 @@ def getIDF(outputword2count, N):
     idf = {}
     for k, v in outputword2count.items():
         idf[k] = math.log2(N / v)
-    # print(idf)
     return idf
 
 
