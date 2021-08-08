@@ -7,8 +7,12 @@ import math
 from utils import *
 from train_structured import *
 from evaluate_structured import *
-from config import model_config as config
+# from config import model_config as config
 from allennlp.modules.elmo import batch_to_ids
+import json
+
+conf_file = open("config.json", "r")
+config = json.load(conf_file)
 
 class Dataset(data.Dataset):
     #'Characterizes a dataset for PyTorch'

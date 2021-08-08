@@ -1,13 +1,17 @@
 import importlib
 import sys
 from utils import *
+import json
 # importlib.reload(sys.modules['utils'])
 print("Mode is")
-print(config['operation'])
 print(device)
 # importlib.reload(sys.modules['config'])
-from config import model_config as config
+# from config import model_config as config
 
+conf_file = open("config.json", "r")
+config = json.load(conf_file)
+
+print(config['operation'])
 if config['operation'] == 'train_lm':
 	from model.structural_decoder import DecoderGRU
 	from test_structured import *

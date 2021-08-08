@@ -8,7 +8,8 @@ import string
 import pickle
 import re
 import random
-from config import model_config as config
+# from config import model_config as config
+import json
 import torch
 import torch.nn as nn
 from torch.utils import data
@@ -38,6 +39,9 @@ from transformers import DebertaForSequenceClassification, Trainer, TrainingArgu
 from pattern.en import lexeme
 from sentence_transformers import SentenceTransformer, util
 from collections import defaultdict
+
+conf_file = open("config.json", "r")
+config = json.load(conf_file)
 
 print(config)
 '''from allennlp.modules.elmo import Elmo, batch_to_ids

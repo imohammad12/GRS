@@ -1,5 +1,5 @@
 import torch
-from config import model_config as config
+# from config import model_config as config
 import torch.nn as nn
 from torch import optim
 import torch.nn.functional as F
@@ -7,6 +7,11 @@ import torch.nn.functional as F
 from model.weight_drop import WeightDrop
 from model.embed_regularize import embedded_dropout
 from model.locked_dropout import LockedDropout
+import json
+
+conf_file = open("config.json", "r")
+config = json.load(conf_file)
+
 device = torch.device("cuda:"+str(config['gpu']) if torch.cuda.is_available() else "cpu")
 #options_file = ('https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x1024_128_2048cnn_1xhighway/elmo_2x1024_128_2048cnn_1xhighway_options.json')
 #weight_file = ('https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x1024_128_2048cnn_1xhighway/elmo_2x1024_128_2048cnn_1xhighway_weights.hdf5')
