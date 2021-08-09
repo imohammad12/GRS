@@ -10,8 +10,8 @@ from evaluate import *
 # from config import model_config as config
 import json
 
-conf_file = open("config.json", "r")
-config = json.load(conf_file)
+# conf_file = open("config.json", "r")
+# config = json.load(conf_file)
 
 
 def trainIters(decoder, pairs, valid_pairs, test_pairs, output_lang):

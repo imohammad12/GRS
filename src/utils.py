@@ -33,6 +33,10 @@ import copy
 from normalizing import *  # CHANGED
 from types import ModuleType
 from importlib import reload
+from tqdm import tqdm
+from pathlib import Path
+from easse.sari import corpus_sari, get_corpus_sari_operation_scores
+
 
 import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
@@ -42,6 +46,7 @@ from collections import defaultdict
 
 conf_file = open("config.json", "r")
 config = json.load(conf_file)
+conf_file.close()
 
 print(config)
 '''from allennlp.modules.elmo import Elmo, batch_to_ids
@@ -1577,3 +1582,87 @@ class Dataset(data.Dataset):
 def load_data(dataset, batch_size):
     dataloader = data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
     return dataloader
+
+
+def similarity_simplicity_grammar_assess(sys_sents, orig_file_path):
+    orig = open(orig_file_path, encoding='utf-8').read().split('\n')
+
+    acu_score_similarity = 0.
+    acu_score_grammar_output = 0.
+    acu_score_grammar_orig = 0.
+    acu_score_simplicity_output = 0.
+    acu_score_simplicity_orig = 0.
+    acu_len_output = 0.
+    acu_len_orig = 0.
+
+    for i in tqdm(range(len(sys_sents))):
+        output_sent = sys_sents[i]
+        orig_sent = orig[i]
+
+        score_similarity = semantic_sim(output_sent, orig_sent)
+        score_grammar_output = get_model_out(model_grammar_checker, tokenizer_deberta, output_sent)["prob"]
+        score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)["prob"]
+        score_simplicity_output = 1 - get_model_out(comp_simp_class_model, tokenizer_deberta, output_sent)["prob"]
+        score_simplicity_orig = 1 - get_model_out(comp_simp_class_model, tokenizer_deberta, orig_sent)["prob"]
+        len_output = len(output_sent.split())
+        len_orig = len(orig_sent.split())
+
+        acu_score_similarity += score_similarity
+        acu_score_grammar_output += score_grammar_output
+        acu_score_grammar_orig += score_grammar_orig
+        acu_score_simplicity_output += score_simplicity_output
+        acu_score_simplicity_orig += score_simplicity_orig
+        acu_len_output += len_output
+        acu_len_orig += len_orig
+
+    return {
+        "similarity": acu_score_similarity / len(sys_sents),
+        "gram_out": acu_score_grammar_output / len(sys_sents),
+        "gram_orig": acu_score_grammar_orig / len(sys_sents),
+        "simplicity_out": acu_score_simplicity_output / len(sys_sents),
+        "simplicity_orig:": acu_score_simplicity_orig / len(sys_sents),
+        "len_out": acu_len_output / len(sys_sents),
+        "len_orig": acu_len_orig / len(sys_sents),
+    }
+
+
+def calculate_sari_easse(ref_folder_path, sys_sents, orig_file_path):
+    orig_sents = open(orig_file_path, encoding='utf-8').read().split('\n')
+
+    orig_sents = orig_sents[:len(sys_sents)]
+
+    ref_sents = []
+
+    for i, file_path in enumerate(Path(ref_folder_path).glob("*")):
+        f = open(file_path).read().split('\n')
+        ref_sents.append(f[:len(sys_sents)])
+
+    add, keep, delete = get_corpus_sari_operation_scores(orig_sents=orig_sents, sys_sents=sys_sents,
+                                                         refs_sents=ref_sents)
+    overal_sari = (add + keep + delete) / 3
+
+    print(f'overal sari:{overal_sari}\
+    add: {add}, keep: {keep}, delete: {delete}')
+
+    return {"overall_sari": overal_sari, "addition": add, "keep": keep, "deletion": delete}
+
+
+def save_output(file_name, saving_path, sys_sents):
+    with open(saving_path + '/' + file_name, "w") as file:
+        for i in range(len(sys_sents)):
+            file.write(sys_sents[i] + "\n")
+
+
+def save_config(config_dict, saving_path="."):
+    config_file = open(saving_path + "/config.json", "w")
+    json.dump(config_dict, config_file)
+    config_file.close()
+
+
+def load_config():
+    conf_file = open("config.json", "r")
+    config_dict = json.load(conf_file)
+    conf_file.close()
+    return config_dict
+
+

@@ -43,5 +43,9 @@
     "len_power": 0.25,
     "fre_power": 1.0,
     "operation": "sample",
-    "sim_threshold": 0.7
+    "sim_threshold": 0.7,
+    "log_directory": "/home/m25dehgh/simplification/outputs/asset",
+    "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset/dataset/test-simp/",
+    "orig_file_path": "/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.norm.orig",
+    "run_number": 12
 }

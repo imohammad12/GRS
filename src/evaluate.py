@@ -5,8 +5,8 @@ from model.SARI import calculate
 # from config import model_config as config
 import json
 
-conf_file = open("config.json", "r")
-config = json.load(conf_file)
+# conf_file = open("config.json", "r")
+# config = json.load(conf_file)
 
 
 sf = SmoothingFunction()

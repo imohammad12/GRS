@@ -7,8 +7,8 @@ import math
 # from config import model_config as config
 import json
 
-conf_file = open("config.json", "r")
-config = json.load(conf_file)
+# conf_file = open("config.json", "r")
+# config = json.load(conf_file)
 
 #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

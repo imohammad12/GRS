@@ -6,8 +6,8 @@ from model.SARI import calculate
 from allennlp.modules.elmo import batch_to_ids
 import json
 
-conf_file = open("config.json", "r")
-config = json.load(conf_file)
+# conf_file = open("config.json", "r")
+# config = json.load(conf_file)
 
 sf = SmoothingFunction()
 

@@ -55,9 +55,9 @@ elif config['operation'] == "sample":
 
 	from tree_edits_beam import *
 	if config['set'] == 'valid':
-		sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time)
+		sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
 	elif config['set'] == 'test':
-		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time)
+		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
 
 	end = time.time()
 	print(f"Runtime of the program is {end - start_time}")
