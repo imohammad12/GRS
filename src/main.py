@@ -49,7 +49,7 @@ elif config['operation'] == "sample":
 	lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words, config['num_layers'], 
 		output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'], config['use_structural_as_standard']).to(device)
 
-	open(config['file_name'], "w").close()  # changed
+	# open(config['file_name'], "w").close()  # changed
 
 	start_time = time.time()
 
