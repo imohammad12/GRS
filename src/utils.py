@@ -1096,7 +1096,10 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
 
     # sent = sent.translate(str.maketrans('', '', string.punctuation))
 
+    # removing all occurances of empty spaces from negative constraints
+    neg_const = list(filter(lambda a: a != ' ', neg_const))
     print("neg constraints: ", " ".join(neg_const))
+
     # neg_const = neg_const.split(" ")
     pos_const = []
 
