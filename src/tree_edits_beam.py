@@ -21,6 +21,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     fre_scorel = 0
     all_par_calls = 0
     beam_calls = 0
+    start_index = 203
     stats = {'ls': 0, 'dl': 0, 'las': 0, 'rl': 0, 'par': 0}
     sys_sents = []
     lm_forward.load_state_dict(torch.load(config['lm_name'] + '.pt'))
@@ -28,7 +29,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
         lm_backward.load_state_dict(torch.load('structured_lm_backward_300_150_0_4.pt'))
     lm_forward.eval()
     lm_backward.eval()
-    for i in range(len(complex_sentences)):
+    for i in range(start_index, len(complex_sentences)):
         if len(complex_sentences[i].split(' ')) <= config['min_length']:
             print(f'length of complex and simple sent list: {len(complex_sentences)}, {len(simple_sentences)}')
             # new_testing
@@ -78,22 +79,22 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
                     sari_scorel / (count + 1)) + "\n\n")
             count += 1
 
-    sari_scores = calculate_sari_easse(ref_folder_path=config["ref_folder_path"], sys_sents=sys_sents,
-                                       orig_file_path=config['orig_file_path'])
-    simil_simp_gram_scores = similarity_simplicity_grammar_assess(sys_sents=sys_sents,
-                                         orig_file_path=config['orig_file_path'])
+    # sari_scores = calculate_sari_easse(ref_folder_path=config["ref_folder_path"], sys_sents=sys_sents,
+    #                                    orig_file_path=config['orig_file_path'])
+    # simil_simp_gram_scores = similarity_simplicity_grammar_assess(sys_sents=sys_sents,
+    #                                      orig_file_path=config['orig_file_path'])
+    #
+    # all_scores = {**sari_scores, **simil_simp_gram_scores}
 
-    all_scores = {**sari_scores, **simil_simp_gram_scores}
-
-    print("all scores", all_scores)
-
-    folder_path = config['log_directory'] + "/" + config['run_number'] + "-{:.2f}".format(all_scores['overall_sari'])
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-        save_config(config, folder_path)
-        save_output("sys_out_" + config['run_number'], folder_path, sys_sents=sys_sents)
-        config['run_number'] += 1
-        save_config(config)
+    # print("all scores", all_scores)
+    #
+    # folder_path = config['log_directory'] + "/" + config['run_number'] + "-{:.2f}".format(all_scores['overall_sari'])
+    # if not os.path.exists(folder_path):
+    #     os.makedirs(folder_path)
+    #     save_config(config, folder_path)
+    #     save_output("sys_out_" + config['run_number'], folder_path, sys_sents=sys_sents)
+    #     config['run_number'] += 1
+    #     save_config(config)
 
     print(stats)
 
