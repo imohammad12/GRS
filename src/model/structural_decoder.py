@@ -9,7 +9,7 @@ from model.embed_regularize import embedded_dropout
 from model.locked_dropout import LockedDropout
 import json
 
-conf_file = open("config.json", "r")
+conf_file = open("../config.json", "r")
 config = json.load(conf_file)
 
 print("here is structural decoder")
