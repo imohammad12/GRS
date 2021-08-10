@@ -1127,7 +1127,7 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
 
     # TODO
     imr_dir_path = '/home/m25dehgh/simplification/improved-ParaBank-rewriter'
-    bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt "
+    bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
 
     # print(bashCommand)
     os.system(bashCommand)
