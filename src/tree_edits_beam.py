@@ -21,7 +21,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     fre_scorel = 0
     all_par_calls = 0
     beam_calls = 0
-    start_index = 203
+    start_index = config['start_index']
     stats = {'ls': 0, 'dl': 0, 'las': 0, 'rl': 0, 'par': 0}
     sys_sents = []
     lm_forward.load_state_dict(torch.load(config['lm_name'] + '.pt'))

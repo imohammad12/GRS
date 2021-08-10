@@ -47,5 +47,6 @@
     "log_directory": "/home/m25dehgh/simplification/outputs/asset",
     "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset/dataset/test-simp/",
     "orig_file_path": "/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.norm.orig",
-    "run_number": 12
+    "run_number": 12,
+    "start_index": 203,
 }
