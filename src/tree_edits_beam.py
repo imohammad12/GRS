@@ -202,14 +202,14 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                                          reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True)
                     p /= 2.0
 
+                # no repetitive sentence
+                sent_list.append(sent)
                 # if the candidate sentence is able to increase the score by a threshold value, add it to the beam
                 if p > prob_old * config['threshold'][operation]:
                     new_beam[sent] = [p, operation, orig_sent]
-                    # record the edit operation by which the candidate sentence was created
-                    stats[operation] += 1
-                else:
-                    # if the threshold is not crossed, add it to a list so that the sentence is not considered in the future
-                    sent_list.append(sent)
+                # else:
+                #     # if the threshold is not crossed, add it to a list so that the sentence is not considered in the future
+                #     sent_list.append(sent)
         if new_beam == {}:
             # if there are no candidate sentences, exit
             break
@@ -231,6 +231,9 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
         maxvalue_sent = max_candidate[0]
 
         for accepted_sent, details_sent in new_beam.items():
+            # record the edit operation by which the candidate sentence was created
+            stats[details_sent[1]] += 1
+
             # if the operation used for this candidate sentence is paraphrasing
             # we save the root of negative constraints used in this step and add them to
             # negative constraints in the next steps to prevent from looping between synonym words
