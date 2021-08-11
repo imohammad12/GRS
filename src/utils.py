@@ -227,7 +227,7 @@ class Lang:
                 '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src',
                 encoding='utf-8').read().split('\n')
             test_dst = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
+                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/orig-test-dst/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
                 encoding='utf-8').read().split('\n')
 
             # print("Loading Asset instead of Newsela data")  # changed
