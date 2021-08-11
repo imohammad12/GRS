@@ -164,7 +164,8 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             beam_calls += 1
 
             # get candidate sentence through different edit operations
-            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict, stemmer)
+            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict,
+                                           stemmer, beam[key])
 
             # new_testing
             all_par_calls += candidates[1]
@@ -203,7 +204,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
 
                 # if the candidate sentence is able to increase the score by a threshold value, add it to the beam
                 if p > prob_old * config['threshold'][operation]:
-                    new_beam[sent] = [p, operation]
+                    new_beam[sent] = [p, operation, orig_sent]
                     # record the edit operation by which the candidate sentence was created
                     stats[operation] += 1
                 else:
@@ -225,8 +226,20 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
         # print(new_beam)
         # we'll get top beam_size (or <= beam size) candidates
 
-        # get the top scoring sentence. This will act as the source sentence for the next iteartion                
-        maxvalue_sent = max(new_beam.items(), key=lambda x: x[1])[0]
+        # get the top scoring sentence. This will act as the source sentence for the next iteartion
+        max_candidate = max(new_beam.items(), key=lambda x: x[1])
+        maxvalue_sent = max_candidate[0]
+
+        for accepted_sent, details_sent in new_beam.items():
+            # if the operation used for this candidate sentence is paraphrasing
+            # we save the root of negative constraints used in this step and add them to
+            # negative constraints in the next steps to prevent from looping between synonym words
+            if details_sent[1] == 'par':
+                unchanged_sent = details_sent[2]
+                extracted_comp_toks = comp_extract(unchanged_sent, comp_simp_class_model, tokenizer_deberta)
+                neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
+                new_beam[accepted_sent] = details_sent.append(neg_consts)
+
         perpf = new_beam[maxvalue_sent][0]
         input_sent = maxvalue_sent
         # for the next iteration

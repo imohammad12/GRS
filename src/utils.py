@@ -1060,13 +1060,13 @@ def neg_consts_words(comp_toks, tokens, stemmer):
 
     for tok in comp_toks:
 
-        # Each token should be a word, not a part of a word
+        # Each token should be a starting token, not a part of a word or special token
         if tok[0] == 'Ġ' and tok not in special_toks:
 
             # first word is usually selected mistakably so we do not pass it to the paraphraser
             if tokens.index(tok) + 1 != len(tokens) and tokens.index(tok) != 1:
 
-                # We want the token be single word, not a starting part of a word
+                # We want the token be single word, not just the starting part of a word
                 if tokens[tokens.index(tok) + 1][0] == 'Ġ':
                     negs.append(tok[1:])
 
@@ -1091,7 +1091,7 @@ def neg_consts_words(comp_toks, tokens, stemmer):
     return new_neg
 
 
-def const_paraph(sent, neg_const, entities, rest_pos_const=False):
+def const_paraph(sent, neg_const, entities):
     stp_words = nltk.corpus.stopwords.words('english')
 
     # sent = sent.translate(str.maketrans('', '', string.punctuation))
@@ -1142,13 +1142,17 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     return f.read()
 
 
-def paraph(sent, leaves, entities, stemmer, rest_pos_const=False):
+def paraph(sent, leaves, entities, stemmer, details_sent):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
     extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
     neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
 
-    sent = const_paraph(sent, neg_consts, entities, rest_pos_const )
+    # Adding used negetavie constraints in the previous steps to this step to prevent generating deleted words
+    if details_sent[1] == 'par':
+        neg_consts += details_sent[3]
+
+    sent = const_paraph(sent, neg_consts, entities )
 
     print('new: ', sent)
     if sent != -1 and sent != 1:
@@ -1236,14 +1240,14 @@ def correct(sent):
     return convert_to_sent(s)
 
 
-def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
+def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent):
     sent = sent.replace('%', ' percent')
     tree = next(parser.raw_parse(sent))
 
-    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer)
+    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent)
 
 
-def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
+def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent):
     s = []
     p = []
     used_neg_consts = []
@@ -1254,7 +1258,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
     # comented for testing paraphrasing and deletion in a sequential order instead of a parallel method in beam search
     if config['constrained_paraphrasing']:
-        sp = paraph(sent, "", entities, stemmer, rest_pos_const=False)
+        sp = paraph(sent, "", entities, stemmer, details_sent)
         if sp not in sent_list and sp != -1:
             s.append({sp: 'par'})
             all_par_calls += 1
