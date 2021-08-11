@@ -1149,8 +1149,8 @@ def paraph(sent, leaves, entities, stemmer, details_sent):
     neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
 
     # Adding used negetavie constraints in the previous steps to this step to prevent generating deleted words
-    if details_sent[1] == 'par':
-        neg_consts += details_sent[3]
+    # if details_sent[1] == 'par':
+    #     neg_consts += details_sent[3]
 
     sent = const_paraph(sent, neg_consts, entities )
 
