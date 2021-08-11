@@ -1,0 +1,40 @@
+below are some useful links to facilitate your involvement .
+below are some useful links to to help you get involved .
+are some useful links below .
+0.8880303055047989 0.20687381245863395 0.46581196581196577 0.7099358974358974 0.6874999999999999 0.0 5.240000000000002 66.40000000000003
+
+Number 0: Average Sentence Level Perplexity, Bleu, SARI 
+0.8880303055047989 0.20687381245863395 0.46581196581196577
+
+this was demonstrated in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
+this was shown in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
+this was demonstrated in the urey in 1953 .
+0.8883107528090477 0.09512897085716242 0.10407521722343704 0.29660065167031113 0.015625 0.0 2.280000000000001 92.965
+
+Number 0: Average Sentence Level Perplexity, Bleu, SARI 
+0.8883107528090477 0.09512897085716242 0.10407521722343704
+
+this was demonstrated in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
+this was shown in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
+this was shown by stanley l . miller and harold c . urey in 1953 . hartel .
+0.888789176940918 0.6228224580346512 0.4594443750693751 0.8009521728271729 0.2648809523809524 0.3125 3.355714285714285 95.93928571428573
+
+Number 0: Average Sentence Level Perplexity, Bleu, SARI 
+0.888789176940918 0.6228224580346512 0.4594443750693751
+
+before the advent of the pocket calculator it was the most commonly used calculation tool in science and engineering .
+it was the most commonly used calculation tool before the invention of the pocket calculator.
+it was the most commonly used computation tool in science and engineering .
+0.8328589498996735 0.33913176178439003 0.36722076035801526 0.5395771439889087 0.5620851370851371 0.0 9.740000000000002 46.60500000000002
+
+Number 0: Average Sentence Level Perplexity, Bleu, SARI 
+0.8328589498996735 0.33913176178439003 0.36722076035801526
+
+before the advent of the pocket calculator it was the most commonly used calculation tool in science and engineering .
+it was the most commonly used calculation tool before the invention of the pocket calculator.
+it was the calculation tool in science and engineering .
+0.8888147547841072 0.11912706467773798 0.21909172121036527 0.2319643633202955 0.4253108003108003 0.0 7.58666666666667 56.70000000000002
+
+Number 0: Average Sentence Level Perplexity, Bleu, SARI 
+0.8888147547841072 0.11912706467773798 0.21909172121036527
+
