@@ -88,11 +88,11 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
 
     print("all scores", all_scores)
 
-    folder_path = config['log_directory'] + "/" + config['run_number'] + "-{:.2f}".format(all_scores['overall_sari'])
+    folder_path = config['log_directory'] + "/" + str(config['run_number']) + "-{:.2f}".format(all_scores['overall_sari'])
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
         save_config(config, folder_path)
-        save_output("sys_out_" + config['run_number'], folder_path, sys_sents=sys_sents)
+        save_output("sys_out_" + str(config['run_number']), folder_path, sys_sents=sys_sents)
         config['run_number'] += 1
         save_config(config)
 
