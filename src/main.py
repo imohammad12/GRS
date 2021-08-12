@@ -66,7 +66,7 @@ elif config['operation'] == "sample":
 			save_config(config)
 
 			importlib.reload(sys.modules['utils'])
-			from utiti import *
+			from utils import *
 
 			if config['set'] == 'valid':
 				sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
