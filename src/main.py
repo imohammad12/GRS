@@ -65,7 +65,7 @@ elif config['operation'] == "sample":
 
 			save_config(config)
 
-			importlib.reload(sys.modules['utiti'])
+			importlib.reload(sys.modules['utils'])
 			from utiti import *
 
 			if config['set'] == 'valid':
