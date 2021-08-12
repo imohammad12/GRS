@@ -2,6 +2,7 @@ import importlib
 import sys
 from utils import *
 import json
+import numpy as np
 # importlib.reload(sys.modules['utils'])
 print("Mode is")
 print(device)
