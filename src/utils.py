@@ -224,10 +224,10 @@ class Lang:
                 '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
                 encoding='utf-8').read().split('\n')
             test_src = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src',
+                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/small-testing-newsela/sample-100.src',
                 encoding='utf-8').read().split('\n')
             test_dst = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/orig-test-dst/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
+                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/small-testing-newsela/ref/sample-100.dst',
                 encoding='utf-8').read().split('\n')
 
             # print("Loading Asset instead of Newsela data")  # changed
@@ -1683,4 +1683,14 @@ def read_sys_out_from_file_name(root_path, config):
     print("len of pre-appended sys_sents form file_name:", len(sys_sents))
     return sys_sents
 
+def save_and_log(all_scores, sys_sents, config):
+    folder_path = config['log_directory'] + "/" + str(config['run_number']) + "-{:.2f}".format(all_scores['overall_sari'])
 
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+        save_config(config, folder_path)
+        save_output("sys_out_" + str(config['run_number']), folder_path, sys_sents=sys_sents)
+        config['run_number'] += 1
+        save_config(config)
+
+    return config
