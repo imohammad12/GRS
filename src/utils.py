@@ -1672,4 +1672,15 @@ def load_config():
     conf_file.close()
     return config_dict
 
+def read_sys_out_from_file_name(root_path, config):
+    raw_output = open(root_path + '/' + config["file_name"], encoding='utf-8').read().split('\n')
+    sys_sents = []
+
+    for i in range(len(raw_output)):
+        if i % 8 == 2:
+            sys_sents.append(raw_output[i])
+
+    print("len of pre-appended sys_sents form file_name:", len(sys_sents))
+    return sys_sents
+
 
