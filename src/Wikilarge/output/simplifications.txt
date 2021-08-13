@@ -803,3 +803,11 @@ they were important events in the struggle .
 three selma marches .
 0.887985572218895 0.05876350803261634 0.3490726962081128 0.0625 0.9847180886243386 0.0 5.246666666666666 62.79000000000002
 
+pops continued writing and singing about the movement until his last days .
+pops continued writing and singing about the movement until just before he died .
+pops continued writing and singing .
+0.888131894171238 0.20963108813020287 0.37043650793650795 0.6291666666666667 0.48214285714285715 0.0 7.600000000000001 49.48000000000002
+
+Number 99: Average Sentence Level Perplexity, Bleu, SARI 
+0.888131894171238 0.20963108813020287 0.37043650793650795
+
