@@ -58,7 +58,10 @@ elif config['operation'] == "sample":
 
 	# Testing multiple configurations
 	for del_threshold in np.arange(0.85, 1.25, 0.05):
-		for par_threshold in np.arange(0.9, 1.25, 0.05):
+		for par_threshold in np.arange(0.85, 1.25, 0.05):
+
+			if del_threshold < 0.9 and par_threshold < 1.1:
+				continue
 
 			config = load_config()
 
