@@ -23,7 +23,7 @@
 [INFO:sockeye.encoder] sockeye.encoder.Embedding dtype: float32
 [INFO:sockeye.encoder] sockeye.encoder.Embedding dtype: float32
 [INFO:sockeye.model] Loaded params from "/home/m25dehgh/simplification/improved-ParaBank-rewriter/params.best"
-[INFO:sockeye.inference] 1 model(s) loaded in 2.5432s
+[INFO:sockeye.inference] 1 model(s) loaded in 2.5305s
 [INFO:sockeye.inference] Translator (1 model(s) beam_size=20 beam_prune=20.00 beam_search_stop=all nbest_size=1 ensemble_mode=None max_batch_size=10 buckets_source=[10, 20, 30, 40, 50, 60, 70, 80, 90, 100] avoiding=0)
 [INFO:__main__] Translating...
-[INFO:__main__] Processed 1 lines. Total time: 1.2370, sec/sent: 1.2370, sent/sec: 0.8084
+[INFO:__main__] Processed 1 lines. Total time: 1.2405, sec/sent: 1.2405, sent/sec: 0.8061
