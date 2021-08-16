@@ -2,7 +2,12 @@ from utils import *
 import math
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction, corpus_bleu
 from model.SARI import calculate
-from config import model_config as config
+# from config import model_config as config
+import json
+
+# conf_file = open("config.json", "r")
+# config = json.load(conf_file)
+
 
 sf = SmoothingFunction()
 

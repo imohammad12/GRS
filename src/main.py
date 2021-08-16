@@ -1,13 +1,18 @@
 import importlib
 import sys
 from utils import *
+import json
+import numpy as np
 # importlib.reload(sys.modules['utils'])
 print("Mode is")
-print(config['operation'])
 print(device)
 # importlib.reload(sys.modules['config'])
-from config import model_config as config
+# from config import model_config as config
 
+conf_file = open("config.json", "r")
+config = json.load(conf_file)
+
+print(config['operation'])
 if config['operation'] == 'train_lm':
 	from model.structural_decoder import DecoderGRU
 	from test_structured import *
@@ -50,10 +55,30 @@ elif config['operation'] == "sample":
 	start_time = time.time()
 
 	from tree_edits_beam import *
-	if config['set'] == 'valid':
-		sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time)
-	elif config['set'] == 'test':
-		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time)
+
+	# Testing multiple configurations
+	for del_threshold in np.arange(0.85, 1.25, 0.05):
+		for par_threshold in np.arange(0.85, 1.25, 0.05):
+
+			if del_threshold < 0.9 and par_threshold < 1.1:
+				continue
+
+			config = load_config()
+
+			config['threshold']['par'] = par_threshold
+			config['threshold']['dl'] = del_threshold
+
+			save_config(config)
+
+			importlib.reload(sys.modules['utils'])
+			from utils import *
+
+			if config['set'] == 'valid':
+				sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+			elif config['set'] == 'test':
+				sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+
+			open(config['file_name'], "w").close()  # changed
 
 	end = time.time()
 	print(f"Runtime of the program is {end - start_time}")

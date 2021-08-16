@@ -8,7 +8,8 @@ import string
 import pickle
 import re
 import random
-from config import model_config as config
+# from config import model_config as config
+import json
 import torch
 import torch.nn as nn
 from torch.utils import data
@@ -32,12 +33,20 @@ import copy
 from normalizing import *  # CHANGED
 from types import ModuleType
 from importlib import reload
+from tqdm import tqdm
+from pathlib import Path
+from easse.sari import corpus_sari, get_corpus_sari_operation_scores
+
 
 import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from pattern.en import lexeme
 from sentence_transformers import SentenceTransformer, util
 from collections import defaultdict
+
+conf_file = open("config.json", "r")
+config = json.load(conf_file)
+conf_file.close()
 
 print(config)
 '''from allennlp.modules.elmo import Elmo, batch_to_ids
@@ -181,14 +190,9 @@ class Lang:
                              encoding='utf-8').read().split('\n')
             valid_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.valid.simp.0',
                              encoding='utf-8').read().split('\n')
-            # test_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
-            #                 encoding='utf-8').read().split('\n')
-            # test_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.simp.0',
-            #                 encoding='utf-8').read().split('\n')
-
-            test_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/testing.src',
+            test_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
                             encoding='utf-8').read().split('\n')
-            test_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/testing.dst',
+            test_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.simp.0',
                             encoding='utf-8').read().split('\n')
 
             # train_src = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.norm',
@@ -220,10 +224,10 @@ class Lang:
                 '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
                 encoding='utf-8').read().split('\n')
             test_src = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src',
+                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/small-testing-newsela/sample-100.src',
                 encoding='utf-8').read().split('\n')
             test_dst = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
+                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/small-testing-newsela/ref/sample-100.dst',
                 encoding='utf-8').read().split('\n')
 
             # print("Loading Asset instead of Newsela data")  # changed
@@ -398,11 +402,9 @@ def getvocab(pairs, min_freq_inp, min_freq_out, outputvocab, outputword2count):
 
 def convert_to_sent(sent):
     s = ''
-    # print(sent)
     for i in range(len(sent)):
         if sent[i] not in '':
             s = s + sent[i] + ' '
-    # print(s)
     return s[:-1]
 
 
@@ -410,7 +412,6 @@ def getIDF(outputword2count, N):
     idf = {}
     for k, v in outputword2count.items():
         idf[k] = math.log2(N / v)
-    # print(idf)
     return idf
 
 
@@ -1059,13 +1060,13 @@ def neg_consts_words(comp_toks, tokens, stemmer):
 
     for tok in comp_toks:
 
-        # Each token should be a word, not a part of a word
+        # Each token should be a starting token, not a part of a word or special token
         if tok[0] == 'Ġ' and tok not in special_toks:
 
             # first word is usually selected mistakably so we do not pass it to the paraphraser
             if tokens.index(tok) + 1 != len(tokens) and tokens.index(tok) != 1:
 
-                # We want the token be single word, not a starting part of a word
+                # We want the token be single word, not just the starting part of a word
                 if tokens[tokens.index(tok) + 1][0] == 'Ġ':
                     negs.append(tok[1:])
 
@@ -1090,15 +1091,18 @@ def neg_consts_words(comp_toks, tokens, stemmer):
     return new_neg
 
 
-def const_paraph(sent, neg_const, entities, rest_pos_const=False):
+def const_paraph(sent, neg_const, entities):
     stp_words = nltk.corpus.stopwords.words('english')
 
     # sent = sent.translate(str.maketrans('', '', string.punctuation))
 
-    print("neg constraints: ", " ".join(neg_const))
+    # removing all occurances of empty spaces from negative constraints
+    neg_const = list(filter(lambda a: a != ' ' and a != '', neg_const))
+    # print("neg constraints: ", neg_const)
+
     # neg_const = neg_const.split(" ")
     pos_const = []
-    print("entities are: ", entities)
+
     neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
 
     # if len(neg_const) >= 5:
@@ -1126,7 +1130,7 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
 
     # TODO
     imr_dir_path = '/home/m25dehgh/simplification/improved-ParaBank-rewriter'
-    bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt "
+    bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
 
     # print(bashCommand)
     os.system(bashCommand)
@@ -1138,13 +1142,17 @@ def const_paraph(sent, neg_const, entities, rest_pos_const=False):
     return f.read()
 
 
-def paraph(sent, leaves, entities, stemmer, rest_pos_const=False):
+def paraph(sent, leaves, entities, stemmer, details_sent):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
     extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
     neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
 
-    sent = const_paraph(sent, neg_consts, entities, rest_pos_const )
+    # Adding used negetavie constraints in the previous steps to this step to prevent generating deleted words
+    if details_sent[1] == 'par':
+        neg_consts += details_sent[3]
+
+    sent = const_paraph(sent, neg_consts, entities )
 
     print('new: ', sent)
     if sent != -1 and sent != 1:
@@ -1152,6 +1160,8 @@ def paraph(sent, leaves, entities, stemmer, rest_pos_const=False):
     else:
         return sent
 
+
+# changed
 
 def delete_leaves(sent, leaves):
     s = ''
@@ -1230,14 +1240,14 @@ def correct(sent):
     return convert_to_sent(s)
 
 
-def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
+def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent):
     sent = sent.replace('%', ' percent')
     tree = next(parser.raw_parse(sent))
 
-    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer)
+    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent)
 
 
-def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer):
+def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent):
     s = []
     p = []
     used_neg_consts = []
@@ -1245,56 +1255,65 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
     # print(sent)
     phrase_tags = ['S', 'ADJP', 'ADVP', 'CONJP', 'FRAG', 'INTJ', 'LST', 'NAC', 'NP', 'NX', 'PP', 'PRN', 'PRT',
                    'QP', 'RRC', 'UCP', 'VP', 'WHADJP', 'WHAVP', 'WHNP', 'WHPP', 'X', 'SBAR']
-    pos = tree.treepositions()
-    for i in range(len(pos) - 1, 1, -1):
-        if not isinstance(tree[pos[i]], str):
-            if tree[pos[i]].label() in phrase_tags:
-                p.append(tree[pos[i]].leaves())
 
-    for i in range(len(p)):
-        if config['lexical_simplification']:
-            simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict)
-            for st in simple:
-                if st not in sent_list:
-                    s.append({st: 'ls'})
-        if config['delete_leaves']:
-            sd = delete_leaves(sent, p[i])
-            if sd not in sent_list:
-                s.append({sd: 'dl'})
-        if config['leaves_as_sent']:
-            sc = construct_sent(p[i])
-            if sc not in sent_list:
-                s.append({sc: 'las'})
-        if config['reorder_leaves']:
-            temp = []
-            reorder_leaves(sent, p, p[i], convert_to_sent(p[i]), sd, temp)
-            for rl in temp:
-                s.append({rl: 'rl'})
-
-        # changed
-        # if config['constrained_paraphrasing']:
-        #
-        #     # creat the negative constraints
-        #     neg_consts = gen_neg_const(entities, p[i])
-        #     if neg_consts not in used_neg_consts:
-        #
-        #         # add the negative constraints to the used_neg_consts to avoid
-        #         # using the same negative constraints in the future
-        #         used_neg_consts.append(neg_consts)
-        #         sp = paraph(sent, p[i], entities, rest_pos_const=False)
-        #
-        #         # new_testing
-        #         # if sp == 1:
-        #         #     all_par_calls += 1
-        #
-        #         if sp not in sent_list and sp != -1:
-        #             s.append({sp: 'par'})
-
+    # comented for testing paraphrasing and deletion in a sequential order instead of a parallel method in beam search
     if config['constrained_paraphrasing']:
-        sp = paraph(sent, "", entities, stemmer, rest_pos_const=False)
+        sp = paraph(sent, "", entities, stemmer, details_sent)
         if sp not in sent_list and sp != -1:
             s.append({sp: 'par'})
             all_par_calls += 1
+
+    # To revert to the previous for (paraphrasing and deletion working in parallel in the beam search) search for
+    # paraphrased_sent and change every place it was found.
+    # paraphrased_sent = paraph(sent, "", entities, stemmer, rest_pos_const=False)
+
+    if config['lexical_simplification'] or config['delete_leaves'] or config['reorder_leaves']:
+
+        # tree = next(parser.raw_parse(paraphrased_sent))
+        pos = tree.treepositions()
+        for i in range(len(pos) - 1, 1, -1):
+            if not isinstance(tree[pos[i]], str):
+                if tree[pos[i]].label() in phrase_tags:
+                    p.append(tree[pos[i]].leaves())
+
+        for i in range(len(p)):
+            if config['lexical_simplification']:
+                simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict)
+                for st in simple:
+                    if st not in sent_list:
+                        s.append({st: 'ls'})
+            if config['delete_leaves']:
+                sd = delete_leaves(sent, p[i])
+                # sd = delete_leaves(paraphrased_sent, p[i])
+                if sd not in sent_list:
+                    s.append({sd: 'dl'})
+            if config['leaves_as_sent']:
+                sc = construct_sent(p[i])
+                if sc not in sent_list:
+                    s.append({sc: 'las'})
+            if config['reorder_leaves']:
+                temp = []
+                reorder_leaves(sent, p, p[i], convert_to_sent(p[i]), sd, temp)
+                for rl in temp:
+                    s.append({rl: 'rl'})
+
+            # if config['constrained_paraphrasing']:
+            #
+            #     # creat the negative constraints
+            #     neg_consts = gen_neg_const(entities, p[i])
+            #     if neg_consts not in used_neg_consts:
+            #
+            #         # add the negative constraints to the used_neg_consts to avoid
+            #         # using the same negative constraints in the future
+            #         used_neg_consts.append(neg_consts)
+            #         sp = paraph(sent, p[i], entities, rest_pos_const=False)
+            #
+            #         # new_testing
+            #         # if sp == 1:
+            #         #     all_par_calls += 1
+            #
+            #         if sp not in sent_list and sp != -1:
+            #             s.append({sp: 'par'})
 
     # new_testing
     if len(s) > 0:
@@ -1525,18 +1544,18 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
     # zero
     sim_score = semantic_sim(input_sent, orig_sent)
-    if sim_score < 0.80:  # threshold should be added to config file # TODO
+    if sim_score < config['sim_threshold']:  # threshold should be added to config file # TODO
         prob = 0
 
-    score_grammar_input = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
-    score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
-
-    print("candidate sentence and original sentence grammar validity probability, respectively: ",
-          score_grammar_input['prob'], score_grammar_orig['prob'])
-
-    if score_grammar_input["prob"] < 0.67 and score_grammar_orig['prob'] > 0.67:
-        # threshold should be added to config file # TODO
-        prob = 0
+    # score_grammar_input = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
+    # score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
+    #
+    # print("candidate sentence and original sentence grammar validity probability, respectively: ",
+    #       score_grammar_input['prob'], score_grammar_orig['prob'])
+    #
+    # if score_grammar_input["prob"] < 0.67 and score_grammar_orig['prob'] > 0.67:
+    #     # threshold should be added to config file # TODO
+    #     prob = 0
 
     return prob
 
@@ -1566,3 +1585,108 @@ class Dataset(data.Dataset):
 def load_data(dataset, batch_size):
     dataloader = data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
     return dataloader
+
+
+def similarity_simplicity_grammar_assess(sys_sents, orig_file_path):
+    orig = open(orig_file_path, encoding='utf-8').read().split('\n')
+
+    acu_score_similarity = 0.
+    acu_score_grammar_output = 0.
+    acu_score_grammar_orig = 0.
+    acu_score_simplicity_output = 0.
+    acu_score_simplicity_orig = 0.
+    acu_len_output = 0.
+    acu_len_orig = 0.
+
+    for i in tqdm(range(len(sys_sents))):
+        output_sent = sys_sents[i]
+        orig_sent = orig[i]
+
+        score_similarity = semantic_sim(output_sent, orig_sent)
+        score_grammar_output = get_model_out(model_grammar_checker, tokenizer_deberta, output_sent)["prob"]
+        score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)["prob"]
+        score_simplicity_output = 1 - get_model_out(comp_simp_class_model, tokenizer_deberta, output_sent)["prob"]
+        score_simplicity_orig = 1 - get_model_out(comp_simp_class_model, tokenizer_deberta, orig_sent)["prob"]
+        len_output = len(output_sent.split())
+        len_orig = len(orig_sent.split())
+
+        acu_score_similarity += score_similarity
+        acu_score_grammar_output += score_grammar_output
+        acu_score_grammar_orig += score_grammar_orig
+        acu_score_simplicity_output += score_simplicity_output
+        acu_score_simplicity_orig += score_simplicity_orig
+        acu_len_output += len_output
+        acu_len_orig += len_orig
+
+    return {
+        "similarity": acu_score_similarity / len(sys_sents),
+        "gram_out": acu_score_grammar_output / len(sys_sents),
+        "gram_orig": acu_score_grammar_orig / len(sys_sents),
+        "simplicity_out": acu_score_simplicity_output / len(sys_sents),
+        "simplicity_orig:": acu_score_simplicity_orig / len(sys_sents),
+        "len_out": acu_len_output / len(sys_sents),
+        "len_orig": acu_len_orig / len(sys_sents),
+    }
+
+
+def calculate_sari_easse(ref_folder_path, sys_sents, orig_file_path):
+    orig_sents = open(orig_file_path, encoding='utf-8').read().split('\n')
+
+    orig_sents = orig_sents[:len(sys_sents)]
+
+    ref_sents = []
+
+    for i, file_path in enumerate(Path(ref_folder_path).glob("*")):
+        f = open(file_path).read().split('\n')
+        ref_sents.append(f[:len(sys_sents)])
+
+    add, keep, delete = get_corpus_sari_operation_scores(orig_sents=orig_sents, sys_sents=sys_sents,
+                                                         refs_sents=ref_sents)
+    overal_sari = (add + keep + delete) / 3
+
+    print(f'overal sari:{overal_sari}\
+    add: {add}, keep: {keep}, delete: {delete}')
+
+    return {"overall_sari": overal_sari, "addition": add, "keep": keep, "deletion": delete}
+
+
+def save_output(file_name, saving_path, sys_sents):
+    with open(saving_path + '/' + file_name, "w") as file:
+        for i in range(len(sys_sents)):
+            file.write(sys_sents[i] + "\n")
+
+
+def save_config(config_dict, saving_path="."):
+    config_file = open(saving_path + "/config.json", "w")
+    json.dump(config_dict, config_file)
+    config_file.close()
+
+
+def load_config():
+    conf_file = open("config.json", "r")
+    config_dict = json.load(conf_file)
+    conf_file.close()
+    return config_dict
+
+def read_sys_out_from_file_name(root_path, config):
+    raw_output = open(root_path + '/' + config["file_name"], encoding='utf-8').read().split('\n')
+    sys_sents = []
+
+    for i in range(len(raw_output)):
+        if i % 8 == 2:
+            sys_sents.append(raw_output[i])
+
+    print("len of pre-appended sys_sents form file_name:", len(sys_sents))
+    return sys_sents
+
+def save_and_log(all_scores, sys_sents, config):
+    folder_path = config['log_directory'] + "/" + str(config['run_number']) + "-{:.2f}".format(all_scores['overall_sari'])
+
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+        save_config(config, folder_path)
+        save_output("sys_out_" + str(config['run_number']), folder_path, sys_sents=sys_sents)
+        config['run_number'] += 1
+        save_config(config)
+
+    return config
