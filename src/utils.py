@@ -1665,6 +1665,10 @@ def save_config(config_dict, saving_path="."):
     json.dump(config_dict, config_file)
     config_file.close()
 
+def save_json(dictionary, saving_path, file_name):
+    json_file = open(saving_path + "/" + file_name + ".json", "w")
+    json.dump(dictionary, json_file)
+    json_file.close()
 
 def load_config():
     conf_file = open("config.json", "r")
@@ -1692,5 +1696,6 @@ def save_and_log(all_scores, sys_sents, config):
         save_output("sys_out_" + str(config['run_number']), folder_path, sys_sents=sys_sents)
         config['run_number'] += 1
         save_config(config)
+        save_json(all_scores, folder_path, "scores")
 
     return config
