@@ -1606,7 +1606,7 @@ def similarity_simplicity_grammar_assess(sys_sents, orig_file_path):
         output_sent = sys_sents[i]
         orig_sent = orig[i]
 
-        score_similarity = semantic_sim(output_sent, orig_sent)
+        score_similarity = semantic_sim(output_sent, orig_sent).item()
         score_grammar_output = get_model_out(model_grammar_checker, tokenizer_deberta, output_sent)["prob"]
         score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)["prob"]
         score_simplicity_output = 1 - get_model_out(comp_simp_class_model, tokenizer_deberta, output_sent)["prob"]
