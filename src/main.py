@@ -50,7 +50,7 @@ elif config['operation'] == "sample":
 	lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words, config['num_layers'], 
 		output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'], config['use_structural_as_standard']).to(device)
 
-	# open(config['file_name'], "w").close()  # changed
+	open(config['file_name'], "w").close()  # changed
 
 	start_time = time.time()
 
@@ -58,29 +58,24 @@ elif config['operation'] == "sample":
 
 	# Testing multiple configurations
 	# for del_threshold in np.arange(0.85, 1.25, 0.05):
-	for par_threshold in np.arange(0.70, 0.85, 0.05):
+	# for par_threshold in np.arange(0.70, 0.85, 0.05):
 
-		config = load_config()
+	config = load_config()
 
-		config['threshold']['par'] = par_threshold
-		# config['threshold']['dl'] = del_threshold
+	# config['threshold']['par'] = par_threshold
+	# config['threshold']['dl'] = del_threshold
 
-		if par_threshold == 0.70:
-			config['start_index'] = 100
-		else:
-			config['start_index'] = 0
+	save_config(config)
 
-		save_config(config)
+	importlib.reload(sys.modules['utils'])
+	from utils import *
 
-		importlib.reload(sys.modules['utils'])
-		from utils import *
+	if config['set'] == 'valid':
+		sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+	elif config['set'] == 'test':
+		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
 
-		if config['set'] == 'valid':
-			sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-		elif config['set'] == 'test':
-			sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-
-		open(config['file_name'], "w").close()  # changed
+	open(config['file_name'], "w").close()  # changed
 
 	end = time.time()
 	print(f"Runtime of the program is {end - start_time}")
