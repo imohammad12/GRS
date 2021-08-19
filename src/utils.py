@@ -190,9 +190,8 @@ class Lang:
                              encoding='utf-8').read().split('\n')
             valid_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.valid.simp.0',
                              encoding='utf-8').read().split('\n')
-            test_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
-                            encoding='utf-8').read().split('\n')
-            test_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.simp.0',
+            test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
+            test_dst = open(config['ref_folder_path'] + "/" + 'sample-100.dst.0',
                             encoding='utf-8').read().split('\n')
 
             # train_src = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.norm',
