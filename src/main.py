@@ -57,25 +57,29 @@ elif config['operation'] == "sample":
 	from tree_edits_beam import *
 
 	# Testing multiple configurations
-	# for del_threshold in np.arange(0.85, 1.25, 0.05):
-	# for par_threshold in np.arange(0.70, 0.85, 0.05):
+	for i, del_threshold in enumerate(np.arange(2.5, 5, 0.5)):
+		# for par_threshold in np.arange(0.70, 0.85, 0.05):
+		config = load_config()
 
-	config = load_config()
+		if i == 0:
+			config['delete_leaves'] = False
+		else:
+			config['delete_leaves'] = True
 
-	# config['threshold']['par'] = par_threshold
-	# config['threshold']['dl'] = del_threshold
+		# config['threshold']['par'] = par_threshold
+		config['threshold']['dl'] = del_threshold
 
-	save_config(config)
+		save_config(config)
 
-	importlib.reload(sys.modules['utils'])
-	from utils import *
+		importlib.reload(sys.modules['utils'])
+		from utils import *
 
-	if config['set'] == 'valid':
-		sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-	elif config['set'] == 'test':
-		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+		if config['set'] == 'valid':
+			sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+		elif config['set'] == 'test':
+			sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
 
-	open(config['file_name'], "w").close()  # changed
+		open(config['file_name'], "w").close()  # changed
 
 	end = time.time()
 	print(f"Runtime of the program is {end - start_time}")
