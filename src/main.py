@@ -57,7 +57,7 @@ elif config['operation'] == "sample":
 	from tree_edits_beam import *
 
 	# Testing multiple configurations
-	for i, del_threshold in enumerate(np.arange(5, 10, 1)):
+	for i, del_threshold in enumerate(range(5, 10, 1)):
 		# for par_threshold in np.arange(0.70, 0.85, 0.05):
 		config = load_config()
 
