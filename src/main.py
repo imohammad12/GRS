@@ -57,14 +57,11 @@ elif config['operation'] == "sample":
 	from tree_edits_beam import *
 
 	# Testing multiple configurations
-	for i, del_threshold in enumerate(range(5, 10, 1)):
+	for i, del_threshold in enumerate(range(9, 13, 1)):
 		# for par_threshold in np.arange(0.70, 0.85, 0.05):
 		config = load_config()
 
-		if i == 0:
-			config['delete_leaves'] = False
-		else:
-			config['delete_leaves'] = True
+		config['delete_leaves'] = True
 
 		# config['threshold']['par'] = par_threshold
 		config['threshold']['dl'] = del_threshold
