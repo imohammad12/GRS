@@ -87,7 +87,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     simil_simp_gram_scores = similarity_simplicity_grammar_assess(sys_sents=sys_sents,
                                          orig_file_path=config['orig_file_path'])
 
-    all_scores = {**sari_scores, **simil_simp_gram_scores}
+    all_scores = {**sari_scores, **simil_simp_gram_scores, **stats}
 
     print("all scores", all_scores)
 
