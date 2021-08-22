@@ -2,6 +2,6 @@
   "log_directory": "/home/m25dehgh/simplification/outputs/turkcorpus/small-testing-sample",
   "ref_folder_path": "/home/m25dehgh/simplification/datasets/turkcorpus/small-testing-turk/ref",
   "orig_file_path": "/home/m25dehgh/simplification/datasets/turkcorpus/small-testing-turk/sample-100.src",
-  "run_number": 94, "start_index": 0,
+  "run_number": 95, "start_index": 0,
   "simplicity_thresh": 0.45
 }

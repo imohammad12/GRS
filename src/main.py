@@ -61,7 +61,10 @@ elif config['operation'] == "sample":
 		# for par_threshold in np.arange(0.70, 0.85, 0.05):
 		config = load_config()
 
-		config['delete_leaves'] = True
+		if i == 0:
+			config['delete_leaves'] = False
+		else:
+			config['delete_leaves'] = True
 
 		# config['threshold']['par'] = par_threshold
 		config['threshold']['dl'] = del_threshold
