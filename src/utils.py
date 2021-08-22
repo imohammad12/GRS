@@ -1537,6 +1537,10 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     if sim_score < config['sim_threshold']:  # threshold should be added to config file # TODO
         score_final = 0
 
+    # If the candidate sentence was too simplified do not accepted it.
+    if score_simplicity > config['simplicity_thresh']:
+        score_final = 0
+
     # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
     # score_grammar_original = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
     # print("candidate sentence grammar validity probability: ", score_grammar_candidate['prob'],
