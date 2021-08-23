@@ -225,7 +225,7 @@ class Lang:
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
             #                 encoding='utf-8').read().split('\n')
-            test_dst = open(config['ref_folder_path'] + "/" + 'sample-100.dst.0',
+            test_dst = open(config['ref_folder_path'] + "/" + 'test.8turkers.tok.turk.0',
                             encoding='utf-8').read().split('\n')
 
             # print("Loading Asset instead of Newsela data")  # changed
