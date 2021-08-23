@@ -190,9 +190,8 @@ class Lang:
                              encoding='utf-8').read().split('\n')
             valid_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.valid.simp.0',
                              encoding='utf-8').read().split('\n')
-            test_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
-                            encoding='utf-8').read().split('\n')
-            test_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.simp.0',
+            test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
+            test_dst = open(config['ref_folder_path'] + "/" + 'sample-100.dst.0',
                             encoding='utf-8').read().split('\n')
 
             # train_src = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.norm',
@@ -223,12 +222,11 @@ class Lang:
             valid_dst = open(
                 '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
                 encoding='utf-8').read().split('\n')
-            test_src = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/small-testing-newsela/sample-100.src',
-                encoding='utf-8').read().split('\n')
-            test_dst = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/small-testing-newsela/ref/sample-100.dst',
-                encoding='utf-8').read().split('\n')
+            test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
+            # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
+            #                 encoding='utf-8').read().split('\n')
+            test_dst = open(config['ref_folder_path'] + "/" + 'sample-100.dst.0',
+                            encoding='utf-8').read().split('\n')
 
             # print("Loading Asset instead of Newsela data")  # changed
             # train_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
@@ -1547,6 +1545,10 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     if sim_score < config['sim_threshold']:  # threshold should be added to config file # TODO
         prob = 0
 
+    # If the candidate sentence was too simplified do not accepted it.
+    if score_simplicity > config['simplicity_thresh']:
+        prob = 0
+
     # score_grammar_input = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
     # score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
     #
@@ -1602,7 +1604,7 @@ def similarity_simplicity_grammar_assess(sys_sents, orig_file_path):
         output_sent = sys_sents[i]
         orig_sent = orig[i]
 
-        score_similarity = semantic_sim(output_sent, orig_sent)
+        score_similarity = semantic_sim(output_sent, orig_sent).item()
         score_grammar_output = get_model_out(model_grammar_checker, tokenizer_deberta, output_sent)["prob"]
         score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)["prob"]
         score_simplicity_output = 1 - get_model_out(comp_simp_class_model, tokenizer_deberta, output_sent)["prob"]
@@ -1661,6 +1663,10 @@ def save_config(config_dict, saving_path="."):
     json.dump(config_dict, config_file)
     config_file.close()
 
+def save_json(dictionary, saving_path, file_name):
+    json_file = open(saving_path + "/" + file_name + ".json", "w")
+    json.dump(dictionary, json_file)
+    json_file.close()
 
 def load_config():
     conf_file = open("config.json", "r")
@@ -1688,5 +1694,6 @@ def save_and_log(all_scores, sys_sents, config):
         save_output("sys_out_" + str(config['run_number']), folder_path, sys_sents=sys_sents)
         config['run_number'] += 1
         save_config(config)
+        save_json(all_scores, folder_path, "scores")
 
     return config
