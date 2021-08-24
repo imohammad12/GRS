@@ -1526,40 +1526,47 @@ def semantic_sim(sentA, sentB):
 
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
                     embedding_weights, idf, unigram_prob, cs):
+    score_final = 0
+    if config['score_function'] == 'new':
+        out_simplicity = get_model_out(comp_simp_class_model, tokenizer_deberta, input_sent)
+        prob_simplicity = out_simplicity["prob"]
+        score_simplicity = 1 - prob_simplicity
+        score_final = score_simplicity
 
+    elif config['score_function'] == 'old':
+        score_final = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent,
+                                        unigram_prob) ** config['sentence_probability_power']
+        # if cs:
+        #     prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
+        score_final *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
+        if config['check_min_length']:
+            score_final *= check_min_length(input_sent)
+        score_final /= len(input_sent.split(' ')) ** config['len_power']
+        if config['fre']:
+            score_final *= sentence_fre(input_sent.lower()) ** config['fre_power']
 
-    prob = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent,
-                                    unigram_prob) ** config['sentence_probability_power']
-    # if cs:
-    #     prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
-    prob *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
-    if config['check_min_length']:
-        prob *= check_min_length(input_sent)
-    prob /= len(input_sent.split(' ')) ** config['len_power']
-    if config['fre']:
-        prob *= sentence_fre(input_sent.lower()) ** config['fre_power']
+    else:
+        raise ValueError('Wrong score function')
 
     # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
     # zero
     sim_score = semantic_sim(input_sent, orig_sent)
-    if sim_score < config['sim_threshold']:  # threshold should be added to config file # TODO
-        prob = 0
+    if sim_score < config['sim_threshold']:
+        score_final = 0
 
     # If the candidate sentence was too simplified do not accepted it.
     if score_simplicity > config['simplicity_thresh']:
-        prob = 0
+        score_final = 0
 
-    # score_grammar_input = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
-    # score_grammar_orig = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
-    #
-    # print("candidate sentence and original sentence grammar validity probability, respectively: ",
-    #       score_grammar_input['prob'], score_grammar_orig['prob'])
-    #
-    # if score_grammar_input["prob"] < 0.67 and score_grammar_orig['prob'] > 0.67:
-    #     # threshold should be added to config file # TODO
-    #     prob = 0
+    # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
+    # score_grammar_original = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
+    # print("candidate sentence grammar validity probability: ", score_grammar_candidate['prob'],
+    #       "\n orginal sentence grammar prob:", score_grammar_original['prob'])
+    # if score_grammar_candidate["prob"] * 1.1 < score_grammar_original["prob"]: # add any "magic number" to config file TODO
+    #     score_final = 0
 
-    return prob
+    return score_final
+
 
 
 class Dataset(data.Dataset):

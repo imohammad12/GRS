@@ -4,4 +4,6 @@
   "orig_file_path": "/home/m25dehgh/simplification/datasets/turkcorpus/test.8turkers.tok.norm",
   "run_number": 109,
   "start_index": 0,
-  "simplicity_thresh": 0.45}
+  "simplicity_thresh": 0.45,
+  "score_function": "old"
+}
