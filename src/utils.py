@@ -224,10 +224,10 @@ class Lang:
                 '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
                 encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
-            #                 encoding='utf-8').read().split('\n')
-            test_dst = open(config['ref_folder_path'] + "/" + 'test.8turkers.tok.turk.0',
+            test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
                             encoding='utf-8').read().split('\n')
+            # test_dst = open(config['ref_folder_path'] + "/" + 'test.8turkers.tok.turk.0',
+            #                 encoding='utf-8').read().split('\n')
 
             # print("Loading Asset instead of Newsela data")  # changed
             # train_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
@@ -1551,14 +1551,22 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     else:
         raise ValueError('Wrong score function')
 
-    # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
-    # zero
-    sim_score = semantic_sim(input_sent, orig_sent)
-    if sim_score < config['sim_threshold']:
-        score_final = 0
+
+    # should we use the previous simplicity calculation method or the new one
+    if config['sim_threshold']:
+        if config['sim_threshold'] == "old_sim" and cs:
+            score_final *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
+
+        else:
+            # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
+            # zero
+            sim_score = semantic_sim(input_sent, orig_sent)
+            if sim_score < config['sim_threshold']:
+                score_final = 0
+
 
     # If the candidate sentence was too simplified do not accepted it.
-    if score_simplicity > config['simplicity_thresh']:
+    if config['simplicity_thresh'] and score_simplicity > config['simplicity_thresh']:
         score_final = 0
 
     # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
