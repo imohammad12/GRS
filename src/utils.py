@@ -1557,7 +1557,7 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
         if config['sim_threshold'] == "old_sim" and cs:
             score_final *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
 
-        else:
+        elif config['sim_threshold'] != "old_sim":
             # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
             # zero
             sim_score = semantic_sim(input_sent, orig_sent)
