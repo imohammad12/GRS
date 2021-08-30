@@ -1653,12 +1653,17 @@ def calculate_sari_easse(ref_folder_path, sys_sents, orig_file_path):
     orig_sents = open(orig_file_path, encoding='utf-8').read().split('\n')
 
     orig_sents = orig_sents[:len(sys_sents)]
+    orig_sents = all_norms(orig_sents)
+
+    sys_sents = all_norms(sys_sents)
 
     ref_sents = []
 
     for i, file_path in enumerate(Path(ref_folder_path).glob("*")):
         f = open(file_path).read().split('\n')
-        ref_sents.append(f[:len(sys_sents)])
+        ref_sent_i = f[:len(sys_sents)]
+        ref_sent_i = all_norms(ref_sent_i)
+        ref_sents.append(ref_sent_i)
 
     add, keep, delete = get_corpus_sari_operation_scores(orig_sents=orig_sents, sys_sents=sys_sents,
                                                          refs_sents=ref_sents)
