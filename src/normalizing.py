@@ -25,8 +25,17 @@ def normalize(sentence, lowercase: bool = True, tokenizer: str = '13a', return_s
     return normalized_sent
 
 
-def all_norms(sentence):
-    for x in ['13a', 'intl', 'moses', 'penn']:
-        sentence = normalize(sentence, tokenizer=x)
+def all_norms(sentences: Union[str, List[str]]):
+    if type(sentences) == str:
+        for x in ['13a', 'intl', 'moses', 'penn']:
+            sentences = normalize(sentences, tokenizer=x)
 
-    return sentence
+    else:
+        output = []
+        for sent in sentences:
+            for x in ['13a', 'intl', 'moses', 'penn']:
+                sent = normalize(sent, tokenizer=x)
+            output.append(sent)
+        sentences = output
+
+    return sentences
