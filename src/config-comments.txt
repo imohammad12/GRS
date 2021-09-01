@@ -16,3 +16,7 @@
     False : similarity threshold will not be used in calculating score.
     "old_sim" : old version of similarity threshold will be used. Should not be used with new score function.
     float : similarity threshold used for new score function. Should not be used with old score function
+
+"config['score_function']" : str
+    "new": using new score function
+    "old": using old score function
