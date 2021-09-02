@@ -3,3 +3,4 @@ src/Wikilarge/structured_lm_forward_300_150_0_4_freq5.pt
 */__pycache__/*
 src/Wikilarge/Word2vec/
 src/Newsela/Word2vec/
+src/nohup.out
