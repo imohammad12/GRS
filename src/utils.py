@@ -228,7 +228,9 @@ class Lang:
             #                 encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
             #                 encoding='utf-8').read().split('\n')
-            test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
+            # test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
+            #                 encoding='utf-8').read().split('\n')
+            test_dst = open(config['ref_folder_path'] + "/" + 'sample-100.dst.0',
                             encoding='utf-8').read().split('\n')
 
             # print("Loading Asset instead of Newsela data")  # changed
