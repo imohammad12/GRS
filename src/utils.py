@@ -1571,6 +1571,8 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
 
     # If the candidate sentence was too simplified do not accepted it.
     if config['simplicity_thresh'] and score_simplicity > config['simplicity_thresh']:
+        print("simplicity score ({}) is lower than simplicity threshold ({})".format(score_simplicity
+                                                                                      , config['simplicity_thresh']))
         score_final = 0
 
     # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
