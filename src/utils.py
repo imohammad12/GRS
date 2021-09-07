@@ -1530,7 +1530,7 @@ def semantic_sim(sentA, sentB):
 
 
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
-                    embedding_weights, idf, unigram_prob, cs):
+                    embedding_weights, idf, unigram_prob, cs, config):
     score_final = 0
 
     out_simplicity = get_model_out(comp_simp_class_model, tokenizer_deberta, input_sent)

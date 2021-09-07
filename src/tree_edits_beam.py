@@ -142,7 +142,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                                                                                             in doc]), dep_lang)
 
         prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang,
-                                   input_sent, orig_sent, embedding_weights, idf, unigram_prob, False)
+                                   input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config)
         # if config['double_LM']:
         #     elmo_tensor_b, input_sent_tensor_b, tag_tensor_b, dep_tensor_b = tokenize_sent_special(reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
         #         tok in doc])), tag_lang, reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
@@ -186,7 +186,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 # calculate score for each candidate sentence using the scoring function
                 p = calculate_score(lm_forward, elmo_tensor, candidate_tensor, candidate_tag_tensor,
                                     candidate_dep_tensor, input_lang, sent, orig_sent, embedding_weights, idf,
-                                    unigram_prob, True)
+                                    unigram_prob, True, config)
                 print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
 
                 if config['double_LM']:
@@ -196,7 +196,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                         reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
                     p += calculate_score(lm_backward, elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b,
                                          candidate_dep_tensor_b, input_lang, reverse_sent(sent),
-                                         reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True)
+                                         reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True, config)
                     p /= 2.0
 
                 # no repetitive sentence
@@ -280,7 +280,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                                                                                                       for tok in doc]),
                                                                                                  dep_lang)
         perpf = calculate_score(lm_forward, elmo_tensor, best_input_tensor, best_tag_tensor, best_dep_tensor,
-                                input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False)
+                                input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config)
         if config['double_LM']:
             elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b, best_dep_tensor_b = tokenize_sent_special(
                 reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
@@ -288,7 +288,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
             perpf += calculate_score(lm_backward, elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b,
                                      best_dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent),
-                                     embedding_weights, idf, unigram_prob, False)
+                                     embedding_weights, idf, unigram_prob, False, config)
     # print(perpf)
     # print('fkgl and fre')
     fkgl_scorel = sentence_fkgl(input_sent)
