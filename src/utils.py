@@ -1059,7 +1059,7 @@ def neg_consts_words(comp_toks, tokens, stemmer):
     # maximum number of accepted negative constraints
     max_num_accepted_consts = 4
     negs = []
-    special_toks = ['[SEP]', '[CLS]', '.', 'Ġ.']
+    special_toks = ['[SEP]', '[CLS]', '.', 'Ġ.', ',']
 
     for tok in comp_toks:
 
@@ -1070,7 +1070,8 @@ def neg_consts_words(comp_toks, tokens, stemmer):
             if tokens.index(tok) + 1 != len(tokens) and tokens.index(tok) != 1:
 
                 # We want the token be single word, not just the starting part of a word
-                if tokens[tokens.index(tok) + 1][0] == 'Ġ':
+                # So the next token should start with 'G' or be a special token
+                if tokens[tokens.index(tok) + 1][0] == 'Ġ' or tokens[tokens.index(tok) + 1] in special_toks:
                     negs.append(tok[1:])
 
     new_neg = []
