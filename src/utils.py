@@ -1161,6 +1161,7 @@ def paraph(sent, leaves, entities, stemmer, details_sent):
     print('new: ', sent)
     if sent != -1 and sent != 1:
         # return correct(all_norms(sent))
+        sent = sent.replace("\n", '')
         return correct(sent)
     else:
         return sent
