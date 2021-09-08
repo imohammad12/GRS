@@ -50,7 +50,7 @@ elif config['operation'] == "sample":
 	lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words, config['num_layers'], 
 		output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'], config['use_structural_as_standard']).to(device)
 
-	# open(config['file_name'], "w").close()
+	open(config['file_name'], "w").close()
 
 	start_time = time.time()
 
@@ -58,30 +58,30 @@ elif config['operation'] == "sample":
 
 	# Testing multiple configurations
 	# for i, del_threshold in enumerate(range(15, 25, 2)):
-	for i, simplicity_thresh in enumerate(np.arange(0.70, 0.85, 0.05)):
-		config = load_config()
+	# for i, simplicity_thresh in enumerate(np.arange(0.70, 0.85, 0.05)):
+	# 	config = load_config()
+	#
+	# 	if i == 0:
+	# 		config['simplicity_thresh'] = False
+	# 	else:
+	# 		config['simplicity_thresh'] = np.round(simplicity_thresh, 2)
 
-		if i == 0:
-			config['simplicity_thresh'] = False
-		else:
-			config['simplicity_thresh'] = np.round(simplicity_thresh, 2)
+	# config['delete_leaves'] = False
 
-		# config['delete_leaves'] = False
+	# config['threshold']['par'] = par_threshold
+	# config['threshold']['dl'] = del_threshold
 
-		# config['threshold']['par'] = par_threshold
-		# config['threshold']['dl'] = del_threshold
+	# save_config(config)
 
-		save_config(config)
+	importlib.reload(sys.modules['utils'])
+	from utils import *
 
-		importlib.reload(sys.modules['utils'])
-		from utils import *
+	if config['set'] == 'valid':
+		sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+	elif config['set'] == 'test':
+		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
 
-		if config['set'] == 'valid':
-			sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-		elif config['set'] == 'test':
-			sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-
-		open(config['file_name'], "w").close()
+	open(config['file_name'], "w").close()
 
 	end = time.time()
 	print(f"Runtime of the program is {end - start_time}")
