@@ -58,7 +58,7 @@ elif config['operation'] == "sample":
 
 	# Testing multiple configurations
 	# for i, del_threshold in enumerate(range(15, 25, 2)):
-	for i, simplicity_thresh in enumerate(np.arange(0.50, 0.29, -0.05)):
+	for i, simplicity_thresh in enumerate(np.arange(0.25, 0.24, -0.05)):
 
 		config = load_config()
 		config['sim_threshold'] = np.round(simplicity_thresh, 2)
