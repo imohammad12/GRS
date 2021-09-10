@@ -251,10 +251,10 @@ class Lang:
         # print("normalizing")
         # train_src = [all_norms(i) for i in train_src]
         # train_dst = [all_norms(i) for i in train_dst]
-        # valid_src = [all_norms(i) for i in valid_src]
-        # valid_dst = [all_norms(i) for i in valid_dst]
-        # test_src = [all_norms(i) for i in test_src]
-        # test_dst = [all_norms(i) for i in test_dst]
+        valid_src = [all_norms(i) for i in valid_src]
+        valid_dst = [all_norms(i) for i in valid_dst]
+        test_src = [all_norms(i) for i in test_src]
+        test_dst = [all_norms(i) for i in test_dst]
         # changed
         # lexical_simplification
         # train_src = [normalize(s, lowercase=True, tokenizer='moses') for s in train_src]
@@ -1160,9 +1160,9 @@ def paraph(sent, leaves, entities, stemmer, details_sent):
 
     print('new: ', sent)
     if sent != -1 and sent != 1:
-        # return correct(all_norms(sent))
-        sent = sent.replace("\n", '')
-        return correct(sent)
+        return correct(all_norms(sent))
+        # sent = sent.replace("\n", '')
+        # return correct(sent)
     else:
         return sent
 
