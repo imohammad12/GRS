@@ -1527,7 +1527,7 @@ def semantic_sim(sentA, sentB):
     cosine_scores = util.pytorch_cos_sim(embeddings1, embeddings2)
 
     # Output the pairs with their score
-    print("similarity of the two sentences: ", cosine_scores[0][0])
+    # print("similarity of the two sentences: ", cosine_scores[0][0])
 
     return cosine_scores[0][0]
 

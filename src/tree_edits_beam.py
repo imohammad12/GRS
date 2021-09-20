@@ -133,13 +133,15 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
         # new_testing
 
         doc = nlp(input_sent)
-        elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor = tokenize_sent_special(input_sent.lower(), input_lang,
-                                                                                       convert_to_sent(
-                                                                                           [(tok.tag_).upper() for
-                                                                                            tok in doc]), tag_lang,
-                                                                                       convert_to_sent(
-                                                                                           [(tok.dep_).upper() for tok
-                                                                                            in doc]), dep_lang)
+        elmo_tensor, \
+        input_sent_tensor, \
+        tag_tensor, \
+        dep_tensor = tokenize_sent_special(input_sent.lower(),
+                                           input_lang,
+                                           convert_to_sent([(tok.tag_).upper() for tok in doc]),
+                                           tag_lang,
+                                           convert_to_sent([(tok.dep_).upper() for tok in doc]),
+                                           dep_lang)
 
         prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang,
                                    input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config)
@@ -187,7 +189,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 p = calculate_score(lm_forward, elmo_tensor, candidate_tensor, candidate_tag_tensor,
                                     candidate_dep_tensor, input_lang, sent, orig_sent, embedding_weights, idf,
                                     unigram_prob, True, config)
-                print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
+                # print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
 
                 if config['double_LM']:
                     elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b, candidate_dep_tensor_b = tokenize_sent_special(
@@ -213,14 +215,12 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
         # print(new_beam)
         new_beam_sorted_list = sorted(new_beam.items(), key=lambda x: x[1])[-config['beam_size']:]
         # sort the created beam on the basis of scores from the scoring function
-        # print(new_beam_sorted_list)
         new_beam = {}
         # top k top scoring sentences selected. In our experiments the beam size is 1
         # copying the new_beam_sorted_list into new_beam
         for key in new_beam_sorted_list:
             new_beam[key[0]] = key[1]
         # new_beam = new_beam_sorted_list.copy()
-        # print(new_beam)
         # we'll get top beam_size (or <= beam size) candidates
 
         # get the top scoring sentence. This will act as the source sentence for the next iteartion
@@ -231,6 +231,8 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             # record the edit operation by which the candidate sentence was created
             stats[details_sent[1]] += 1
 
+            print(f"accepted sentence: {accepted_sent}\n new prob: {details_sent[0]}, old prob: {prob_old}"
+                  f"operation: {details_sent[1]}")
             # if the operation used for this candidate sentence is paraphrasing
             # we save the root of negative constraints used in this step and add them to
             # negative constraints in the next steps to prevent from looping between synonym words
