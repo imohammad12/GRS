@@ -1156,6 +1156,7 @@ def paraph(sent, leaves, entities, stemmer, details_sent):
     if details_sent[1] == 'par':
         neg_consts += details_sent[3]
 
+    print(f"\nsentence is :{sent}\nnegative constraints:{neg_consts}", )
     sent = const_paraph(sent, neg_consts, entities )
 
     print('new: ', sent)
