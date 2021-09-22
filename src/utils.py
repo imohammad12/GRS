@@ -172,10 +172,10 @@ class Lang:
                              '.full.aner.ori.train.src', encoding='utf-8').read().split('\n')
             train_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
                              '.full.aner.ori.train.dst', encoding='utf-8').read().split('\n')
-            # valid_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
-            #                  '.full.aner.ori.valid.src', encoding='utf-8').read().split('\n')
-            # valid_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
-            #                  '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
+            valid_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+                             '.full.aner.ori.valid.src', encoding='utf-8').read().split('\n')
+            valid_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+                             '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
             # test_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki.full'
             #                 '.aner.ori.test.src', encoding='utf-8').read().split('\n')
             # test_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki.full'
@@ -186,9 +186,9 @@ class Lang:
             #                  encoding='utf-8').read().split('\n')
             # train_dst = open('/home/m25dehgh/simplification/asset/dataset/asset.test.simp.0',
             #                  encoding='utf-8').read().split('\n')
-            valid_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            valid_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
-                            encoding='utf-8').read().split('\n')
+            # valid_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
+            # valid_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
+            #                 encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
             #                 encoding='utf-8').read().split('\n')
