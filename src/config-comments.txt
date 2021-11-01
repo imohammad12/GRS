@@ -20,3 +20,7 @@
 "config['score_function']" : str
     "new": using new score function
     "old": using old score function
+
+  "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
+  "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
+  "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
