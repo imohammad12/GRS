@@ -5,3 +5,4 @@ src/Wikilarge/Word2vec/
 src/Newsela/Word2vec/
 src/nohup.out
 /.idea/aws.xml
+/.idea/controllable-simplification.iml
