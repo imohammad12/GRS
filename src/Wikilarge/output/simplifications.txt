@@ -5862,3 +5862,27 @@ baghdadi said he liked american thriller writer dan brown .
 Number 732: Average Sentence Level Perplexity, Bleu, SARI 
 0.8175645868254554 0.16469924372712932 0.3675229854345757
 
+baghdadi , wearing a pressed sweater and leather shoes , said he favors writers like the late iraqi sociologist ali wardi and american thriller writer dan brown .
+he likes to read the iraqi writer ali wardi and the american writer dan brown .
+baghdadi , he said he liked writers like that .
+0.8875581324100494 0.027385973411104613 0.2861253561253561 0.05555555555555555 0.8028205128205128 0.0 2.280000000000001 92.965
+
+Number 733: Average Sentence Level Perplexity, Bleu, SARI 
+0.8875581324100494 0.027385973411104613 0.2861253561253561
+
+even more interesting is that fewer than 1 in 5 engineers in the auto industry are women , according to lindsay brooke , author of the report ` ` women in vehicle engineering , ` ` recently published in sae ` s international automotive engineering magazine .
+she is involved in designing the cars ` frames , engines and bodies .
+even more interesting is that fewer than 1 in 5 engineers in magazine .
+0.8820863291621208 0.03737437943747671 0.3509259259259259 0.06944444444444445 0.9833333333333334 0.0 7.633846153846157 63.486153846153854
+
+Number 734: Average Sentence Level Perplexity, Bleu, SARI 
+0.8848222307860851 0.03238017642429066 0.318525641025641
+
+and fewer than 20 percent of engineers are women , according to lindsay brooke .
+fewer than 1 in 5 car engineers are women , according to lindsay brooke .
+and fewer than 20 percent of engineers .
+0.7123437821865082 0.054752948205155604 0.07744883040935673 0.1385964912280702 0.09375 0.0 3.997142857142858 78.87285714285717
+
+Number 735: Average Sentence Level Perplexity, Bleu, SARI 
+0.8273294145862261 0.03983776701791231 0.23816670415354624
+
