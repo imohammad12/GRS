@@ -86,6 +86,8 @@ path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/
 model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
 tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
 
+semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
+
 SOS_token = 1
 EOS_token = 2
 PAD_token = 0
@@ -1516,7 +1518,7 @@ def calcluate_unigram_probability(sent, unigram_prob, input_lang):
 def semantic_sim(sentA, sentB):
     """returns the probability that sentA and sentB have the same meaning"""
 
-    semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2')
+    # semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2')
 
     # Two lists of sentences
     sentences1 = [sentA]
