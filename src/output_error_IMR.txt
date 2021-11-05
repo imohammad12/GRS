@@ -1,9 +1,9 @@
 [INFO:sockeye.utils] Sockeye version 1.18.85, commit c1b1da8dc154a87cde0c41476eac2c7633fe6f9a, path /home/m25dehgh/anaconda3/envs/IMR/lib/python3.8/site-packages/sockeye/__init__.py
 [INFO:sockeye.utils] MXNet version 1.7.0, path /home/m25dehgh/anaconda3/envs/IMR/lib/python3.8/site-packages/mxnet/__init__.py
-[INFO:sockeye.utils] Command: /home/m25dehgh/anaconda3/envs/IMR/lib/python3.8/site-packages/sockeye/translate.py -m /home/m25dehgh/simplification/improved-ParaBank-rewriter --json-input --output-type json --beam-size 20 --beam-prune 20 --batch-size 10 --device-ids 2 --disable-device-locking
-[INFO:sockeye.utils] Arguments: Namespace(avoid_list=None, batch_size=10, beam_prune=20.0, beam_search_stop='all', beam_size=20, bucket_width=10, checkpoints=None, chunk_size=None, config=None, device_ids=[2], disable_device_locking=True, ensemble_mode='linear', input=None, input_factors=None, json_input=True, length_penalty_alpha=1.0, length_penalty_beta=0.0, lock_dir='/tmp', loglevel='INFO', max_input_len=None, max_output_length_num_stds=2, models=['/home/m25dehgh/simplification/improved-ParaBank-rewriter'], nbest_size=1, output=None, output_type='json', override_dtype=None, quiet=False, restrict_lexicon=None, restrict_lexicon_topk=None, sample=None, seed=None, skip_topk=False, softmax_temperature=None, strip_unknown_words=False, sure_align_threshold=0.9, use_cpu=False)
+[INFO:sockeye.utils] Command: /home/m25dehgh/anaconda3/envs/IMR/lib/python3.8/site-packages/sockeye/translate.py -m /home/m25dehgh/simplification/improved-ParaBank-rewriter --json-input --output-type json --beam-size 20 --beam-prune 20 --batch-size 10 --device-ids 0 --disable-device-locking
+[INFO:sockeye.utils] Arguments: Namespace(avoid_list=None, batch_size=10, beam_prune=20.0, beam_search_stop='all', beam_size=20, bucket_width=10, checkpoints=None, chunk_size=None, config=None, device_ids=[0], disable_device_locking=True, ensemble_mode='linear', input=None, input_factors=None, json_input=True, length_penalty_alpha=1.0, length_penalty_beta=0.0, lock_dir='/tmp', loglevel='INFO', max_input_len=None, max_output_length_num_stds=2, models=['/home/m25dehgh/simplification/improved-ParaBank-rewriter'], nbest_size=1, output=None, output_type='json', override_dtype=None, quiet=False, restrict_lexicon=None, restrict_lexicon_topk=None, sample=None, seed=None, skip_topk=False, softmax_temperature=None, strip_unknown_words=False, sure_align_threshold=0.9, use_cpu=False)
 [INFO:sockeye.utils] Attempting to acquire 1 GPUs of 3 GPUs.
-[INFO:__main__] Translate Device: gpu(2)
+[INFO:__main__] Translate Device: gpu(0)
 [INFO:sockeye.inference] Loading 1 model(s) from ['/home/m25dehgh/simplification/improved-ParaBank-rewriter'] ...
 [INFO:sockeye.vocab] Vocabulary (19581 words) loaded from "/home/m25dehgh/simplification/improved-ParaBank-rewriter/vocab.src.0.json"
 [INFO:sockeye.vocab] Vocabulary (8 words) loaded from "/home/m25dehgh/simplification/improved-ParaBank-rewriter/vocab.src.1.json"
@@ -23,7 +23,7 @@
 [INFO:sockeye.encoder] sockeye.encoder.Embedding dtype: float32
 [INFO:sockeye.encoder] sockeye.encoder.Embedding dtype: float32
 [INFO:sockeye.model] Loaded params from "/home/m25dehgh/simplification/improved-ParaBank-rewriter/params.best"
-[INFO:sockeye.inference] 1 model(s) loaded in 2.5305s
+[INFO:sockeye.inference] 1 model(s) loaded in 2.6225s
 [INFO:sockeye.inference] Translator (1 model(s) beam_size=20 beam_prune=20.00 beam_search_stop=all nbest_size=1 ensemble_mode=None max_batch_size=10 buckets_source=[10, 20, 30, 40, 50, 60, 70, 80, 90, 100] avoiding=0)
 [INFO:__main__] Translating...
-[INFO:__main__] Processed 1 lines. Total time: 1.2405, sec/sent: 1.2405, sent/sec: 0.8061
+[INFO:__main__] Processed 1 lines. Total time: 3.5079, sec/sent: 3.5079, sent/sec: 0.2851
