@@ -60,7 +60,7 @@ elif config['operation'] == "sample":
 	# for i, del_threshold in enumerate(np.arange(0.9, 1.25, 0.1)):
 	for j, par_thresh in enumerate(np.arange(0.7, 1.05, 0.1)):
 
-		if np.round(par_threshold, 2) == 0.8:
+		if np.round(par_thresh, 2) == 0.8:
 			continue
 
 		config = load_config()
