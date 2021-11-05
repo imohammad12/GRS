@@ -5886,3 +5886,123 @@ and fewer than 20 percent of engineers .
 Number 735: Average Sentence Level Perplexity, Bleu, SARI 
 0.8273294145862261 0.03983776701791231 0.23816670415354624
 
+and fewer than 1 in 5 engineers in the auto industry are women , according to lindsay brooke , author of the report ` ` women in vehicle engineering . ` `
+fewer than 1 in 5 car engineers are women , according to lindsay brooke .
+and less than one out of five mechanics in the auto industry are women .
+0.7822345048189163 0.06608973813188644 0.25527526395173455 0.13749999999999998 0.6283257918552037 0.0 5.884285714285717 77.81071428571428
+
+Number 736: Average Sentence Level Perplexity, Bleu, SARI 
+0.7822345048189163 0.06608973813188644 0.25527526395173455
+
+at colby - sawyer college , winfield was a standout student who created the campus ` first gospel choir .
+he was a star student and began the school ` s first gospel choir .
+winfield was at colby - sawyer school .
+0.8878006339073181 0.03029704891446693 0.2952571733821734 0.0625 0.7518429487179488 0.07142857142857142 6.416666666666668 59.745000000000005
+
+Number 737: Average Sentence Level Perplexity, Bleu, SARI 
+0.8350175693631172 0.048193393523176684 0.275266218666954
+
+high - end expeditions now offer sushi , espresso , fully stocked bars and makeshift internet cafes as far up as 21,000 feet - - all requiring more equipment and sherpas .
+some of the tours give the climbers sushi , european coffee and more .
+high - end expeditions are offering sushes and espresses and up .
+0.31785398721694946 0.03408991996483855 0.3436923218899963 0.06976744186046512 0.9613095238095238 0.0 9.55 44.405
+
+Number 738: Average Sentence Level Perplexity, Bleu, SARI 
+0.662629708647728 0.043492235670397304 0.29807491974130146
+
+according to university of chicago officials , the library building would take up 3 to 5 acres of the parkland , with the rest being preserved as open space .
+the library building in chicago would only take a small piece of land .
+according to university of chicago officials , the library building would take up .
+0.8887115344405174 0.1350862565735142 0.4233044733044733 0.29491341991341996 0.975 0.0 12.690000000000001 25.455000000000013
+
+Number 739: Average Sentence Level Perplexity, Bleu, SARI 
+0.7191501650959253 0.06639074089617653 0.3293823081320944
+
+many african - american protesters were hurt in a voting rights march to the alabama capital of montgomery from selma 50 years ago .
+many african - americans were badly hurt during the march from selma 50 years ago .
+a number of african - american protesters were injured 50 years ago .
+0.8876810818910599 0.18975615964312306 0.41262292310086424 0.4720238095238095 0.7658449597787832 0.0 11.22727272727273 34.160909090909115
+
+Number 740: Average Sentence Level Perplexity, Bleu, SARI 
+0.7528563484549522 0.09106382464556584 0.34603043112584836
+
+he ends up being whipped to death for not revealing the location of escaped slaves .
+he is whipped to death because he would not help find runaway slaves .
+he ends up being whipped to death for not .
+0.8880719318985939 0.12451233733093904 0.41749957558781087 0.329879679144385 0.9226190476190477 0.0 -0.27999999999999936 113.10000000000002
+
+Number 741: Average Sentence Level Perplexity, Bleu, SARI 
+0.7753922790288925 0.0966385767597947 0.35794195520284217
+
+he is whipped to death for not telling the location of escaped slaves .
+he is whipped to death because he would not help find runaway slaves .
+he is whipped to death .
+0.8878170996904373 0.20963108813020287 0.6154100529100529 0.9365079365079365 0.9097222222222222 0.0 -1.8399999999999999 117.16000000000003
+
+Number 742: Average Sentence Level Perplexity, Bleu, SARI 
+0.7914529676948275 0.11278036409842443 0.39472311201815796
+
+wal - mart ` s involvement is important because it imports more fruits and vegetables from mexico than any other u . s . company .
+it buys more fruits and vegetables from mexico than any other u . s . company .
+wal - mart ` s involvement is important because it imports . company .
+0.8197675198316574 0.09694335999590689 0.07862842456020143 0.13094021873554934 0.10494505494505495 0.0 9.55 44.405
+
+Number 743: Average Sentence Level Perplexity, Bleu, SARI 
+0.7949922867119312 0.11080073858560974 0.3552112760859134
+
+the company imports more fruits and vegetables from mexico than any other u . s . company .
+it buys more fruits and vegetables from mexico than any other u . s . company .
+exports more fruits and vegetables from mexico than any other u . s .
+0.8274939656257629 0.7420016786832134 0.5099817037317037 0.9236951111951112 0.6062500000000001 0.0 7.773333333333333 60.70500000000001
+
+Number 744: Average Sentence Level Perplexity, Bleu, SARI 
+0.7986035843690237 0.18093417637423237 0.372407990268779
+
+and wal - mart , which imports more fruits and vegetables from mexico than any other u . s . company , announced its effort to force improvements up and down its supply chain .
+it buys more fruits and vegetables from mexico than any other u . s . company .
+and wal - mart , announced its effort to force its supply chain .
+0.7802972495555878 0.02725762876425167 0.16259968102073366 0.030769230769230774 0.4570298122929702 0.0 4.790909090909089 80.30636363636367
+
+Number 745: Average Sentence Level Perplexity, Bleu, SARI 
+0.7967729508876801 0.1655665216132343 0.3514271593439745
+
+at the same time , wal - mart , which imports more fruits and vegetables from mexico than any other u . s . company , announced its own effort to bring about improvements .
+it buys more fruits and vegetables from mexico than any other u . s . company .
+at the same time wal - mart announced its own efforts to bring about improvements .
+0.8638372421264648 0.022974228909810355 0.15552207975114168 0.009259259259259259 0.4573069799941658 0.0 6.727142857142859 71.76785714285715
+
+Number 746: Average Sentence Level Perplexity, Bleu, SARI 
+0.8028697046366605 0.152603585912923 0.3336176066537169
+
+the library building in chicago would take up 3 to 5 acres of parkland .
+the library building in chicago would only take a small piece of land .
+the chicago library building would take three to five hours .
+0.8788461685180664 0.07805069386252457 0.32770864756158874 0.2773109243697479 0.7058150183150182 0.0 4.830000000000002 78.24500000000002
+
+Number 747: Average Sentence Level Perplexity, Bleu, SARI 
+0.8092010766267776 0.14639084490872314 0.3331251933960396
+
+at colby - sawyer college , winfield was a top student who created the school ` s first gospel choir .
+he was a star student and began the school ` s first gospel choir .
+winfield was at colby - sawyer school .
+0.8878006339073181 0.03029704891446693 0.21277883623084862 0.07894736842105263 0.5593891402714932 0.0 6.416666666666668 59.745000000000005
+
+Number 748: Average Sentence Level Perplexity, Bleu, SARI 
+0.8152471964175885 0.13746055290916498 0.3238677813064095
+
+the state is the second - largest producer behind california , and is expected to harvest somewhere between 1 million and 1.2 million bushels this year , or about 66 million pounds , according to the state ` s avocado committee .
+it is expected to grow about 66 million pounds of avocados this year .
+the state is the second largest producer ` s avocado committee .
+0.6205992996692657 0.03408991996483855 0.2966483815748522 0.04761904761904762 0.8423260971055089 0.0 7.190000000000001 61.32500000000002
+
+Number 749: Average Sentence Level Perplexity, Bleu, SARI 
+0.8013437752212796 0.13007693627028452 0.3219235384684411
+
+more and more boys and girls are registering to play ultra - competitive basketball at younger ages : teams with third - graders - - and even second - graders - - are popping up .
+more and more boys and girls are playing competitive basketball at younger ages .
+more and more boys and girls are registering to play - are popping up .
+0.5981257855892181 0.41374412020518814 0.43659679003360186 0.5198753651972424 0.7899150049035633 0.0 4.91076923076923 83.0092307692308
+
+Number 750: Average Sentence Level Perplexity, Bleu, SARI 
+0.7877959092458089 0.14898808186594475 0.32956842190611846
+
