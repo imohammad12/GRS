@@ -1142,7 +1142,7 @@ def const_paraph(sent, neg_const, entities):
     bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
 
     # print(bashCommand)
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
     process.wait()
     if process.returncode != 0:
         raise ValueError('paraphrasing output command is not returuning correctly, process return code:', process.returncode)
