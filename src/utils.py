@@ -1141,7 +1141,7 @@ def const_paraph(sent, neg_const, entities):
     bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
 
     # print(bashCommand)
-    os.system(bashCommand)
+    print("os out code: ", os.system(bashCommand))
     # print("outtt:", os.popen(bashCommand).read())
 
     ff = open("./out_par.txt", "r")
