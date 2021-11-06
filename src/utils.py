@@ -36,6 +36,7 @@ from importlib import reload
 from tqdm import tqdm
 from pathlib import Path
 from easse.sari import corpus_sari, get_corpus_sari_operation_scores
+import subprocess
 
 
 import transformers
