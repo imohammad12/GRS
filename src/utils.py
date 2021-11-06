@@ -1133,8 +1133,8 @@ def const_paraph(sent, neg_const, entities):
     f.write(inp)
     f.close()
 
-    f = open("out_par.txt", "w")
-    f.close()
+    # f = open("out_par.txt", "w")
+    # f.close()
 
     # TODO
     imr_dir_path = '/home/m25dehgh/simplification/improved-ParaBank-rewriter'
@@ -1144,10 +1144,10 @@ def const_paraph(sent, neg_const, entities):
     os.system(bashCommand)
     # print("outtt:", os.popen(bashCommand).read())
 
-    f = open("./out_par.txt", "r")
+    ff = open("./out_par.txt", "r")
     # print("tiem testing: ", f.read())
     # print("tiem testing2: ", f.read())
-    return f.read()
+    return ff.read()
 
 
 def paraph(sent, leaves, entities, stemmer, details_sent):
