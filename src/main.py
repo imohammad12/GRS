@@ -58,17 +58,30 @@ elif config['operation'] == "sample":
 
 	# Testing multiple configurations
 	# for i, del_threshold in enumerate(np.arange(0.9, 1.25, 0.1)):
-	for j, par_thresh in enumerate(np.arange(0.9, 1.05, 0.1)):
-
-		if np.round(par_thresh, 2) == 0.8:
-			continue
-
+	# for j, par_thresh in enumerate(np.arange(0.9, 1.05, 0.1)):
+	for i in range(3):
 		config = load_config()
+
+		if i == 0:
+			config['threshold']['par'] = 0.7
+
+		elif i == 1:
+			config['threshold']['par'] = 0.8
+			config['delete_leaves'] = False
+
+		elif i == 2:
+			config['threshold']['par'] = 0.8
+			config['delete_leaves'] = True
+			config['constrained_paraphrasing'] = False
+		# if np.round(par_thresh, 2) == 0.8:
+		# 	continue
+
+
 		# config['sim_threshold'] = np.round(simplicity_thresh, 2)
 
 		# config['delete_leaves'] = False
 
-		config['threshold']['par'] = np.round(par_thresh, 2)
+		# config['threshold']['par'] = np.round(par_thresh, 2)
 		# config['threshold']['dl'] = np.round(del_threshold, 2)
 
 		save_config(config)
