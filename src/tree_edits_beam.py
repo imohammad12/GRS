@@ -34,7 +34,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
 
     for i in range(start_index, len(complex_sentences)):
         if len(complex_sentences[i].split(' ')) <= config['min_length']:
-            print(f'length of complex and simple sent list: {len(complex_sentences)}, {len(simple_sentences)}')
+            # print(f'length of complex and simple sent list: {len(complex_sentences)}, {len(simple_sentences)}')
             # new_testing
             sl, kl, dl, al, bl, pl, fkl, frl, par_calls, b_calls, out_sent = mcmc(complex_sentences[i],
                                                                                   simple_sentences[i], input_lang,
@@ -145,11 +145,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
 
         prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang,
                                    input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config)
-        # if config['double_LM']:
-        #     elmo_tensor_b, input_sent_tensor_b, tag_tensor_b, dep_tensor_b = tokenize_sent_special(reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
-        #         tok in doc])), tag_lang, reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
-        #     prob_old += calculate_score(lm_backward, elmo_tensor_b, input_sent_tensor_b, tag_tensor_b, dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, False)
-        #     prob_old /= 2.0
+
         # for the first time step the beam size is 1, just the original complex sentence
         if iter == 0:
             beam[input_sent] = [prob_old, 'original']

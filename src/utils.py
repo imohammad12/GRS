@@ -1142,11 +1142,12 @@ def const_paraph(sent, neg_const, entities):
     bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
 
     # print(bashCommand)
-    process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
-    process.wait()
-    if process.returncode != 0:
-        raise ValueError('paraphrasing output command is not returuning correctly, process return code:', process.returncode)
-    # print("os out code: ", os.system(bashCommand))
+    # process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
+    # process.wait()
+    # if process.returncode != 0:
+        # raise ValueError('paraphrasing output command is not returuning correctly, process return code:', process.returncode)
+
+    os.system(bashCommand)
     # print("outtt:", os.popen(bashCommand).read())
 
     ff = open("./out_par.txt", "r")
@@ -1258,6 +1259,7 @@ def correct(sent):
 
 def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent):
     sent = sent.replace('%', ' percent')
+    sent = sent.replace('` `', '`')
     tree = next(parser.raw_parse(sent))
 
     return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent)
