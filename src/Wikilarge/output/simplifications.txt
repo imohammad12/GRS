@@ -7326,3 +7326,1291 @@ for the first time in history countries have agreed that a treaty is needed `` t
 Number 915: Average Sentence Level Perplexity, Bleu, SARI 
 0.5179398372753088 0.1708232027493205 0.3359725134761867
 
+` ` for the first time in history , states recommended by consensus that an international treaty be negotiated to address the urgent crisis of biodiversity loss on the high seas , ` ` says daniela diz , a marine policy expert at wwf - lrb - world wildlife fund - rrb - , who sat in on the consultations , ` ` it ` s an important step forward . ` `
+for the first time in history , countries are joining together to protect the high seas .
+it is suggested for the first time in history that a deal be made on the need to deal with the crisis of biological losses on the high seas .
+0.7628818452358246 0.23804727615014665 0.6014062798690598 0.7747575806278796 0.9796621930512016 0.049799065928098185 9.55448275862069 78.2137931034483
+
+Number 916: Average Sentence Level Perplexity, Bleu, SARI 
+0.7628818452358246 0.23804727615014665 0.6014062798690598
+
+` ` for the first time in history , states recommended by consensus that an international treaty be negotiated to address the urgent crisis of biodiversity loss on the high seas , ` ` says daniela diz .
+for the first time in history , countries are joining together to protect the high seas .
+it is said for the first time in history that it is agreed that an agreement should be made to deal with the crisis of biological loss on the high seas .
+0.7955548763275146 0.2224158572580305 0.5772188197978161 0.7180944148438275 0.964712643678161 0.0488494008714597 10.583870967741937 74.39580645161291
+
+Number 917: Average Sentence Level Perplexity, Bleu, SARI 
+0.7792183607816696 0.23023156670408856 0.589312549833438
+
+much of the trawl ` s catch , or bycatch , is thrown back dead .
+fishermen end up throwing back a lot of dead sea life caught up in the nets .
+much of the trawl ` s catch , or bycatch , is thrown back dead .
+0.6704699397087097 0.03435448519978225 0.041666666666666664 0.125 0.0 0.0 -0.09333333333333371 117.105
+
+Number 918: Average Sentence Level Perplexity, Bleu, SARI 
+0.742968887090683 0.16493920620265312 0.4067639221111809
+
+twelve percent of the world ` s land is currently protected in national parks and wildlife preserves , while in comparison , just about 1 percent of the high seas is protected .
+more than one - tenth of the world ` s land is protected in national parks and wildlife preserves .
+twelve percent of the world ` s land is now protected in national parks and wildlife preserves while only about 1 percent of the high seas are protected .
+0.13411599397659302 0.39867347136028913 0.5469958566964443 0.747048176149939 0.8939393939393939 0.0 10.673333333333336 66.63000000000002
+
+Number 919: Average Sentence Level Perplexity, Bleu, SARI 
+0.5907556638121605 0.2233727724920621 0.44182190575749675
+
+even african - americans who studied science , technology , engineering and math - - winning fields in the job market - - have had a hard time finding work , said john schmitt .
+however , even blacks who studied them had a hard time finding work , said john schmitt .
+even the african - americans who had studied science , technology , engineering , and math - winning areas on the job force - had trouble finding jobs , john schmitt said .
+0.5888321697711945 0.034398456671020164 0.2555721930721931 0.1607947232947233 0.605921855921856 0.0 13.040000000000003 46.10000000000002
+
+Number 920: Average Sentence Level Perplexity, Bleu, SARI 
+0.5903709650039672 0.18557790932785373 0.404571963220436
+
+rich penick , a longtime associate director at myas , said it is not the lleytons of the world who are creating the demand for elite basketball at a younger and younger age .
+it is not the kids who are asking to play competitive basketball , but the parents .
+rich penick . . long - time coworker in myas . . argued it wasn ` t the lleytons of the world . . which created demand for top basketball in younger and younger years .
+0.3021203875541687 0.015332277009202122 0.30960400752004946 0.08695652173913043 0.841855500821018 0.0 10.236296296296299 69.76333333333335
+
+Number 921: Average Sentence Level Perplexity, Bleu, SARI 
+0.5423292020956675 0.15720363727474512 0.38874397060370497
+
+even blacks who have studied science , technology , engineering and math had a hard time finding work , said john schmitt .
+however , even blacks who studied them had a hard time finding work , said john schmitt .
+even blacks who have studied science , technology , engineering and math had a hard time finding work , said john schmitt .
+0.6112584173679352 0.5184989152196751 0.22874184343619872 0.6862255303085961 0.0 0.0 9.209473684210526 62.87631578947371
+
+Number 922: Average Sentence Level Perplexity, Bleu, SARI 
+0.5521762328488486 0.20881724840973512 0.36588652386548975
+
+` ` we have direct orders from the state supreme court here in alabama , and i ` m going to adhere to it . ` `
+` ` we have direct orders from the state supreme court here in alabama , ` ` he added .
+`` we have direct orders from the state high court here in alabama , and i ` m will obey . ``
+0.4322662949562073 0.44231933624679737 0.4368306197599707 0.6880309868190396 0.6224608724608724 0.0 3.8380952380952387 104.94857142857146
+
+Number 923: Average Sentence Level Perplexity, Bleu, SARI 
+0.5371874906122684 0.23800500938936792 0.37475453585229984
+
+women want better storage , nicer lighting and materials , and cars designed for their smaller body size , she said .
+scaffels discovered that women want more places to store things , and nicer lighting and materials .
+women want better stores , better lighting and stuff , and cars for their smaller body sizes , she said .
+0.8034084290266037 0.06538279437554508 0.33988187380215246 0.22006578947368421 0.7995798319327732 0.0 7.698823529411765 70.14470588235295
+
+Number 924: Average Sentence Level Perplexity, Bleu, SARI 
+0.566767594880528 0.21882476327672096 0.3708797956245057
+
+women want better storage , nicer interior lighting and materials , and cars designed for their smaller body size , she said .
+scaffels discovered that women want more places to store things , and nicer lighting and materials .
+women want better storage , nicer interior lighting and materials , and cars designed for their smaller body size , she said .
+0.14213037490844727 0.0959330328254962 0.07793223037125477 0.2337966911137643 0.0 0.0 12.314736842105265 40.613157894736844
+
+Number 925: Average Sentence Level Perplexity, Bleu, SARI 
+0.5243038728833198 0.20653559023159848 0.3415850390991806
+
+even african - americans who study science , technology , engineering and math - - majors that are winners in the job market - - have had a hard time finding work , said john schmitt .
+however , even blacks who studied them had a hard time finding work , said john schmitt .
+even the african - americans who study science , technology , engineering , and maths - the world ` s winners - were hard to find , jan schmitt said .
+0.5973250567913055 0.020170550850601293 0.2532969781484098 0.11345218800648296 0.6464387464387464 0.0 10.690000000000001 57.605000000000004
+
+Number 926: Average Sentence Level Perplexity, Bleu, SARI 
+0.5309421623295004 0.18959331392423512 0.33355885174001965
+
+according to a new study , they are having a harder time than whites finding a job .
+according to a new research study , it is harder for blacks to find a job .
+according to the new study , they have a harder time than white people can find a job .
+0.8888086304068565 0.18543829210530705 0.44675601364197853 0.4101190476190476 0.8228146853146854 0.10733430799220273 4.92235294117647 90.05058823529413
+
+Number 927: Average Sentence Level Perplexity, Bleu, SARI 
+0.5607643680026134 0.1892470621059911 0.3429919485651829
+
+even african - americans who study science , technology , engineering and math - - majors that have been winners in the job market - - have had a hard time finding work , said john schmitt , a senior economist with the center for economic and policy research , who co - authored that recent report , ` ` a college degree is no guarantee . ` `
+however , even blacks who studied them had a hard time finding work , said john schmitt .
+even the african - americans who study science and technology and the mathematics who won the trade were hard to find - john schmitt - a senior economist with the center of economic and political research and co - writers of the recent report - `` college degree isn t `` safe .
+0.05104851722717285 0.018784392958042236 0.31519506521087143 0.10619918699186992 0.8393860086407444 0.0 20.37714285714286 36.242857142857176
+
+Number 928: Average Sentence Level Perplexity, Bleu, SARI 
+0.5215554564045026 0.17613454909461043 0.3408537267686974
+
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require their college degree and are being paid less than white workers with the same experience .
+according to a new research study , it is harder for blacks to find a job .
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require their college degree and are being paid less than white workers with the same experience .
+0.18681275844573975 0.025131854313529597 0.024150317767339044 0.07245095330201713 0.0 0.0 13.824736842105263 63.62815789473686
+
+Number 929: Average Sentence Level Perplexity, Bleu, SARI 
+0.49764526369316237 0.16534864232453322 0.3182320546971718
+
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require a college degree and are being paid less than white workers with the same experience .
+according to a new research study , it is harder for blacks to find a job .
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require a college degree and are being paid less than white workers with the same experience .
+0.19950103759765625 0.025131854313529597 0.02409432672590567 0.07228298017771702 0.0 0.0 13.824736842105263 63.62815789473686
+
+Number 930: Average Sentence Level Perplexity, Bleu, SARI 
+0.47776898195346196 0.156000856457133 0.2986228728324207
+
+it ` s not the kids , like lleyton , who are creating demand for competitive basketball at a young age , said rich penick , director at myas , but ` ` it ` s the parents that are driving it . ` `
+it is not the kids who are asking to play competitive basketball , but the parents .
+it ` s not the kids , like lleyton , who are creating demand for competitive basketball at a young age , said rich penick , director at myas , but ` ` it ` s the parents that are driving it . ` `
+0.07955634593963623 0.05746725033193899 0.06692331133698441 0.20076993401095325 0.0 0.0 12.29818181818182 65.66727272727275
+
+Number 931: Average Sentence Level Perplexity, Bleu, SARI 
+0.45288069220259786 0.14984250607430838 0.284141650238956
+
+` ` - lrb - women - rrb - want better storage options , nicer interior lighting and materials , and ergonomics that better suit their smaller body size . ` `
+scaffels discovered that women want more places to store things , and nicer lighting and materials .
+` - lrb - ladies - rrb - want better ways of saving and nicer inner illumination and materials and ergonomics better suited to their smaller size . `
+0.06697982549667358 0.0418587472703924 0.35563641790216005 0.14202898550724638 0.8743055555555556 0.05057471264367816 13.371818181818181 38.37772727272727
+
+Number 932: Average Sentence Level Perplexity, Bleu, SARI 
+0.4301806412198964 0.14349052026231332 0.28834722480737973
+
+lancaster mayor parris said the bomber could end up creating jobs throughout the area , including at restaurants , stores and manufacturing suppliers .
+it would bring jobs to the area , including at restaurants , stores and other companies .
+the lancaster main parris argued that the bomber could end up creating jobs all over the area including in restaurants and stores and manufacturing suppliers .
+0.06905436515808105 0.048589719316429754 0.2482705579113661 0.19481167373409827 0.55 0.0 13.040000000000003 46.10000000000002
+
+Number 933: Average Sentence Level Perplexity, Bleu, SARI 
+0.41011807032757336 0.13821825354309755 0.28612074331315673
+
+following the ban , two middle - aged brothers slid down a hill holding signs , one of which read ` ` do n ` t tread on my sled ! ` `
+the words ` ` do n ` t tread on my sled ! ` ` were written on one sign .
+following the prohibition two middle - aged brothers slipped down a hill holding signs one of which read ` do n ` t tree on my sled ! `
+0.21274375915527344 0.2521432424368841 0.3844233970592666 0.4813951911777999 0.671875 0.0 8.52 76.72500000000002
+
+Number 934: Average Sentence Level Perplexity, Bleu, SARI 
+0.39972994868692596 0.14421430559013895 0.2912945671945309
+
+following the action , two middle - aged brothers slid down a hill holding signs .
+the words ` ` do n ` t tread on my sled ! ` ` were written on one sign .
+after the action , two middle - aged brothers slipped down a hill holding signs .
+0.7661997377872467 0.02127770690998077 0.3541666666666667 0.0625 1.0 0.0 5.818461538461541 76.50153846153849
+
+Number 935: Average Sentence Level Perplexity, Bleu, SARI 
+0.418053438141942 0.13806747565613103 0.2944381721681377
+
+` ` but there is something that connects each of their stories , a common thread that animates their lives , and that is their hunger for and belief in the power of education . ` `
+still , ` ` there is something that connects each of their stories , ` ` she said .
+but there is something that binds each of their stories to a common line that animates their lives and that is their hunger and belief in the power of education . ``
+0.16305005550384521 0.14957644445778928 0.33675352350008675 0.3441630524576621 0.6660975180425982 0.0 12.74625 60.67375000000003
+
+Number 936: Average Sentence Level Perplexity, Bleu, SARI 
+0.4059104199210803 0.13861552178954334 0.2964531888982305
+
+lancaster mayor parris said the relatively high - paying aerospace jobs had the potential to create many times that number in new positions throughout the antelope valley , including at restaurants , stores and manufacturing suppliers .
+it would bring jobs to the area , including at restaurants , stores and other companies .
+the lancaster main parris argued that relatively high - paying airport jobs were able to create a number of new positions throughout the antelope valley , including restaurants and stores and suppliers .
+0.050256431102752686 0.03890531292833293 0.3298809120224071 0.17763157894736842 0.8120111571198528 0.0 15.776666666666667 35.38500000000002
+
+Number 937: Average Sentence Level Perplexity, Bleu, SARI 
+0.3897443295202472 0.13408323956857923 0.29797263085842035
+
+` ` when you go down to these places , you basically see what they choose to show you , ` ` said devon zagory , a produce industry expert .
+` ` you basically see what they choose to show you , ` ` said farming expert devon zagory .
+`` when you go down to these places you can see what they choose to show you `` said the devon zagory of the industry .
+0.7016480267047882 0.26158582825795834 0.38096361735469175 0.5294771093740166 0.6134137426900585 0.0 6.740000000000002 94.83000000000001
+
+Number 938: Average Sentence Level Perplexity, Bleu, SARI 
+0.40330535983261856 0.13962683038116094 0.3015809346191278
+
+from his point of view , it would create jobs throughout the area , including at restaurants , stores and other companies .
+it would bring jobs to the area , including at restaurants , stores and other companies .
+his goal would be to create jobs all over the area even in restaurants and shops and other companies .
+0.8265334367752075 0.16195570128532405 0.3453801169590643 0.43098039215686273 0.5551599587203302 0.05 7.346315789473689 76.2342105263158
+
+Number 939: Average Sentence Level Perplexity, Bleu, SARI 
+0.42093986303855974 0.14055720000216773 0.3034059005499585
+
+` ` when you go down to these places , you basically see what they choose to show you , ` ` said devon zagory , a produce industry consultant who has audited farms in mexico .
+` ` you basically see what they choose to show you , ` ` said farming expert devon zagory .
+`` when you go down to these places you can see what they choose to show you `` said the devon zagory of the manufacturing industry adviser who checked farms in mexico .
+0.3932877779006958 0.2033717397090786 0.40244794152109414 0.4844252509553494 0.7229185736079329 0.0 12.593529411764706 65.3308823529412
+
+Number 940: Average Sentence Level Perplexity, Bleu, SARI 
+0.4198337796330452 0.14306978159044415 0.30736758218880394
+
+lancaster mayor parris said the bomber could create jobs throughout the area , including at restaurants , stores and manufacturing suppliers .
+it would bring jobs to the area , including at restaurants , stores and other companies .
+the lancaster major parris said the bomber could create jobs all over the area .
+0.5629918873310089 0.05470167147096254 0.21166666666666667 0.12666666666666665 0.5083333333333333 0.0 5.041428571428572 83.85357142857143
+
+Number 941: Average Sentence Level Perplexity, Bleu, SARI 
+0.4253398606983515 0.13967100812431024 0.3036867777456448
+
+after this popping is over , the fluffy corn is twice as large and eight times less dense than the original kernel .
+after it pops , the fluffy corn is much bigger and lighter than the kernel was .
+after this popping is over , the fluffy corn is twice as large and eight times less dense than the original kernel .
+0.2925189733505249 0.19850823739068116 0.11876161432172362 0.3562848429651709 0.0 0.0 8.333333333333332 72.72000000000003
+
+Number 942: Average Sentence Level Perplexity, Bleu, SARI 
+0.4204205685743579 0.14185016476380546 0.2968376976188329
+
+when all is said and done , the inverted kernel is twice as large and eight times less dense .
+after it pops , the fluffy corn is much bigger and lighter than the kernel was .
+when all is said and done , the reverse kernel is twice as big and eight times less dense .
+0.6346215009689331 0.05039518688486959 0.3834325396825397 0.15029761904761904 1.0 0.0 4.541111111111114 94.565
+
+Number 943: Average Sentence Level Perplexity, Bleu, SARI 
+0.4280706018741642 0.13858391555384347 0.2999303705496796
+
+after it finally pops , the fluffy corn is double the size of the kernel .
+after it pops , the fluffy corn is much bigger and lighter than the kernel was .
+after it finally pops , the fluffy corn is double the size of the kernel .
+0.8149297833442688 0.3582646267789706 0.1893924574382321 0.5681773723146963 0.0 0.0 4.19857142857143 89.89642857142859
+
+Number 944: Average Sentence Level Perplexity, Bleu, SARI 
+0.4414105736489954 0.14615911249264096 0.2961187183734228
+
+after this popping process , the fluffy corn is twice as large as the original kernel .
+after it pops , the fluffy corn is much bigger and lighter than the kernel was .
+after this popping process , the fluffy corn is twice as large as the original kernel .
+0.24051451683044434 0.24797984721910182 0.13991545893719806 0.4197463768115942 0.0 0.0 6.780000000000001 73.17000000000003
+
+Number 945: Average Sentence Level Perplexity, Bleu, SARI 
+0.43471403842171036 0.149553136983523 0.29091194305888196
+
+in 1991 , he watched the lava burn and destroy the house where he was born and raised .
+in 1991 , hauanio watched the lava burn the house where he was born and raised .
+in 1991 , he watched the lava burn and destroy the house where he was born and raised .
+0.7980959266424179 0.6289868866690355 0.26012328363894516 0.7803698509168355 0.0 0.0 2.145882352941179 109.95647058823532
+
+Number 946: Average Sentence Level Perplexity, Bleu, SARI 
+0.4464360348159267 0.16501874181208792 0.28991876049694854
+
+he watched it in 1991 as it slowly devoured the house where he was born and raised .
+in 1991 , hauanio watched the lava burn the house where he was born and raised .
+in 1991 he watched it slowly devour the house where it was born and raised .
+0.8636050075292587 0.3308478035107364 0.46892654129496236 0.7066464237516868 0.7001332001332001 0.0 2.8466666666666676 101.37000000000002
+
+Number 947: Average Sentence Level Perplexity, Bleu, SARI 
+0.45947256521321833 0.17020089999017068 0.29551275364688645
+
+he remembers being a 2 a . m . spectator as the molten flow entered the house through the back , took down the water tank and set the modest structure ablaze .
+the lava flow entered the house through the back and set the small building on fire .
+he reminded himself that he was a two - and - a - half watcher as the melten flow entered the house through the back of the water tank and set the structure down .
+0.2823026180267334 0.20692735131696596 0.5826246334310851 0.7592375366568915 0.9886363636363636 0.0 9.061290322580643 85.31193548387098
+
+Number 948: Average Sentence Level Perplexity, Bleu, SARI 
+0.45410377893484 0.17131382275764934 0.304213113640347
+
+but defense secretary chuck hagel said last month : ` ` i think the long - range strike bomber is absolutely essential to keep our deterrent edge . ` `
+` ` i think the long - range strike bomber is absolutely essential , ` ` he said last month .
+`` it seems to me that a long - range strike bomber is absolutely necessary to keep our edge down . ``
+0.5499955117702484 0.2719326877457978 0.3942902105945585 0.560966810966811 0.6219038208168644 0.0 5.862727272727273 92.21409090909091
+
+Number 949: Average Sentence Level Perplexity, Bleu, SARI 
+0.45692412401823435 0.1742732011396537 0.3068624400213532
+
+` ` i think the long - range strike bomber is absolutely essential to keep our deterrent edge . ` `
+` ` i think the long - range strike bomber is absolutely essential , ` ` he said last month .
+`` i think a long - range strike bomber is absolutely necessary to maintain our deterring edge . ``
+0.0698208212852478 0.31525940225190374 0.3961642524142525 0.6664148351648352 0.5220779220779221 0.0 7.346315789473689 76.2342105263158
+
+Number 950: Average Sentence Level Perplexity, Bleu, SARI 
+0.4458640296544347 0.1783013783142894 0.309413920375436
+
+but defense secretary chuck hagel said last month , ` ` i think the long - range strike bomber is absolutely essential to keep our deterrent edge . ` `
+` ` i think the long - range strike bomber is absolutely essential , ` ` he said last month .
+but defense minister chuckhagel told us last month `` i think a long - range strike bomber is absolutely necessary to keep the edge off . ``
+0.17569738626480103 0.26509024292235017 0.4223176903611687 0.6274603174603175 0.6394927536231885 0.0 9.799259259259262 72.89666666666668
+
+Number 951: Average Sentence Level Perplexity, Bleu, SARI 
+0.43835940067138934 0.1807121801089578 0.3125501362083731
+
+he remembers watching at 2 o ` clock in the morning as the lava flow entered the house through the back .
+the lava flow entered the house through the back and set the small building on fire .
+he remembers watching at 2 o ` clock in the morning as the lava flow entered the house through the back .
+0.5145369172096252 0.38091370416670794 0.17856960408684544 0.5357088122605363 0.0 0.0 4.600000000000001 97.70500000000003
+
+Number 952: Average Sentence Level Perplexity, Bleu, SARI 
+0.44041825246972005 0.1861230321105186 0.3089290407456291
+
+he watched the lava in 1991 as it devoured the house where he was born and raised and where his father still lived when the lava made its gradual way to the coast .
+in 1991 , hauanio watched the lava burn the house where he was born and raised .
+in 1991 he found lava devouring the house where he was born and raised and where his father still lived when the lava went ashore .
+0.08456659317016602 0.3144949459202295 0.5076131803847039 0.6142499689615983 0.9085895721925135 0.0 7.376000000000001 86.708
+
+Number 953: Average Sentence Level Perplexity, Bleu, SARI 
+0.43105373511973183 0.18950124036866886 0.31415757073613104
+
+he remembers watching at 2 o ` clock in the morning as the molten flow entered the house through the back , took down the water tank and set the modest structure ablaze .
+the lava flow entered the house through the back and set the small building on fire .
+he recollects in 2000 this morning when the melten flow reached the house through the back of the water tank and set off a slight ablaze .
+0.07339131832122803 0.1673040269249998 0.4870357315476668 0.5709718670076727 0.8901353276353277 0.0 6.803846153846155 92.59115384615387
+
+Number 954: Average Sentence Level Perplexity, Bleu, SARI 
+0.4218829039197702 0.18893208104960044 0.318590344090273
+
+` ` the aim is to open the way to elective religious education , in line with the wishes of the people , ` ` he said .
+what they are trying to do is offer the choice of religious education , he said .
+` ` the aim is to open the way to elective religious education , in line with the wishes of the people , ` ` he said .
+0.4236406683921814 0.09498525867740097 0.08279955049866554 0.24839865149599663 0.0 0.0 7.209523809523812 80.77714285714288
+
+Number 955: Average Sentence Level Perplexity, Bleu, SARI 
+0.4219268480315804 0.18658341049029542 0.3126955742504828
+
+what schools are trying to do , he said , is open up religious education to students according to the wishes of the turkish people .
+what they are trying to do is offer the choice of religious education , he said .
+what schools are trying to do is open to religious education for students to the wishes of the turkish people .
+0.7073477506637573 0.21893219730044317 0.42918223574693987 0.3990597413082013 0.8116883116883118 0.07679865424430642 8.73 68.09500000000004
+
+Number 956: Average Sentence Level Perplexity, Bleu, SARI 
+0.4288883334616335 0.18737240529054294 0.31553671233576225
+
+what they are trying to do is open up religious education .
+what they are trying to do is offer the choice of religious education , he said .
+what they ` re trying to do is open up religious education .
+0.8882875964045525 0.1978345935812406 0.1679563492063492 0.5038690476190476 0.0 0.0 6.936363636363637 64.9245454545455
+
+Number 957: Average Sentence Level Perplexity, Bleu, SARI 
+0.43982641115075066 0.18762150501175 0.3120228941660143
+
+there are dragons , eagles , butterflies and ingenious mechanical kites , including one that features a frog seeking to devour a praying mantis .
+weifang , china - - dragon kites , eagle kites and butterfly kites cover zhang xiaodong ` s workshop .
+there are kites and eagles and butterflies and high - tech machine kites with one like a frog trying to devour a praying mantis .
+0.6354433596134186 0.037878656125794795 0.36263222394220845 0.08333333333333333 0.9635416666666666 0.04102167182662539 9.284347826086957 69.46391304347827
+
+Number 958: Average Sentence Level Perplexity, Bleu, SARI 
+0.4443756425103476 0.18413911317719292 0.31319985532360023
+
+he watched it in 1991 as it devoured the house where he was born and raised and where his father still lived when the lava made its gradual way to the coast .
+in 1991 , hauanio watched the lava burn the house where he was born and raised .
+he found it in 1991 and devoured the house where he was born and raised and where his father still lived when the lava was set to shore .
+0.12895959615707397 0.2801260476496127 0.5093080633527541 0.583479745613818 0.9444444444444444 0.0 7.551428571428573 90.79357142857145
+
+Number 959: Average Sentence Level Perplexity, Bleu, SARI 
+0.43720709600231866 0.18632063441520244 0.31765686005153554
+
+henson , who lived to age 93 , was born in southern maryland , and as a child was sold to riley in 1795 , a move that reunited him with his mother .
+he was sold to riley when he was 6 years old and was reunited with his mother .
+the henson who had lived until the age of nine - three had been born in southeastern maryland and had been sold to riley in 1795 a move that had brought him back to his mother .
+0.09556818008422852 0.06483010295255652 0.4064722899493014 0.35934343434343435 0.8600734355044699 0.0 11.882857142857144 72.20714285714286
+
+Number 960: Average Sentence Level Perplexity, Bleu, SARI 
+0.42961512009302777 0.18362084482714366 0.3196305362714859
+
+henson , who lived to age 93 , was born in southern maryland , and as a child was sold to riley in 1795 , which reunited him with his mother .
+he was sold to riley when he was 6 years old and was reunited with his mother .
+the henson who had lived to 19 years old - three had been born in southeastern maryland and sold as a child to riley in 1795 to rejoin his mother .
+0.12126916646957397 0.06987283777978615 0.401603154715006 0.2861413043478261 0.8358724608724608 0.08279569892473118 9.961379310344828 75.29655172413794
+
+Number 961: Average Sentence Level Perplexity, Bleu, SARI 
+0.42291194718817005 0.1811480620652446 0.32141254971591027
+
+the house was once part of a plantation that was the home of josiah henson , a slave who escaped to canada in 1830 and wrote the story of his life .
+henson and his family made it to canada , where he opened a shelter for former slaves .
+the house was once part of a factory that was the home of a josiah henson slave who escaped to canada in 1830 and wrote the story of his life .
+0.6414269506931305 0.0328089452501214 0.33254662004662006 0.12263986013986014 0.875 0.0 10.27 74.86500000000002
+
+Number 962: Average Sentence Level Perplexity, Bleu, SARI 
+0.4275612025818926 0.17799191064364625 0.3216494448293296
+
+the house was once part of a plantation and it was the home of josiah henson , a slave who escaped and wrote the story of his life .
+henson and his family made it to canada , where he opened a shelter for former slaves .
+the house was once part of a plantation and it was the home of josiah henson , a slave who escaped and wrote the story of his life .
+0.5818995237350464 0.020929373635196195 0.03571428571428571 0.10714285714285714 0.0 0.0 8.925185185185189 79.16333333333336
+
+Number 963: Average Sentence Level Perplexity, Bleu, SARI 
+0.4307765842725833 0.1747197744559702 0.3156924623477662
+
+the maryland site was once the home of josiah henson , a slave on what was then a 3,700 - acre plantation who fled to canada in 1830 .
+henson and his family made it to canada , where he opened a shelter for former slaves .
+maryland was once the home of josiah henson a slave on what was then a 3,700 acre plantation that fled to canada in 1830 .
+0.20987415313720703 0.037878656125794795 0.35237226277372263 0.10711678832116789 0.95 0.0 8.52 76.72500000000002
+
+Number 964: Average Sentence Level Perplexity, Bleu, SARI 
+0.42626837139226953 0.1719270985716809 0.31644102970339794
+
+the farm was the home of josiah henson , a slave who escaped and wrote the story of his life .
+henson and his family made it to canada , where he opened a shelter for former slaves .
+the farm was the home of josiah henson , a slave who escaped and wrote the story of his life .
+0.7817416787147522 0.02842326538113703 0.041666666666666664 0.125 0.0 0.0 5.483157894736845 89.5921052631579
+
+Number 965: Average Sentence Level Perplexity, Bleu, SARI 
+0.43337783753871917 0.16905702190787003 0.3109455424426633
+
+as a child , he was sold to riley in 1795 , a move that reunited him with his mother .
+he was sold to riley when he was 6 years old and was reunited with his mother .
+as a child , he was sold to riley in 1795 , a move that brought him back to his mother .
+0.258552610874176 0.21626010675918345 0.34878202955052684 0.4505127553182473 0.5958333333333333 0.0 3.620000000000001 102.95000000000002
+
+Number 966: Average Sentence Level Perplexity, Bleu, SARI 
+0.4299498919178458 0.16998257259122912 0.31168743434673907
+
+the university had planned to move a pig farm to make way for the george h . w . bush presidential library .
+the school had planned to move a pig farm to make way for the george h . w . bush presidential library .
+the university was about to move a pig farm to make its way to george h . w . the presidential bus library .
+0.8389192074537277 0.43937095446369245 0.2521067281483948 0.6571443602693603 0.09917582417582417 0.0 7.771428571428572 76.74857142857144
+
+Number 967: Average Sentence Level Perplexity, Bleu, SARI 
+0.437814686447382 0.17516311839646878 0.3105416515352325
+
+the gospel , or religious , music of black churches spoke to a better life in heaven .
+the gospel , or religious music of black churches , talked about a better life in heaven .
+gobspel or religious music from black churches spoke for a better life in heaven .
+0.8818446844816208 0.36681628921724957 0.4173300464967131 0.6882275132275132 0.48497474747474745 0.07878787878787878 8.412857142857145 59.68214285714288
+
+Number 968: Average Sentence Level Perplexity, Bleu, SARI 
+0.446192610938594 0.17877921595912502 0.31255652691186414
+
+in mexico , as the only woman in engineering management , she has 55 people reporting to her .
+in mexico , she is the only woman in charge of engineering and she manages 55 people .
+she ` s got 55 people reporting to her in mexico .
+0.887880802154541 0.06429415067236427 0.30194342694342696 0.22619047619047622 0.6796398046398047 0.0 1.2900000000000027 103.625
+
+Number 969: Average Sentence Level Perplexity, Bleu, SARI 
+0.4543720218870375 0.17665912215751833 0.3123599880235598
+
+chicago - - with president barack obama expected to choose the site for his library in less than two months , chicagoans engaged in a bitter fight over a proposal to place it in a public park .
+chicago - - in less than two months , president barack obama will choose the spot for his library .
+chicago - with president barack obama to pick a place for his library in less than two months - the chicagoans fought hard to put it in public park .
+0.5446664690971375 0.21631187459215706 0.48850821752405466 0.5975800971276084 0.8679445554445555 0.0 11.547407407407409 60.363333333333344
+
+Number 970: Average Sentence Level Perplexity, Bleu, SARI 
+0.4560137391090393 0.17738008129269361 0.31556268310538693
+
+but all of it is interesting , she said , and ` ` much of it is moving . ` `
+all of it is interesting , henrikson said , and ` ` much of it is moving . ` `
+but it ` s all very exciting , she thought , and ` a lot of it moves . `
+0.875954732298851 0.11728147369287814 0.1504241401300225 0.28454290807231986 0.16672951231774763 0.0 3.355714285714285 95.93928571428573
+
+Number 971: Average Sentence Level Perplexity, Bleu, SARI 
+0.4635126854160002 0.17630689187126833 0.31261378055225547
+
+` ` she would call me almost daily , ` mom , i have nobody to eat with , and the girls do n ` t want me to sit with them , ` ` ` talmus said .
+lili would say , ` ` mom , i have nobody to eat with , ` ` talmus said .
+my mother , i have no one to eat with , and the girls do n ` t want me to sit with them , ` said talmus .
+0.6697565019130707 0.1423412184218882 0.27348821380858485 0.2943023607240002 0.5261622807017544 0.0 4.153913043478262 106.24652173913046
+
+Number 972: Average Sentence Level Perplexity, Bleu, SARI 
+0.4671309979861243 0.17571100286338448 0.3119273671006121
+
+in mexico , she is the only woman in engineering management , and 55 people report to her .
+in mexico , she is the only woman in charge of engineering and she manages 55 people .
+in mexico , she is the only woman in engineering management , and 55 people report to her .
+0.3691207766532898 0.48837812857736956 0.2202426810477658 0.6607280431432974 0.0 0.0 8.350000000000005 63.69500000000001
+
+Number 973: Average Sentence Level Perplexity, Bleu, SARI 
+0.465441166583834 0.18110181537569459 0.31034659665142506
+
+it cost so much to make that the government built just 21 of the 132 aircraft it had ordered .
+the original b - 2 bomber cost so much to make that the government built just 21 of them .
+it took so long to get the government to build just 21 of the 132 planes it ordered .
+0.8649792373180389 0.10413029177416923 0.22031530560942325 0.29336349924585214 0.3675824175824176 0.0 3.8855555555555554 99.265
+
+Number 974: Average Sentence Level Perplexity, Bleu, SARI 
+0.47221299829119345 0.17979721328075346 0.30882064256596736
+
+chicago - - in less than two months , president barack obama is expected to choose the site for his library .
+chicago - - in less than two months , president barack obama will choose the spot for his library .
+chicago - in less than two months , president barack obama is expected to choose his library position .
+0.5437267422676086 0.5326128448553578 0.3848352713178294 0.727422480620155 0.4270833333333333 0.0 12.037500000000005 37.25750000000002
+
+Number 975: Average Sentence Level Perplexity, Bleu, SARI 
+0.47340489402413366 0.18567747380699687 0.3100875530451651
+
+the contract was so far over budget that the pentagon eventually decided to build just 21 of the 132 aircraft it had originally planned .
+the original b - 2 bomber cost so much to make that the government built just 21 of them .
+the contract was so far over budget that the pentagon eventually decided to build just 21 of the 132 aircraft it had originally planned .
+0.0830797553062439 0.08165974140980245 0.06712962962962964 0.2013888888888889 0.0 0.0 10.978333333333332 59.10000000000004
+
+Number 976: Average Sentence Level Perplexity, Bleu, SARI 
+0.4670061212582666 0.18397226507917402 0.3061046362678612
+
+the contract was so far over budget that the defense department eventually decided to build just 21 of the 132 aircraft it had originally planned .
+the original b - 2 bomber cost so much to make that the government built just 21 of them .
+so far the deal was over that the defense department finally decided to build just 21 of the 132 aircraft it had originally planned .
+0.4475752115249634 0.08165974140980245 0.4140180878552971 0.24205426356589144 1.0 0.0 9.995000000000001 66.15000000000003
+
+Number 977: Average Sentence Level Perplexity, Bleu, SARI 
+0.46669271948837465 0.18232206308450674 0.3078451758095941
+
+` ` you can take any part of the car and talk about how it was engineered and why it ` s designed the way it is to interact with the rest of the race car , ` ` he said .
+you can take any part of a race car and talk about its design , he said .
+`` you can take any part of the car and talk about how it was built and why it `` s suggested the way it `` s was supposed to talk to the rest of the race car ``
+0.6059684157371521 0.18626167406959446 0.4589108760013933 0.5158740421455938 0.8608585858585859 0.0 10.784651162790698 94.32953488372094
+
+Number 978: Average Sentence Level Perplexity, Bleu, SARI 
+0.4689034448256568 0.18238459659220654 0.31024304406660674
+
+` ` she would call me almost daily , ` mom , i have nobody to eat with , and the girls do n ` t want me to sit with them , ` ` ` talmus said , who said her daughter would finish her lunch and call her from the restroom crying .
+lili would say , ` ` mom , i have nobody to eat with , ` ` talmus said .
+` she would say to me almost every day ` mother ` and ` mother ` and ` i don ` t have anyone to eat with and the girls do n ` t want me to sit with them ` said talmus who said her daughter would eat her lunch and cry in the bathroom .
+0.4933543801307678 0.03857891334570752 0.3108838984130435 0.15125468946712467 0.7203174603174602 0.06107954545454545 14.791063829787237 72.73
+
+Number 979: Average Sentence Level Perplexity, Bleu, SARI 
+0.4692854906897992 0.18013763279148 0.3102530574157698
+
+in rural college station , texas , residents fought texas a &amp; amp ; m university over plans to move a pig farm to make way for the george h . w . bush presidential library .
+the school had planned to move a pig farm to make way for the george h . w . bush presidential library .
+at the country college station in texas the people were struggling with texas a &amp; amp ; amp ; m university plans to move a pig farm to make way for george h . w . bush ` s presidential library .
+0.4354745149612427 0.33139565972469825 0.4939065832171427 0.6962748024417749 0.7854449472096531 0.0 13.2 64.54500000000002
+
+Number 980: Average Sentence Level Perplexity, Bleu, SARI 
+0.4687653218324368 0.18246467935968338 0.3130784962742525
+
+the gospel music of black churches spoke to a better life in the hereafter , but soul , r &amp; amp ; b and jazz secularized that message and speeded up the timetable so that the good life - - or at least an equal opportunity to live it - - could be experienced now .
+the gospel , or religious music of black churches , talked about a better life in heaven .
+the gossams of the black churchmen had spoken to a better life in the inherited but spirit and research and amp ; amp ; b and jazz secularized the message and speeded up the schedule so that the good life - or at least the equal opportunity for life - could now be experienced .
+0.04839557409286499 0.05068034052957636 0.36777503705199877 0.2199189442658092 0.883406166890187 0.0 19.250000000000004 46.10500000000002
+
+Number 981: Average Sentence Level Perplexity, Bleu, SARI 
+0.46239608323032205 0.1804679469531666 0.31390723174058194
+
+the gospel music of black churches spoke to a better life in the hereafter , but soul , r &amp; amp ; b and jazz speeded up the timetable so that the good life - - or at least an equal opportunity to live it - - could be experienced now .
+the gospel , or religious music of black churches , talked about a better life in heaven .
+the gossams of the black churches had spoken to a better life in the afterlife but soul and research and amp ; amp ; b and jazz had speeded up the timetable so that the good life - or at least the equal opportunity to live it - could now be experienced .
+0.05746334791183472 0.058085488793933805 0.3568403280846352 0.2161714544733413 0.8543495297805642 0.0 17.63416666666667 54.12750000000001
+
+Number 982: Average Sentence Level Perplexity, Bleu, SARI 
+0.4563523110613894 0.1786413431000437 0.31454802422332906
+
+the gospel , or religious music of black churches spoke to a better life in heaven .
+the gospel , or religious music of black churches , talked about a better life in heaven .
+gobspel or religious music from black churches spoke for a better life in heaven .
+0.8818446844816208 0.36681628921724957 0.32532632581652193 0.6575807090512973 0.3183982683982684 0.0 8.412857142857145 59.68214285714288
+
+Number 983: Average Sentence Level Perplexity, Bleu, SARI 
+0.46260955184698105 0.18140862171941438 0.31470652865852305
+
+all of it is interesting , she said , and ` ` much of it is moving . ` `
+all of it is interesting , henrikson said , and ` ` much of it is moving . ` `
+it ` s ` s ` s ` s ` all very exciting , she told herself , and ` a lot of it moves . `
+0.7756515741348267 0.08688218206838484 0.14079423436041083 0.29585084033613446 0.12653186274509803 0.0 2.84 104.98000000000002
+
+Number 984: Average Sentence Level Perplexity, Bleu, SARI 
+0.46714639274970343 0.18003867331867482 0.3121860606252171
+
+she was joined at the white house by a panel that included women of the civil rights movement including two who broke down barriers to attend school : charlayne hunter - gault , one of the first to desegregate the university of georgia , and carlotta walls lanier , the youngest member of the little rock nine , the group of black high school students barred from entering arkansas ` racially segregated little rock central high school .
+during the 1960s , hunter - gault was one of the first black students to study at the university of georgia .
+she was accompanied by a group of women in the civil - rights movement along with two who had smashed barriers to school and charlayne hunter - gault , one of the first to desegregate the university of georgia , and the carlotta walls lanier , the youngest member of the small rock nine , a group of black high school students from the arkansas racian central rock school .
+0.06961661577224731 0.08994104132942932 0.42997186951512933 0.31623139801907235 0.9736842105263157 0.0 25.837142857142855 22.032857142857168
+
+Number 985: Average Sentence Level Perplexity, Bleu, SARI 
+0.46146739593573977 0.17875156429025704 0.3138687150379301
+
+hunter - gault was one of the first black students to attend the previously whites - only university of georgia .
+during the 1960s , hunter - gault was one of the first black students to study at the university of georgia .
+hunter - gault was one of the first black students to take part in the former whales - only university in georgia .
+0.6470842361450195 0.4862438913464417 0.5597975957255876 0.8938769141608898 0.785515873015873 0.0 9.32 63.86500000000004
+
+Number 986: Average Sentence Level Perplexity, Bleu, SARI 
+0.4640817176288282 0.1830824421361188 0.31733250208986896
+
+hunter - gault was one of the first to desegregate the university of georgia .
+during the 1960s , hunter - gault was one of the first black students to study at the university of georgia .
+hunter - gault was one of the first to desegregate the university of georgia .
+0.7401433289051056 0.462603150422048 0.28291866028708135 0.848755980861244 0.0 0.0 8.541538461538462 56.97846153846157
+
+Number 987: Average Sentence Level Perplexity, Bleu, SARI 
+0.4679159066743321 0.18696467419564558 0.3168545320648302
+
+during the 1960s , hunter - gault was one of the first black students to attend the previously whites - only university of georgia .
+during the 1960s , hunter - gault was one of the first black students to study at the university of georgia .
+during the 1960s , hunter - gault was one of the first black students to attend the previously whites - only university of georgia .
+0.4283980131149292 0.6836013949954282 0.27013325997921633 0.810399779937649 0.0 0.0 10.580952380952379 56.6057142857143
+
+Number 988: Average Sentence Level Perplexity, Bleu, SARI 
+0.467374565666669 0.19376791694632753 0.3162145146389999
+
+` ` you can take any part of the car and talk about how it was engineered and why it ` s designed the way it is , ` ` he said .
+you can take any part of a race car and talk about its design , he said .
+` you can take any part of the car and talk about how it was designed and why it ` s designed the way it is , ` he said .
+0.8287004828453064 0.2684180841943464 0.49929234143049933 0.497877024291498 1.0 0.0 7.257692307692309 89.33730769230772
+
+Number 989: Average Sentence Level Perplexity, Bleu, SARI 
+0.4722573483312452 0.19477670299021968 0.31868853932537156
+
+chicago - - president barack obama is expected to choose the site for his library in less than two months .
+chicago - - in less than two months , president barack obama will choose the spot for his library .
+chicago - president barack obama is expected to pick his library position in less than two months .
+0.6907402575016022 0.29193940737708696 0.41770347027699967 0.6102532679738563 0.6428571428571428 0.0 12.037500000000005 37.25750000000002
+
+Number 990: Average Sentence Level Perplexity, Bleu, SARI 
+0.47517045378684997 0.19607220571537792 0.3200087384047266
+
+according to ledford , northrop executives said they would build substantial parts of the bomber in palmdale , creating about 1,500 jobs .
+if northrop wins , it would build most of the bomber parts in palmdale , ledford said .
+northrop ` s managers said they ` d build important parts of the bomber in palmdale and create about 1,500 jobs .
+0.5657277703285217 0.09614272376566879 0.4019832790666124 0.3548280423280423 0.8511217948717948 0.0 6.104210526315793 85.13947368421054
+
+Number 991: Average Sentence Level Perplexity, Bleu, SARI 
+0.4763619974255562 0.19475734411077647 0.3210873507818567
+
+chicago is n ` t the only city where a fight has been waged over a park built by olmsted .
+but chicago is n ` t the only city where there has been a fight over an olmsted park .
+chicago is n ` t the only city where a battle was won over a park built by old buildings .
+0.8746402710676193 0.41759165212784805 0.49877180652053954 0.76774399099019 0.7285714285714286 0.0 5.483157894736845 89.5921052631579
+
+Number 992: Average Sentence Level Perplexity, Bleu, SARI 
+0.48153444253779076 0.19765129616294624 0.3233949411161253
+
+according to ledford , northrop said it would build most of the bomber parts in palmdale .
+if northrop wins , it would build most of the bomber parts in palmdale , ledford said .
+according to the book , northrop said he ` d ` had built most of the bomber parts in the palmdale .
+0.6205829679965973 0.2476165058078653 0.3517991267991268 0.6391636141636141 0.4162337662337662 0.0 3.2300000000000004 103.965
+
+Number 993: Average Sentence Level Perplexity, Bleu, SARI 
+0.4833171159411088 0.19829187577377855 0.3237590973428304
+
+but this was not the first time that a presidential library was at the center of a land dispute .
+it was not the first time a president ` s library was at the center of a fight .
+but this was not the first time that a presidential library was at the center of a land dispute .
+0.5686326324939728 0.4903047069202663 0.21770776699562308 0.6531233009868692 0.0 0.0 6.725263157894737 80.68684210526318
+
+Number 994: Average Sentence Level Perplexity, Bleu, SARI 
+0.4843970591886134 0.2019882407249999 0.3224166754397012
+
+but chicago is n ` t the only city where a fight has been waged over an olmsted park .
+but chicago is n ` t the only city where there has been a fight over an olmsted park .
+but chicago is n ` t ` the only city where a fight was won over an old park .
+0.8880330249667168 0.43657083720498996 0.3848365653190214 0.7235032024505708 0.4310064935064935 0.0 4.228235294117649 95.02705882352943
+
+Number 995: Average Sentence Level Perplexity, Bleu, SARI 
+0.4894425087608397 0.2049205231809998 0.3231969240631927
+
+he refused to give up his 3 - acre riverfront property in the middle of the proposed library site .
+the owner of the land argued against the library . he refused to give up his property .
+he refused to give up his three - acre riverfront property in the center of the proposed library area .
+0.7290210425853729 0.293597382795084 0.5514851944676505 0.6544555834029518 1.0 0.0 9.130000000000003 61.665000000000006
+
+Number 996: Average Sentence Level Perplexity, Bleu, SARI 
+0.4924002684376858 0.20601529922561812 0.32601529777188976
+
+but it was not the first time that a presidential library was at the center of a land dispute .
+it was not the first time a president ` s library was at the center of a fight .
+but it was not the first time that a presidential library was at the center of a land dispute .
+0.59598708152771 0.5468017145144113 0.23424329501915708 0.7027298850574712 0.0 0.0 6.725263157894737 80.68684210526318
+
+Number 997: Average Sentence Level Perplexity, Bleu, SARI 
+0.4936635222558568 0.2101712311193839 0.3248961270066125
+
+but landowner gene pfeifer refused to give up his 3 - acre riverfront property in the middle of the proposed library site .
+the owner of the land argued against the library . he refused to give up his property .
+but the landowner rearing pfeifer refused to give up his three - acre riverfront building in the center of the proposed library area .
+0.6085788905620575 0.1896632646081197 0.529861111111111 0.6395833333333333 0.95 0.0 11.22636363636364 53.759545454545474
+
+Number 998: Average Sentence Level Perplexity, Bleu, SARI 
+0.49504804476557007 0.20992414718551325 0.32736558464642573
+
+in 2013 alone , chinese developers spent nearly $ 24 billion on theme park construction , up from $ 9 billion in 2011 , according to a study by the la engineering firm aecom .
+in 2013 , chinese developers spent nearly $ 24 billion on building theme parks , aecom said .
+in 2013 alone , chinese developers spent nearly $ 24 billion on theme park construction , up from $ 9 billion in 2011 , according to a study by the la engineering firm aecom .
+0.05501586198806763 0.2591749627722263 0.1384557686384359 0.4153673059153077 0.0 0.0 12.402758620689657 57.793103448275886
+
+Number 999: Average Sentence Level Perplexity, Bleu, SARI 
+0.4898095663991712 0.21051046641868842 0.3251166582653783
+
+it was not the first time that a presidential library has been at the center of a battle over land .
+it was not the first time a president ` s library was at the center of a fight .
+it was wasn ` t the first time a presidential library was in the middle of a battle over the country .
+0.8812526240944862 0.17265324947760644 0.36589645423316824 0.3506016042780749 0.6151610644257703 0.1319266939956595 5.780000000000001 89.24500000000003
+
+Number 1000: Average Sentence Level Perplexity, Bleu, SARI 
+0.4944147788426455 0.21006508739585214 0.3255964205708817
+
+in 2013 alone , chinese developers spent nearly $ 24 billion on building theme parks , according to a study by engineering firm aecom .
+in 2013 , chinese developers spent nearly $ 24 billion on building theme parks , aecom said .
+in 2013 itself chinese developers spent nearly $ 24 billion on building theme parks according to a study by an engineering company aecom .
+0.35755693912506104 0.464578221240361 0.518351834524998 0.7880100490295393 0.7670454545454546 0.0 12.83545454545455 42.223181818181814
+
+Number 1001: Average Sentence Level Perplexity, Bleu, SARI 
+0.4928234086133713 0.21302454244055574 0.327837762593604
+
+chicago - - in less than two months , president barack obama will choose the location for a library where he will store documents from his presidency .
+chicago - - in less than two months , president barack obama will choose the spot for his library .
+chicago - in less than two months president barack obama will choose the place of the library to store the papers from his president .
+0.7226337790489197 0.40842567407749947 0.4963281303924578 0.7873762040428707 0.7016081871345029 0.0 9.79739130434783 65.78565217391306
+
+Number 1002: Average Sentence Level Perplexity, Bleu, SARI 
+0.4954649071241247 0.2152705324593712 0.3297744334878437
+
+they buy the triangles - lrb - plastic commercial kites - rrb - and fly them at the bridges . ` `
+they buy cheap , triangle kites from toy stores ` ` and fly them at the bridges . ` `
+they buy the triangles - lrb - plastic commercial kites - rrb - and fly them at the bridges . ` `
+0.3462808132171631 0.40092382809337473 0.19684624017957353 0.5905387205387206 0.0 0.0 4.420000000000002 90.09000000000002
+
+Number 1003: Average Sentence Level Perplexity, Bleu, SARI 
+0.49376963332972745 0.2173802290006667 0.32826388583661337
+
+northrop executives have said they would build substantial parts of the company ` s proposed bomber in palmdale , he said , creating an estimated 1,500 jobs .
+if northrop wins , it would build most of the bomber parts in palmdale , ledford said .
+northrop managers claimed to build significant parts of the company ` s proposed bomber in palmdale , he told himself , creating an estimated 1,500 jobs .
+0.04593378305435181 0.07911318980837996 0.3904761904761904 0.2589285714285714 0.9125 0.0 12.362608695652174 47.39434782608697
+
+Number 1004: Average Sentence Level Perplexity, Bleu, SARI 
+0.48873776984348727 0.2158266667625511 0.328962900495485
+
+in 2013 alone , chinese developers spent nearly $ 24 billion on theme park construction , according to a study by engineering firm aecom .
+in 2013 , chinese developers spent nearly $ 24 billion on building theme parks , aecom said .
+in 2013 china itself `` s developers spent nearly $ 24 billion designing a entertainment site based on a study by an engineering company aecom .
+0.438732385635376 0.21675453206953177 0.49172716273442224 0.689655172413793 0.7855263157894737 0.0 13.040000000000003 46.10000000000002
+
+Number 1005: Average Sentence Level Perplexity, Bleu, SARI 
+0.48818215446339713 0.21583697637707314 0.33077139229813984
+
+according to ledford , northrop executives have said they would build substantial parts of the bomber in palmdale , creating about 1,500 jobs .
+if northrop wins , it would build most of the bomber parts in palmdale , ledford said .
+northrop managers said they would build important parts of the bomber in palmdale and create about 1,500 jobs .
+0.623753160238266 0.12401006001680986 0.4234126984126984 0.3714285714285714 0.8988095238095237 0.0 7.163333333333334 75.76500000000001
+
+Number 1006: Average Sentence Level Perplexity, Bleu, SARI 
+0.48967194573564843 0.21482788938410322 0.331789428629069
+
+in 2013 alone , chinese developers spent nearly $ 24 billion on theme park construction , according to aecom , an engineering company in california .
+in 2013 , chinese developers spent nearly $ 24 billion on building theme parks , aecom said .
+in 2013 the chinese developers spent almost $ 24 billion designing an entertainment park in california .
+0.8017006665468216 0.15796444447897143 0.37946494673295095 0.4247522026431718 0.713642637555681 0.0 11.500000000000004 39.33000000000001
+
+Number 1007: Average Sentence Level Perplexity, Bleu, SARI 
+0.4930635622662047 0.21420980846122134 0.3323076407823721
+
+in birmingham , a police spokesperson said about a dozen protesters stood outside the courthouse .
+in birmingham , police said ` ` a dozen or so ` ` protesters gathered in front of a courthouse .
+in birmingham , a police spokesman said about a dozen protesters standing outside the courthouse .
+0.693578690290451 0.10960187584231287 0.46876006441223833 0.40628019323671505 1.0 0.0 10.941428571428574 41.553571428571445
+
+Number 1008: Average Sentence Level Perplexity, Bleu, SARI 
+0.4952196389116267 0.21308499198144812 0.3337748711439836
+
+the three selma marches in 1965 aimed to draw attention to the struggle for black voting rights .
+the three selma marches in 1965 were meant to draw attention to the struggle for black voting rights .
+the three selma marchings of 1965 aimed to draw attention to the struggle for black voting rights .
+0.8529651463031769 0.6294771716024876 0.32800355774493706 0.8215106732348112 0.1625 0.0 4.92235294117647 90.05058823529413
+
+Number 1009: Average Sentence Level Perplexity, Bleu, SARI 
+0.49902544218174955 0.2175146960199698 0.33371347419292985
+
+the gospel music of black churches spoke to a better life in the hereafter , but soul , r &amp; amp ; b and jazz speeded up the timetable so that the good life - - or at least an equal opportunity to live it - - could be experienced now .
+soul music , jazz music and r &amp; amp ; b talked about life changing for the better .
+the gossams of the black churches had spoken to a better life in the afterlife but soul and research and amp ; amp ; b and jazz had speeded up the timetable so that the good life - or at least the equal opportunity to live it - could now be experienced .
+0.05746334791183472 0.03453783827607845 0.329407524649242 0.1428376906318083 0.8453848833159178 0.0 17.63416666666667 54.12750000000001
+
+Number 1010: Average Sentence Level Perplexity, Bleu, SARI 
+0.4943774201368031 0.21558862383319202 0.3336681484082594
+
+the gospel music of black churches spoke to a better life in the hereafter , but soul , r &amp; amp ; b and jazz secularized that message and speeded up the timetable so that the good life - - or at least an equal opportunity to live it - - could be experienced now .
+soul music , jazz music and r &amp; amp ; b talked about life changing for the better .
+the gossams of the black churchmen had spoken to a better life in the inherited but spirit and research and amp ; amp ; b and jazz secularized the message and speeded up the schedule so that the good life - or at least the equal opportunity for life - could now be experienced .
+0.04839557409286499 0.033246128899473676 0.3561476715521053 0.14324399096985527 0.8867374852249221 0.03846153846153846 19.250000000000004 46.10500000000002
+
+Number 1011: Average Sentence Level Perplexity, Bleu, SARI 
+0.4897317759071787 0.21368922284429914 0.3339023101076745
+
+however , other types of music - - soul , r &amp; amp ; b and jazz - - said that the good life could be experienced now .
+soul music , jazz music and r &amp; amp ; b talked about life changing for the better .
+however , other types of music - - soul , r &amp; amp ; b and jazz - - said that the good life could be experienced now .
+0.7986681759357452 0.1529555933752883 0.10563236047107015 0.31689708141321044 0.0 0.0 6.647619047619049 84.8057142857143
+
+Number 1012: Average Sentence Level Perplexity, Bleu, SARI 
+0.4929166872476794 0.21306310295286604 0.3315490116578126
+
+however , soul , r &amp; amp ; b and jazz said that the good life - - or at least an equal opportunity to live it - - could be experienced now .
+soul music , jazz music and r &amp; amp ; b talked about life changing for the better .
+however , soul , r &amp; amp ; b and jazz said that the good life - - or at least an equal opportunity to live it - - could be experienced now .
+0.3906247615814209 0.12682999918764204 0.0890899818610662 0.2672699455831986 0.0 0.0 9.073076923076925 76.3219230769231
+
+Number 1013: Average Sentence Level Perplexity, Bleu, SARI 
+0.49187289208781965 0.21218317332260866 0.3290749399251927
+
+the three selma marches in 1965 aimed to draw attention to the struggle for black voting rights and proved to be a turning point in the struggle , as police turned tear gas , dogs and clubs on the unarmed protesters , walking arm and arm across the edmund pettus bridge in selma , with a ferocity that shook even the occupants of the white house .
+the three selma marches in 1965 were meant to draw attention to the struggle for black voting rights .
+three selma marchings of 1965 were made to draw attention to the fight for black voting rights and turned out to be a turning point in the fight as police turned tear gas and dogs and clubs on armored protesters and walked hand and hand over the edmund pettus bridge in selma with a rage that shook the white house .
+0.1484156847000122 0.11459697799878583 0.40595663860781944 0.334700462745903 0.825373754152824 0.05779569892473119 21.970000000000002 44.415000000000006
+
+Number 1014: Average Sentence Level Perplexity, Bleu, SARI 
+0.48840362736673065 0.21119745417792357 0.32985152274016877
+
+his own house was safe for the moment , but hauanio was resigned to the fact that it would be next to go .
+his own house was safe at first , but hauanio knew that it would be next to burn .
+his own house was safe for now but hauanio was glad it would be next .
+0.8658748120069504 0.3532561653102664 0.5062087045039302 0.7338551859099804 0.7847709276018099 0.0 3.633333333333333 95.73000000000002
+
+Number 1015: Average Sentence Level Perplexity, Bleu, SARI 
+0.49217833921313286 0.21261804128924702 0.3316150945578064
+
+his own house was safe for now , but hauanio knew that it would be next to go .
+his own house was safe at first , but hauanio knew that it would be next to burn .
+his own house was safe for now , but hauanio knew it would be next door .
+0.713929295539856 0.455020536956906 0.33978498353498354 0.6812597125097124 0.3380952380952381 0.0 3.633333333333333 95.73000000000002
+
+Number 1016: Average Sentence Level Perplexity, Bleu, SARI 
+0.4943738932361697 0.21501806599882778 0.3316959845476794
+
+he wanted to build a roadway through olmsted linear park in atlanta .
+to get to his library , he wanted to build a road through olmsted linear park in atlanta , georgia .
+he wanted to build a road through an old straight park in atlanta .
+0.8876309469342232 0.33026679178022084 0.45556800870268366 0.7064393939393939 0.4511904761904762 0.20907415597818074 3.0953846153846136 96.02461538461542
+
+Number 1017: Average Sentence Level Perplexity, Bleu, SARI 
+0.49822935454693495 0.21614795546727283 0.3329104161570422
+
+in birmingham , a police spokesperson said ` ` a dozen or so ` ` protesters stood outside the courthouse , but they did not interfere with gay couples seeking licenses .
+in birmingham , police said ` ` a dozen or so ` ` protesters gathered in front of a courthouse .
+in birmingham a police spokesperson said `` a dozen or so `` protesters stood outside the courthouse but did not disturb gay couples seeking licenses .
+0.20383375883102417 0.12789533377801793 0.330099601009212 0.3251590514748409 0.665139751552795 0.0 11.547407407407409 60.363333333333344
+
+Number 1018: Average Sentence Level Perplexity, Bleu, SARI 
+0.49537114487979017 0.21529113389747423 0.3328831266895875
+
+his own house was safe for the moment , but hauanio already knew that it would be the next house to be covered by the lava .
+his own house was safe at first , but hauanio knew that it would be next to burn .
+his own house was safe for the time being but hauanio already knew it would be another house covered with lava .
+0.805293083190918 0.24873444170233966 0.433705179992603 0.5813704050817453 0.7197451348960636 0.0 8.895238095238096 68.69142857142859
+
+Number 1019: Average Sentence Level Perplexity, Bleu, SARI 
+0.49835116351739717 0.2156127041648287 0.3338525695098088
+
+for him , it was over a decades - old plan to build a roadway through olmsted linear park in atlanta .
+to get to his library , he wanted to build a road through olmsted linear park in atlanta , georgia .
+for him , it was over a decades - old plan to build a road through an old linen park in atlanta .
+0.08147436380386353 0.21800193956058223 0.31140464074619745 0.2892945586121348 0.4511904761904762 0.19372888743598124 7.550000000000001 76.55500000000004
+
+Number 1020: Average Sentence Level Perplexity, Bleu, SARI 
+0.4943809082820302 0.21563545878764542 0.33363877971206013
+
+but hauanio knew that it would be next to go .
+his own house was safe at first , but hauanio knew that it would be next to burn .
+but hauanio knew it would be next to him .
+0.8776514008641243 0.21998763402093158 0.3970931115667958 0.757946001367054 0.4333333333333333 0.0 2.342222222222226 94.30000000000001
+
+Number 1021: Average Sentence Level Perplexity, Bleu, SARI 
+0.4979966676460122 0.2156765170445632 0.3342374054842746
+
+when carter was about to build his presidential library in the 1980s , a controversy developed over a decades - old plan to build a roadway through olmsted linear park in atlanta .
+to get to his library , he wanted to build a road through olmsted linear park in atlanta , georgia .
+when carter was about to build his presidential library in the 1980s a disagreement developed over a ten - year - old plan to build a road through an old linen park in atlanta .
+0.5821299254894257 0.1463197333291977 0.3650446776100938 0.23934374468705213 0.7091291061879297 0.1466611819552996 14.221250000000001 50.098750000000024
+
+Number 1022: Average Sentence Level Perplexity, Bleu, SARI 
+0.4987829597753899 0.21502832280423267 0.33452532391535705
+
+in birmingham , a police spokesperson said ` ` a dozen or so ` ` protesters stood outside the courthouse , but did not interfere with gay couples seeking licenses .
+in birmingham , police said ` ` a dozen or so ` ` protesters gathered in front of a courthouse .
+in birmingham a police spokesperson said `` a dozen or so `` protesters stood outside the courthouse but did not disturb gay couples seeking licenses .
+0.20383375883102417 0.12789533377801793 0.3118414764248097 0.31967846967846963 0.6158459595959596 0.0 11.547407407407409 60.363333333333344
+
+Number 1023: Average Sentence Level Perplexity, Bleu, SARI 
+0.49605194865553465 0.21422153586880477 0.33431528829044455
+
+the census of marine life , a decadelong survey of the global oceans , estimated that 90 percent of large predatory fish , such as tuna , billfish and swordfish , have disappeared from the seas .
+the census of marine life discovered that 90 percent of tuna and swordfish have disappeared from the seas .
+ninety percent of large predatory fish like tuna and billfish and swordfish disappeared from the sea .
+0.42334818840026855 0.1252434756773515 0.3318921334042301 0.2761136712749616 0.6811011904761904 0.038461538461538464 10.562500000000004 47.83250000000001
+
+Number 1024: Average Sentence Level Perplexity, Bleu, SARI 
+0.49538494168071573 0.21340522338998408 0.334293057511672
+
+the census of marine life estimated that 90 percent of some types of large fish , such as tuna and swordfish , have disappeared from the seas .
+the census of marine life discovered that 90 percent of tuna and swordfish have disappeared from the seas .
+ninety percent of some big fish like tuna and swordfish disappeared from the sea .
+0.5297090411186218 0.14745357054571948 0.3176653706113976 0.35709549071618035 0.5959006211180125 0.0 7.570000000000004 65.72500000000001
+
+Number 1025: Average Sentence Level Perplexity, Bleu, SARI 
+0.49569697894833303 0.21280566290958167 0.3341418967216695
+
+when sun encounters a young person interested in chinese culture , he ` ` seizes on those moments , ` ` he said .
+when sun meets a young person interested in chinese culture , he is eager to talk to them .
+when the sun meets a young man who is interested in the chinese culture he ` seizes at the same time .
+0.8236460983753204 0.161692143534558 0.3896085700041076 0.31547619047619047 0.6913462354638825 0.1620032840722496 5.190000000000001 93.47500000000002
+
+Number 1026: Average Sentence Level Perplexity, Bleu, SARI 
+0.49865147551974737 0.21234518075304992 0.33464159648097075
+
+` ` what ` s most interesting about this statistic is that more than half the women around the world are unhappy with the automotive products presented to them , ` ` says brandy schaffels , chief editor of askpatty . com , an automotive advice site geared to women .
+more than half of the women around the world are unhappy with the cars on the market , said
+the most fascinating thing about this staticstic is that over half the women in the world hate the car products they offer , say brandy schaffels , chief askpatty editor . com , car advice for women .
+0.05655407905578613 0.03259631698411773 0.29969834456116656 0.11558595069233368 0.783509082991166 0.0 14.08606060606061 52.84909090909092
+
+Number 1027: Average Sentence Level Perplexity, Bleu, SARI 
+0.4947041773370334 0.21074028018368446 0.33432960316025817
+
+when sun encounters a young person interested in chinese culture , he ` ` seizes on those moments , ` ` he said , but they do not occur often .
+when sun meets a young person interested in chinese culture , he is eager to talk to them .
+when the sun meets a young man who is interested in porcelain ` s culture he ` seizes at those times ; ` he said .
+0.6809128820896149 0.12514328743841557 0.38265428403903684 0.24132420091324203 0.7629698200350374 0.14366883116883117 6.647619047619049 84.8057142857143
+
+Number 1028: Average Sentence Level Perplexity, Bleu, SARI 
+0.4963520419808616 0.2099827846726644 0.3347572552034332
+
+the lack of female input may be why more than half the women around the world are unhappy with the automotive products presented to them , says brandy schaffels .
+more than half of the women around the world are unhappy with the cars on the market , said
+inadequate treatment by women may be the reason why more than half of the women in the world are displeased with their automobile products .
+0.09114497900009155 0.24835336815593242 0.4343214610718386 0.4087922094493487 0.754060939060939 0.14011123470522802 9.995000000000001 66.15000000000003
+
+Number 1029: Average Sentence Level Perplexity, Bleu, SARI 
+0.49279759405997764 0.2103193687383071 0.33563062543034905
+
+when sun meets a young person interested in chinese culture , he ` ` seizes on those moments , ` ` he said , but they do not occur often .
+when sun meets a young person interested in chinese culture , he is eager to talk to them .
+when the sun met a young person who was interested in chinese civilizations . . he was going to seize at those times . ``
+0.5604201257228851 0.1097204871871107 0.3920877425044092 0.42500000000000004 0.7200132275132276 0.03125000000000001 8.25826086956522 76.82043478260871
+
+Number 1030: Average Sentence Level Perplexity, Bleu, SARI 
+0.4933856160744377 0.2094445958552532 0.33612155688316697
+
+and it ` s also about time , based on the findings of the census of marine life , a decadelong survey of the global oceans , which estimated that 90 percent of large predatory fishes , such as tuna , billfish and swordfish , have disappeared from the seas .
+the census of marine life discovered that 90 percent of tuna and swordfish have disappeared from the seas .
+and it ` s is also a matter of time - based on sea life - centourship - a decadelong survey of the global oceans that predicted that 90 % of large predatory fish like tuna and billfish and swordfish had disappeared from the sea .
+0.11849546432495117 0.05367202372773433 0.32058274773527906 0.21761098511509083 0.7289857429392312 0.015151515151515152 17.12 43.565000000000026
+
+Number 1031: Average Sentence Level Perplexity, Bleu, SARI 
+0.49015380442142487 0.20810172885415393 0.33598760163189206
+
+lanier was the youngest member of the little rock nine , the group of black high school students barred from entering arkansas ` racially segregated little rock central high school .
+during the 1950s , lanier was one of a group of black high school students known as the little rock nine .
+lanier was the youngest member of the small rock nine : a group of black high - school students banned from entering arkansas ` racily separated little rock center school .
+0.6076492667198181 0.1785790714940511 0.42353836417975327 0.44461847389558234 0.7428321678321679 0.08316445081150964 13.29555555555556 47.83000000000001
+
+Number 1032: Average Sentence Level Perplexity, Bleu, SARI 
+0.49115803914192396 0.20784939844936673 0.3367358987476858
+
+lanier was the youngest member of the little rock nine , the group of black high school students barred from entering arkansas ` little rock central high school , which at the time only admitted whites .
+during the 1950s , lanier was one of a group of black high school students known as the little rock nine .
+lanier was the youngest member of the small rock nine : a group of black high - school students who had been forbidden to enter arkansas ` little rock high school that only admitted white .
+0.5517459809780121 0.15723078586799477 0.4563147003920249 0.4598774509803922 0.8404345654345654 0.06863208476111701 13.115000000000002 58.03000000000003
+
+Number 1033: Average Sentence Level Perplexity, Bleu, SARI 
+0.4916714962761281 0.20742042715630427 0.3377492784226378
+
+she was joined at the white house by a panel that included women of the civil rights movement including two who broke down barriers to attend school : charlayne hunter - gault , one of the first to desegregate the university of georgia , and carlotta walls lanier , the youngest member of the little rock nine , the group of black high school students barred from entering arkansas ` racially segregated little rock central high school .
+during the 1950s , lanier was one of a group of black high school students known as the little rock nine .
+she was accompanied by a group of women in the civil - rights movement along with two who had smashed barriers to school and charlayne hunter - gault , one of the first to desegregate the university of georgia , and the carlotta walls lanier , the youngest member of the small rock nine , a group of black high school students from the arkansas racian central rock school .
+0.06961661577224731 0.10544099960198486 0.4269541514419383 0.3021294813108109 0.9488040155333388 0.029928957481665214 25.837142857142855 22.032857142857168
+
+Number 1034: Average Sentence Level Perplexity, Bleu, SARI 
+0.48812481660802826 0.2065634571768562 0.33849889920431264
+
+when his father ` s house was burned by the lava that night in 1991 , 62 - year - old hauanio , a former hawaii volcanoes national park employee , remembers watching in shock and amazement with his former wife .
+when his father ` s house was burned by the lava in 1991 , hauanio remembers being amazed and shocked .
+when his father ` s house was burned to death that night in 1991 . . a 62 - year - old hauanio . . a former hawaii volcano national park worker . . he remembers watching in shock and astonishment with his former wife .
+0.06278997659683228 0.17114410711213657 0.4025890218749792 0.4699465528044249 0.7378205128205128 0.0 15.822222222222226 45.74500000000002
+
+Number 1035: Average Sentence Level Perplexity, Bleu, SARI 
+0.48458035960793494 0.20626829592631687 0.3390329835599015
+
+during the 1950s , lanier was the youngest member of the little rock nine , a group of black high school students barred from entering arkansas ` little rock central high school .
+during the 1950s , lanier was one of a group of black high school students known as the little rock nine .
+in the 1950s lanier was the youngest member of the small rock nine who was a group of black high school students who were forbidden to enter arkansas ` little rock high school .
+0.6116794645786285 0.2350951106162626 0.4170834592572983 0.5676423191638361 0.6836080586080586 0.0 11.271250000000002 71.24875000000003
+
+Number 1036: Average Sentence Level Perplexity, Bleu, SARI 
+0.485630765434139 0.20650653406425032 0.33967802881359904
+
+when the kernel is heated above 100 degrees celsius , the water inside turns to steam .
+when the kernel gets very hot - - above 212 degrees fahrenheit - - the water inside the seeds heats up .
+when the kernel is heated above 100 degrees celsius , the water inside turns to steam .
+0.515447348356247 0.11807145207687945 0.1084967320261438 0.3254901960784314 0.0 0.0 5.993333333333336 78.81000000000003
+
+Number 1037: Average Sentence Level Perplexity, Bleu, SARI 
+0.48587516365481204 0.20578165634304235 0.3377831001514068
+
+when the kernel gets very hot and the water inside hits its boiling point - - above 100 degrees celsius - lrb - 212 degrees fahrenheit - rrb - - - it turns to steam .
+when the kernel gets very hot - - above 212 degrees fahrenheit - - the water inside the seeds heats up .
+when the nucleus gets very hot and the water inside gets to its boiling point - over 100 degrees celsius - lrb - 212 degrees fahrenheit - rrb - it becomes steam .
+0.3838043808937073 0.15110567441923348 0.3460829505853698 0.37821273204506733 0.6600361197110423 0.0 10.236296296296299 69.76333333333335
+
+Number 1038: Average Sentence Level Perplexity, Bleu, SARI 
+0.48504531989252664 0.2053371361648 0.3378505786102195
+
+when the kernel gets very hot - - above 100 degrees celsius - lrb - 212 degrees fahrenheit - rrb - - - the water inside hits its boiling point and turns to steam .
+when the kernel gets very hot - - above 212 degrees fahrenheit - - the water inside the seeds heats up .
+when the kernel gets very hot - - above 100 degrees celsius - lrb - 212 degrees fahrenheit - rrb - - - the water inside hits its boiling point and turns to steam .
+0.46916770935058594 0.39029605359254727 0.18646371135244197 0.5593911340573259 0.0 0.0 9.073076923076925 76.3219230769231
+
+Number 1039: Average Sentence Level Perplexity, Bleu, SARI 
+0.48491727464622064 0.20682874033760443 0.33662971677749554
+
+` ` it would be so great , ` ` he said , ` ` to see it all come back . ` `
+` ` it would be so great , ` ` parris said , ` ` to see it all come back . ` `
+`` it would be so great , `` he said , `` to see it all come back . ``
+0.8285256922245026 0.4575284573478614 0.2990800865800866 0.7386904761904762 0.15854978354978355 0.0 -1.2190476190476183 141.2057142857143
+
+Number 1040: Average Sentence Level Perplexity, Bleu, SARI 
+0.48766614198684693 0.2088343380736865 0.33632931973591623
+
+when his father ` s house was burned by the lava that night in 1991 , 62 - year - old hauanio , a former hawaii volcanoes national park employee , remembers watching in stunned amazement with his former wife .
+when his father ` s house was burned by the lava in 1991 , hauanio remembers being amazed and shocked .
+when his father ` s house was burned to death that night in 1991 . . a 62 - year - old hauanio . . a former hawaii volcano national park worker . . he remembers seeing his ex - wife .
+0.18839353322982788 0.18460744521700595 0.45182274069213896 0.5576886549002981 0.7977795671761189 0.0 13.248387096774195 55.292580645161294
+
+Number 1041: Average Sentence Level Perplexity, Bleu, SARI 
+0.4852909625522674 0.2086420611462525 0.33724593418794974
+
+when his father ` s house was burned by the lava that night in 1991 , hauanio , 62 , a former hawaii volcanoes national park employee , remembers watching in stunned amazement with his former wife .
+when his father ` s house was burned by the lava in 1991 , hauanio remembers being amazed and shocked .
+when his father ` s house was burned to death that night in 1991 . . hauanio 62 . . a former hawaii volcanic national park employee . .
+0.08342468738555908 0.2666090188234886 0.45568401462411695 0.615566694514063 0.7514853493582878 0.0 10.690000000000001 57.605000000000004
+
+Number 1042: Average Sentence Level Perplexity, Bleu, SARI 
+0.482126661173002 0.20909849388386853 0.3381785174984707
+
+when the kernel gets very hot - - above 212 degrees fahrenheit - - the water inside turns to steam , which is a gas .
+when the kernel gets very hot - - above 212 degrees fahrenheit - - the water inside the seeds heats up .
+when the core gets very hot - over 212 degrees of fahrenheit - the water inside becomes a steam that is a gas .
+0.5048308968544006 0.250737833894674 0.32727679455620634 0.5167510185892539 0.4650793650793651 0.0 7.771428571428572 76.74857142857144
+
+Number 1043: Average Sentence Level Perplexity, Bleu, SARI 
+0.4823040380142629 0.20942380122770296 0.3380933477879843
+
+the rest of the time , he volunteers as a youth leader at his church and searches for work .
+the rest of the time , he volunteers as a youth leader at his church and looks for work .
+the rest of the time , he ` s a young leader in his church looking for a job .
+0.8800621256232262 0.3537053193768173 0.2668255763843999 0.5884803921568628 0.21199633699633702 0.0 1.4517647058823542 114.9329411764706
+
+Number 1044: Average Sentence Level Perplexity, Bleu, SARI 
+0.4853874340422394 0.21054226260870385 0.33754088444377045
+
+breyfogle , a former college basketball player , was reluctant at first , but he signed up his son , easton , to play on edina ` s team .
+still , he was not sure if he should sign up his son , easton , to play traveling basketball .
+breyfogle - a former college basketball player - wavered at first but signed up for his son easton for the edina ` s team .
+0.24417710304260254 0.03964513253420687 0.2525430286299852 0.12777777777777777 0.6298513081121777 0.0 9.457142857142859 64.66285714285716
+
+Number 1045: Average Sentence Level Perplexity, Bleu, SARI 
+0.48353196995762676 0.20922766930043848 0.33688705478366443
+
+they could not afford to pay their son ` s roughly $ 10,000 cost for classes at the university of texas at austin .
+when he grew up , they could not afford to pay $ 10,000 for him to go to the university of texas at austin .
+they couldn ` t afford to pay their son ` s roughly $ 10,000 for classes at the university of texas in austin .
+0.505639910697937 0.19637158104355654 0.26024028835813734 0.4154040404040404 0.31726190476190474 0.04805491990846682 6.960000000000001 80.78500000000003
+
+Number 1046: Average Sentence Level Perplexity, Bleu, SARI 
+0.48370073286404136 0.2091295312221417 0.33630196496362225
+
+though breyfogle was reluctant , he signed up his son , easton , to play on edina ` s team .
+still , he was not sure if he should sign up his son , easton , to play traveling basketball .
+though breyfogle hesitated , he signed up for his son , easton , to play with the edina ` s team .
+0.09749478101730347 0.30603689509300896 0.49319314944314946 0.6550844988344988 0.8244949494949495 0.0 6.310588235294119 80.09764705882354
+
+Number 1047: Average Sentence Level Perplexity, Bleu, SARI 
+0.4807749301985358 0.2098636779181331 0.3374905345430126
+
+they could not afford to pay their son ` s roughly $ 10,000 tuition at the university of texas at austin .
+when he grew up , they could not afford to pay $ 10,000 for him to go to the university of texas at austin .
+they wouldn ` t be able to pay their son ` s about $ 10,000 in austin at the university of texas .
+0.6557208001613617 0.14131251381458484 0.28127853329466235 0.4113514173998045 0.43248418248418247 0.0 5.483157894736845 89.5921052631579
+
+Number 1048: Average Sentence Level Perplexity, Bleu, SARI 
+0.4820903126794593 0.20934825563164028 0.33706788791708514
+
+breyfogle is a former college basketball player , but he was reluctant at first to sign up his son , easton , to play on edina ` s team .
+still , he was not sure if he should sign up his son , easton , to play traveling basketball .
+breyfogle is a former college basketball player but he hesitated at first to join his son easton to play the edina ` s team .
+0.23341763019561768 0.050661968099322066 0.23424841172699193 0.15794573643410853 0.5447994987468672 0.0 9.284347826086957 69.46391304347827
+
+Number 1049: Average Sentence Level Perplexity, Bleu, SARI 
+0.4802345463922664 0.20816402960527972 0.3363005783932785
+
+when he was older , they could not afford to pay $ 10,000 for him to study at the university of texas at austin .
+when he grew up , they could not afford to pay $ 10,000 for him to go to the university of texas at austin .
+when he was old , they couldn ` t afford to pay him $ 10,000 to study at an austin university in texas .
+0.4774653911590576 0.10734309946101002 0.19549877987377987 0.3266343266343266 0.259862012987013 0.0 6.960000000000001 80.78500000000003
+
+Number 1050: Average Sentence Level Perplexity, Bleu, SARI 
+0.4802140341312797 0.20741720790050733 0.33525760210794886
+
+still , he was unsure at first about signing up his son , easton , to play on edina ` s team .
+still , he was not sure if he should sign up his son , easton , to play traveling basketball .
+still , he was unsure at first about signing up his son , easton , to play on edina ` s team .
+0.12681615352630615 0.413948387915005 0.19381354995579134 0.581440649867374 0.0 0.0 5.852222222222224 85.16499999999999
+
+Number 1051: Average Sentence Level Perplexity, Bleu, SARI 
+0.47761552030330195 0.20893581951826098 0.33421757231271243
+
+they could not afford to pay their son ` s roughly $ 10,000 tuition at the university of texas at austin , so manuel earned extra money as a server in restaurants , coloring hair at a spa , translating spanish , working in a rock quarry and building fences at a ranch .
+when he grew up , they could not afford to pay $ 10,000 for him to go to the university of texas at austin .
+they weren ` t able to pay their son ` s about $ 10,000 in austin at the university of texas so manuel earned extra money as a caterer and dyeing hair at a spa and translating spanish and working in a rock quarry and building fences at a ranch .
+0.11541712284088135 0.06688071957304445 0.31941396763805296 0.22530764966740574 0.7329342532467532 0.0 19.05914893617022 42.129999999999995
+
+Number 1052: Average Sentence Level Perplexity, Bleu, SARI 
+0.4749717363802186 0.2078989209785149 0.3341095168041383
+
+it ` s increasingly true across the country - - we - lrb - whites - rrb - have n ` t been replacing ourselves , ` ` said steve murdock , a sociology professor at rice university who has been arguing for decades that texas and other states must do a better job of educating minorities , especially hispanics , or employers will go overseas to find skilled workers .
+murdock has said for years that texas and other states must do a better job of educating minorities , especially hispanics .
+` s is more and more real in the whole country - we - lrb - whale - rrb - have n ` t been an alternator ; ` said steve murdock ; a professor of sociology at the university of rice , who has argued for decades that texas and other states must do better training for minorities - especially hispanics - or employers go overseas to find skilled workers .
+0.048108696937561035 0.10187929128838799 0.38039453084385433 0.34470624561943347 0.7964773469121295 0.0 24.526551724137935 22.523620689655175
+
+Number 1053: Average Sentence Level Perplexity, Bleu, SARI 
+0.4718785259494747 0.20713066279235456 0.3344449154566
+
+they also are more likely to be in a job that does not require a college degree and are being paid less than white workers with the same experience .
+they are more likely to work in a job that does not pay much and does not require a college degree .
+they are also more likely to find themselves in a job that does not need a university degree and is paid for less than those with the same experience .
+0.49666017293930054 0.22872196013470597 0.43857011531353635 0.5880994152046783 0.7067775974025974 0.020833333333333332 11.58896551724138 63.62758620689657
+
+Number 1054: Average Sentence Level Perplexity, Bleu, SARI 
+0.47205681117961734 0.20728599586675997 0.33519401761384415
+
+however , in texas and 24 other states , whites are at least twice as likely as hispanics to have college degrees .
+but in texas and 24 other states , whites are at least twice as likely as hispanics to have college degrees .
+but in texas and 24 other states whites are at least twice as likely as hispanics to have college degrees .
+0.3813333511352539 0.8747394842931362 0.6884177591414433 0.92775327742433 0.4958333333333333 0.6416666666666666 8.73 68.09500000000004
+
+Number 1055: Average Sentence Level Perplexity, Bleu, SARI 
+0.4714087864650147 0.21205352078409123 0.3377170443390413
+
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require a college degree and are being paid less than white workers with the same experience .
+they are more likely to work in a job that does not pay much and does not require a college degree .
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require a college degree and are being paid less than white workers with the same experience .
+0.19950103759765625 0.2897978096517083 0.1529609827179901 0.45888294815397035 0.0 0.0 13.824736842105263 63.62815789473686
+
+Number 1056: Average Sentence Level Perplexity, Bleu, SARI 
+0.4694803627141824 0.21260489871932256 0.3364067176608778
+
+they are more likely to work in a job where their college degree is not needed .
+they are more likely to work in a job that does not pay much and does not require a college degree .
+they are more likely to work in a place where their university degree is not required .
+0.8880947530269623 0.3341737053054216 0.5068149646000523 0.8294726715779347 0.6909722222222222 0.0 8.350000000000005 63.69500000000001
+
+Number 1057: Average Sentence Level Perplexity, Bleu, SARI 
+0.4724283513783569 0.2134610170755627 0.33760677573791426
+
+murdock has been arguing for decades that texas and other states must do a better job of educating minorities , especially hispanics .
+murdock has said for years that texas and other states must do a better job of educating minorities , especially hispanics .
+murdock has been fighting for decades that texas and other countries need to do better to raise minorities - especially hispanics .
+0.07971334457397461 0.191072229574376 0.1934914350355527 0.40193923723335495 0.17853506787330317 0.0 13.450000000000003 34.255000000000024
+
+Number 1058: Average Sentence Level Perplexity, Bleu, SARI 
+0.4696820925895151 0.21330445212800195 0.3365989761525831
+
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require their college degree and are being paid less than white workers with the same experience .
+they are more likely to work in a job that does not pay much and does not require a college degree .
+they are having a harder time than whites finding a job , are more likely to be in a job that does not require their college degree and are being paid less than white workers with the same experience .
+0.18681275844573975 0.22104079286546427 0.12809674144851413 0.3842902243455424 0.0 0.0 13.824736842105263 63.62815789473686
+
+Number 1059: Average Sentence Level Perplexity, Bleu, SARI 
+0.46771772221351665 0.21335817671645654 0.3351510439671382
+
+his success at colby - sawyer , which he attended on a scholarship , is part of the reason winfield can not understand why he ca n ` t find a job .
+that is part of the reason he can not understand why he has had such a hard time finding a job .
+his success at colby - sawyer , which he attended on a scholarship , is part of the reason winfield can not understand why he ca n ` t find a job .
+0.10835820436477661 0.255726424162972 0.1403797341049843 0.4211392023149529 0.0 0.0 9.658571428571431 75.6864285714286
+
+Number 1060: Average Sentence Level Perplexity, Bleu, SARI 
+0.46523938071111154 0.21365037152643251 0.33380779355429574
+
+his success at colby - sawyer , which he attended on a scholarship , is part of the reason winfield ca n ` t understand why he ca n ` t find a job .
+that is part of the reason he can not understand why he has had such a hard time finding a job .
+his success at colby - sawyer , which he attended on a scholarship , is part of the reason winfield ca n ` t understand why he ca n ` t find a job .
+0.09631729125976562 0.16961162496305443 0.11444573944573944 0.3433372183372183 0.0 0.0 9.147586206896552 81.13103448275862
+
+Number 1061: Average Sentence Level Perplexity, Bleu, SARI 
+0.46271251708473243 0.2133487362759984 0.3323053137316344
+
+winfield ` s success in college is part of the reason he can not understand why he is having trouble finding a job .
+that is part of the reason he can not understand why he has had such a hard time finding a job .
+winfield ` s success in college is part of the reason he can ` t understand why he ` s is having trouble finding a job .
+0.8713627457618713 0.34775476333824323 0.29668575310559003 0.5995810688405797 0.2904761904761905 0.0 6.71913043478261 87.85521739130436
+
+Number 1062: Average Sentence Level Perplexity, Bleu, SARI 
+0.46549245061314837 0.21426306299070758 0.3320630037954028
+
+his success in college , which he attended on a scholarship , is part of the reason winfield can not understand why he ca n ` t find a job .
+that is part of the reason he can not understand why he has had such a hard time finding a job .
+his success in college , which he attended on a scholarship , is part of the reason winfield can not understand why he ca n ` t find a job .
+0.18197178840637207 0.27308797566983256 0.14775293586269198 0.4432588075880759 0.0 0.0 8.925185185185189 79.16333333333336
+
+Number 1063: Average Sentence Level Perplexity, Bleu, SARI 
+0.4635767704631026 0.21466052861691787 0.3308176654985602
+
+murdock has been arguing for decades that texas and other states must do a better job of educating minorities , especially hispanics , or employers will go overseas to find skilled workers .
+murdock has said for years that texas and other states must do a better job of educating minorities , especially hispanics .
+murdock has been fighting for decades that texas and other countries must do better to train minorities - especially hispanics - or employers go overseas to find skilled workers .
+0.08400827646255493 0.1264203703898735 0.23936355009724578 0.3195075757575758 0.39858307453416153 0.0 15.91777777777778 29.03000000000003
+
+Number 1064: Average Sentence Level Perplexity, Bleu, SARI 
+0.4610293309060519 0.21406831278989072 0.33020387948915536
+
+hauanio said that before the volcano erupted , this beach town on the east end of hawaii ` s big island was one of the most beautiful places on the island .
+hauanio said this beach town on the island of hawaii was once ` ` just one of the beautifulest places on the island .
+hauanio told me that this beach town on the east side of hawaii ` s big island was one of the most beautiful places on the island .
+0.708997905254364 0.33034466035625115 0.4982384103351845 0.591143802434125 0.9035714285714286 0.0 9.52692307692308 73.06807692307696
+
+Number 1065: Average Sentence Level Perplexity, Bleu, SARI 
+0.46268245473504066 0.2148434884403331 0.33132410969479553
+
+hauanio remembers his green , pre - volcano beach town on the east end of the island of hawaii as ` ` just one of the beautifulest places on the island .
+hauanio said this beach town on the island of hawaii was once ` ` just one of the beautifulest places on the island .
+hauanio remembers his green , pre - volcano beach town on the east end of the island of hawaii as ` ` just one of the beautifulest places on the island .
+0.33270299434661865 0.4962976037013009 0.21548881650250706 0.6464664495075212 0.0 0.0 11.984444444444446 57.23000000000002
+
+Number 1066: Average Sentence Level Perplexity, Bleu, SARI 
+0.4618216636066405 0.21670742297848522 0.3305569885478268
+
+hauaino remembers his verdant , pre - volcano beach town on the east end of the island of hawaii as ` ` just one of the beautifulest places on the island .
+hauanio said this beach town on the island of hawaii was once ` ` just one of the beautifulest places on the island .
+hauaino remembers his verdant , pre - volcano beach town on the east end of the island of hawaii as ` ` just one of the beautifulest places on the island .
+0.26413631439208984 0.48997405006821476 0.2125532311947038 0.6376596935841113 0.0 0.0 11.984444444444446 57.23000000000002
+
+Number 1067: Average Sentence Level Perplexity, Bleu, SARI 
+0.46052110209865005 0.21850522973565448 0.32978064803892465
+
+hauaino remembers his green , pre - volcano beach town on the east end of the island of hawaii as ` ` just one of the beautifulest places on the island .
+hauanio said this beach town on the island of hawaii was once ` ` just one of the beautifulest places on the island .
+hauaino remembers his green , pre - volcano beach town on the east end of the island of hawaii as ` ` just one of the beautifulest places on the island .
+0.374136745929718 0.48997405006821476 0.2125532311947038 0.6376596935841113 0.0 0.0 11.547407407407409 60.363333333333344
+
+Number 1068: Average Sentence Level Perplexity, Bleu, SARI 
+0.459956498463559 0.22027953575089995 0.32901445577196897
+
+major fishing nations , such as japan and south korea , would lose hundreds of millions of dollars each year .
+countries like japan and south korea do a lot of high - seas fishing . &lt; sep &gt; they would lose hundreds of millions of dollars each year .
+major fishing countries like japan and south korea would lose hundreds of millions of dollars each year .
+0.703559935092926 0.4286020069762037 0.7287620475476547 0.9813793103448276 1.0 0.20490683229813667 8.39294117647059 65.16823529411766
+
+Number 1069: Average Sentence Level Perplexity, Bleu, SARI 
+0.46153833896115226 0.2216322790705448 0.33161021935492796
+
+she tells girls ` ` that if you are good at math and interested in how things work , then engineering is a great field . ` `
+she tells girls that if they are good at math and interested in how things work , ` ` engineering is a great field . ` `
+she tells girls ` that if you ` re ` good at math and ` re ` interested in how things work then engineering is a great field . `
+0.8157441169023514 0.46046351600274404 0.375850369048125 0.7578541374474054 0.36969696969696964 0.0 6.71913043478261 87.85521739130436
+
+Number 1070: Average Sentence Level Perplexity, Bleu, SARI 
+0.46382353752851485 0.22317312576042997 0.3318956396755292
+
+i tell them that if you are good at math and interested in how things work , then engineering is a great field .
+she tells girls that if they are good at math and interested in how things work , ` ` engineering is a great field . ` `
+if you ` re ` good at mathematics and ` re - interested in how things work . . then engineering is a great field .
+0.6968947947025299 0.3502824630619525 0.4232740570975866 0.7006302521008404 0.5136363636363637 0.05555555555555556 7.967368421052633 71.78157894736843
+
+Number 1071: Average Sentence Level Perplexity, Bleu, SARI 
+0.4653175840488611 0.2239879292046705 0.332481398761568
+
+sun said his fascination with the past started with his grandfather , who taught him the old accents and ways of beijing , including beijing opera .
+sun said his fascination with kites started with his grandfather , who taught him the old accents and ways of beijing , including beijing opera .
+sun told him that his fasciousness with the past had started with his grandfather who had taught him the old accents and ways of beijing .
+0.10126906633377075 0.43180565570216367 0.2597540007107569 0.6365018211367957 0.1427601809954751 0.0 8.32 79.94000000000001
+
+Number 1072: Average Sentence Level Perplexity, Bleu, SARI 
+0.46299880368124907 0.22531160899127872 0.3320181669268495
+
+but she quickly added , ` ` the end all is to keep him out of trouble , - lrb - keep - rrb - him healthy - - maybe get a scholarship in the end . ` `
+she quickly added that the main thing is ` ` to keep him out of trouble , - lrb - keep - rrb - him healthy - - maybe get a scholarship in the end . ` `
+but she added quickly , ` the end is to keep him out of trouble , - lrb - keep - rrb - healthy - maybe get a scholarship in the end . `
+0.48581284284591675 0.6160676536044161 0.4239635298721787 0.8456650994204578 0.42622549019607847 0.0 6.061666666666667 94.35000000000002
+
+Number 1073: Average Sentence Level Perplexity, Bleu, SARI 
+0.46314319633419 0.2277847485141467 0.33260009960371867
+
+but she quickly added : ` ` the end all is to keep him out of trouble , - lrb - keep - rrb - him healthy - - maybe get a scholarship in the end . ` `
+she quickly added that the main thing is ` ` to keep him out of trouble , - lrb - keep - rrb - him healthy - - maybe get a scholarship in the end . ` `
+but she quickly added , `` the end is to keep him out of trouble , - lrb - keep - rrb - healthy - maybe get a scholarship . ``
+0.49365293979644775 0.5015743951425413 0.3779761920270294 0.76973684675778 0.3641917293233083 0.0 5.016000000000002 103.62800000000001
+
+Number 1074: Average Sentence Level Perplexity, Bleu, SARI 
+0.4633350815131979 0.22950669597721837 0.3328854838327961
+
+she quickly added that ` ` the end all is to keep him out of trouble , - lrb - keep - rrb - him healthy - - maybe get a scholarship in the end . ` `
+she quickly added that the main thing is ` ` to keep him out of trouble , - lrb - keep - rrb - him healthy - - maybe get a scholarship in the end . ` `
+she quickly added that ` ` the end all is to keep him out of trouble , - lrb - keep - rrb - him healthy - - maybe get a scholarship in the end . ` `
+0.5339098274707794 0.8229243763673136 0.3010403940222463 0.9031211820667389 0.0 0.0 6.803846153846155 92.59115384615387
+
+Number 1075: Average Sentence Level Perplexity, Bleu, SARI 
+0.4637761736754328 0.23321555647965644 0.3326864520214802
+
+` ` being rejected by the professional world has pushed me to go harder working at my high school and my church , ` ` he said .
+winfield said he feels rejected by the working world . &lt; sep &gt; but it has ` ` pushed me to go harder working at my high school and my church , ` ` he said .
+` ` being rejected by the professional world has pushed me to go harder working at my high school and my church , ` ` he said .
+0.7801958620548248 0.5453720033431471 0.28539638163180053 0.8561891448954015 0.0 0.0 8.008181818181821 76.83227272727274
+
+Number 1076: Average Sentence Level Perplexity, Bleu, SARI 
+0.4657415133548079 0.2351544163980632 0.33239272487620264
+
