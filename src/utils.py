@@ -193,12 +193,12 @@ class Lang:
             # valid_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
             #                 encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
-                            encoding='utf-8').read().split('\n')
+            # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
+            #                 encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
             #                 encoding='utf-8').read().split('\n')
-            # test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
-                            # encoding='utf-8').read().split('\n')
+            test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
+                            encoding='utf-8').read().split('\n')
 
             # train_src = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.norm',
             #                  encoding='utf-8').read().split('\n')

@@ -24,3 +24,7 @@
   "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
   "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
   "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
+
+  "log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
+  "ref_folder_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/ref-test-orig",
+  "orig_file_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src",
