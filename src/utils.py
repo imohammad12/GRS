@@ -92,7 +92,7 @@ semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
 
 if config['paraphrasing_model'] != 'classic_model':
     tokenizer_pegasus = PegasusTokenizer.from_pretrained(config['paraphrasing_model'])
-    model_paraphrasing = PegasusForConditionalGeneration.from_pretrained(model_name).to(config['paraphrasing_gpu'])
+    model_paraphrasing = PegasusForConditionalGeneration.from_pretrained(config['paraphrasing_model']).to(config['paraphrasing_gpu'])
 
 SOS_token = 1
 EOS_token = 2
