@@ -41,6 +41,7 @@ import subprocess
 
 import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
+from transformers import PegasusForConditionalGeneration, PegasusTokenizer
 from pattern.en import lexeme
 from sentence_transformers import SentenceTransformer, util
 from collections import defaultdict
