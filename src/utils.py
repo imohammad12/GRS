@@ -89,6 +89,10 @@ tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base
 
 semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
 
+if config['paraphrasing_model'] == 'tuner007/pegasus_paraphrase':
+    tokenizer_pegasus = PegasusTokenizer.from_pretrained(model_name)
+    model_paraphrasing = PegasusForConditionalGeneration.from_pretrained(model_name).to(config['paraphrasing_gpu'])
+
 SOS_token = 1
 EOS_token = 2
 PAD_token = 0
@@ -1126,34 +1130,50 @@ def const_paraph(sent, neg_const, entities):
     # else:
     #     pos_const = entities
 
-    inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
+    if config['paraphrasing_model'] != 'classic_model':
+        bad_word = " ".join(neg_const)
+        bad_word_ids = tokenizer(bad_word, add_prefix_space=True).input_ids
 
-    print("input: ", inp)
+        batch = tokenizer_pegasus([sent],
+                          truncation=True,
+                          padding='longest',
+                          max_length=60,
+                          return_tensors="pt").to(config['paraphrasing_gpu'])
 
-    f = open("inp_par.txt", "w")
-    f.write(inp)
-    f.close()
+        translated = model_paraphrasing.generate(**batch, max_length=128,
+                                    # num_return_sequences=5,
+                                    # temperature=10,
+                                    num_beams=1,
+                                    bad_words_ids=[[i] for i in bad_word_ids]
+                                    )
+        output_sent = translated[0]
 
-    # f = open("out_par.txt", "w")
-    # f.close()
+    else:
+        inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
 
-    # TODO
-    imr_dir_path = '/home/m25dehgh/simplification/improved-ParaBank-rewriter'
-    bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
+        print("input: ", inp)
 
-    # print(bashCommand)
-    # process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
-    # process.wait()
-    # if process.returncode != 0:
-        # raise ValueError('paraphrasing output command is not returuning correctly, process return code:', process.returncode)
+        f = open("inp_par.txt", "w")
+        f.write(inp)
+        f.close()
 
-    os.system(bashCommand)
-    # print("outtt:", os.popen(bashCommand).read())
+        # TODO
+        imr_dir_path = '/home/m25dehgh/simplification/improved-ParaBank-rewriter'
+        bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
 
-    ff = open("./out_par.txt", "r")
-    # print("tiem testing: ", f.read())
-    # print("tiem testing2: ", f.read())
-    return ff.read()
+        # print(bashCommand)
+        # process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
+        # process.wait()
+        # if process.returncode != 0:
+            # raise ValueError('paraphrasing output command is not returuning correctly, process return code:', process.returncode)
+
+        os.system(bashCommand)
+        # print("outtt:", os.popen(bashCommand).read())
+
+        ff = open("./out_par.txt", "r")
+        output_sent = ff.read()
+
+    return output_sent
 
 
 def paraph(sent, leaves, entities, stemmer, details_sent):
