@@ -8,5 +8,5 @@
   "simplicity_thresh": false,
   "score_function": "new",
   "paraphrasing_model": "tuner007/pegasus_paraphrase",
-  "paraphrasing_gpu" : 2,
+  "paraphrasing_gpu" : 2
 }
