@@ -24,7 +24,9 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     beam_calls = 0
     start_index = config['start_index']
     stats = {'ls': 0, 'dl': 0, 'las': 0, 'rl': 0, 'par': 0}
-    lm_forward.load_state_dict(torch.load(config['lm_name'] + '.pt'))
+
+    if config['score_function'] == 'old':
+        lm_forward.load_state_dict(torch.load(config['lm_name'] + '.pt'))
     if config['double_LM']:
         lm_backward.load_state_dict(torch.load('structured_lm_backward_300_150_0_4.pt'))
     lm_forward.eval()
