@@ -1107,6 +1107,7 @@ def neg_consts_words(comp_toks, tokens, stemmer):
 
 def const_paraph(sent, neg_const, entities):
     stp_words = nltk.corpus.stopwords.words('english')
+    stp_words += ['`', '`s', '`ing', '`ed']
 
     # sent = sent.translate(str.maketrans('', '', string.punctuation))
 
