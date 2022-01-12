@@ -1133,7 +1133,7 @@ def const_paraph(sent, neg_const, entities):
 
     if config['paraphrasing_model'] != 'classic_model':
         bad_word = " ".join(neg_const)
-        bad_word_ids = tokenizer(bad_word, add_prefix_space=True).input_ids
+        bad_word_ids = tokenizer_pegasus(bad_word, add_prefix_space=True).input_ids
 
         batch = tokenizer_pegasus([sent],
                           truncation=True,
