@@ -1118,7 +1118,7 @@ def const_paraph(sent, neg_const, entities):
     pos_const = []
 
     neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
-    print(f"negative constraints: {neg_consts}\n")
+    print(f"negative constraints: {neg_const}\n")
 
     # if len(neg_const) >= 5:
     #     return -1
