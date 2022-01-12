@@ -1147,7 +1147,8 @@ def const_paraph(sent, neg_const, entities):
                                     num_beams=1,
                                     bad_words_ids=[[i] for i in bad_word_ids]
                                     )
-        output_sent = translated[0]
+        tgt_text = tokenizer_pegasus.batch_decode(translated, skip_special_tokens=True)
+        output_sent = tgt_text[0]
 
     else:
         inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
