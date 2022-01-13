@@ -7,3 +7,4 @@ src/nohup.out
 /.idea/aws.xml
 /.idea/controllable-simplification.iml
 ./nohup.out
+./.DS_Store
