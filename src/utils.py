@@ -1120,6 +1120,7 @@ def const_paraph(sent, neg_const, entities):
 
     neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
     print(f"negative constraints: {neg_const}\n")
+    print(f"'`' in neg_const: {'`' in neg_const}")
 
     # if len(neg_const) >= 5:
     #     return -1
@@ -1144,13 +1145,12 @@ def const_paraph(sent, neg_const, entities):
                           return_tensors="pt").to(config['paraphrasing_gpu'])
 
         translated = model_paraphrasing.generate(**batch, max_length=128,
-                                    # num_return_sequences=5,
-                                    # temperature=10,
-                                    num_beams=1,
-                                    bad_words_ids=[[i] for i in bad_word_ids]
-                                    )
-        tgt_text = tokenizer_pegasus.batch_decode(translated, skip_special_tokens=True)
-        output_sent = tgt_text[0]
+                                                 num_return_sequences=5,
+                                                 temperature=1.5,
+                                                 num_beams=5,
+                                                 bad_words_ids=[[i] for i in bad_word_ids]
+                                                 )
+        output_sent = tokenizer_pegasus.batch_decode(translated, skip_special_tokens=True)
 
     else:
         inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
@@ -1175,7 +1175,7 @@ def const_paraph(sent, neg_const, entities):
         # print("outtt:", os.popen(bashCommand).read())
 
         ff = open("./out_par.txt", "r")
-        output_sent = ff.read()
+        output_sent = [ff.read()]
 
     return output_sent
 
@@ -1191,15 +1191,17 @@ def paraph(sent, leaves, entities, stemmer, details_sent):
         neg_consts += details_sent[3]
 
     print(f"\nsentence is :{sent}")
-    sent = const_paraph(sent, neg_consts, entities )
+    sents = const_paraph(sent, neg_consts, entities)
 
-    print('new: ', sent)
-    if sent != -1 and sent != 1:
-        return correct(all_norms(sent))
+    # print('new: ', sent)
+    # if sent != -1 and sent != 1:
+
         # sent = sent.replace("\n", '')
+    sents = [ss.replace("\n", '') for ss in sents]
+    return correct(all_norms(sents))
         # return correct(sent)
-    else:
-        return sent
+    # else:
+    #     return sent
 
 
 # changed
@@ -1300,9 +1302,15 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
     # comented for testing paraphrasing and deletion in a sequential order instead of a parallel method in beam search
     if config['constrained_paraphrasing']:
-        sp = paraph(sent, "", entities, stemmer, details_sent)
-        if sp not in sent_list and sp != -1:
-            s.append({sp: 'par'})
+        paraphrased_sentences = paraph(sent, "", entities, stemmer, details_sent)
+
+        any_accepted_sent = False
+        for sp in paraphrased_sentences:
+            if sp not in sent_list and sp != -1:
+                s.append({sp: 'par'})
+                any_accepted_sent = True
+
+        if any_accepted_sent:
             all_par_calls += 1
 
     # To revert to the previous for (paraphrasing and deletion working in parallel in the beam search) search for
