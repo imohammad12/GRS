@@ -1739,16 +1739,19 @@ def save_config(config_dict, saving_path="."):
     json.dump(config_dict, config_file)
     config_file.close()
 
+
 def save_json(dictionary, saving_path, file_name):
     json_file = open(saving_path + "/" + file_name + ".json", "w")
     json.dump(dictionary, json_file)
     json_file.close()
+
 
 def load_config():
     conf_file = open("config.json", "r")
     config_dict = json.load(conf_file)
     conf_file.close()
     return config_dict
+
 
 def read_sys_out_from_file_name(root_path, config):
     raw_output = open(root_path + '/' + config["file_name"], encoding='utf-8').read().split('\n')
@@ -1761,14 +1764,18 @@ def read_sys_out_from_file_name(root_path, config):
     print("len of pre-appended sys_sents form file_name:", len(sys_sents))
     return sys_sents
 
+
 def save_and_log(all_scores, sys_sents, config):
-    folder_path = config['log_directory'] + "/" + str(config['run_number']) + "-{:.2f}".format(all_scores['overall_sari'])
+    all_files = os.listdir(config['log_directory']) + os.listdir(config['extra_log_directory'])
+    run_numbers = [int(f.split('-')[0]) for f in all_files if f.split('-')[0].isdigit()]
+    run_numbers.sort()
+    current_run = run_numbers[-1] + 1
+    folder_path = config['log_directory'] + "/" + str(current_run) + "-{:.2f}".format(all_scores['overall_sari'])
 
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
         save_config(config, folder_path)
-        save_output("sys_out_" + str(config['run_number']), folder_path, sys_sents=sys_sents)
-        config['run_number'] += 1
+        save_output("sys_out_" + str(current_run), folder_path, sys_sents=sys_sents)
         save_config(config)
         save_json(all_scores, folder_path, "scores")
 
