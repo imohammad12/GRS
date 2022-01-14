@@ -1113,14 +1113,11 @@ def const_paraph(sent, neg_const, entities):
 
     # removing all occurances of empty spaces from negative constraints
     neg_const = list(filter(lambda a: a != ' ' and a != '', neg_const))
-    # print("neg constraints: ", neg_const)
 
-    # neg_const = neg_const.split(" ")
-    pos_const = []
+    # pos_const = []
 
     neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
     print(f"negative constraints: {neg_const}\n")
-    print(f"'`' in neg_const: {'`' in neg_const}")
 
     # if len(neg_const) >= 5:
     #     return -1
@@ -1144,7 +1141,8 @@ def const_paraph(sent, neg_const, entities):
                           max_length=60,
                           return_tensors="pt").to(config['paraphrasing_gpu'])
 
-        translated = model_paraphrasing.generate(**batch, max_length=128,
+        translated = model_paraphrasing.generate(**batch,
+                                                 max_length=60,
                                                  num_return_sequences=5,
                                                  temperature=1.5,
                                                  num_beams=5,
