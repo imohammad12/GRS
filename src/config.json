@@ -3,7 +3,7 @@
   "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
   "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
   "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
-  "run_number": 152,
+  "extra_log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
   "start_index": 129,
   "simplicity_thresh": false,
   "score_function": "new",
