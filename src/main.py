@@ -58,48 +58,35 @@ elif config['operation'] == "sample":
 
 	# Testing multiple configurations
 	# for i, del_threshold in enumerate(np.arange(0.9, 1.25, 0.1)):
-	# for j, par_thresh in enumerate(np.arange(0.9, 1.05, 0.1)):
+	for j, par_thresh in enumerate(np.arange(0.9, 1.6, 0.1)):
 
-	# for i in range(3):
-	config = load_config()
+		config = load_config()
 	#
 	# 	config['threshold']['par'] = 0.8
 	# 	config['threshold']['dl'] = 2.0
 	#
-	# 	if i == 0:
-	# 		config['delete_leaves'] = True
-	# 		config['constrained_paraphrasing'] = True
-	#
-	# 	elif i == 1:
-	# 		config['delete_leaves'] = False
-	# 		config['constrained_paraphrasing'] = True
-	#
-	# 	elif i == 2:
-	# 		config['delete_leaves'] = True
-	# 		config['constrained_paraphrasing'] = False
-
-		# if np.round(par_thresh, 2) == 0.8:
-		# 	continue
+		# config['delete_leaves'] = True
+		# config['constrained_paraphrasing'] = True
 
 
 		# config['sim_threshold'] = np.round(simplicity_thresh, 2)
 
 		# config['delete_leaves'] = False
 
-		# config['threshold']['par'] = np.round(par_thresh, 2)
+		config['threshold']['par'] = np.round(par_thresh, 2)
 		# config['threshold']['dl'] = np.round(del_threshold, 2)
 
-	save_config(config)
+		save_config(config)
 
 		# importlib.reload(sys.modules['utils'])
 		# from utils import *
 
-	if config['set'] == 'valid':
-		sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-	elif config['set'] == 'test':
-		sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+		if config['set'] == 'valid':
+			sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
+		elif config['set'] == 'test':
+			sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
 
-	open(config['file_name'], "w").close()
+		open(config['file_name'], "w").close()
 
 	end = time.time()
 	print(f"Runtime of the program is {end - start_time}")
