@@ -1059,7 +1059,7 @@ def comp_extract(sent, comp_simp_class_model, tokenizer):
     return extracted_comps
 
 
-def neg_consts_words(comp_toks, tokens, stemmer):
+def neg_consts_words(comp_toks, tokens, stemmer, entities):
     """ returns words for negative constraints
         removes some tokens,
         preprocesses the words,
@@ -1097,26 +1097,34 @@ def neg_consts_words(comp_toks, tokens, stemmer):
     # 'facilitates', 'facilitating', 'facilitated'
     for word in negs[:max_num_accepted_consts]:
         words_with_same_root = stemmer.unstem(stemmer.stem(word))
-        words_with_same_root.remove(word) # the initial word will be added one time in the following
+        words_with_same_root.remove(word)  # the initial word will be added one time in the following
 
         new_neg += lexeme(word)
         new_neg += words_with_same_root
 
-    return new_neg
-
-
-def const_paraph(sent, neg_const, entities):
     stp_words = nltk.corpus.stopwords.words('english')
     stp_words += ['`', '`s', '`ing', '`ed', ',', ',s', ',ing', ',ed']
+
+    # removing all occurances of empty spaces from negative constraints
+    neg_const = list(filter(lambda a: a != ' ' and a != '', new_neg))
+
+    neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
+
+    return neg_const
+
+
+def const_paraph(sent, neg_const):
+    # stp_words = nltk.corpus.stopwords.words('english')
+    # stp_words += ['`', '`s', '`ing', '`ed', ',', ',s', ',ing', ',ed']
 
     # sent = sent.translate(str.maketrans('', '', string.punctuation))
 
     # removing all occurances of empty spaces from negative constraints
-    neg_const = list(filter(lambda a: a != ' ' and a != '', neg_const))
-
-    # pos_const = []
-
-    neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
+    # neg_const = list(filter(lambda a: a != ' ' and a != '', neg_const))
+    #
+    # # pos_const = []
+    #
+    # neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
     print(f"negative constraints: {neg_const}\n")
 
     # if len(neg_const) >= 5:
@@ -1182,14 +1190,14 @@ def paraph(sent, leaves, entities, stemmer, details_sent):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
     extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
-    neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
+    neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer, entities=entities)
 
     # Adding used negetavie constraints in the previous steps to this step to prevent generating deleted words
     if details_sent[1] == 'par':
         neg_consts += details_sent[3]
 
     print(f"\nsentence is :{sent}")
-    sents = const_paraph(sent, neg_consts, entities)
+    sents = const_paraph(sent, neg_consts)
 
     # print('new: ', sent)
     # if sent != -1 and sent != 1:

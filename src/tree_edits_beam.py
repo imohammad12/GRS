@@ -237,7 +237,10 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             if details_sent[1] == 'par':
                 unchanged_sent = details_sent[2]
                 extracted_comp_toks = comp_extract(unchanged_sent, comp_simp_class_model, tokenizer_deberta)
-                neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer)
+                neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'],
+                                              extracted_comp_toks['tokens'],
+                                              stemmer,
+                                              entities=entities)
                 details_sent.append(neg_consts)
 
         perpf = new_beam[maxvalue_sent][0]
