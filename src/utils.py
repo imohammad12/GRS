@@ -1166,7 +1166,7 @@ def const_paraph(sent, neg_const):
             # Fixing Bart bug for generating incorrect first word
             new_token_ids = []
             for token_ids in translated:
-                tgt_tokens = tokenizer.convert_ids_to_tokens(token_ids, skip_special_tokens=True)
+                tgt_tokens = tokenizer_paraphrasing.convert_ids_to_tokens(token_ids, skip_special_tokens=True)
                 if tgt_tokens[1][0] != 'Ġ' and tgt_tokens[1][0].isupper():
                     new_token_ids.append(
                         torch.cat([token_ids[:1], token_ids[2:], token_ids[-1:]]))  # Removing the first incorrect token
