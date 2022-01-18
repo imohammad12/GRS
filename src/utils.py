@@ -1041,7 +1041,7 @@ def comp_extract(sent, comp_simp_class_model, tokenizer):
 
     more_than_thresh = []
     less_than_thresh = []
-    thresh = attention[layer].sum(dim=1)[0][0].mean() * 3 / 2
+    thresh = attention[layer].sum(dim=1)[0][0].mean() * 1.2
 
     for i in range(len(CLS_attended_tokens[0])):
         if CLS_attended_tokens[0][i] > thresh:
@@ -1152,7 +1152,7 @@ def const_paraph(sent, neg_const):
         translated = model_paraphrasing.generate(**batch,
                                                  max_length=60,
                                                  num_return_sequences=5,
-                                                 temperature=1.5,
+                                                 # temperature=1,
                                                  num_beams=5,
                                                  bad_words_ids=[[i] for i in bad_word_ids]
                                                  )
