@@ -30,6 +30,9 @@
   "orig_file_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src",
 
  "config['paraphrasing_model']" : str
-    "classic_model" : using the original paraphrasing model that was a simple transformer trained on Parabank without
+    "imr" : using the original paraphrasing model that was a simple transformer trained on Parabank without
      using any pretrained language model.
+
      else --> hugging face model that is fine-tuned on paraphrasing datasets (Parabank2 or other datasets).
+     "tuner007/pegasus_paraphrase"
+     "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500"

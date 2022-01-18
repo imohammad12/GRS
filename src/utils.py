@@ -41,7 +41,8 @@ import subprocess
 
 import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
-from transformers import PegasusForConditionalGeneration, PegasusTokenizer
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+# from transformers import PegasusForConditionalGeneration, PegasusTokenizer
 from pattern.en import lexeme
 from sentence_transformers import SentenceTransformer, util
 from collections import defaultdict
@@ -90,9 +91,12 @@ tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base
 
 semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
 
-if config['paraphrasing_model'] != 'classic_model':
-    tokenizer_pegasus = PegasusTokenizer.from_pretrained(config['paraphrasing_model'])
-    model_paraphrasing = PegasusForConditionalGeneration.from_pretrained(config['paraphrasing_model']).to(config['paraphrasing_gpu'])
+if config['paraphrasing_model'] != 'imr':
+    tokenizer_paraphrasing = AutoTokenizer.from_pretrained(config['paraphrasing_model'])
+    model_paraphrasing = AutoModelForSeq2SeqLM.from_pretrained(config['paraphrasing_model']).to(
+        config['paraphrasing_gpu'])
+    # tokenizer_pegasus = PegasusTokenizer.from_pretrained(config['paraphrasing_model'])
+    # model_paraphrasing = PegasusForConditionalGeneration.from_pretrained(config['paraphrasing_model']).to(config['paraphrasing_gpu'])
 
 SOS_token = 1
 EOS_token = 2
@@ -1139,11 +1143,11 @@ def const_paraph(sent, neg_const):
     # else:
     #     pos_const = entities
 
-    if config['paraphrasing_model'] != 'classic_model':
+    if config['paraphrasing_model'] != 'imr':
         bad_word = " ".join(neg_const)
-        bad_word_ids = tokenizer_pegasus(bad_word, add_prefix_space=True).input_ids
+        bad_word_ids = tokenizer_paraphrasing(bad_word).input_ids
 
-        batch = tokenizer_pegasus([sent],
+        batch = tokenizer_paraphrasing([sent],
                           truncation=True,
                           padding='longest',
                           max_length=60,
@@ -1156,7 +1160,7 @@ def const_paraph(sent, neg_const):
                                                  num_beams=5,
                                                  bad_words_ids=[[i] for i in bad_word_ids]
                                                  )
-        output_sent = tokenizer_pegasus.batch_decode(translated, skip_special_tokens=True)
+        output_sent = tokenizer_paraphrasing.batch_decode(translated, skip_special_tokens=True)
 
     else:
         inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
