@@ -95,6 +95,7 @@ if config['paraphrasing_model'] != 'imr':
     tokenizer_paraphrasing = AutoTokenizer.from_pretrained(config['paraphrasing_model'])
     model_paraphrasing = AutoModelForSeq2SeqLM.from_pretrained(config['paraphrasing_model']).to(
         config['paraphrasing_gpu'])
+    model_paraphrasing.eval()
     # tokenizer_pegasus = PegasusTokenizer.from_pretrained(config['paraphrasing_model'])
     # model_paraphrasing = PegasusForConditionalGeneration.from_pretrained(config['paraphrasing_model']).to(config['paraphrasing_gpu'])
 
@@ -1160,6 +1161,19 @@ def const_paraph(sent, neg_const):
                                                  num_beams=5,
                                                  bad_words_ids=[[i] for i in bad_word_ids]
                                                  )
+        paraphrasing_model_name = str(model_paraphrasing.config_class).replace('.', ' ').replace("\'", ' ')
+        if paraphrasing_model_name.split()[-2] == "BartConfig":
+            # Fixing Bart bug for generating incorrect first word
+            new_token_ids = []
+            for token_ids in translated:
+                tgt_tokens = tokenizer.convert_ids_to_tokens(token_ids, skip_special_tokens=True)
+                if tgt_tokens[1][0] != 'Ġ' and tgt_tokens[1][0].isupper():
+                    new_token_ids.append(
+                        torch.cat([token_ids[:1], token_ids[2:], token_ids[-1:]]))  # Removing the first incorrect token
+                else:
+                    new_token_ids.append(token_ids)
+            translated = torch.stack(new_token_ids)
+
         output_sent = tokenizer_paraphrasing.batch_decode(translated, skip_special_tokens=True)
 
     else:
