@@ -189,40 +189,9 @@ class Lang:
                              '.full.aner.ori.valid.src', encoding='utf-8').read().split('\n')
             valid_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
                              '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
-            # test_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki.full'
-            #                 '.aner.ori.test.src', encoding='utf-8').read().split('\n')
-            # test_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki.full'
-            #                 '.aner.ori.test.dst', encoding='utf-8').read().split('\n')
-
-            # print("Loading Asset instead of Wikilarge data")  # changed
-            # train_src = open('/home/m25dehgh/simplification/asset/dataset/asset.test.orig',
-            #                  encoding='utf-8').read().split('\n')
-            # train_dst = open('/home/m25dehgh/simplification/asset/dataset/asset.test.simp.0',
-            #                  encoding='utf-8').read().split('\n')
-            # valid_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            # valid_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
-            #                 encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
-            #                 encoding='utf-8').read().split('\n')
-            # test_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
-            #                 encoding='utf-8').read().split('\n')
             test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
                             encoding='utf-8').read().split('\n')
-
-            # train_src = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.norm',
-            #                  encoding='utf-8').read().split('\n')
-            # train_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
-            #                  '.full.aner.ori.train.src', encoding='utf-8').read().split('\n')
-
-            # train_dst = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.turk.0',
-            #                  encoding='utf-8').read().split('\n')
-            # train_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki.'
-            #                  'full.aner.ori.train.dst', encoding='utf-8').read().split('\n')
-            # valid_src = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.specified.norm', encoding='utf-8').read().split('\n')  # changed
-            # valid_dst = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.turk.0', encoding='utf-8').read().split('\n')
-            # test_src = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.specified.norm', encoding='utf-8').read().split('\n')   # changed
-            # test_dst = open('/home/m25dehgh/simplification/Edit-Unsup-TS/src/turkcorpus/test.8turkers.tok.turk.0', encoding='utf-8').read().split('\n')
 
         elif dataset == 'Newsela':
             print('loading Newsela data')
@@ -241,43 +210,17 @@ class Lang:
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
             test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
                             encoding='utf-8').read().split('\n')
-            # test_dst = open(config['ref_folder_path'] + "/" + 'test.truecase.detok.simp.0',
-            #                 encoding='utf-8').read().split('\n')
-            # test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
-                            # encoding='utf-8').read().split('\n')
-            # test_dst = open(config['ref_folder_path'] + "/" + 'sample-100.dst',
-            #                 encoding='utf-8').read().split('\n')
 
-            # print("Loading Asset instead of Newsela data")  # changed
-            # train_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
-            #                  encoding='utf-8').read().split('\n')
-            # train_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.simp.0',
-            #                  encoding='utf-8').read().split('\n')
-            # valid_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.valid.orig',
-            #                  encoding='utf-8').read().split('\n')
-            # valid_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.valid.simp.0',
-            #                  encoding='utf-8').read().split('\n')
-            # test_src = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.orig',
-            #                 encoding='utf-8').read().split('\n')
-            # test_dst = open('/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.simp.0',
-            #                 encoding='utf-8').read().split('\n')
 
         # changed
-        # print("normalizing")
-        # train_src = [all_norms(i) for i in train_src]
-        # train_dst = [all_norms(i) for i in train_dst]
-        valid_src = [all_norms(i) for i in valid_src]
-        valid_dst = [all_norms(i) for i in valid_dst]
+        print("normalizing")
+        train_src = [all_norms(i) for i in tqdm(train_src)]
+        train_dst = [all_norms(i) for i in tqdm(train_dst)]
+        valid_src = [all_norms(i) for i in tqdm(valid_src)]
+        valid_dst = [all_norms(i) for i in tqdm(valid_dst)]
         test_src = [all_norms(i) for i in test_src]
         test_dst = [all_norms(i) for i in test_dst]
-        # changed
-        # lexical_simplification
-        # train_src = [normalize(s, lowercase=True, tokenizer='moses') for s in train_src]
-        # train_dst = [normalize(s, lowercase=True, tokenizer='moses') for s in train_dst]
-        # valid_src = [normalize(s, lowercase=True, tokenizer='moses') for s in valid_src]
-        # valid_dst = [normalize(s, lowercase=True, tokenizer='moses') for s in valid_dst]
-        # test_src = [normalize(s, lowercase=True, tokenizer='moses') for s in test_src]
-        # test_dst = [normalize(s, lowercase=True, tokenizer='moses') for s in test_dst]
+
 
         train_simple, train_simple_unique = Lang.getSentences(train_dst, config['lm_backward'])
         valid_simple, valid_simple_unique = Lang.getSentences(valid_dst, config['lm_backward'])
