@@ -25,7 +25,8 @@ class ComplexComponentDetector:
         'tokenizer_path': 'microsoft/deberta-base',
         "thresh_coef": 1.3,
         'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
-        "UNK_token": 3
+        "UNK_token": 3,
+        'cls_score_coef': 0.001
     }
 
     def __init__(self, **config):
@@ -139,7 +140,7 @@ class ComplexComponentDetector:
         complex_pred = list(set(complex_pred + neg_roots))
         if self.params["ccd_version"] == 'combined':
             complex_pred = [word for word in complex_pred if get_idf_value(self.idf, word) > 11]
-            complex_pred = [word for word in complex_pred if scores_dict[word] > complexity_score_thresh * 0.001]
+            complex_pred = [word for word in complex_pred if scores_dict[word] > complexity_score_thresh * self.params['cls_score_coef']]
 
         # adding all words with similar root
         try:
