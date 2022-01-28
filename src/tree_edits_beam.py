@@ -94,8 +94,8 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     simil_simp_gram_scores = similarity_simplicity_grammar_assess(sys_sents=sys_sents,
                                                                   orig_file_path=config['orig_file_path'],
                                                                   tokenizer_deberta=tokenizer_deberta,
-                                                                  comp_simp_class_model=comp_simp_class_model
-                                                                  )
+                                                                  comp_simp_class_model=comp_simp_class_model,
+                                                                  model_grammar_checker=model_grammar_checker)
 
     all_scores = {**sari_scores, **simil_simp_gram_scores, **stats}
 
@@ -170,8 +170,8 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             beam_calls += 1
 
             # get candidate sentence through different edit operations
-            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict,
-                                           stemmer, beam[key], ccd)
+            candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict, stemmer,
+                                           beam[key], ccd, config)
 
             # new_testing
             all_par_calls += candidates[1]

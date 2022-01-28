@@ -1104,7 +1104,7 @@ def cos_similarity(new, old, idf):
 #     return new_neg
 
 
-def const_paraph(sent, neg_const):
+def const_paraph(sent, neg_const, config):
     print(f"negative constraints: {neg_const}\n")
 
     if config['paraphrasing_model'] != 'imr':
@@ -1167,7 +1167,7 @@ def const_paraph(sent, neg_const):
     return output_sent
 
 
-def paraph(sent, entities, details_sent, ccd):
+def paraph(sent, entities, details_sent, ccd, config):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
     # extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
@@ -1180,7 +1180,7 @@ def paraph(sent, entities, details_sent, ccd):
         neg_consts += details_sent[3]
 
     print(f"\nsentence is :{sent}")
-    sents = const_paraph(sent, neg_consts)
+    sents = const_paraph(sent, neg_consts, config)
 
     # print('new: ', sent)
     # if sent != -1 and sent != 1:
@@ -1274,15 +1274,17 @@ def correct(sent):
     return convert_to_sent(s)
 
 
-def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd):
+def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict,
+                      stemmer, details_sent, ccd, config):
     sent = sent.replace('%', ' percent')
     sent = sent.replace('` `', '`')
     tree = next(parser.raw_parse(sent))
 
-    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd)
+    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer,
+                            details_sent, ccd, config)
 
 
-def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd):
+def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd, config):
     s = []
     p = []
     used_neg_consts = []
@@ -1293,7 +1295,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
     # comented for testing paraphrasing and deletion in a sequential order instead of a parallel method in beam search
     if config['constrained_paraphrasing']:
-        paraphrased_sentences = paraph(sent, entities, details_sent, ccd)
+        paraphrased_sentences = paraph(sent, entities, details_sent, ccd, config)
 
         any_accepted_sent = False
         for sp in paraphrased_sentences:
@@ -1319,7 +1321,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
         for i in range(len(p)):
             if config['lexical_simplification']:
-                simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict)
+                simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict, config)
                 for st in simple:
                     if st not in sent_list:
                         s.append({st: 'ls'})
@@ -1334,7 +1336,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
                     s.append({sc: 'las'})
             if config['reorder_leaves']:
                 temp = []
-                reorder_leaves(sent, p, p[i], convert_to_sent(p[i]), sd, temp)
+                reorder_leaves(sent, p, p[i], convert_to_sent(p[i]), sd, temp, config)
                 for rl in temp:
                     s.append({rl: 'rl'})
 
@@ -1364,7 +1366,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
 # return s
 
-def reorder_leaves(sent, leaves, current_leaf, sc, sd, restructres):
+def reorder_leaves(sent, leaves, current_leaf, sc, sd, restructres, config):
     # if current_leaf == ['said']:
     # Assume sent is composed of phrases [A B C D E]
     # Current phrase/leaf let's say is D
@@ -1489,7 +1491,7 @@ def get_entities(sent):
     return entities
 
 
-def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entities, synonym_dict):
+def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entities, synonym_dict, config):
     # simplifications = {scientist -> reader}
     s = []
     synonyms = []
@@ -1652,7 +1654,8 @@ def load_data(dataset, batch_size):
     return dataloader
 
 
-def similarity_simplicity_grammar_assess(sys_sents, orig_file_path, tokenizer_deberta, comp_simp_class_model):
+def similarity_simplicity_grammar_assess(sys_sents, orig_file_path, tokenizer_deberta,
+                                         comp_simp_class_model, model_grammar_checker):
     orig = open(orig_file_path, encoding='utf-8').read().split('\n')
 
     acu_score_similarity = 0.
