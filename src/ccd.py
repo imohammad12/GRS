@@ -10,38 +10,39 @@ from spacy.tokenizer import Tokenizer
 from collections import defaultdict
 from pattern.en import lexeme
 from tqdm import tqdm
-from utils import get_model_out, getword, get_idf_value, create_reverse_stem
+from utils import get_model_out, getword, get_idf_value, create_reverse_stem, get_word_to_simplify
 from nltk.parse.corenlp import CoreNLPParser
 from nltk.corpus import wordnet as wn
 from itertools import chain
 from pyinflect import getAllInflections, getInflection
 
-print('akbar')
 
 class ComplexComponentDetector:
-
     default_params = {
         "device": torch.device("cuda:2" if torch.cuda.is_available() else "cpu"),
         'path_classifier_model': '/home/m25dehgh/simplification/complex-classifier/results/newsela-auto-high-quality'
-                                 '/whole-high-quality/checkpoint-44361/ ',
+                                 '/whole-high-quality/checkpoint-44361/',
         'tokenizer_path': 'microsoft/deberta-base',
         "thresh_coef": 1.3,
-        'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls' 
+        'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
+        "UNK_token": 3
     }
 
-    def __init__(self,  **config):
+    def __init__(self, **config):
         self.params = self.default_params
         self.params.update(config)
         self.nlp = spacy.load("en_core_web_lg")
-        self.nlp.tokenizer = Tokenizer(nlp.vocab)
+        self.nlp.tokenizer = Tokenizer(self.nlp.vocab)
         self.parser = CoreNLPParser('http://localhost:9000')
         self.stemmer = create_reverse_stem()
 
     @classmethod
-    def ls_version(cls, **config):
+    def ls_version(cls, idf, output_lang, **config):
         """
         This version of CCD detects complex words by statistical methods used in Lexical Simplification operation of
         Iterative Edit-Based Unsupervised Sentence Simplification paper
+        :param idf:
+        :param output_lang:
         :param config:
         :return:
         """
@@ -62,12 +63,15 @@ class ComplexComponentDetector:
         if 'gpu' in config:
             ccd.params['device'] = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
         if comp_simp_class_model is None:
-            ccd.comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(ccd.params['path_classifier_model'])
+            print('Loading Deberta classifier model')
+            ccd.comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(
+                ccd.params['path_classifier_model'])
         else:
             ccd.comp_simp_class_model = comp_simp_class_model
-        ccd.comp_simp_class_model.to(config['device'])
+        ccd.comp_simp_class_model.to(ccd.params['device'])
         ccd.comp_simp_class_model.eval()
         if tokenizer is None:
+            print('Loading Deberta tokenizer')
             ccd.tokenizer = DebertaTokenizerFast.from_pretrained(ccd.params['tokenizer_path'])
         else:
             ccd.tokenizer = tokenizer
@@ -92,12 +96,15 @@ class ComplexComponentDetector:
         if 'gpu' in config:
             ccd.params['device'] = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
         if comp_simp_class_model is None:
-            ccd.comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(ccd.params['path_classifier_model'])
+            print('Loading Deberta classifier model')
+            ccd.comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(
+                ccd.params['path_classifier_model'])
         else:
             ccd.comp_simp_class_model = comp_simp_class_model
-        ccd.comp_simp_class_model.to(config['device'])
+        ccd.comp_simp_class_model.to(ccd.params['device'])
         ccd.comp_simp_class_model.eval()
         if tokenizer is None:
+            print('Loading Deberta tokenizer')
             ccd.tokenizer = DebertaTokenizerFast.from_pretrained(ccd.params['tokenizer_path'])
         else:
             ccd.tokenizer = tokenizer
@@ -106,23 +113,25 @@ class ComplexComponentDetector:
         ccd.idf = idf
         ccd.lang = output_lang
         return ccd
-        
+
     def extract_complex_words(self, sent, entities):
         complex_pred = []
         neg_roots = []
 
-        if self.params["ccd_version"] == 'combined' or self.params["ccd_version"] == "ls":
+        if self.params["ccd_version"] == 'combined':
             orig_sent_words = [i for i in self.parser.tokenize(sent)]
-            if self.params["ccd_version"] == "ls":
-                orig_sent_words = sent.lower().split(' ')
-            complex_pred = get_complex_word_single_sent(orig_sent_words, self.idf, entities, self.lang)
+            complex_pred = self.get_complex_word_single_sent(orig_sent_words, entities)
+
+        if self.params["ccd_version"] == "ls":
+            orig_sent_words = sent.lower().split(' ')
+            complex_pred = self.finding_complex_words(sent, orig_sent_words, entities)
 
         if self.params["ccd_version"] == 'combined' or self.params["ccd_version"] == "cls":
-            extracted_comp_toks = extract_token_cls_comp_score(sent)
-            neg_roots = raw_complx_token_to_words(extracted_comp_toks['comp_toks'],
-                                                             extracted_comp_toks['tokens'],
-                                                             entities,
-                                                             )
+            extracted_comp_toks = self.extract_token_cls_comp_score(sent)
+            neg_roots = self.raw_complx_token_to_words(extracted_comp_toks['comp_toks'],
+                                                       extracted_comp_toks['tokens'],
+                                                       entities,
+                                                       )
             scores_dict = extracted_comp_toks['comp_scores']
             complexity_score_thresh = extracted_comp_toks['threshold']
             neg_roots = [word for word in neg_roots if get_idf_value(self.idf, word) > 7]
@@ -151,7 +160,7 @@ class ComplexComponentDetector:
 
         return new_neg, complex_pred
 
-    def extract_token_cls_comp_score(self, sent, thresh_coef=self.params['thresh_coef']):
+    def extract_token_cls_comp_score(self, sent, thresh_coef=None):
         """ Extracting complex tokens from input sentence
         return a dict of : complex tokens in a sorted way based on their complexity,
                            not complex tokens that the attentin of CLS token to them is lower than the threshold (sorted),
@@ -165,6 +174,8 @@ class ComplexComponentDetector:
         attention = out['attention']
         tokens = out['tokens']
         prob = out["prob"]
+        if thresh_coef is None:
+            thresh_coef = self.params['thresh_coef']
 
         layer = 1
         num_top_tokens = len(tokens)
@@ -278,21 +289,48 @@ class ComplexComponentDetector:
 
         return negs
 
-    def get_complex_word_single_sent(self, sent, idf, entities, lang, config):
+    def get_complex_word_single_sent(self, sent, entities):
         complex_word = []
         for word in sent:
             word = word.lower()
             # if word is not present in the original sentence or word is a entity skip it
             if word in entities:
                 continue
-            if getword(lang, word) == UNK_token:
+            if getword(self.lang, word) == self.params['UNK_token']:
                 #             print('unk token: ', word)
                 # if the word is not in entities and not present in the simple vocabulary, we simplify it
                 complex_word.append(word)
                 continue
             # else, we choose the word that has the highest idf value above threshold
-            val = get_idf_value(idf, word)
-            if val > config['min_idf_value_for_ls']:
+            val = get_idf_value(self.idf, word)
+            if val > self.params['min_idf_value_for_ls']:
                 complex_word.append(word)
 
         return complex_word
+
+    def finding_complex_words(self, input_sent, orig_sent_words, entities):
+
+        input_sent = input_sent.replace('%', ' percent')
+        input_sent = input_sent.replace('` `', '`')
+        tree = next(self.parser.raw_parse(input_sent))
+        p = []
+        phrase_tags = ['S', 'ADJP', 'ADVP', 'CONJP', 'FRAG', 'INTJ', 'LST', 'NAC', 'NP', 'NX', 'PP', 'PRN', 'PRT',
+                       'QP', 'RRC', 'UCP', 'VP', 'WHADJP', 'WHAVP', 'WHNP', 'WHPP', 'X', 'SBAR']
+        pos = tree.treepositions()
+        for i in range(len(pos) - 1, 1, -1):
+            if not isinstance(tree[pos[i]], str):
+                if tree[pos[i]].label() in phrase_tags:
+                    p.append(tree[pos[i]].leaves())
+
+        hard_words = set()
+        for i in range(len(p)):
+            word_to_be_replaced = get_word_to_simplify(p[i],
+                                                       self.idf,
+                                                       orig_sent_words,
+                                                       entities,
+                                                       self.lang)
+
+            if word_to_be_replaced != '':
+                hard_words.add(word_to_be_replaced)
+
+        return list(hard_words)
