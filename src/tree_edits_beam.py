@@ -10,7 +10,7 @@ sf = SmoothingFunction()
 
 
 def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           embedding_weights, idf, unigram_prob, start_time, config):
+           embedding_weights, idf, unigram_prob, start_time, config, tokenizer_deberta, comp_simp_class_model, ccd):
     count = 0
     sari_scorel = 0
     keepl = 0
@@ -42,7 +42,9 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
                                                                                   simple_sentences[i], input_lang,
                                                                                   tag_lang, dep_lang, lm_forward,
                                                                                   lm_backward, embedding_weights, idf,
-                                                                                  unigram_prob, stats, config)
+                                                                                  unigram_prob, stats, config,
+                                                                                  tokenizer_deberta,
+                                                                                  comp_simp_class_model, ccd)
 
             sys_sents.append(out_sent)
 
@@ -87,7 +89,10 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     sari_scores = calculate_sari_easse(ref_folder_path=config["ref_folder_path"], sys_sents=sys_sents,
                                        orig_file_path=config['orig_file_path'])
     simil_simp_gram_scores = similarity_simplicity_grammar_assess(sys_sents=sys_sents,
-                                         orig_file_path=config['orig_file_path'])
+                                                                  orig_file_path=config['orig_file_path'],
+                                                                  tokenizer_deberta=tokenizer_deberta,
+                                                                  comp_simp_class_model=comp_simp_class_model
+                                                                  )
 
     all_scores = {**sari_scores, **simil_simp_gram_scores, **stats}
 
@@ -99,7 +104,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
 
 
 def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, embedding_weights, idf,
-         unigram_prob, stats, config):
+         unigram_prob, stats, config, tokenizer_deberta, comp_simp_class_model, ccd):
     print(stats)
     # input_sent = "highlights 2009 from the 2009 version of 52 seconds setup for passmark 5 32 5 2nd scan time , and 7 mb memory- 7 mb memory ."
     reference = reference.lower()
@@ -146,7 +151,8 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                                            dep_lang)
 
         prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang,
-                                   input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config)
+                                   input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config,
+                                   tokenizer_deberta, comp_simp_class_model)
 
         # for the first time step the beam size is 1, just the original complex sentence
         if iter == 0:
@@ -162,7 +168,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
 
             # get candidate sentence through different edit operations
             candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict,
-                                           stemmer, beam[key])
+                                           stemmer, beam[key], ccd)
 
             # new_testing
             all_par_calls += candidates[1]
@@ -186,7 +192,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 # calculate score for each candidate sentence using the scoring function
                 p = calculate_score(lm_forward, elmo_tensor, candidate_tensor, candidate_tag_tensor,
                                     candidate_dep_tensor, input_lang, sent, orig_sent, embedding_weights, idf,
-                                    unigram_prob, True, config)
+                                    unigram_prob, True, config, tokenizer_deberta, comp_simp_class_model)
                 # print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
 
                 if config['double_LM']:
@@ -196,7 +202,8 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                         reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
                     p += calculate_score(lm_backward, elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b,
                                          candidate_dep_tensor_b, input_lang, reverse_sent(sent),
-                                         reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True, config)
+                                         reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True,
+                                         config, tokenizer_deberta, comp_simp_class_model)
                     p /= 2.0
 
                 # no repetitive sentence
@@ -236,11 +243,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             # negative constraints in the next steps to prevent from looping between synonym words
             if details_sent[1] == 'par':
                 unchanged_sent = details_sent[2]
-                extracted_comp_toks = comp_extract(unchanged_sent, comp_simp_class_model, tokenizer_deberta)
-                neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'],
-                                              extracted_comp_toks['tokens'],
-                                              stemmer,
-                                              entities=entities)
+                neg_consts = ccd.extract_complex_words(unchanged_sent, entities)[0]
                 details_sent.append(neg_consts)
 
         perpf = new_beam[maxvalue_sent][0]
@@ -283,7 +286,8 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                                                                                                       for tok in doc]),
                                                                                                  dep_lang)
         perpf = calculate_score(lm_forward, elmo_tensor, best_input_tensor, best_tag_tensor, best_dep_tensor,
-                                input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config)
+                                input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False,
+                                config, tokenizer_deberta, comp_simp_class_model)
         if config['double_LM']:
             elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b, best_dep_tensor_b = tokenize_sent_special(
                 reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
@@ -291,7 +295,8 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
             perpf += calculate_score(lm_backward, elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b,
                                      best_dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent),
-                                     embedding_weights, idf, unigram_prob, False, config)
+                                     embedding_weights, idf, unigram_prob, False, config,
+                                     tokenizer_deberta, comp_simp_class_model)
     # print(perpf)
     # print('fkgl and fre')
     fkgl_scorel = sentence_fkgl(input_sent)
