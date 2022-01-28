@@ -3,95 +3,108 @@ import sys
 from utils import *
 import json
 import numpy as np
+
+from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
+from ccd import ComplexComponentDetector
+from model.structural_decoder import DecoderGRU
+
 # importlib.reload(sys.modules['utils'])
-print("Mode is")
-print(device)
 # importlib.reload(sys.modules['config'])
 # from config import model_config as config
+asset_paths = {
+    "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
+    "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
+    "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
+}
 
-conf_file = open("config.json", "r")
-config = json.load(conf_file)
+newsela_paths = {
+  "log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
+  "ref_folder_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/ref-test-orig",
+  "orig_file_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src",
+}
 
-print(config['operation'])
-if config['operation'] == 'train_lm':
-	from model.structural_decoder import DecoderGRU
-	from test_structured import *
-	from evaluate_structured import *
+config = load_config()
 
-	idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple_unique, valid_simple_unique, test_simple_unique, train_complex_unique, valid_complex_unique, test_complex_unique, output_embedding_weights, tag_embedding_weights, dep_embedding_weights = prepareData(config['embedding_dim'], 
-	config['freq'], config['ver'], config['dataset'], config['operation'])
-	#print(len(train_pairs))
-	decoder = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words, config['num_layers'], 
-		output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'], config['use_structural_as_standard']).to(device)
-	train_pos, train_dep = load_syntax_file(train_simple_unique, 'train', config['lm_backward'])
-	valid_pos, valid_dep = load_syntax_file(valid_simple_unique, 'valid', config['lm_backward'])
-	test_pos, test_dep = load_syntax_file(test_simple_unique, 'test', config['lm_backward'])
-	print('loaded pos, dep files')
+idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex, \
+valid_complex, test_complex, output_embedding_weights, tag_embedding_weights, \
+dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'], config['ver'], config['dataset'],
+                                    config['operation'])
 
+lm_forward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
+                        config['num_layers'],
+                        output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'],
+                        config['tag_dim'], config['dep_dim'], config['dropout'],
+                        config['use_structural_as_standard']).to(device)
+lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
+                         config['num_layers'],
+                         output_embedding_weights, tag_embedding_weights, dep_embedding_weights,
+                         config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'],
+                         config['use_structural_as_standard']).to(device)
 
-	for i in range(len(train_simple_unique)):
-		train_simple_unique[i] = train_simple_unique[i].lower()
-	for i in range(len(valid_simple_unique)):
-		valid_simple_unique[i] = valid_simple_unique[i].lower()
-	for i in range(len(test_simple_unique)):
-		test_simple_unique[i] = test_simple_unique[i].lower()
-	trainIters(decoder, train_simple_unique, valid_simple_unique, test_simple_unique, output_lang, tag_lang, dep_lang, train_pos, train_dep, valid_pos, valid_dep, test_pos, test_dep)
+tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
 
+root_comp_simp = "/home/m25dehgh/simplification/complex-classifier"
+model_comp_simp = "newsela-auto-high-quality"
+path_comp_simp = root_comp_simp + '/results' + '/' + model_comp_simp + "/whole-high-quality/checkpoint-44361/"
+comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_comp_simp).to(config['gpu'])
+comp_simp_class_model.eval()
 
-elif config['operation'] == "sample":
-	from model.structural_decoder import DecoderGRU
+ccd = ComplexComponentDetector.combined_version(idf,
+                                                output_lang,
+                                                comp_simp_class_model=comp_simp_class_model,
+                                                tokenizer=tokenizer_deberta,
+                                                **config)
 
-	idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex,\
-	valid_complex, test_complex, output_embedding_weights, tag_embedding_weights,\
-	dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'], config['ver'], config['dataset'], config['operation'])
+open(config['file_name'], "w").close()
 
-	lm_forward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words, config['num_layers'], 
-		output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'], config['use_structural_as_standard']).to(device)
-	lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words, config['num_layers'], 
-		output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'], config['use_structural_as_standard']).to(device)
+start_time = time.time()
 
-	open(config['file_name'], "w").close()
+from tree_edits_beam import *
 
-	start_time = time.time()
+# Testing multiple configurations
+# for i, del_threshold in enumerate(np.arange(1.1, 1.5, 0.1)):
+    # for j, par_thresh in enumerate(np.arange(0.6, 1.1, 0.1)):
 
-	from tree_edits_beam import *
+config = load_config()
 
-	# Testing multiple configurations
-	for i, del_threshold in enumerate(np.arange(1.1, 1.5, 0.1)):
-		# for j, par_thresh in enumerate(np.arange(0.6, 1.1, 0.1)):
-
-		config = load_config()
-	#
-	# 	config['threshold']['par'] = 0.8
-	# 	config['threshold']['dl'] = 2.0
-	#
-		# config['delete_leaves'] = True
-		# config['constrained_paraphrasing'] = True
-
-
-		# config['sim_threshold'] = np.round(simplicity_thresh, 2)
-
-		# config['delete_leaves'] = False
-
-			# config['threshold']['par'] = np.round(par_thresh, 2)
-		config['threshold']['par'] = 1.0
-		config['threshold']['dl'] = np.round(del_threshold, 2)
-
-		save_config(config)
-
-		# importlib.reload(sys.modules['utils'])
-		# from utils import *
-
-		if config['set'] == 'valid':
-			sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-		elif config['set'] == 'test':
-			sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf, unigram_prob, start_time, load_config())
-
-		open(config['file_name'], "w").close()
-
-	end = time.time()
-	print(f"Runtime of the program is {end - start_time}")
-	start_time = end
-
+if config['dataset'] == "Newsela":
+    config.update(newsela_paths)
+elif config['dataset'] == 'Wikilarge':
+    config.update(asset_paths)
 else:
-	print('incorrect operation')
+    raise ValueError("Wrong dataset name: use Newsela or Wikilarge")
+    #
+    # 	config['threshold']['par'] = 0.8
+    # 	config['threshold']['dl'] = 2.0
+    #
+    # config['delete_leaves'] = True
+    # config['constrained_paraphrasing'] = True
+
+    # config['sim_threshold'] = np.round(simplicity_thresh, 2)
+
+    # config['delete_leaves'] = False
+
+    # config['threshold']['par'] = np.round(par_thresh, 2)
+config['threshold']['par'] = 1.0
+config['threshold']['dl'] = np.round(del_threshold, 2)
+
+save_config(config)
+
+    # importlib.reload(sys.modules['utils'])
+    # from utils import *
+
+if config['set'] == 'valid':
+    sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+           comp_simp_class_model, ccd)
+
+elif config['set'] == 'test':
+    sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+           comp_simp_class_model, ccd)
+
+open(config['file_name'], "w").close()
+
+end = time.time()
+print(f"Runtime of the program is {end - start_time}")
+start_time = end
