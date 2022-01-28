@@ -28,7 +28,7 @@ config = load_config()
 idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex, \
 valid_complex, test_complex, output_embedding_weights, tag_embedding_weights, \
 dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'], config['ver'], config['dataset'],
-                                    config['operation'])
+                                    config['operation'], config)
 
 lm_forward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
                         config['num_layers'],

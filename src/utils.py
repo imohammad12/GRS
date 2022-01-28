@@ -158,7 +158,7 @@ class Lang:
                     x_unique.append(Lang.normalizeString(src[i]))
         return x, x_unique
 
-    def readLangs(dataset):
+    def readLangs(dataset, config):
         print("Reading lines...")
         train_src = []
         valid_src = []
@@ -399,9 +399,9 @@ def filterPairs(pairs):
     return [pair for pair in pairs if filterPair(pair)]
 
 
-def prepareData(embedding_dim, freq, ver, dataset, operation):
+def prepareData(embedding_dim, freq, ver, dataset, operation, config):
     train_simple, train_simple_unique, valid_simple, valid_simple_unique, test_simple, test_simple_unique, train_complex, train_complex_unique, valid_complex, valid_complex_unique, test_complex, test_complex_unique, output_lang, tag_lang, dep_lang = Lang.readLangs(
-        dataset)
+        dataset, config)
     print("Read %s train sentence pairs" % len(train_simple))
     print("Read %s valid sentence pairs" % len(valid_simple))
     print("Read %s test sentence pairs" % len(test_simple))
