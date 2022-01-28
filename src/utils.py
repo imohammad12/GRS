@@ -78,13 +78,6 @@ if config['lexical_simplification']:
 
 device = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
 
-print('Loading Grammar Checker model')
-root_grammar_checker = "/home/m25dehgh/simplification/grammar-checker"
-model_name_grammar_checker = "deberta-base-cola"
-path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/checkpoint-716"
-model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
-
-
 semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
 
 if config['paraphrasing_model'] != 'imr':
@@ -1575,7 +1568,8 @@ def semantic_sim(sentA, sentB):
 
 
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
-                    embedding_weights, idf, unigram_prob, cs, config, tokenizer_deberta, comp_simp_class_model):
+                    embedding_weights, idf, unigram_prob, cs, config,
+                    tokenizer_deberta, comp_simp_class_model, model_grammar_checker):
     score_final = 0
 
     out_simplicity = get_model_out(comp_simp_class_model, tokenizer_deberta, input_sent)

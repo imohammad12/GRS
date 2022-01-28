@@ -41,6 +41,7 @@ lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_
                          config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'],
                          config['use_structural_as_standard']).to(device)
 
+print('Loading Deberta Tokenizer...')
 tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
 
 root_comp_simp = "/home/m25dehgh/simplification/complex-classifier"
@@ -49,6 +50,13 @@ path_comp_simp = root_comp_simp + '/results' + '/' + model_comp_simp + "/whole-h
 comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_comp_simp).to(config['gpu'])
 comp_simp_class_model.eval()
 
+print('Loading Grammar Checker model...')
+root_grammar_checker = "/home/m25dehgh/simplification/grammar-checker"
+model_name_grammar_checker = "deberta-base-cola"
+path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/checkpoint-716"
+model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
+
+print('Creating ccd object...')
 ccd = ComplexComponentDetector.combined_version(idf,
                                                 output_lang,
                                                 comp_simp_class_model=comp_simp_class_model,
@@ -96,12 +104,12 @@ save_config(config)
 if config['set'] == 'valid':
     sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
            output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd)
+           comp_simp_class_model, ccd, model_grammar_checker)
 
 elif config['set'] == 'test':
     sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
            output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd)
+           comp_simp_class_model, ccd, model_grammar_checker)
 
 open(config['file_name'], "w").close()
 
