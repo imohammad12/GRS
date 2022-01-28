@@ -11,35 +11,6 @@ from model.structural_decoder import DecoderGRU
 # importlib.reload(sys.modules['utils'])
 # importlib.reload(sys.modules['config'])
 # from config import model_config as config
-asset_paths = {
-    "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
-    "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
-    "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
-}
-
-newsela_paths = {
-  "log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
-  "ref_folder_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/ref-test-orig",
-  "orig_file_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src",
-}
-
-config = load_config()
-
-idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex, \
-valid_complex, test_complex, output_embedding_weights, tag_embedding_weights, \
-dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'], config['ver'], config['dataset'],
-                                    config['operation'], config)
-
-lm_forward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
-                        config['num_layers'],
-                        output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'],
-                        config['tag_dim'], config['dep_dim'], config['dropout'],
-                        config['use_structural_as_standard']).to(device)
-lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
-                         config['num_layers'],
-                         output_embedding_weights, tag_embedding_weights, dep_embedding_weights,
-                         config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'],
-                         config['use_structural_as_standard']).to(device)
 
 print('Loading Deberta Tokenizer...')
 tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
@@ -63,6 +34,46 @@ ccd = ComplexComponentDetector.combined_version(idf,
                                                 tokenizer=tokenizer_deberta,
                                                 **config)
 
+
+asset_paths = {
+    "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
+    "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
+    "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
+}
+
+newsela_paths = {
+  "log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
+  "ref_folder_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/ref-test-orig",
+  "orig_file_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src",
+}
+
+config = load_config()
+config['dataset'] = 'Wikilarge'
+
+if config['dataset'] == "Newsela":
+    config.update(newsela_paths)
+elif config['dataset'] == 'Wikilarge':
+    config.update(asset_paths)
+else:
+    raise ValueError("Wrong dataset name: use Newsela or Wikilarge")
+
+idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex, \
+valid_complex, test_complex, output_embedding_weights, tag_embedding_weights, \
+dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'], config['ver'], config['dataset'],
+                                    config['operation'], config)
+
+lm_forward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
+                        config['num_layers'],
+                        output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'],
+                        config['tag_dim'], config['dep_dim'], config['dropout'],
+                        config['use_structural_as_standard']).to(device)
+lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
+                         config['num_layers'],
+                         output_embedding_weights, tag_embedding_weights, dep_embedding_weights,
+                         config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'],
+                         config['use_structural_as_standard']).to(device)
+
+
 open(config['file_name'], "w").close()
 
 start_time = time.time()
@@ -75,13 +86,6 @@ from tree_edits_beam import *
 
 config = load_config()
 
-if config['dataset'] == "Newsela":
-    config.update(newsela_paths)
-elif config['dataset'] == 'Wikilarge':
-    config.update(asset_paths)
-else:
-    raise ValueError("Wrong dataset name: use Newsela or Wikilarge")
-    #
     # 	config['threshold']['par'] = 0.8
     # 	config['threshold']['dl'] = 2.0
     #
