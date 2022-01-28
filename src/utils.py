@@ -78,16 +78,12 @@ if config['lexical_simplification']:
 
 device = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
 
-root_comp_simp = "/home/m25dehgh/simplification/complex-classifier"
-model_comp_simp = "newsela-auto-high-quality"
-path_comp_simp = root_comp_simp + '/results' + '/' + model_comp_simp + "/whole-high-quality/checkpoint-44361/"
-comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_comp_simp).to(config['gpu'])
 
 root_grammar_checker = "/home/m25dehgh/simplification/grammar-checker"
 model_name_grammar_checker = "deberta-base-cola"
 path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/checkpoint-716"
 model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
-tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
+
 
 semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
 
@@ -404,8 +400,6 @@ def get_unigram_prob_value(unigram_prob, word):
 def filterPair(p):
     return len(p.split(' ')) < config['MAX_LENGTH']
 
-
-# p[1].startswith(eng_prefixes)
 
 
 def filterPairs(pairs):
@@ -968,124 +962,157 @@ def cos_similarity(new, old, idf):
 # changed
 
 
-def comp_extract(sent, comp_simp_class_model, tokenizer):
-    """ Extracting complex tokens from input sentence
-    return a dict of : complex tokens in a sorted way based on their complexity,
-                       not complex tokens that the attentin of CLS token to them is lower than the threshold (sorted),
-                       attention matrices,
-                       tokens in original order,
-                       probability of the whole sentence for being complex,
-    """
+# def comp_extract(sent, comp_simp_class_model, tokenizer, thresh_coef=1.3):
+#     """ Extracting complex tokens from input sentence
+#     return a dict of : complex tokens in a sorted way based on their complexity,
+#                        not complex tokens that the attentin of CLS token to them is lower than the threshold (sorted),
+#                        attention matrices,
+#                        tokens in original order,
+#                        probability of the whole sentence for being complex,
+#     """
+#
+#     out = get_model_out(comp_simp_class_model, tokenizer, sent)
+#     attention = out['attention']
+#     tokens = out['tokens']
+#     prob = out["prob"]
+#
+#     layer = 1
+#     num_top_tokens = len(tokens)
+#     CLS_attended_tokens_sorted = attention[layer].sum(dim=1)[0][0].topk(num_top_tokens)
+#
+#     more_than_thresh = []
+#     less_than_thresh = []
+#     thresh = attention[layer].sum(dim=1)[0][0].mean()
+#
+#     for i in range(len(CLS_attended_tokens_sorted[0])):
+#         if CLS_attended_tokens_sorted[0][i] > thresh * thresh_coef:
+#             more_than_thresh.append(tokens[CLS_attended_tokens_sorted[1][i]])
+#         else:
+#             less_than_thresh.append(tokens[CLS_attended_tokens_sorted[1][i]])
+#
+#     complexity_socres = defaultdict(int)
+#     CLS_attended_socres = attention[layer].sum(dim=1)[0][0]
+#     for i, tok in enumerate(tokens):
+#         complexity_socres[self.token_to_word(tok, tokens)] = max(complexity_socres[self.token_to_word(tok, tokens)],
+#                                                             CLS_attended_socres[i].item())
+#
+#     extracted_comps = {"comp_toks": more_than_thresh,
+#                        "not_comp_toks": less_than_thresh,
+#                        "threshold": thresh.item(),
+#                        "attention": attention,
+#                        'tokens': tokens,
+#                        'prob': prob,
+#                        'comp_scores': complexity_socres,
+#                        }
+#     return extracted_comps
 
-    out = get_model_out(comp_simp_class_model, tokenizer, sent)
-    attention = out['attention']
-    tokens = out['tokens']
-    prob = out["prob"]
 
-    layer = 1
-    num_top_tokens = min(len(tokens), 10)
-    CLS_attended_tokens = attention[layer].sum(dim=1)[0][0].topk(num_top_tokens)
-    # [tokens[i] if for i in CLS_attended_tokens[1]], attention[layer].sum(dim=1)[0][0].topk(10)[0]
+# def token_to_word(token, all_tokens):
+#     """
+#     Gets a token in a sentence and returns the complete word by
+#     combining the given token and the adjacent tokens.
+#     """
+#     indx = all_tokens.index(token)
+#
+#     special_toks = ['[SEP]', '[CLS]', '.', 'Ġ.', ',', '!', ';', '`']
+#
+#     if token in special_toks:
+#         return token
+#
+#     # If the given token is the first token of a compound word
+#     if token[0] == 'Ġ':
+#         word = token[1:]
+#         for tok in all_tokens[indx + 1:]:
+#             if tok[0] == 'Ġ' or (tok in special_toks):
+#                 break
+#             word += tok
+#
+#     # If the given token is in the middle of a compund word
+#     else:
+#         word = token
+#         # Concatenate previous tokens
+#         for i in range(len(all_tokens[:indx]) - 1, 0, -1):
+#             tok = all_tokens[i]
+#             if tok in special_toks:
+#                 break
+#             if tok[0] == 'Ġ':
+#                 word = tok[1:] + word
+#                 break
+#             else:
+#                 word = tok + word
+#
+#         # Concatenate next tokens
+#         for tok in all_tokens[indx + 1:]:
+#             if tok[0] == 'Ġ' or (tok in special_toks):
+#                 break
+#             word += tok
+#
+#     return word
 
-    more_than_thresh = []
-    less_than_thresh = []
-    thresh = attention[layer].sum(dim=1)[0][0].mean() * 1.2
 
-    for i in range(len(CLS_attended_tokens[0])):
-        if CLS_attended_tokens[0][i] > thresh:
-            more_than_thresh.append(tokens[CLS_attended_tokens[1][i]])
-        else:
-            less_than_thresh.append(tokens[CLS_attended_tokens[1][i]])
-
-    extracted_comps = {"comp_toks": more_than_thresh,
-                       "not_comp_toks": less_than_thresh,
-                       "threshold": thresh.item(),
-                       "attention": attention,
-                       'tokens': tokens,
-                       'prob': prob,
-                       }
-    return extracted_comps
-
-
-def neg_consts_words(comp_toks, tokens, stemmer, entities):
-    """ returns words for negative constraints
-        removes some tokens,
-        preprocesses the words,
-        adds new negative constraint that are very similar words to the selected negative constraints (have same root)
-    """
-
-    # maximum number of accepted negative constraints
-    max_num_accepted_consts = 4
-    negs = []
-    special_toks = ['[SEP]', '[CLS]', '.', 'Ġ.', ',']
-
-    for tok in comp_toks:
-
-        # Each token should be a starting token, not a part of a word or special token
-        if tok[0] == 'Ġ' and tok not in special_toks:
-
-            # first word is usually selected mistakably so we do not pass it to the paraphraser
-            if tokens.index(tok) + 1 != len(tokens) and tokens.index(tok) != 1:
-
-                # We want the token be single word, not just the starting part of a word
-                # So the next token should start with 'G' or be a special token
-                if tokens[tokens.index(tok) + 1][0] == 'Ġ' or tokens[tokens.index(tok) + 1] in special_toks:
-                    negs.append(tok[1:])
-
-    new_neg = []
-    # adding all words with similar root
-    try:
-        lexeme("fly")
-    except:
-        print("lexeme handled")
-
-    # adding words with similar root to negative constraints
-    # e.g if the initial neg constraint is the word "facilitate"
-    # then the new added words are : 'facilitate', 'facilitator', 'facilitative', 'facilitation', 'facilitate',
-    # 'facilitates', 'facilitating', 'facilitated'
-    for word in negs[:max_num_accepted_consts]:
-        words_with_same_root = stemmer.unstem(stemmer.stem(word))
-        words_with_same_root.remove(word)  # the initial word will be added one time in the following
-
-        new_neg += lexeme(word)
-        new_neg += words_with_same_root
-
-    stp_words = nltk.corpus.stopwords.words('english')
-    stp_words += ['`', '`s', '`ing', '`ed', ',', ',s', ',ing', ',ed']
-
-    # removing all occurances of empty spaces from negative constraints
-    neg_const = list(filter(lambda a: a != ' ' and a != '', new_neg))
-
-    neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
-
-    return neg_const
+# def neg_consts_words(comp_toks, tokens, stemmer, entities, max_num_accepted_consts=20, word_level=False):
+#     """ returns words for negative constraints
+#         removes some tokens,
+#         preprocesses the words,
+#         adds new negative constraint that are very similar words to the selected negative constraints (have same root)
+#     """
+#
+#     # maximum number of accepted negative constraints
+#     #     max_num_accepted_consts = 10
+#     negs = []
+#     special_toks = ['[SEP]', '[CLS]', '.', 'Ġ.', ',']
+#
+#     for tok in comp_toks:
+#
+#         # first word is usually selected mistakably so we do not pass it to the paraphraser
+#         if tokens.index(tok) + 1 != len(tokens) and tokens.index(tok) != 1 and tok not in special_toks:
+#
+#             # Each token should be a starting token, not a part of a word or special token
+#             if word_level and tok[0] == 'Ġ':
+#
+#                 # We want the token be single word, not just the starting part of a word
+#                 # So the next token should start with 'G' or be a special token
+#                 if tokens[tokens.index(tok) + 1][0] == 'Ġ' or tokens[tokens.index(tok) + 1] in special_toks:
+#                     negs.append(tok[1:])
+#
+#             # When word_level is False we also consider complex tokens. So if a token is
+#             # complex we combine the adjacent tokens to return the compund word contatinig the complex token
+#             elif not word_level:
+#                 negs.append(self.token_to_word(tok, tokens))
+#
+#     new_neg = []
+#     # adding all words with similar root
+#     try:
+#         lexeme("fly")
+#     except:
+#         print("lexeme handled")
+#
+#     stp_words = nltk.corpus.stopwords.words('english')
+#     stp_words += ['`', '`s', '`ing', '`ed', ',', ',s', ',ing', ',ed']
+#
+#     # removing all occurances of empty spaces from negative constraints
+#     negs = list(filter(lambda a: a != ' ' and a != '', negs))
+#
+#     # pos_const = []
+#
+#     negs = [x for x in negs if x not in entities and x not in stp_words]
+#
+#     # adding words with similar root to negative constraints
+#     # e.g if the initial neg constraint is the word "facilitate"
+#     # then the new added words are : 'facilitate', 'facilitator', 'facilitative', 'facilitation', 'facilitate',
+#     # 'facilitates', 'facilitating', 'facilitated'
+#     for word in negs[:max_num_accepted_consts]:
+#         words_with_same_root = stemmer.unstem(stemmer.stem(word))
+#         words_with_same_root.remove(word)  # the initial word will be added one time in the following
+#
+#         new_neg += lexeme(word)
+#         new_neg += words_with_same_root
+#
+#     return new_neg
 
 
 def const_paraph(sent, neg_const):
-    # stp_words = nltk.corpus.stopwords.words('english')
-    # stp_words += ['`', '`s', '`ing', '`ed', ',', ',s', ',ing', ',ed']
-
-    # sent = sent.translate(str.maketrans('', '', string.punctuation))
-
-    # removing all occurances of empty spaces from negative constraints
-    # neg_const = list(filter(lambda a: a != ' ' and a != '', neg_const))
-    #
-    # # pos_const = []
-    #
-    # neg_const = [x for x in neg_const if x not in entities and x not in stp_words]
     print(f"negative constraints: {neg_const}\n")
-
-    # if len(neg_const) >= 5:
-    #     return -1
-
-    # new_testing
-
-    # if rest_pos_const:
-    #     for i in sent.split():
-    #         if i not in neg_const and i not in stp_words:
-    #             pos_const.append(i.lower())
-    # else:
-    #     pos_const = entities
 
     if config['paraphrasing_model'] != 'imr':
         bad_word = " ".join(neg_const)
@@ -1147,11 +1174,13 @@ def const_paraph(sent, neg_const):
     return output_sent
 
 
-def paraph(sent, leaves, entities, stemmer, details_sent):
+def paraph(sent, entities, details_sent, ccd):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
-    extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
-    neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer, entities=entities)
+    # extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
+    # neg_consts = neg_consts_words(extracted_comp_toks['comp_toks'], extracted_comp_toks['tokens'], stemmer, entities=entities)
+
+    neg_consts = ccd.extract_complex_words(sent, entities)[0]
 
     # Adding used negetavie constraints in the previous steps to this step to prevent generating deleted words
     if details_sent[1] == 'par':
@@ -1252,15 +1281,15 @@ def correct(sent):
     return convert_to_sent(s)
 
 
-def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent):
+def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd):
     sent = sent.replace('%', ' percent')
     sent = sent.replace('` `', '`')
     tree = next(parser.raw_parse(sent))
 
-    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent)
+    return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd)
 
 
-def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent):
+def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd):
     s = []
     p = []
     used_neg_consts = []
@@ -1271,7 +1300,7 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
     # comented for testing paraphrasing and deletion in a sequential order instead of a parallel method in beam search
     if config['constrained_paraphrasing']:
-        paraphrased_sentences = paraph(sent, "", entities, stemmer, details_sent)
+        paraphrased_sentences = paraph(sent, entities, details_sent, ccd)
 
         any_accepted_sent = False
         for sp in paraphrased_sentences:
@@ -1546,7 +1575,7 @@ def semantic_sim(sentA, sentB):
 
 
 def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
-                    embedding_weights, idf, unigram_prob, cs, config):
+                    embedding_weights, idf, unigram_prob, cs, config, tokenizer_deberta, comp_simp_class_model):
     score_final = 0
 
     out_simplicity = get_model_out(comp_simp_class_model, tokenizer_deberta, input_sent)
@@ -1629,7 +1658,7 @@ def load_data(dataset, batch_size):
     return dataloader
 
 
-def similarity_simplicity_grammar_assess(sys_sents, orig_file_path):
+def similarity_simplicity_grammar_assess(sys_sents, orig_file_path, tokenizer_deberta, comp_simp_class_model):
     orig = open(orig_file_path, encoding='utf-8').read().split('\n')
 
     acu_score_similarity = 0.
