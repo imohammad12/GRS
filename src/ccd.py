@@ -195,7 +195,7 @@ class ComplexComponentDetector:
         complexity_scores = defaultdict(int)
         CLS_attended_socres = attention[layer].sum(dim=1)[0][0]
         for i, tok in enumerate(tokens):
-            complexity_scores[token_to_word(tok, tokens)] = max(complexity_scores[token_to_word(tok, tokens)],
+            complexity_scores[self.token_to_word(tok, tokens)] = max(complexity_scores[self.token_to_word(tok, tokens)],
                                                                 CLS_attended_socres[i].item())
 
         extracted_comps = {"comp_toks": more_than_thresh,
@@ -279,7 +279,7 @@ class ComplexComponentDetector:
                 # When word_level is False we also consider complex tokens. So if a token is
                 # complex we combine the adjacent tokens to return the compund word contatinig the complex token
                 elif not word_level:
-                    negs.append(token_to_word(tok, tokens))
+                    negs.append(self.token_to_word(tok, tokens))
 
         stp_words = nltk.corpus.stopwords.words('english')
         stp_words += ['`', '`s', '`ing', '`ed', ',', ',s', ',ing', ',ed']

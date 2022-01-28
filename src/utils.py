@@ -78,7 +78,7 @@ if config['lexical_simplification']:
 
 device = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
 
-
+print('Loading Grammar Checker model')
 root_grammar_checker = "/home/m25dehgh/simplification/grammar-checker"
 model_name_grammar_checker = "deberta-base-cola"
 path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/checkpoint-716"
