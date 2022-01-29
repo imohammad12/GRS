@@ -1701,6 +1701,7 @@ def calculate_sari_easse(ref_folder_path, sys_sents, orig_file_path):
     orig_sents = open(orig_file_path, encoding='utf-8').read().split('\n')
 
     orig_sents = orig_sents[:len(sys_sents)]
+    sys_sents = sys_sents[:len(orig_sents)]
     orig_sents = all_norms(orig_sents)
 
     sys_sents = all_norms(sys_sents)
