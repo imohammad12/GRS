@@ -54,6 +54,8 @@ elif config['dataset'] == 'Wikilarge':
 else:
     raise ValueError("Wrong dataset name: use Newsela or Wikilarge")
 
+save_config(config)
+
 idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex, \
 valid_complex, test_complex, output_embedding_weights, tag_embedding_weights, \
 dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'], config['ver'], config['dataset'],
