@@ -28,7 +28,6 @@ model_name_grammar_checker = "deberta-base-cola"
 path = root_grammar_checker + '/results' + '/' + model_name_grammar_checker + "/checkpoint-716"
 model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
 
-
 asset_paths = {
     "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
     "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
@@ -73,17 +72,15 @@ lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_
                          config['use_structural_as_standard']).to(device)
 
 print('Creating ccd object...')
-ccd = ComplexComponentDetector.combined_version(idf,
-                                                output_lang,
-                                                comp_simp_class_model=comp_simp_class_model,
-                                                tokenizer=tokenizer_deberta,
-                                                **config)
+ccd = ComplexComponentDetector.cls_version(idf,
+                                           output_lang,
+                                           comp_simp_class_model=comp_simp_class_model,
+                                           tokenizer=tokenizer_deberta,
+                                           **config)
 
 open(config['file_name'], "w").close()
 
 start_time = time.time()
-
-
 
 # Testing multiple configurations
 # for i, del_threshold in enumerate(np.arange(1.1, 1.5, 0.1)):
