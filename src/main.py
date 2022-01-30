@@ -85,8 +85,15 @@ start_time = time.time()
 # Testing multiple configurations
 # for i, del_threshold in enumerate(np.arange(1.1, 1.5, 0.1)):
 # for j, par_thresh in enumerate(np.arange(0.6, 1.1, 0.1)):
+for i in range(2):
+    config = load_config()
+    if i == 0:
+        config["paraphrasing_model"] = "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500"
+    else:
+        config[
+            "paraphrasing_model"] = "imr"
+    save_config(config)
 
-# config = load_config()
 
 # 	config['threshold']['par'] = 0.8
 # 	config['threshold']['dl'] = 2.0
@@ -107,18 +114,18 @@ start_time = time.time()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-if config['set'] == 'valid':
-    sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker)
+    if config['set'] == 'valid':
+        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker)
 
-elif config['set'] == 'test':
-    sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker)
+    elif config['set'] == 'test':
+        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker)
 
-open(config['file_name'], "w").close()
+    open(config['file_name'], "w").close()
 
-end = time.time()
-print(f"Runtime of the program is {end - start_time}")
-start_time = end
+    end = time.time()
+    print(f"Runtime of the program is {end - start_time}")
+    start_time = end
