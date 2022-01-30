@@ -73,7 +73,7 @@ lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_
 
 print('Creating ccd object...')
 ccd = ComplexComponentDetector.cls_version(idf,
-                                           output_lang,
+                                           # output_lang,
                                            comp_simp_class_model=comp_simp_class_model,
                                            tokenizer=tokenizer_deberta,
                                            **config)
