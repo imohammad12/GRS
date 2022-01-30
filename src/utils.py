@@ -1140,6 +1140,7 @@ def const_paraph(sent, neg_const, config):
         output_sent = tokenizer_paraphrasing.batch_decode(translated, skip_special_tokens=True)
 
     else:
+        pos_const = []
         inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
 
         print("input: ", inp)
