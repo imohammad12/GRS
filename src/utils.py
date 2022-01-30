@@ -1424,7 +1424,7 @@ def in_vocab(phrase, input_lang):
     return True
 
 
-def checks_for_word_simplification(sent, word, synonyms, input_lang, pos, dep, idf, orig_sent_words, s):
+def checks_for_word_simplification(sent, word, synonyms, input_lang, pos, dep, idf, orig_sent_words, s, config):
     for new_word in synonyms:
         if getword(input_lang, new_word) == UNK_token:
             # print('rejected because not in vocabulary')
@@ -1462,7 +1462,7 @@ def checks_for_word_simplification(sent, word, synonyms, input_lang, pos, dep, i
             # print('rejected because tags not similar')
 
 
-def get_word_to_simplify(phrase, idf, orig_sent_words, entities, lang):
+def get_word_to_simplify(phrase, idf, orig_sent_words, entities, lang, config):
     # we only simply the words that exist in the original sentence
     idf_val = -1
     complex_word = ''
@@ -1495,7 +1495,7 @@ def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entit
     # simplifications = {scientist -> reader}
     s = []
     synonyms = []
-    word_to_be_replaced = get_word_to_simplify(phrase, idf, orig_sent_words, entities, input_lang)
+    word_to_be_replaced = get_word_to_simplify(phrase, idf, orig_sent_words, entities, input_lang, config)
     # word_to_be_replaced = simplifications[word_to_be_replaced]
     if word_to_be_replaced != '':
         if word_to_be_replaced in synonym_dict:
@@ -1534,7 +1534,7 @@ def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entit
                 pos = token.tag_
                 dep = token.dep_
         checks_for_word_simplification(sent, word_to_be_replaced, synonyms, input_lang, pos, dep, idf, orig_sent_words,
-                                       s)
+                                       s, config)
     # print('s is')
     # print(s)
     return s

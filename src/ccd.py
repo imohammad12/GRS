@@ -26,7 +26,9 @@ class ComplexComponentDetector:
         "thresh_coef": 1.3,
         'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
         "UNK_token": 3,
-        'cls_score_coef': 0.001
+        'cls_score_coef': 0.001,
+        'thresh_idf_cls': 7,
+        'thresh_idf_combined': 11,
     }
 
     def __init__(self, **config):
@@ -51,6 +53,7 @@ class ComplexComponentDetector:
         ccd.params['ccd_version'] = 'ls'
         ccd.idf = idf
         ccd.lang = output_lang
+        config.update(ccd.params)
         return ccd
 
     @classmethod
@@ -78,6 +81,7 @@ class ComplexComponentDetector:
             ccd.tokenizer = tokenizer
         ccd.params['ccd_version'] = 'cls'
         ccd.idf = idf
+        config.update(ccd.params)
         return ccd
 
     @classmethod
@@ -113,6 +117,7 @@ class ComplexComponentDetector:
         ccd.params['ccd_version'] = 'combined'
         ccd.idf = idf
         ccd.lang = output_lang
+        config.update(ccd.params)
         return ccd
 
     def extract_complex_words(self, sent, entities):
@@ -135,11 +140,11 @@ class ComplexComponentDetector:
                                                        )
             scores_dict = extracted_comp_toks['comp_scores']
             complexity_score_thresh = extracted_comp_toks['threshold']
-            neg_roots = [word for word in neg_roots if get_idf_value(self.idf, word) > 7]
+            neg_roots = [word for word in neg_roots if get_idf_value(self.idf, word) > self.params['thresh_idf_cls']]
 
         complex_pred = list(set(complex_pred + neg_roots))
         if self.params["ccd_version"] == 'combined':
-            complex_pred = [word for word in complex_pred if get_idf_value(self.idf, word) > 11]
+            complex_pred = [word for word in complex_pred if get_idf_value(self.idf, word) > self.params['thresh_idf_combined']]
             complex_pred = [word for word in complex_pred if scores_dict[word] > complexity_score_thresh * self.params['cls_score_coef']]
 
         # adding all words with similar root
@@ -325,11 +330,7 @@ class ComplexComponentDetector:
 
         hard_words = set()
         for i in range(len(p)):
-            word_to_be_replaced = get_word_to_simplify(p[i],
-                                                       self.idf,
-                                                       orig_sent_words,
-                                                       entities,
-                                                       self.lang)
+            word_to_be_replaced = get_word_to_simplify(p[i], self.idf, orig_sent_words, entities, self.lang, self.params)
 
             if word_to_be_replaced != '':
                 hard_words.add(word_to_be_replaced)
