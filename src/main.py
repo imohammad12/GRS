@@ -85,7 +85,7 @@ start_time = time.time()
 # Testing multiple configurations
 # for i, del_threshold in enumerate(np.arange(1.1, 1.5, 0.1)):
 # for j, par_thresh in enumerate(np.arange(0.6, 1.1, 0.1)):
-for i in range(1, 2):
+for i in range(0, 2):
     config = load_config()
     if i == 0:
         config["paraphrasing_model"] = "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500"

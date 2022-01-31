@@ -26,8 +26,8 @@ class ComplexComponentDetector:
         "thresh_coef": 1.3,
         'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
         "UNK_token": 3,
-        'cls_score_coef': 0.001,
-        'thresh_idf_cls': 7,
+        'cls_score_coef': 0, #0.001,
+        'thresh_idf_cls': 0, #7,
         'thresh_idf_combined': 11,
     }
 
@@ -137,6 +137,7 @@ class ComplexComponentDetector:
             neg_roots = self.raw_complx_token_to_words(extracted_comp_toks['comp_toks'],
                                                        extracted_comp_toks['tokens'],
                                                        entities,
+                                                       word_level=True
                                                        )
             scores_dict = extracted_comp_toks['comp_scores']
             complexity_score_thresh = extracted_comp_toks['threshold']
