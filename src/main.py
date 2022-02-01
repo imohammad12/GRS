@@ -44,7 +44,7 @@ newsela_paths = {
 }
 
 config = load_config()
-config['dataset'] = 'Wikilarge'
+# config['dataset'] = 'Wikilarge'
 
 if config['dataset'] == "Newsela":
     config.update(newsela_paths)
