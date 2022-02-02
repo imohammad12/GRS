@@ -1187,6 +1187,7 @@ def paraph(sent, entities, details_sent, ccd, config):
     # if sent != -1 and sent != 1:
 
         # sent = sent.replace("\n", '')
+    print(f"input sent: {sent}\nparaphrased sents: {sents}\nneg consts: {neg_consts}")
     sents = [ss.replace("\n", '') for ss in sents]
     sents = all_norms(sents)
     sents = [correct(ss) for ss in sents]
