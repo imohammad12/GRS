@@ -199,22 +199,23 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                                     model_grammar_checker)
                 # print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
 
-                if config['double_LM']:
-                    elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b, candidate_dep_tensor_b = tokenize_sent_special(
-                        reverse_sent(sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
-                                                                                              tok in doc])), tag_lang,
-                        reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
-                    p += calculate_score(lm_backward, elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b,
-                                         candidate_dep_tensor_b, input_lang, reverse_sent(sent),
-                                         reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True, config,
-                                         tokenizer_deberta, comp_simp_class_model, model_grammar_checker)
-                    p /= 2.0
+                # if config['double_LM']:
+                #     elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b, candidate_dep_tensor_b = tokenize_sent_special(
+                #         reverse_sent(sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
+                #                                                                               tok in doc])), tag_lang,
+                #         reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
+                #     p += calculate_score(lm_backward, elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b,
+                #                          candidate_dep_tensor_b, input_lang, reverse_sent(sent),
+                #                          reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True, config,
+                #                          tokenizer_deberta, comp_simp_class_model, model_grammar_checker)
+                #     p /= 2.0
 
                 # no repetitive sentence
                 sent_list.append(sent)
                 # if the candidate sentence is able to increase the score by a threshold value, add it to the beam
                 if p > prob_old * config['threshold'][operation]:
                     new_beam[sent] = [p, operation, orig_sent]
+                    print('This sentence added to beam:', sent)
                 # else:
                 #     # if the threshold is not crossed, add it to a list so that the sentence is not considered in the future
                 #     sent_list.append(sent)
