@@ -36,7 +36,7 @@ def all_norms(sentences: Union[str, List[str]]):
         output = []
         for sent in sentences:
             for x in tokenizers:
-                sent = normalize(sentences, tokenizer=x, lowercase=False)
+                sent = normalize(sent, tokenizer=x, lowercase=False)
             output.append(sent)
         sentences = output
 
