@@ -122,6 +122,9 @@ class ComplexComponentDetector:
         complex_pred = []
         neg_roots = []
 
+        sent = sent.replace('%', ' percent')
+        sent = sent.replace('` `', '`')
+
         if self.params["ccd_version"] == 'combined':
             print("-- Sentce with error before ccd: ", sent)
             orig_sent_words = [i for i in self.parser.tokenize(sent)]
