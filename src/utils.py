@@ -1488,7 +1488,8 @@ def get_entities(sent):
     doc = nlp(sent)
     entities = []
     for ent in doc.ents:
-        entities.extend(ent.text.lower().split(' '))
+        # entities.extend(ent.text.lower().split(' '))
+        entities.extend(ent.text.split(' '))
     # print(entities)
     return entities
 

@@ -98,7 +98,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
                                                                   model_grammar_checker=model_grammar_checker)
 
     all_scores = {**sari_scores, **simil_simp_gram_scores, **stats}
-
+    config.update(ccd.params)
     print("all scores", all_scores)
 
     save_and_log(all_scores, sys_sents, config)

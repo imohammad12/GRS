@@ -4,6 +4,7 @@ import numpy as np
 import torch
 import transformers
 import spacy
+import time
 
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from spacy.tokenizer import Tokenizer
@@ -32,7 +33,7 @@ class ComplexComponentDetector:
     }
 
     def __init__(self, **config):
-        self.params = self.default_params
+        self.params = self.default_params.copy()
         self.params.update(config)
         self.nlp = spacy.load("en_core_web_lg")
         self.nlp.tokenizer = Tokenizer(self.nlp.vocab)
@@ -125,14 +126,17 @@ class ComplexComponentDetector:
         neg_roots = []
 
         if self.params["ccd_version"] == 'combined':
+            t0 = time.time()
             orig_sent_words = [i for i in self.parser.tokenize(sent)]
             complex_pred = self.get_complex_word_single_sent(orig_sent_words, entities)
+            print(f"time it took for get_complex_word_single_sent function {time.time() - t0}")
 
         if self.params["ccd_version"] == "ls":
             orig_sent_words = sent.lower().split(' ')
             complex_pred = self.finding_complex_words(sent, orig_sent_words, entities)
 
         if self.params["ccd_version"] == 'combined' or self.params["ccd_version"] == "cls":
+            t0 = time.time()
             extracted_comp_toks = self.extract_token_cls_comp_score(sent)
             neg_roots = self.raw_complx_token_to_words(extracted_comp_toks['comp_toks'],
                                                        extracted_comp_toks['tokens'],
@@ -142,11 +146,14 @@ class ComplexComponentDetector:
             scores_dict = extracted_comp_toks['comp_scores']
             complexity_score_thresh = extracted_comp_toks['threshold']
             neg_roots = [word for word in neg_roots if get_idf_value(self.idf, word) > self.params['thresh_idf_cls']]
+            print(f"time it took for cls complex token extraction {time.time() - t0}")
 
         complex_pred = list(set(complex_pred + neg_roots))
         if self.params["ccd_version"] == 'combined':
+            t0 = time.time()
             complex_pred = [word for word in complex_pred if get_idf_value(self.idf, word) > self.params['thresh_idf_combined']]
             complex_pred = [word for word in complex_pred if scores_dict[word] > complexity_score_thresh * self.params['cls_score_coef']]
+            print(f"time it took for idf removing {time.time() - t0}")
 
         # adding all words with similar root
         try:
@@ -300,9 +307,6 @@ class ComplexComponentDetector:
         complex_word = []
         for word in sent:
             word = word.lower()
-            # if word is not present in the original sentence or word is a entity skip it
-            if word in entities:
-                continue
             if getword(self.lang, word) == self.params['UNK_token']:
                 #             print('unk token: ', word)
                 # if the word is not in entities and not present in the simple vocabulary, we simplify it
@@ -312,6 +316,9 @@ class ComplexComponentDetector:
             val = get_idf_value(self.idf, word)
             if val > self.params['min_idf_value_for_ls']:
                 complex_word.append(word)
+
+        complex_word = self.lower_words_to_original(sent, complex_word)
+        complex_word = [x for x in complex_word if x not in entities]
 
         return complex_word
 
@@ -336,4 +343,19 @@ class ComplexComponentDetector:
             if word_to_be_replaced != '':
                 hard_words.add(word_to_be_replaced)
 
-        return list(hard_words)
+        hard_words = self.lower_words_to_original(orig_sent_words, list(hard_words))
+        hard_words = [x for x in hard_words if x not in entities]
+
+        return hard_words
+
+    @staticmethod
+    def lower_words_to_original(orig_sent_words, complex_words):
+        """
+        returns the same given complex_words with orinal case sensitivity.
+        """
+        lower_sent = [x.lower() for x in orig_sent_words]
+        new_complex_word = []
+        for word in complex_words:
+            if word.lower() in lower_sent:
+                new_complex_word.append(orig_sent_words[lower_sent.index(word.lower())])
+        return new_complex_word
