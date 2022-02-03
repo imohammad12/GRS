@@ -72,15 +72,22 @@ lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_
                          config['use_structural_as_standard']).to(device)
 
 print('Creating ccd object...')
-ccd = ComplexComponentDetector.cls_version(idf,
-                                           # output_lang,
-                                           comp_simp_class_model=comp_simp_class_model,
-                                           tokenizer=tokenizer_deberta,
-                                           **config)
+ccds = {"combined": ComplexComponentDetector.combined_version(idf,
+                                                              output_lang,
+                                                              comp_simp_class_model=comp_simp_class_model,
+                                                              tokenizer=tokenizer_deberta,
+                                                              **config),
+        "cls": ComplexComponentDetector.cls_version(idf,
+                                                    comp_simp_class_model=comp_simp_class_model,
+                                                    tokenizer=tokenizer_deberta,
+                                                    **config),
+        "ls": ComplexComponentDetector.ls_version(idf,
+                                                  output_lang,
+                                                  **config.copy())}
+
 
 open(config['file_name'], "w").close()
 
-start_time = time.time()
 
 # Testing multiple configurations
 # for i, del_threshold in enumerate(np.arange(1.1, 1.5, 0.1)):
@@ -113,18 +120,21 @@ start_time = time.time()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-if config['set'] == 'valid':
-    sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker)
+for version, ccd in ccds.items():
+    start_time = time.time()
 
-elif config['set'] == 'test':
-    sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker)
+    if config['set'] == 'valid':
+        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker)
 
-open(config['file_name'], "w").close()
+    elif config['set'] == 'test':
+        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker)
 
-end = time.time()
-print(f"Runtime of the program is {end - start_time}")
-start_time = end
+    open(config['file_name'], "w").close()
+
+# end = time.time()
+# print(f"Runtime of the program is {end - start_time}")
+# start_time = end

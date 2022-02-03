@@ -55,7 +55,7 @@ class ComplexComponentDetector:
         ccd.params['ccd_version'] = 'ls'
         ccd.idf = idf
         ccd.lang = output_lang
-        config.update(ccd.params)
+        # config.update(ccd.params)
         return ccd
 
     @classmethod
@@ -81,7 +81,7 @@ class ComplexComponentDetector:
             ccd.tokenizer = tokenizer
         ccd.params['ccd_version'] = 'cls'
         ccd.idf = idf
-        config.update(ccd.params)
+        # config.update(ccd.params)
         return ccd
 
     @classmethod
@@ -115,7 +115,7 @@ class ComplexComponentDetector:
         ccd.params['ccd_version'] = 'combined'
         ccd.idf = idf
         ccd.lang = output_lang
-        config.update(ccd.params)
+        # config.update(ccd.params)
         return ccd
 
     def extract_complex_words(self, sent, entities):

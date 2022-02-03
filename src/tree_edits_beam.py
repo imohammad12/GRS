@@ -97,7 +97,8 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
                                                                   comp_simp_class_model=comp_simp_class_model,
                                                                   model_grammar_checker=model_grammar_checker)
 
-    all_scores = {**sari_scores, **simil_simp_gram_scores, **stats}
+    runtime = time.time() - start_time
+    all_scores = {**sari_scores, **simil_simp_gram_scores, **stats, "runtime": runtime}
     config.update(ccd.params)
     print("all scores", all_scores)
 
