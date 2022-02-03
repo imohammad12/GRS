@@ -20,7 +20,6 @@ from pyinflect import getAllInflections, getInflection
 
 class ComplexComponentDetector:
     default_params = {
-        "device": torch.device("cuda:2" if torch.cuda.is_available() else "cpu"),
         'path_classifier_model': '/home/m25dehgh/simplification/complex-classifier/results/newsela-auto-high-quality'
                                  '/whole-high-quality/checkpoint-44361/',
         'tokenizer_path': 'microsoft/deberta-base',
@@ -39,6 +38,7 @@ class ComplexComponentDetector:
         self.nlp.tokenizer = Tokenizer(self.nlp.vocab)
         self.parser = CoreNLPParser('http://localhost:9000')
         self.stemmer = create_reverse_stem()
+        self.device = torch.device("cuda:"+str(config['gpu']) if torch.cuda.is_available() else "cpu")
 
     @classmethod
     def ls_version(cls, idf, output_lang, **config):
@@ -65,15 +65,13 @@ class ComplexComponentDetector:
         :return: ComplexComponentDetector object
         """
         ccd = cls(**config)
-        if 'gpu' in config:
-            ccd.params['device'] = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
         if comp_simp_class_model is None:
             print('Loading Deberta classifier model')
             ccd.comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(
                 ccd.params['path_classifier_model'])
         else:
             ccd.comp_simp_class_model = comp_simp_class_model
-        ccd.comp_simp_class_model.to(ccd.params['device'])
+        ccd.comp_simp_class_model.to(ccd.device)
         ccd.comp_simp_class_model.eval()
         if tokenizer is None:
             print('Loading Deberta tokenizer')
@@ -99,15 +97,13 @@ class ComplexComponentDetector:
         :return: ComplexComponentDetector object
         """
         ccd = cls(**config)
-        if 'gpu' in config:
-            ccd.params['device'] = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
         if comp_simp_class_model is None:
             print('Loading Deberta classifier model')
             ccd.comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(
                 ccd.params['path_classifier_model'])
         else:
             ccd.comp_simp_class_model = comp_simp_class_model
-        ccd.comp_simp_class_model.to(ccd.params['device'])
+        ccd.comp_simp_class_model.to(ccd.device)
         ccd.comp_simp_class_model.eval()
         if tokenizer is None:
             print('Loading Deberta tokenizer')
