@@ -27,8 +27,9 @@ class ComplexComponentDetector:
         'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
         "UNK_token": 3,
         'cls_score_coef': 0, #0.001,
-        'thresh_idf_cls': 0, #7,
+        'thresh_idf_cls': 7,
         'thresh_idf_combined': 11,
+        'gpu': 0
     }
 
     def __init__(self, **config):
@@ -38,7 +39,7 @@ class ComplexComponentDetector:
         self.nlp.tokenizer = Tokenizer(self.nlp.vocab)
         self.parser = CoreNLPParser('http://localhost:9000')
         self.stemmer = create_reverse_stem()
-        self.device = torch.device("cuda:"+str(config['gpu']) if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda:"+str(self.params['gpu']) if torch.cuda.is_available() else "cpu")
 
     @classmethod
     def ls_version(cls, idf, output_lang, **config):
@@ -134,7 +135,7 @@ class ComplexComponentDetector:
             neg_roots = self.raw_complx_token_to_words(extracted_comp_toks['comp_toks'],
                                                        extracted_comp_toks['tokens'],
                                                        entities,
-                                                       word_level=True
+                                                       word_level=False
                                                        )
             scores_dict = extracted_comp_toks['comp_scores']
             complexity_score_thresh = extracted_comp_toks['threshold']
