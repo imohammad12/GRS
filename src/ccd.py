@@ -126,17 +126,14 @@ class ComplexComponentDetector:
         neg_roots = []
 
         if self.params["ccd_version"] == 'combined':
-            t0 = time.time()
             orig_sent_words = [i for i in self.parser.tokenize(sent)]
             complex_pred = self.get_complex_word_single_sent(orig_sent_words, entities)
-            print(f"time it took for get_complex_word_single_sent function {time.time() - t0}")
 
         if self.params["ccd_version"] == "ls":
             orig_sent_words = sent.lower().split(' ')
             complex_pred = self.finding_complex_words(sent, orig_sent_words, entities)
 
         if self.params["ccd_version"] == 'combined' or self.params["ccd_version"] == "cls":
-            t0 = time.time()
             extracted_comp_toks = self.extract_token_cls_comp_score(sent)
             neg_roots = self.raw_complx_token_to_words(extracted_comp_toks['comp_toks'],
                                                        extracted_comp_toks['tokens'],
@@ -146,14 +143,11 @@ class ComplexComponentDetector:
             scores_dict = extracted_comp_toks['comp_scores']
             complexity_score_thresh = extracted_comp_toks['threshold']
             neg_roots = [word for word in neg_roots if get_idf_value(self.idf, word) > self.params['thresh_idf_cls']]
-            print(f"time it took for cls complex token extraction {time.time() - t0}")
 
         complex_pred = list(set(complex_pred + neg_roots))
         if self.params["ccd_version"] == 'combined':
-            t0 = time.time()
             complex_pred = [word for word in complex_pred if get_idf_value(self.idf, word) > self.params['thresh_idf_combined']]
             complex_pred = [word for word in complex_pred if scores_dict[word] > complexity_score_thresh * self.params['cls_score_coef']]
-            print(f"time it took for idf removing {time.time() - t0}")
 
         # adding all words with similar root
         try:
