@@ -72,19 +72,25 @@ lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_
                          config['use_structural_as_standard']).to(device)
 
 print('Creating ccd object...')
-ccds = {"combined": ComplexComponentDetector.combined_version(idf,
-                                                              output_lang,
-                                                              comp_simp_class_model=comp_simp_class_model,
-                                                              tokenizer=tokenizer_deberta,
-                                                              **config),
-        "cls": ComplexComponentDetector.cls_version(idf,
+# ccds = {
+     # "combined": ComplexComponentDetector.combined_version(idf,
+#                                                               output_lang,
+#                                                               comp_simp_class_model=comp_simp_class_model,
+#                                                               tokenizer=tokenizer_deberta,
+#                                                               **config),
+#         "cls": ComplexComponentDetector.cls_version(idf,
+#                                                     comp_simp_class_model=comp_simp_class_model,
+#                                                     tokenizer=tokenizer_deberta,
+#                                                     **config),
+        # "ls": ComplexComponentDetector.ls_version(idf,
+        #                                           output_lang,
+        #                                           **config.copy())}
+
+ccds = {}
+ccdd['cls'] = ComplexComponentDetector.cls_version(idf,
                                                     comp_simp_class_model=comp_simp_class_model,
                                                     tokenizer=tokenizer_deberta,
-                                                    **config),
-        "ls": ComplexComponentDetector.ls_version(idf,
-                                                  output_lang,
-                                                  **config.copy())}
-
+                                                    **config)
 
 open(config['file_name'], "w").close()
 
