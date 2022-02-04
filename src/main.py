@@ -139,7 +139,7 @@ for i in range(4):
 
     config = load_config()
 
-    config['constrained_paraphrasing'] = True if i == 0 or i == 3 else False
+    config['lexical_simplification'] = True if i == 0 or i == 3 else False
     config['leaves_as_sent'] = True if i == 1 or i == 3 else False
     config['reorder_leaves'] = True if i == 2 or i == 3 else False
 

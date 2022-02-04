@@ -1527,7 +1527,10 @@ def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entit
         doc = nlp(sent)
         # print(word_to_be_replaced)
         # print(sent)
+        print('== Word to be replaced: ', word_to_be_replaced)
+        print("doc: ", doc)
         for token in doc:
+            print(f'token.text.lower() : {token.text.lower()}')
             if token.text.lower() == word_to_be_replaced:
                 pos = token.tag_
                 dep = token.dep_
