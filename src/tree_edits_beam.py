@@ -11,7 +11,8 @@ sf = SmoothingFunction()
 
 def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_backward,
            embedding_weights, idf, unigram_prob, start_time, config,
-           tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker):
+           tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker,
+           tokenizer_paraphrasing=None, model_paraphrasing=None):
     count = 0
     sari_scorel = 0
     keepl = 0
@@ -47,7 +48,9 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
                                                                                   tokenizer_deberta,
                                                                                   comp_simp_class_model,
                                                                                   ccd,
-                                                                                  model_grammar_checker)
+                                                                                  model_grammar_checker,
+                                                                                  tokenizer_paraphrasing,
+                                                                                  model_paraphrasing)
 
             sys_sents.append(out_sent)
 
@@ -108,7 +111,8 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
 
 
 def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, embedding_weights, idf,
-         unigram_prob, stats, config, tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker):
+         unigram_prob, stats, config, tokenizer_deberta, comp_simp_class_model, ccd,
+         model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing):
     print(stats)
     # input_sent = "highlights 2009 from the 2009 version of 52 seconds setup for passmark 5 32 5 2nd scan time , and 7 mb memory- 7 mb memory ."
     reference = reference.lower()
@@ -147,12 +151,9 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
         elmo_tensor, \
         input_sent_tensor, \
         tag_tensor, \
-        dep_tensor = tokenize_sent_special(input_sent.lower(),
-                                           input_lang,
-                                           convert_to_sent([(tok.tag_).upper() for tok in doc]),
-                                           tag_lang,
-                                           convert_to_sent([(tok.dep_).upper() for tok in doc]),
-                                           dep_lang)
+        dep_tensor = tokenize_sent_special(input_sent.lower(), input_lang,
+                                           convert_to_sent([(tok.tag_).upper() for tok in doc]), tag_lang,
+                                           convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
 
         prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang,
                                    input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config,
@@ -172,7 +173,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
 
             # get candidate sentence through different edit operations
             candidates = get_subphrase_mod(key, sent_list, input_lang, idf, spl, entities, synonym_dict, stemmer,
-                                           beam[key], ccd, config)
+                                           beam[key], ccd, config, tokenizer_paraphrasing, model_paraphrasing)
 
             # new_testing
             all_par_calls += candidates[1]
@@ -191,7 +192,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 elmo_tensor, candidate_tensor, candidate_tag_tensor, candidate_dep_tensor = tokenize_sent_special(
                     sent.lower(), input_lang, convert_to_sent([(tok.tag_).upper() for
                                                                tok in doc]), tag_lang,
-                    convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang)
+                    convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
 
                 # calculate score for each candidate sentence using the scoring function
                 p = calculate_score(lm_forward, elmo_tensor, candidate_tensor, candidate_tag_tensor,
@@ -290,7 +291,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                                                                                                  convert_to_sent(
                                                                                                      [(tok.dep_).upper()
                                                                                                       for tok in doc]),
-                                                                                                 dep_lang)
+                                                                                                 dep_lang, config)
         perpf = calculate_score(lm_forward, elmo_tensor, best_input_tensor, best_tag_tensor, best_dep_tensor,
                                 input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config,
                                 tokenizer_deberta, comp_simp_class_model, model_grammar_checker)
@@ -298,7 +299,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
             elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b, best_dep_tensor_b = tokenize_sent_special(
                 reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
                                                                                             tok in doc])), tag_lang,
-                reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
+                reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang, config)
             perpf += calculate_score(lm_backward, elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b,
                                      best_dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent),
                                      embedding_weights, idf, unigram_prob, False, config, tokenizer_deberta,

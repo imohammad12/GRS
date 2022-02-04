@@ -110,7 +110,7 @@ def evaluatePerplexity(decoder, pairs, output_lang, p):
         pair = pairs[i]
         if p:
             print('>', pair)
-        loss= calculateLoss(decoder, pair, output_lang, p)
+        loss= calculateLoss(decoder, pair, output_lang, p,,
         total_loss += loss
     print("Perplexity")
     print('%.4f ' % (math.exp(total_loss/n)))

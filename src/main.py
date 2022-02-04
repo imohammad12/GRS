@@ -5,6 +5,7 @@ import json
 import numpy as np
 
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from ccd import ComplexComponentDetector
 from model.structural_decoder import DecoderGRU
 from tree_edits_beam import *
@@ -12,6 +13,8 @@ from tree_edits_beam import *
 # importlib.reload(sys.modules['utils'])
 # importlib.reload(sys.modules['config'])
 # from config import model_config as config
+
+config = load_config()
 
 print('Loading Deberta Tokenizer...')
 tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base')
@@ -34,7 +37,6 @@ asset_paths = {
     "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
     "extra_log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
 }
-
 newsela_paths = {
     "log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
     "ref_folder_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/ref-test-orig",
@@ -42,8 +44,10 @@ newsela_paths = {
                       "/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src",
     "extra_log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
 }
+tokenizer_paraphrasing = None
+model_paraphrasing = None
 
-config = load_config()
+
 # config['dataset'] = 'Wikilarge'
 
 if config['dataset'] == "Newsela":
@@ -52,6 +56,12 @@ elif config['dataset'] == 'Wikilarge':
     config.update(asset_paths)
 else:
     raise ValueError("Wrong dataset name: use Newsela or Wikilarge")
+
+if config['paraphrasing_model'] != 'imr':
+    tokenizer_paraphrasing = AutoTokenizer.from_pretrained(config['paraphrasing_model'])
+    model_paraphrasing = AutoModelForSeq2SeqLM.from_pretrained(config['paraphrasing_model']).to(
+        config['paraphrasing_gpu'])
+    model_paraphrasing.eval()
 
 save_config(config)
 
@@ -73,7 +83,7 @@ lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_
 
 print('Creating ccd object...')
 # ccds = {
-     # "combined": ComplexComponentDetector.combined_version(idf,
+# "combined": ComplexComponentDetector.combined_version(idf,
 #                                                               output_lang,
 #                                                               comp_simp_class_model=comp_simp_class_model,
 #                                                               tokenizer=tokenizer_deberta,
@@ -82,18 +92,17 @@ print('Creating ccd object...')
 #                                                     comp_simp_class_model=comp_simp_class_model,
 #                                                     tokenizer=tokenizer_deberta,
 #                                                     **config),
-        # "ls": ComplexComponentDetector.ls_version(idf,
-        #                                           output_lang,
-        #                                           **config.copy())}
+# "ls": ComplexComponentDetector.ls_version(idf,
+#                                           output_lang,
+#                                           **config.copy())}
 
 ccds = {}
-ccdd['cls'] = ComplexComponentDetector.cls_version(idf,
-                                                    comp_simp_class_model=comp_simp_class_model,
-                                                    tokenizer=tokenizer_deberta,
-                                                    **config)
+ccds['cls'] = ComplexComponentDetector.cls_version(idf,
+                                                   comp_simp_class_model=comp_simp_class_model,
+                                                   tokenizer=tokenizer_deberta,
+                                                   **config)
 
 open(config['file_name'], "w").close()
-
 
 # Testing multiple configurations
 # for i, del_threshold in enumerate(np.arange(1.1, 1.5, 0.1)):
@@ -126,20 +135,30 @@ open(config['file_name'], "w").close()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-for version, ccd in ccds.items():
-    start_time = time.time()
+for i in range(4):
 
-    if config['set'] == 'valid':
-        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker)
+    config = load_config()
 
-    elif config['set'] == 'test':
-        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker)
+    config['constrained_paraphrasing'] = True if i == 0 or i == 3 else False
+    config['leaves_as_sent'] = True if i == 1 or i == 3 else False
+    config['reorder_leaves'] = True if i == 2 or i == 3 else False
 
-    open(config['file_name'], "w").close()
+    save_config(config)
+
+    for version, ccd in ccds.items():
+        start_time = time.time()
+
+        if config['set'] == 'valid':
+            sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+                   output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+                   comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+
+        elif config['set'] == 'test':
+            sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+                   output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+                   comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+
+        open(config['file_name'], "w").close()
 
 # end = time.time()
 # print(f"Runtime of the program is {end - start_time}")

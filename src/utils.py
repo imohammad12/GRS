@@ -80,14 +80,6 @@ device = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() 
 
 semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
 
-if config['paraphrasing_model'] != 'imr':
-    tokenizer_paraphrasing = AutoTokenizer.from_pretrained(config['paraphrasing_model'])
-    model_paraphrasing = AutoModelForSeq2SeqLM.from_pretrained(config['paraphrasing_model']).to(
-        config['paraphrasing_gpu'])
-    model_paraphrasing.eval()
-    # tokenizer_pegasus = PegasusTokenizer.from_pretrained(config['paraphrasing_model'])
-    # model_paraphrasing = PegasusForConditionalGeneration.from_pretrained(config['paraphrasing_model']).to(config['paraphrasing_gpu'])
-
 SOS_token = 1
 EOS_token = 2
 PAD_token = 0
@@ -390,13 +382,13 @@ def get_unigram_prob_value(unigram_prob, word):
         return 1
 
 
-def filterPair(p):
+def filterPair(p, config):
     return len(p.split(' ')) < config['MAX_LENGTH']
 
 
 
-def filterPairs(pairs):
-    return [pair for pair in pairs if filterPair(pair)]
+def filterPairs(pairs, config):
+    return [pair for pair in pairs if filterPair(pair, config)]
 
 
 def prepareData(embedding_dim, freq, ver, dataset, operation, config):
@@ -433,18 +425,18 @@ def prepareData(embedding_dim, freq, ver, dataset, operation, config):
 		if count < len(test_complex[i].split(' ')):
 			count = len(test_complex[i].split(' '))
 	print(count)'''
-    train_simple = filterPairs(train_simple)
-    valid_simple = filterPairs(valid_simple)
-    test_simple = filterPairs(test_simple)
-    train_complex = filterPairs(train_complex)
-    valid_complex = filterPairs(valid_complex)
-    test_complex = filterPairs(test_complex)
-    train_simple_unique = filterPairs(train_simple_unique)
-    valid_simple_unique = filterPairs(valid_simple_unique)
-    test_simple_unique = filterPairs(test_simple_unique)
-    train_complex_unique = filterPairs(train_complex_unique)
-    valid_complex_unique = filterPairs(valid_complex_unique)
-    test_complex_unique = filterPairs(test_complex_unique)
+    train_simple = filterPairs(train_simple, config)
+    valid_simple = filterPairs(valid_simple, config)
+    test_simple = filterPairs(test_simple, config)
+    train_complex = filterPairs(train_complex, config)
+    valid_complex = filterPairs(valid_complex, config)
+    test_complex = filterPairs(test_complex, config)
+    train_simple_unique = filterPairs(train_simple_unique, config)
+    valid_simple_unique = filterPairs(valid_simple_unique, config)
+    test_simple_unique = filterPairs(test_simple_unique, config)
+    train_complex_unique = filterPairs(train_complex_unique, config)
+    valid_complex_unique = filterPairs(valid_complex_unique, config)
+    test_complex_unique = filterPairs(test_complex_unique, config)
     print("Trimmed to %s train sentence pairs" % len(train_simple))
     print("Trimmed to %s valid sentence pairs" % len(valid_simple))
     print("Trimmed to %s test sentence pairs" % len(test_simple))
@@ -530,7 +522,7 @@ def reverse_file(split_type):
                 dep.write(a + "\n")
 
 
-def load_syntax_file(sentences, split_type, lm_backward):
+def load_syntax_file(sentences, split_type, lm_backward, config):
     if lm_backward:
         pos_file = config['dataset'] + '/Pos' + split_type + '_backward.txt'
         dep_file = config['dataset'] + '/Dep' + split_type + '_backward.txt'
@@ -766,7 +758,7 @@ def calculateLossWord(decoder, output_tensor, lang, p):
     # return decoded_words, math.exp(loss)/max_length
 
 
-def calculateLoss(decoder, elmo_tensor, output_tensor, tag_tensor, dep_tensor, lang, p):
+def calculateLoss(decoder, elmo_tensor, output_tensor, tag_tensor, dep_tensor, lang, p, config):
     decoder.eval()
     # print('inside calculate Loss')
     # print(output_tensor)
@@ -834,7 +826,8 @@ def calculateLoss(decoder, elmo_tensor, output_tensor, tag_tensor, dep_tensor, l
 
 def get_sentence_probability(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang, input_sent,
                              unigram_prob):
-    prob, _ = calculateLoss(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang, False)
+    prob, _ = calculateLoss(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang, False,
+                            config)
     prob, worst_three = calculateProbabilitySentence(prob, input_sent_tensor)
     if config['SLOR']:
         slor = prob - calcluate_unigram_probability(input_sent, unigram_prob, input_lang)
@@ -891,7 +884,7 @@ def avg_embedding_elmo(sentence1, sentence2, idf):
     # return a[0], a[1]
 
 
-def tokenize_sent_special(input_sent, input_lang, tag_sent, tag_lang, dep_sent, dep_lang):
+def tokenize_sent_special(input_sent, input_lang, tag_sent, tag_lang, dep_sent, dep_lang, config):
     input_tensor = tensorFromSentence(input_lang, input_sent)
     tag_tensor = tensorFromSentence(tag_lang, tag_sent)
     dep_tensor = tensorFromSentence(dep_lang, dep_sent)
@@ -912,7 +905,7 @@ def tokenize_sent_special(input_sent, input_lang, tag_sent, tag_lang, dep_sent, 
     return elmo_tensor, input_tensor, tag_tensor, dep_tensor
 
 
-def check_min_length(sent):
+def check_min_length(sent, config):
     if len(sent.split(' ')) < config['min_length_of_edited_sent']:
         return 0
     else:
@@ -1104,7 +1097,7 @@ def cos_similarity(new, old, idf):
 #     return new_neg
 
 
-def const_paraph(sent, neg_const, config):
+def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphrasing):
     print(f"negative constraints: {neg_const}\n")
 
     if config['paraphrasing_model'] != 'imr':
@@ -1168,7 +1161,7 @@ def const_paraph(sent, neg_const, config):
     return output_sent
 
 
-def paraph(sent, entities, details_sent, ccd, config):
+def paraph(sent, entities, details_sent, ccd, config, tokenizer_paraphrasing, model_paraphrasing):
     # obtaining negative constraints from comp-simp classifier attention layers.
     # print("input sentence: ", sent)
     # extracted_comp_toks = comp_extract(sent, comp_simp_class_model, tokenizer_deberta)
@@ -1181,7 +1174,7 @@ def paraph(sent, entities, details_sent, ccd, config):
         neg_consts += details_sent[3]
 
     print(f"\nsentence is :{sent}")
-    sents = const_paraph(sent, neg_consts, config)
+    sents = const_paraph(sent, neg_consts, config, tokenizer_paraphrasing, model_paraphrasing)
 
     # print('new: ', sent)
     # if sent != -1 and sent != 1:
@@ -1277,16 +1270,17 @@ def correct(sent):
 
 
 def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entities, synonym_dict,
-                      stemmer, details_sent, ccd, config):
+                      stemmer, details_sent, ccd, config, tokenizer_paraphrasing, model_paraphrasing):
     sent = sent.replace('%', ' percent')
     sent = sent.replace('` `', '`')
     tree = next(parser.raw_parse(sent))
 
     return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer,
-                            details_sent, ccd, config)
+                            details_sent, ccd, config, tokenizer_paraphrasing, model_paraphrasing)
 
 
-def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer, details_sent, ccd, config):
+def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict,
+                     stemmer, details_sent, ccd, config, tokenizer_paraphrasing, model_paraphrasing):
     s = []
     p = []
     used_neg_consts = []
@@ -1297,7 +1291,8 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
     # comented for testing paraphrasing and deletion in a sequential order instead of a parallel method in beam search
     if config['constrained_paraphrasing']:
-        paraphrased_sentences = paraph(sent, entities, details_sent, ccd, config)
+        paraphrased_sentences = paraph(sent, entities, details_sent, ccd, config, tokenizer_paraphrasing,
+                                       model_paraphrasing)
 
         any_accepted_sent = False
         for sp in paraphrased_sentences:
@@ -1591,7 +1586,7 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
         #     prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
         score_final *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
         if config['check_min_length']:
-            score_final *= check_min_length(input_sent)
+            score_final *= check_min_length(input_sent, config)
         score_final /= len(input_sent.split(' ')) ** config['len_power']
         if config['fre']:
             score_final *= sentence_fre(input_sent.lower()) ** config['fre_power']
