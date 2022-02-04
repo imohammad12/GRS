@@ -38,7 +38,6 @@ from pathlib import Path
 from easse.sari import corpus_sari, get_corpus_sari_operation_scores
 import subprocess
 
-
 import transformers
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
@@ -46,6 +45,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from pattern.en import lexeme
 from sentence_transformers import SentenceTransformer, util
 from collections import defaultdict
+from ccd import ComplexComponentDetector
 
 conf_file = open("config.json", "r")
 config = json.load(conf_file)
@@ -192,7 +192,6 @@ class Lang:
             test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
                             encoding='utf-8').read().split('\n')
 
-
         # changed
         print("normalizing")
         train_src = [all_norms(i) for i in tqdm(train_src)]
@@ -201,7 +200,6 @@ class Lang:
         valid_dst = [all_norms(i) for i in tqdm(valid_dst)]
         test_src = [all_norms(i) for i in test_src]
         test_dst = [all_norms(i) for i in test_dst]
-
 
         train_simple, train_simple_unique = Lang.getSentences(train_dst, config['lm_backward'])
         valid_simple, valid_simple_unique = Lang.getSentences(valid_dst, config['lm_backward'])
@@ -384,7 +382,6 @@ def get_unigram_prob_value(unigram_prob, word):
 
 def filterPair(p, config):
     return len(p.split(' ')) < config['MAX_LENGTH']
-
 
 
 def filterPairs(pairs, config):
@@ -1105,10 +1102,10 @@ def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphra
         bad_word_ids = tokenizer_paraphrasing(bad_word).input_ids
 
         batch = tokenizer_paraphrasing([sent],
-                          truncation=True,
-                          padding='longest',
-                          max_length=60,
-                          return_tensors="pt").to(config['paraphrasing_gpu'])
+                                       truncation=True,
+                                       padding='longest',
+                                       max_length=60,
+                                       return_tensors="pt").to(config['paraphrasing_gpu'])
 
         translated = model_paraphrasing.generate(**batch,
                                                  max_length=60,
@@ -1150,7 +1147,7 @@ def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphra
         # process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
         # process.wait()
         # if process.returncode != 0:
-            # raise ValueError('paraphrasing output command is not returuning correctly, process return code:', process.returncode)
+        # raise ValueError('paraphrasing output command is not returuning correctly, process return code:', process.returncode)
 
         os.system(bashCommand)
         # print("outtt:", os.popen(bashCommand).read())
@@ -1179,13 +1176,13 @@ def paraph(sent, entities, details_sent, ccd, config, tokenizer_paraphrasing, mo
     # print('new: ', sent)
     # if sent != -1 and sent != 1:
 
-        # sent = sent.replace("\n", '')
+    # sent = sent.replace("\n", '')
     sents = [ss.replace("\n", '') for ss in sents]
     sents = all_norms(sents)
     # print(f"\n--Paraphrased sents: {sents}\n--Neg consts: {neg_consts}")
     sents = [correct(ss) for ss in sents]
     return sents
-        # return correct(sent)
+    # return correct(sent)
     # else:
     #     return sent
 
@@ -1318,7 +1315,8 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
 
         for i in range(len(p)):
             if config['lexical_simplification']:
-                simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict, config)
+                simple = lexical_simplification(sent, p[i], input_lang, idf, simplifications, entities, synonym_dict,
+                                                config)
                 for st in simple:
                     if st not in sent_list:
                         s.append({st: 'ls'})
@@ -1446,6 +1444,13 @@ def checks_for_word_simplification(sent, word, synonyms, input_lang, pos, dep, i
             # print('rejected because not similar enough')
             continue
 
+        # case sensitivity handled
+        complex_words = ComplexComponentDetector.lower_words_to_original(
+            orig_sent_words=[i for i in self.parser.tokenize(sent)],
+            complex_words=[word]
+        )
+        if complex_words:
+            word = complex_words[0]
         sent = replace_phrase(sent, word, new_word)
         doc = nlp(sent)
         for token in doc:
@@ -1524,18 +1529,21 @@ def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entit
             synonym_dict[word_to_be_replaced] = synonyms
         # print('possible synonyms are ')
         # print(synonyms)
-        doc = nlp(sent)
+        doc = nlp(all_norms(sent))
         # print(word_to_be_replaced)
         # print(sent)
         print('== Word to be replaced: ', word_to_be_replaced)
         print("doc: ", doc)
+        pos = None
         for token in doc:
             print(f'token.text.lower() : {token.text.lower()}')
             if token.text.lower() == word_to_be_replaced:
                 pos = token.tag_
                 dep = token.dep_
-        checks_for_word_simplification(sent, word_to_be_replaced, synonyms, input_lang, pos, dep, idf, orig_sent_words,
-                                       s, config)
+        if pos:
+            checks_for_word_simplification(sent, word_to_be_replaced, synonyms, input_lang, pos, dep, idf,
+                                           orig_sent_words,
+                                           s, config)
     # print('s is')
     # print(s)
     return s
@@ -1583,8 +1591,9 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
         score_final = score_simplicity
 
     elif config['score_function'] == 'old':
-        score_final = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent,
-                                        unigram_prob) ** config['sentence_probability_power']
+        score_final = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang,
+                                               input_sent,
+                                               unigram_prob) ** config['sentence_probability_power']
         # if cs:
         #     prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
         score_final *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
@@ -1596,7 +1605,6 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
 
     else:
         raise ValueError('Wrong score function')
-
 
     # should we use the previous simplicity calculation method or the new one
     if config['sim_threshold']:
@@ -1610,11 +1618,10 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
             if sim_score < config['sim_threshold']:
                 score_final = 0
 
-
     # If the candidate sentence was too simplified do not accepted it.
     if config['simplicity_thresh'] and score_simplicity > config['simplicity_thresh']:
         print("simplicity score ({}) is lower than simplicity threshold ({})".format(score_simplicity
-                                                                                      , config['simplicity_thresh']))
+                                                                                     , config['simplicity_thresh']))
         score_final = 0
 
     # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
@@ -1625,7 +1632,6 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     #     score_final = 0
 
     return score_final
-
 
 
 class Dataset(data.Dataset):
