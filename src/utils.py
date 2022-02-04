@@ -1446,7 +1446,7 @@ def checks_for_word_simplification(sent, word, synonyms, input_lang, pos, dep, i
 
         # case sensitivity handled
         complex_words = ComplexComponentDetector.lower_words_to_original(
-            orig_sent_words=[i for i in self.parser.tokenize(sent)],
+            orig_sent_words=[i for i in parser.tokenize(sent)],
             complex_words=[word]
         )
         if complex_words:
