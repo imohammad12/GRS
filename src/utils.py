@@ -45,7 +45,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from pattern.en import lexeme
 from sentence_transformers import SentenceTransformer, util
 from collections import defaultdict
-from ccd import ComplexComponentDetector
+import ccd as ccd_py
 
 conf_file = open("config.json", "r")
 config = json.load(conf_file)
@@ -1445,7 +1445,7 @@ def checks_for_word_simplification(sent, word, synonyms, input_lang, pos, dep, i
             continue
 
         # case sensitivity handled
-        complex_words = ComplexComponentDetector.lower_words_to_original(
+        complex_words = ccd_py.ComplexComponentDetector.lower_words_to_original(
             orig_sent_words=[i for i in parser.tokenize(sent)],
             complex_words=[word]
         )
@@ -1532,11 +1532,8 @@ def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entit
         doc = nlp(all_norms(sent))
         # print(word_to_be_replaced)
         # print(sent)
-        print('== Word to be replaced: ', word_to_be_replaced)
-        print("doc: ", doc)
         pos = None
         for token in doc:
-            print(f'token.text.lower() : {token.text.lower()}')
             if token.text.lower() == word_to_be_replaced:
                 pos = token.tag_
                 dep = token.dep_
