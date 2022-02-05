@@ -5,13 +5,14 @@ import torch
 import transformers
 import spacy
 import time
+import utils
 
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from spacy.tokenizer import Tokenizer
 from collections import defaultdict
 from pattern.en import lexeme
 from tqdm import tqdm
-from utils import get_model_out, getword, get_idf_value, create_reverse_stem, get_word_to_simplify
+# from utils import get_model_out, getword, get_idf_value, create_reverse_stem, get_word_to_simplify
 from nltk.parse.corenlp import CoreNLPParser
 from nltk.corpus import wordnet as wn
 from itertools import chain
@@ -38,7 +39,7 @@ class ComplexComponentDetector:
         self.nlp = spacy.load("en_core_web_lg")
         self.nlp.tokenizer = Tokenizer(self.nlp.vocab)
         self.parser = CoreNLPParser('http://localhost:9000')
-        self.stemmer = create_reverse_stem()
+        self.stemmer = utils.create_reverse_stem()
         self.device = torch.device("cuda:"+str(self.params['gpu']) if torch.cuda.is_available() else "cpu")
 
     @classmethod
@@ -143,11 +144,11 @@ class ComplexComponentDetector:
                                                        )
             scores_dict = extracted_comp_toks['comp_scores']
             complexity_score_thresh = extracted_comp_toks['threshold']
-            neg_roots = [word for word in neg_roots if get_idf_value(self.idf, word) > self.params['thresh_idf_cls']]
+            neg_roots = [word for word in neg_roots if utils.get_idf_value(self.idf, word) > self.params['thresh_idf_cls']]
 
         complex_pred = list(set(complex_pred + neg_roots))
         if self.params["ccd_version"] == 'combined':
-            complex_pred = [word for word in complex_pred if get_idf_value(self.idf, word) > self.params['thresh_idf_combined']]
+            complex_pred = [word for word in complex_pred if utils.get_idf_value(self.idf, word) > self.params['thresh_idf_combined']]
             complex_pred = [word for word in complex_pred if scores_dict[word] > complexity_score_thresh * self.params['cls_score_coef']]
 
         # adding all words with similar root
@@ -179,7 +180,7 @@ class ComplexComponentDetector:
                            complexity score of each token
         """
 
-        out = get_model_out(self.comp_simp_class_model, self.tokenizer, sent)
+        out = utils.get_model_out(self.comp_simp_class_model, self.tokenizer, sent)
         attention = out['attention']
         tokens = out['tokens']
         prob = out["prob"]
@@ -302,13 +303,13 @@ class ComplexComponentDetector:
         complex_word = []
         for word in sent:
             word = word.lower()
-            if getword(self.lang, word) == self.params['UNK_token']:
+            if utils.getword(self.lang, word) == self.params['UNK_token']:
                 #             print('unk token: ', word)
                 # if the word is not in entities and not present in the simple vocabulary, we simplify it
                 complex_word.append(word)
                 continue
             # else, we choose the word that has the highest idf value above threshold
-            val = get_idf_value(self.idf, word)
+            val = utils.get_idf_value(self.idf, word)
             if val > self.params['min_idf_value_for_ls']:
                 complex_word.append(word)
 
@@ -333,7 +334,12 @@ class ComplexComponentDetector:
 
         hard_words = set()
         for i in range(len(p)):
-            word_to_be_replaced = get_word_to_simplify(p[i], self.idf, orig_sent_words, entities, self.lang, self.params)
+            word_to_be_replaced = utils.get_word_to_simplify(p[i],
+                                                             self.idf,
+                                                             orig_sent_words,
+                                                             entities,
+                                                             self.lang,
+                                                             self.params)
 
             if word_to_be_replaced != '':
                 hard_words.add(word_to_be_replaced)
