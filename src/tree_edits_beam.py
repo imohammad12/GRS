@@ -218,7 +218,7 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
                 # if the candidate sentence is able to increase the score by a threshold value, add it to the beam
                 if p > prob_old * config['threshold'][operation]:
                     new_beam[sent] = [p, operation, orig_sent]
-                    print('This sentence added to beam:', sent)
+                    # print('This sentence added to beam:', sent)
                 # else:
                 #     # if the threshold is not crossed, add it to a list so that the sentence is not considered in the future
                 #     sent_list.append(sent)

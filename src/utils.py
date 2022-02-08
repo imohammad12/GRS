@@ -1270,6 +1270,7 @@ def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entitie
                       stemmer, details_sent, ccd, config, tokenizer_paraphrasing, model_paraphrasing):
     sent = sent.replace('%', ' percent')
     sent = sent.replace('` `', '`')
+    print('==Given Sentence Before Operations:')
     tree = next(parser.raw_parse(sent))
 
     return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer,
