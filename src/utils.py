@@ -1620,6 +1620,12 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
                                                                                      , config['simplicity_thresh']))
         score_final = 0
 
+    # probably this long sentence is caused by a bug.
+    # This score function is not capable of assessing simplicity of this long sentence
+    # The max length of input to tokenizers is 100
+    if len(input_sent.split()) > 120:
+        score_final = 0
+
     # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
     # score_grammar_original = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
     # print("candidate sentence grammar validity probability: ", score_grammar_candidate['prob'],
