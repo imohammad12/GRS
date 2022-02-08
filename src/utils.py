@@ -1330,6 +1330,8 @@ def generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, en
                 if sc not in sent_list:
                     s.append({sc: 'las'})
             if config['reorder_leaves']:
+                if not config['delete_leaves']:
+                    sd = delete_leaves(sent, p[i])
                 temp = []
                 reorder_leaves(sent, p, p[i], convert_to_sent(p[i]), sd, temp, config)
                 for rl in temp:

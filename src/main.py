@@ -135,7 +135,7 @@ open(config['file_name'], "w").close()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-for i in range(5):
+for i in range(3, 5):
 
     config = load_config()
 
@@ -148,7 +148,7 @@ for i in range(5):
 
     for version, ccd in ccds.items():
         start_time = time.time()
-
+        ccd.params.update(config)
         if config['set'] == 'valid':
             sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
                    output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
