@@ -1527,11 +1527,7 @@ def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entit
             sym = wn.synsets(word_to_be_replaced)
             synonyms.extend(list(set(chain.from_iterable([word.lemma_names() for word in sym]))))
             synonym_dict[word_to_be_replaced] = synonyms
-        # print('possible synonyms are ')
-        # print(synonyms)
         doc = nlp(all_norms(sent))
-        # print(word_to_be_replaced)
-        # print(sent)
         pos = None
         for token in doc:
             if token.text.lower() == word_to_be_replaced:

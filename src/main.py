@@ -135,13 +135,14 @@ open(config['file_name'], "w").close()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-for i in range(4):
+for i in range(5):
 
     config = load_config()
 
-    config['lexical_simplification'] = True if i == 0 or i == 3 else False
-    config['leaves_as_sent'] = True if i == 1 or i == 3 else False
-    config['reorder_leaves'] = True if i == 2 or i == 3 else False
+    config['delete_leaves'] = True if i == 0 or i == 4 else False
+    config['lexical_simplification'] = True if i == 1 or i == 4 else False
+    config['leaves_as_sent'] = True if i == 2 or i == 4 else False
+    config['reorder_leaves'] = True if i == 3 or i == 4 else False
 
     save_config(config)
 

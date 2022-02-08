@@ -127,7 +127,7 @@ class ComplexComponentDetector:
         sent = sent.replace('` `', '`')
 
         if self.params["ccd_version"] == 'combined':
-            print("-- Sentce with error before ccd: ", sent)
+            # print("-- Sentce with error before ccd: ", sent)
             orig_sent_words = [i for i in self.parser.tokenize(sent)]
             complex_pred = self.get_complex_word_single_sent(orig_sent_words, entities)
 
