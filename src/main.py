@@ -96,11 +96,12 @@ print('Creating ccd object...')
 #                                           output_lang,
 #                                           **config.copy())}
 
-ccds = {'combined': (ComplexComponentDetector.combined_version(idf,
+ccds = {'combined': ComplexComponentDetector.combined_version(idf,
                                                                output_lang,
                                                                comp_simp_class_model=comp_simp_class_model,
                                                                tokenizer=tokenizer_deberta,
-                                                               **config),)}
+                                                               **config)
+                     }
 
 open(config['file_name'], "w").close()
 
