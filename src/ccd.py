@@ -28,8 +28,8 @@ class ComplexComponentDetector:
         'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
         "UNK_token": 3,
         'cls_score_coef': 0, #0.001,
-        'thresh_idf_cls': 7,
-        'thresh_idf_combined': 11,
+        'thresh_idf_cls': 4,
+        'thresh_idf_combined': 4,
         'gpu': 0
     }
 
