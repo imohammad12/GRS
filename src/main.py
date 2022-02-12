@@ -47,7 +47,6 @@ newsela_paths = {
 tokenizer_paraphrasing = None
 model_paraphrasing = None
 
-
 # config['dataset'] = 'Wikilarge'
 
 if config['dataset'] == "Newsela":
@@ -96,12 +95,10 @@ print('Creating ccd object...')
 #                                           output_lang,
 #                                           **config.copy())}
 
-ccds = {'combined': ComplexComponentDetector.combined_version(idf,
-                                                               output_lang,
-                                                               comp_simp_class_model=comp_simp_class_model,
-                                                               tokenizer=tokenizer_deberta,
-                                                               **config)
-                     }
+ccd = ComplexComponentDetector.cls_version(idf,
+                                           comp_simp_class_model=comp_simp_class_model,
+                                           tokenizer=tokenizer_deberta,
+                                           **config)
 
 open(config['file_name'], "w").close()
 
@@ -136,20 +133,17 @@ open(config['file_name'], "w").close()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-# for i in range(3, 5):
-#
-#     config = load_config()
-#
-#     config['delete_leaves'] = True if i == 0 or i == 4 else False
-#     config['lexical_simplification'] = True if i == 1 or i == 4 else False
-#     config['leaves_as_sent'] = True if i == 2 or i == 4 else False
-#     config['reorder_leaves'] = True if i == 3 or i == 4 else False
-#
-#     save_config(config)
+for i in range(2):
 
-for version, ccd in ccds.items():
+    config = load_config()
+
+    config['delete_leaves'] = True if i == 0 else False
+    config['constrained_paraphrasing'] = True if i == 1 else False
+
+    save_config(config)
+
     start_time = time.time()
-    # ccd.params.update(config)
+    ccd.params.update(config)
     if config['set'] == 'valid':
         sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
                output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
