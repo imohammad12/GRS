@@ -133,28 +133,28 @@ open(config['file_name'], "w").close()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-for i in range(2):
+# for i in range(2):
+#
+#     config = load_config()
+#
+#     config['constrained_paraphrasing'] = True if i == 1 else False
+#     config['delete_leaves'] = True
+#
+#     save_config(config)
 
-    config = load_config()
+start_time = time.time()
+# ccd.params.update(config)
+if config['set'] == 'valid':
+    sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
-    config['constrained_paraphrasing'] = True if i == 1 else False
-    config['delete_leaves'] = True
+elif config['set'] == 'test':
+    sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
-    save_config(config)
-
-    start_time = time.time()
-    ccd.params.update(config)
-    if config['set'] == 'valid':
-        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    elif config['set'] == 'test':
-        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    open(config['file_name'], "w").close()
+open(config['file_name'], "w").close()
 
 # end = time.time()
 # print(f"Runtime of the program is {end - start_time}")
