@@ -1608,8 +1608,8 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
             score_final *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
 
         elif config['sim_threshold'] != "old_sim":
-            # if the similarity between the input sentence and the original sentence is less than threshold the score becomes
-            # zero
+            # if the similarity between the input sentence and the original sentence is less than threshold
+            # the score becomes zero
             sim_score = semantic_sim(input_sent, orig_sent)
             if sim_score < config['sim_threshold']:
                 score_final = 0
@@ -1626,12 +1626,13 @@ def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, inp
     if len(input_sent.split()) > 120:
         score_final = 0
 
-    # score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
+    score_grammar_candidate = get_model_out(model_grammar_checker, tokenizer_deberta, input_sent)
     # score_grammar_original = get_model_out(model_grammar_checker, tokenizer_deberta, orig_sent)
     # print("candidate sentence grammar validity probability: ", score_grammar_candidate['prob'],
     #       "\n orginal sentence grammar prob:", score_grammar_original['prob'])
-    # if score_grammar_candidate["prob"] * 1.1 < score_grammar_original["prob"]: # add any "magic number" to config file TODO
-    #     score_final = 0
+    # if score_grammar_candidate["prob"] * 1.1 < score_grammar_original["prob"]:
+    if score_grammar_candidate['prob'] < config['grammar_threshold']:
+        score_final = 0
 
     return score_final
 
