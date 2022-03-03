@@ -103,7 +103,7 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     runtime = time.time() - start_time
     all_scores = {**sari_scores, **simil_simp_gram_scores, **stats, "runtime": runtime}
     # ccd.params.update(config)
-    config.update(ccd.params)
+    # config.update(ccd.params)
     print("all scores", all_scores)
 
     save_and_log(all_scores, sys_sents, config)

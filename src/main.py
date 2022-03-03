@@ -136,7 +136,7 @@ open(config['file_name'], "w").close()
 # importlib.reload(sys.modules['utils'])
 # from utils import *
 
-for i, gram_thresh in enumerate(np.arange(0.4, 0.9, 0.1)):
+for i, gram_thresh in enumerate(np.arange(0.6, 1.0, 0.1)):
 #
     config = load_config()
     config['grammar_threshold'] = np.round(gram_thresh, 2)
