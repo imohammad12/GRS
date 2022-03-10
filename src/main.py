@@ -134,27 +134,30 @@ open(config['file_name'], "w").close()
 # for i, gram_thresh in enumerate(np.arange(0.6, 1.0, 0.1)):
 #     config['grammar_threshold'] = np.round(gram_thresh, 2)
 
+for i in range(2):
+    config = load_config()
+    config['leaves_as_sent'] = True
+    config['delete_leaves'] = True
+    if i == 0:
+        config['constrained_paraphrasing'] = False
+    else:
+        config['constrained_paraphrasing'] = True
 
-config = load_config()
-config['delete_leaves'] = True
-config['constrained_paraphrasing'] = False
-config['leaves_as_sent'] = True
+    save_config(config)
 
-save_config(config)
+    start_time = time.time()
+    ccd.params.update(config)
+    if config['set'] == 'valid':
+        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
-start_time = time.time()
-ccd.params.update(config)
-if config['set'] == 'valid':
-    sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+    elif config['set'] == 'test':
+        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
-elif config['set'] == 'test':
-    sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-open(config['file_name'], "w").close()
+    open(config['file_name'], "w").close()
 
 # ================================================================
 
