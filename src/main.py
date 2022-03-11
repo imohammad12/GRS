@@ -161,12 +161,13 @@ open(config['file_name'], "w").close()
 
 # ================================================================
 
-for j, par_thresh in enumerate(np.arange(0.7, 1.1, 0.1)):
+for j, par_thresh in enumerate(np.arange(0.8, 1.1, 0.1)):
     config = load_config()
-
-    config['threshold']['par'] = np.round(par_thresh, 2)
+    if j == 0:
+        config['threshold']['par'] = 0.6
+    else:
+        config['threshold']['par'] = np.round(par_thresh, 2)
     config['threshold']['dl'] = 1.25
-# config['threshold']['dl'] = np.round(del_threshold, 2)
 
     save_config(config)
     start_time = time.time()
