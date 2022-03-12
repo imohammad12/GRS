@@ -160,51 +160,51 @@ open(config['file_name'], "w").close()
 #     open(config['file_name'], "w").close()
 
 # ================================================================
-
-for j, par_thresh in enumerate(np.arange(0.8, 1.1, 0.1)):
-    config = load_config()
-    if j == 0:
-        config['threshold']['par'] = 0.6
-    else:
-        config['threshold']['par'] = np.round(par_thresh, 2)
-    config['threshold']['dl'] = 1.25
-
-    save_config(config)
-    start_time = time.time()
-    ccd.params.update(config)
-    if config['set'] == 'valid':
-        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    elif config['set'] == 'test':
-        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    open(config['file_name'], "w").close()
-
-
-for i, del_threshold in enumerate(np.arange(0.9, 1.3, 0.1)):
-
-    config = load_config()
-    config['threshold']['par'] = 0.8
-    config['threshold']['dl'] = np.round(del_threshold, 2)
-    save_config(config)
-
-    start_time = time.time()
-    ccd.params.update(config)
-    if config['set'] == 'valid':
-        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    elif config['set'] == 'test':
-        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    open(config['file_name'], "w").close()
+#
+# for j, par_thresh in enumerate(np.arange(0.8, 1.1, 0.1)):
+#     config = load_config()
+#     if j == 0:
+#         config['threshold']['par'] = 0.6
+#     else:
+#         config['threshold']['par'] = np.round(par_thresh, 2)
+#     config['threshold']['dl'] = 1.25
+#
+#     save_config(config)
+#     start_time = time.time()
+#     ccd.params.update(config)
+#     if config['set'] == 'valid':
+#         sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+#                output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+#                comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+#
+#     elif config['set'] == 'test':
+#         sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+#                output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+#                comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+#
+#     open(config['file_name'], "w").close()
+#
+#
+# for i, del_threshold in enumerate(np.arange(0.9, 1.3, 0.1)):
+#
+#     config = load_config()
+#     config['threshold']['par'] = 0.8
+#     config['threshold']['dl'] = np.round(del_threshold, 2)
+#     save_config(config)
+#
+#     start_time = time.time()
+#     ccd.params.update(config)
+#     if config['set'] == 'valid':
+#         sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+#                output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+#                comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+#
+#     elif config['set'] == 'test':
+#         sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+#                output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+#                comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+#
+#     open(config['file_name'], "w").close()
 
 
 for i, sim_threshold in enumerate(np.arange(0.4, 0.8, 0.1)):
