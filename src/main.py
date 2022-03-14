@@ -159,39 +159,17 @@ open(config['file_name'], "w").close()
 
 # ================================================================
 #
-for j, par_thresh in enumerate(np.arange(0.5, 0.89, 0.1)):
-    config = load_config()
-    config['delete_leaves'] = False
-    config['leaves_as_sent'] = False
-    config['constrained_paraphrasing'] = True
-    if j == 3:
-        config['threshold']['par'] = 0.9
-    else:
-        config['threshold']['par'] = np.round(par_thresh, 2)
-
-    save_config(config)
-    start_time = time.time()
-    ccd.params.update(config)
-    if config['set'] == 'valid':
-        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    elif config['set'] == 'test':
-        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
-
-    open(config['file_name'], "w").close()
-#
-#
-# for i in range(2):
+# for j, par_thresh in enumerate(np.arange(0.5, 0.89, 0.1)):
 #     config = load_config()
-#     config['delete_leaves'] = True if i == 0 or i == 2 else False
-#     config['leaves_as_sent'] = True if i == 0 or i == 2 else False
-#     config['constrained_paraphrasing'] = True if i == 1 or i == 2 else False
-#     save_config(config)
+#     config['delete_leaves'] = False
+#     config['leaves_as_sent'] = False
+#     config['constrained_paraphrasing'] = True
+#     if j == 3:
+#         config['threshold']['par'] = 0.9
+#     else:
+#         config['threshold']['par'] = np.round(par_thresh, 2)
 #
+#     save_config(config)
 #     start_time = time.time()
 #     ccd.params.update(config)
 #     if config['set'] == 'valid':
@@ -205,6 +183,28 @@ for j, par_thresh in enumerate(np.arange(0.5, 0.89, 0.1)):
 #                comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 #
 #     open(config['file_name'], "w").close()
+#
+#
+for i in range(2):
+    config = load_config()
+    config['delete_leaves'] = True if i == 0 or i == 1 else False
+    config['leaves_as_sent'] = True if i == 0 or i == 1 else False
+    config['constrained_paraphrasing'] = True if i == 1 else False
+    save_config(config)
+
+    start_time = time.time()
+    ccd.params.update(config)
+    if config['set'] == 'valid':
+        sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+
+    elif config['set'] == 'test':
+        sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+               output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
+               comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+
+    open(config['file_name'], "w").close()
 
 #
 # for i, gram_thresh in enumerate(np.arange(0.0, 0.4, 0.1)):
