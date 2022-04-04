@@ -1772,7 +1772,7 @@ def read_sys_out_from_file_name(root_path, config):
 
 
 def save_and_log(all_scores, sys_sents, config):
-    all_files = os.listdir(config['log_directory']) + os.listdir(config['extra_log_directory'])
+    all_files = os.listdir(config['log_directory'])
     run_numbers = [int(f.split('-')[0]) for f in all_files if f.split('-')[0].isdigit()]
     run_numbers.sort()
     current_run = run_numbers[-1] + 1
