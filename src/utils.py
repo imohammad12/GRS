@@ -171,7 +171,9 @@ class Lang:
             valid_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
                              '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
+            # test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
+            #                 encoding='utf-8').read().split('\n')
+            test_dst = open(config['ref_folder_path'] + "/" + 'ref_newsela_test.txt',
                             encoding='utf-8').read().split('\n')
 
         elif dataset == 'Newsela':
@@ -397,31 +399,7 @@ def prepareData(embedding_dim, freq, ver, dataset, operation, config):
     print("Read %s unique train sentence pairs" % len(train_simple_unique))
     print("Read %s unique valid sentence pairs" % len(valid_simple_unique))
     print("Read %s unique test sentence pairs" % len(test_simple_unique))
-    '''count = 0
-	for i in range(len(train_simple)):
-		if count < len(train_simple[i].split(' ')):
-			count = len(train_simple[i].split(' '))
-	print(count)
-	for i in range(len(valid_simple)):
-		if count < len(valid_simple[i].split(' ')):
-			count = len(valid_simple[i].split(' '))
-	print(count)
-	for i in range(len(test_simple)):
-		if count < len(test_simple[i].split(' ')):
-			count = len(test_simple[i].split(' '))
-	print(count)
-	for i in range(len(train_complex)):
-		if count < len(train_complex[i].split(' ')):
-			count = len(train_complex[i].split(' '))
-	print(count)
-	for i in range(len(valid_complex)):
-		if count < len(valid_complex[i].split(' ')):
-			count = len(valid_complex[i].split(' '))
-	print(count)
-	for i in range(len(test_complex)):
-		if count < len(test_complex[i].split(' ')):
-			count = len(test_complex[i].split(' '))
-	print(count)'''
+
     train_simple = filterPairs(train_simple, config)
     valid_simple = filterPairs(valid_simple, config)
     test_simple = filterPairs(test_simple, config)
