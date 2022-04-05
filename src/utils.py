@@ -1753,7 +1753,10 @@ def save_and_log(all_scores, sys_sents, config):
     all_files = os.listdir(config['log_directory']) + os.listdir(config['extra_log_directory'])
     run_numbers = [int(f.split('-')[0]) for f in all_files if f.split('-')[0].isdigit()]
     run_numbers.sort()
-    current_run = run_numbers[-1] + 1
+    if len(run_numbers):
+        current_run = run_numbers[-1] + 1
+    else:
+        current_run = 1
     folder_path = config['log_directory'] + "/" + str(current_run) + "-{:.2f}".format(all_scores['overall_sari'])
 
     if not os.path.exists(folder_path):
