@@ -162,49 +162,49 @@ class Lang:
 
         if dataset == 'Wikilarge':
             print('loading Wikilarge data')
-            train_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
-                             '.full.aner.ori.train.src', encoding='utf-8').read().split('\n')
+            # train_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+            #                  '.full.aner.ori.train.src', encoding='utf-8').read().split('\n')
             train_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
                              '.full.aner.ori.train.dst', encoding='utf-8').read().split('\n')
             valid_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
                              '.full.aner.ori.valid.src', encoding='utf-8').read().split('\n')
-            valid_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
-                             '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
+            # valid_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+            #                  '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
-                            encoding='utf-8').read().split('\n')
+            # test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
+            #                 encoding='utf-8').read().split('\n')
 
         elif dataset == 'Newsela':
             print('loading Newsela data')
-            train_src = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.src',
-                encoding='utf-8').read().split('\n')
+            # train_src = open(
+            #     '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.src',
+            #     encoding='utf-8').read().split('\n')
             train_dst = open(
                 '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.dst',
                 encoding='utf-8').read().split('\n')
             valid_src = open(
                 '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.src',
                 encoding='utf-8').read().split('\n')
-            valid_dst = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
-                encoding='utf-8').read().split('\n')
+            # valid_dst = open(
+            #     '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
+            #     encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
-            test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
-                            encoding='utf-8').read().split('\n')
+            # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
+            #                 encoding='utf-8').read().split('\n')
 
         # changed
         print("normalizing")
-        train_src = [all_norms(i) for i in tqdm(train_src)]
+        # train_src = [all_norms(i) for i in tqdm(train_src)]
         train_dst = [all_norms(i) for i in tqdm(train_dst)]
         valid_src = [all_norms(i) for i in tqdm(valid_src)]
-        valid_dst = [all_norms(i) for i in tqdm(valid_dst)]
+        # valid_dst = [all_norms(i) for i in tqdm(valid_dst)]
         test_src = [all_norms(i) for i in test_src]
-        test_dst = [all_norms(i) for i in test_dst]
+        # test_dst = [all_norms(i) for i in test_dst]
 
         train_simple, train_simple_unique = Lang.getSentences(train_dst, config['lm_backward'])
-        valid_simple, valid_simple_unique = Lang.getSentences(valid_dst, config['lm_backward'])
-        test_simple, test_simple_unique = Lang.getSentences(test_dst, config['lm_backward'])
-        train_complex, train_complex_unique = Lang.getSentences(train_src, config['lm_backward'])
+        # valid_simple, valid_simple_unique = Lang.getSentences(valid_dst, config['lm_backward'])
+        # test_simple, test_simple_unique = Lang.getSentences(test_dst, config['lm_backward'])
+        # train_complex, train_complex_unique = Lang.getSentences(train_src, config['lm_backward'])
         valid_complex, valid_complex_unique = Lang.getSentences(valid_src, config['lm_backward'])
         test_complex, test_complex_unique = Lang.getSentences(test_src, config['lm_backward'])
         output_lang = Lang('simple')
@@ -213,7 +213,7 @@ class Lang:
         # this returns a pair of simple, complex
         # but as of now we dont use the complex part in our language model
         # return x_train, y_train, x_valid, y_valid, x_test, y_test, output_lang
-        return train_simple, train_simple_unique, valid_simple, valid_simple_unique, test_simple, test_simple_unique, train_complex, train_complex_unique, valid_complex, valid_complex_unique, test_complex, test_complex_unique, output_lang, tag_lang, dep_lang
+        return train_simple_unique, valid_complex, test_complex, output_lang, tag_lang, dep_lang
 
 
 # this Class is taken from https://gist.github.com/wassname/7fd4c975883074a99864
@@ -389,57 +389,29 @@ def filterPairs(pairs, config):
 
 
 def prepareData(embedding_dim, freq, ver, dataset, operation, config):
-    train_simple, train_simple_unique, valid_simple, valid_simple_unique, test_simple, test_simple_unique, train_complex, train_complex_unique, valid_complex, valid_complex_unique, test_complex, test_complex_unique, output_lang, tag_lang, dep_lang = Lang.readLangs(
-        dataset, config)
-    print("Read %s train sentence pairs" % len(train_simple))
-    print("Read %s valid sentence pairs" % len(valid_simple))
-    print("Read %s test sentence pairs" % len(test_simple))
-    print("Read %s unique train sentence pairs" % len(train_simple_unique))
-    print("Read %s unique valid sentence pairs" % len(valid_simple_unique))
-    print("Read %s unique test sentence pairs" % len(test_simple_unique))
-    '''count = 0
-	for i in range(len(train_simple)):
-		if count < len(train_simple[i].split(' ')):
-			count = len(train_simple[i].split(' '))
-	print(count)
-	for i in range(len(valid_simple)):
-		if count < len(valid_simple[i].split(' ')):
-			count = len(valid_simple[i].split(' '))
-	print(count)
-	for i in range(len(test_simple)):
-		if count < len(test_simple[i].split(' ')):
-			count = len(test_simple[i].split(' '))
-	print(count)
-	for i in range(len(train_complex)):
-		if count < len(train_complex[i].split(' ')):
-			count = len(train_complex[i].split(' '))
-	print(count)
-	for i in range(len(valid_complex)):
-		if count < len(valid_complex[i].split(' ')):
-			count = len(valid_complex[i].split(' '))
-	print(count)
-	for i in range(len(test_complex)):
-		if count < len(test_complex[i].split(' ')):
-			count = len(test_complex[i].split(' '))
-	print(count)'''
-    train_simple = filterPairs(train_simple, config)
-    valid_simple = filterPairs(valid_simple, config)
-    test_simple = filterPairs(test_simple, config)
-    train_complex = filterPairs(train_complex, config)
+    train_simple_unique, valid_complex, test_complex, output_lang, tag_lang, dep_lang = Lang.readLangs(dataset, config)
+    # print("Read %s valid sentence pairs" % len(valid_simple))
+    # print("Read %s test sentence pairs" % len(test_simple))
+    # print("Read %s unique train sentence pairs" % len(train_simple_unique))
+    # print("Read %s unique valid sentence pairs" % len(valid_simple_unique))
+    # print("Read %s unique test sentence pairs" % len(test_simple_unique))
+
+    # valid_simple = filterPairs(valid_simple, config)
+    # test_simple = filterPairs(test_simple, config)
+    # train_complex = filterPairs(train_complex, config)
     valid_complex = filterPairs(valid_complex, config)
     test_complex = filterPairs(test_complex, config)
     train_simple_unique = filterPairs(train_simple_unique, config)
-    valid_simple_unique = filterPairs(valid_simple_unique, config)
-    test_simple_unique = filterPairs(test_simple_unique, config)
-    train_complex_unique = filterPairs(train_complex_unique, config)
-    valid_complex_unique = filterPairs(valid_complex_unique, config)
-    test_complex_unique = filterPairs(test_complex_unique, config)
-    print("Trimmed to %s train sentence pairs" % len(train_simple))
-    print("Trimmed to %s valid sentence pairs" % len(valid_simple))
-    print("Trimmed to %s test sentence pairs" % len(test_simple))
-    print("Trimmed to %s unique train sentence pairs" % len(train_simple_unique))
-    print("Trimmed to %s unique valid sentence pairs" % len(valid_simple_unique))
-    print("Trimmed to %s unique test sentence pairs" % len(test_simple_unique))
+    # valid_simple_unique = filterPairs(valid_simple_unique, config)
+    # test_simple_unique = filterPairs(test_simple_unique, config)
+    # train_complex_unique = filterPairs(train_complex_unique, config)
+    # valid_complex_unique = filterPairs(valid_complex_unique, config)
+    # test_complex_unique = filterPairs(test_complex_unique, config)
+    # print("Trimmed to %s valid sentence pairs" % len(valid_simple))
+    # print("Trimmed to %s test sentence pairs" % len(test_simple))
+    # print("Trimmed to %s unique train sentence pairs" % len(train_simple_unique))
+    # print("Trimmed to %s unique valid sentence pairs" % len(valid_simple_unique))
+    # print("Trimmed to %s unique test sentence pairs" % len(test_simple_unique))
     print("Loading/Building vocabulary")
     # vaocab is always made up from all the sentences and not unique since we ahve a min frequency clause
 
@@ -492,10 +464,8 @@ def prepareData(embedding_dim, freq, ver, dataset, operation, config):
     print(output_lang.name, output_lang.n_words)
     # return input_lang, output_lang, train_pairs, valid_pairs, test_pairs, [], []
     if operation == 'sample' or operation == 'train_encoder':
-        return idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex, valid_complex, test_complex, output_embedding_weights, tag_embedding_weights, dep_embedding_weights
-
-    elif operation == 'train_lm':
-        return idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple_unique, valid_simple_unique, test_simple_unique, train_complex_unique, valid_complex_unique, test_complex_unique, output_embedding_weights, tag_embedding_weights, dep_embedding_weights
+        return idf, unigram_prob, output_lang, tag_lang, dep_lang, valid_complex, test_complex, \
+               output_embedding_weights, tag_embedding_weights, dep_embedding_weights
 
 
 def reverse_file(split_type):
@@ -1764,8 +1734,8 @@ def read_sys_out_from_file_name(root_path, config):
     sys_sents = []
 
     for i in range(len(raw_output)):
-        if i % 8 == 2:
-            sys_sents.append(raw_output[i])
+        # if i % 8 == 2:
+        sys_sents.append(raw_output[i])
 
     print("len of pre-appended sys_sents form file_name:", len(sys_sents))
     return sys_sents

@@ -10,7 +10,6 @@ from ccd import ComplexComponentDetector
 from model.structural_decoder import DecoderGRU
 from tree_edits_beam import *
 
-
 config = load_config()
 
 print('Loading Deberta Tokenizer...')
@@ -31,7 +30,6 @@ model_grammar_checker = DebertaForSequenceClassification.from_pretrained(path)
 tokenizer_paraphrasing = None
 model_paraphrasing = None
 
-
 if config['paraphrasing_model'] != 'imr':
     tokenizer_paraphrasing = AutoTokenizer.from_pretrained(config['paraphrasing_model'])
     model_paraphrasing = AutoModelForSeq2SeqLM.from_pretrained(config['paraphrasing_model']).to(
@@ -40,10 +38,10 @@ if config['paraphrasing_model'] != 'imr':
 
 save_config(config)
 
-idf, unigram_prob, output_lang, tag_lang, dep_lang, train_simple, valid_simple, test_simple, train_complex, \
-valid_complex, test_complex, output_embedding_weights, tag_embedding_weights, \
-dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'], config['ver'], config['dataset'],
-                                    config['operation'], config)
+idf, unigram_prob, output_lang, tag_lang, dep_lang, valid_complex, test_complex, output_embedding_weights, \
+tag_embedding_weights, dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'],
+                                                           config['ver'], config['dataset'],
+                                                           config['operation'], config)
 
 lm_forward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
                         config['num_layers'],
@@ -66,13 +64,13 @@ open(config['file_name'], "w").close()
 start_time = time.time()
 ccd.params.update(config)
 if config['set'] == 'valid':
-    sample(valid_complex, valid_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+    sample(valid_complex, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf,
+           unigram_prob, start_time, load_config(), tokenizer_deberta, comp_simp_class_model, ccd,
+           model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
 elif config['set'] == 'test':
-    sample(test_complex, test_simple, output_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           output_embedding_weights, idf, unigram_prob, start_time, load_config(), tokenizer_deberta,
-           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+    sample(test_complex, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf,
+           unigram_prob, start_time, load_config(), tokenizer_deberta, comp_simp_class_model, ccd,
+           model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
 open(config['file_name'], "w").close()
