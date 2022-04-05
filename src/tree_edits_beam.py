@@ -5,11 +5,12 @@ import math
 import numpy as np
 from model.SARI import calculate
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction, corpus_bleu
+from tqdm import tqdm
 
 sf = SmoothingFunction()
 
 
-def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_backward,
+def sample(complex_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_backward,
            embedding_weights, idf, unigram_prob, start_time, config,
            tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker,
            tokenizer_paraphrasing=None, model_paraphrasing=None):
@@ -36,21 +37,14 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
 
     sys_sents = read_sys_out_from_file_name(".", config)
 
-    for i in range(start_index, len(complex_sentences)):
+    for i in tqdm(range(start_index, len(complex_sentences)), desc='Simplifying Sentences'):
         if len(complex_sentences[i].split(' ')) <= config['min_length']:
             # print(f'length of complex and simple sent list: {len(complex_sentences)}, {len(simple_sentences)}')
             # new_testing
-            sl, kl, dl, al, bl, pl, fkl, frl, par_calls, b_calls, out_sent = mcmc(complex_sentences[i],
-                                                                                  simple_sentences[i], input_lang,
-                                                                                  tag_lang, dep_lang, lm_forward,
-                                                                                  lm_backward, embedding_weights, idf,
-                                                                                  unigram_prob, stats, config,
-                                                                                  tokenizer_deberta,
-                                                                                  comp_simp_class_model,
-                                                                                  ccd,
-                                                                                  model_grammar_checker,
-                                                                                  tokenizer_paraphrasing,
-                                                                                  model_paraphrasing)
+            par_calls, b_calls, out_sent = mcmc(complex_sentences[i], input_lang, tag_lang, dep_lang, lm_forward,
+                                                lm_backward, embedding_weights, idf, unigram_prob, stats, config,
+                                                tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker,
+                                                tokenizer_paraphrasing, model_paraphrasing)
 
             sys_sents.append(out_sent)
 
@@ -58,38 +52,15 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
             all_par_calls += par_calls
             beam_calls += b_calls
 
-            print('\n')
-            print("Average sentence level SARI till now for sentences")
-            sari_scorel += sl
-            keepl += kl
-            deletel += dl
-            addl += al
-            p_scorel += pl
-            print(sari_scorel / (count + 1))
-            print(keepl / (count + 1))
-            print(deletel / (count + 1))
-            print(addl / (count + 1))
-            print("Average sentence level BLEU till now for sentences")
-            b_scorel += bl
-            print(b_scorel / (count + 1))
-            print("Average perplexity of sentences")
-            print(p_scorel / (count + 1))
-            fkgl_scorel += fkl
-            fre_scorel += frl
-            print('Average sentence level FKGL and FRE till now for sentences')
-            print(fkgl_scorel / (count + 1))
-            print(fre_scorel / (count + 1))
-            print('\n')
-            print(i + 1)
 
             end = time.time()
             print(f"Runtime of the program is {end - start_time}")
             print(f"total paraphrasing calls {all_par_calls}, total beam calls {beam_calls}")
 
-            with open(config['file_name'], "a") as file:
-                file.write("Number {}: Average Sentence Level Perplexity, Bleu, SARI \n".format(i))  # changed
-                file.write(str(p_scorel / (count + 1)) + " " + str(b_scorel / (count + 1)) + " " + str(
-                    sari_scorel / (count + 1)) + "\n\n")
+            # with open(config['file_name'], "a") as file:
+            #     file.write("Number {}: Average Sentence Level Perplexity, Bleu, SARI \n".format(i))  # changed
+            #     file.write(str(p_scorel / (count + 1)) + " " + str(b_scorel / (count + 1)) + " " + str(
+            #         sari_scorel / (count + 1)) + "\n\n")
             count += 1
 
     sari_scores = calculate_sari_easse(ref_folder_path=config["ref_folder_path"], sys_sents=sys_sents,
@@ -111,12 +82,12 @@ def sample(complex_sentences, simple_sentences, input_lang, tag_lang, dep_lang, 
     print(stats)
 
 
-def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, embedding_weights, idf,
+def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, embedding_weights, idf,
          unigram_prob, stats, config, tokenizer_deberta, comp_simp_class_model, ccd,
          model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing):
     print(stats)
     # input_sent = "highlights 2009 from the 2009 version of 52 seconds setup for passmark 5 32 5 2nd scan time , and 7 mb memory- 7 mb memory ."
-    reference = reference.lower()
+    # reference = reference.lower()
     given_complex_sentence = input_sent.lower()
     # final_sent = input_sent
     orig_sent = input_sent
@@ -264,18 +235,18 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
     # print(reference)
     print("Input complex sentence")
     print(given_complex_sentence)
-    print("Reference sentence")
-    print(reference)
+    # print("Reference sentence")
+    # print(reference)
     print("Simplified sentence")
     print(input_sent)
 
-    scorel, keepl, deletel, addl = calculate(given_complex_sentence, input_sent.lower(), [reference])
+    # scorel, keepl, deletel, addl = calculate(given_complex_sentence, input_sent.lower(), [reference])
     # print(scorel)
     # print(keepl)
     # print(deletel)
     # print(addl)
-    bleul = sentence_bleu([convert_to_blue(reference)], convert_to_blue(input_sent.lower()),
-                          weights=(0.25, 0.25, 0.25, 0.25), smoothing_function=sf.method3)
+    # bleul = sentence_bleu([convert_to_blue(reference)], convert_to_blue(input_sent.lower()),
+                          # weights=(0.25, 0.25, 0.25, 0.25), smoothing_function=sf.method3)
     # print("Blue score")
     # print(bleul)
     # print("Perplexity")
@@ -313,14 +284,15 @@ def mcmc(input_sent, reference, input_lang, tag_lang, dep_lang, lm_forward, lm_b
     # print(fre_scorel)
     with open(config['file_name'], "a") as file:
         file.write(given_complex_sentence + "\n")
-        file.write(reference + "\n")
+        # file.write(reference + "\n")
         # file.write(final_sent.lower() + "\n")
         # file.write(str(perplexity) + " " + str(bleu) + " " + str(score) + " " + str(keep) + " " + str(delete) + " " + str(add) + " " + str(fkgl_score) + " " + str(fre_score) + "\n")
-        file.write(input_sent.lower() + "\n")
-        file.write(
-            str(perpf) + " " + str(bleul) + " " + str(scorel) + " " + str(keepl) + " " + str(deletel) + " " + str(
-                addl) + " " + str(fkgl_scorel) + " " + str(fre_scorel) + "\n")
-        file.write("\n")
+        # file.write(input_sent.lower() + "\n")
+        # file.write(
+        #     str(perpf) + " " + str(bleul) + " " + str(scorel) + " " + str(keepl) + " " + str(deletel) + " " + str(
+        #         addl) + " " + str(fkgl_scorel) + " " + str(fre_scorel) + "\n")
+        # file.write("\n")
 
     # new_testing
-    return scorel, keepl, deletel, addl, bleul, perpf, fkgl_scorel, fre_scorel, all_par_calls, beam_calls, input_sent
+    # return scorel, keepl, deletel, addl, bleul, perpf, fkgl_scorel, fre_scorel, all_par_calls, beam_calls, input_sent
+    return all_par_calls, beam_calls, input_sent
