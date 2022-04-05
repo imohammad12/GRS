@@ -3,7 +3,6 @@
   "log_directory": "/home/m25dehgh/simplification/outputs/cleanup-test/log",
   "ref_folder_path": "/home/m25dehgh/simplification/outputs/cleanup-test/ref-folder",
   "orig_file_path": "/home/m25dehgh/simplification/outputs/cleanup-test/input_newsela_test.txt",
-  "extra_log_directory": "/home/m25dehgh/simplification/outputs/cleanup-test/log",
   "start_index": 0,
   "simplicity_thresh": false,
   "score_function": "new",
