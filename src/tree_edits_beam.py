@@ -35,12 +35,12 @@ def sample(complex_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_bac
     lm_forward.eval()
     lm_backward.eval()
 
-    sys_sents = read_sys_out_from_file_name(".", config)
+    # sys_sents = read_sys_out_from_file_name(".", config)
+    sys_sents = []
 
     for i in tqdm(range(start_index, len(complex_sentences)), desc='Simplifying Sentences'):
         if len(complex_sentences[i].split(' ')) <= config['min_length']:
-            # print(f'length of complex and simple sent list: {len(complex_sentences)}, {len(simple_sentences)}')
-            # new_testing
+
             par_calls, b_calls, out_sent = mcmc(complex_sentences[i], input_lang, tag_lang, dep_lang, lm_forward,
                                                 lm_backward, embedding_weights, idf, unigram_prob, stats, config,
                                                 tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker,
@@ -48,19 +48,13 @@ def sample(complex_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_bac
 
             sys_sents.append(out_sent)
 
-            # new_testing
             all_par_calls += par_calls
             beam_calls += b_calls
 
-
             end = time.time()
-            print(f"Runtime of the program is {end - start_time}")
-            print(f"total paraphrasing calls {all_par_calls}, total beam calls {beam_calls}")
+            # print(f"Runtime of the program is {end - start_time}")
+            # print(f"total paraphrasing calls {all_par_calls}, total beam calls {beam_calls}")
 
-            # with open(config['file_name'], "a") as file:
-            #     file.write("Number {}: Average Sentence Level Perplexity, Bleu, SARI \n".format(i))  # changed
-            #     file.write(str(p_scorel / (count + 1)) + " " + str(b_scorel / (count + 1)) + " " + str(
-            #         sari_scorel / (count + 1)) + "\n\n")
             count += 1
 
     sari_scores = calculate_sari_easse(ref_folder_path=config["ref_folder_path"], sys_sents=sys_sents,
@@ -112,12 +106,6 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
 
     for iter in range(2 * len(spl)):
 
-        '''if len(input_sent.split(' ')) <= 3:
-            print('sentence length already at min, so cannot do deletion')
-            # it could be debatable where do we get 85 from, is it from aligned text
-            continue'''
-
-        # new_testing
 
         doc = nlp(input_sent)
         elmo_tensor, \
@@ -171,18 +159,6 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
                                     candidate_dep_tensor, input_lang, sent, orig_sent, embedding_weights, idf,
                                     unigram_prob, True, config, tokenizer_deberta, comp_simp_class_model,
                                     model_grammar_checker)
-                # print(f'Candidate: {sent}\nOld Prob: {prob_old}, New Sent Prob: {p} \n')
-
-                # if config['double_LM']:
-                #     elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b, candidate_dep_tensor_b = tokenize_sent_special(
-                #         reverse_sent(sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
-                #                                                                               tok in doc])), tag_lang,
-                #         reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang)
-                #     p += calculate_score(lm_backward, elmo_tensor_b, candidate_tensor_b, candidate_tag_tensor_b,
-                #                          candidate_dep_tensor_b, input_lang, reverse_sent(sent),
-                #                          reverse_sent(orig_sent), embedding_weights, idf, unigram_prob, True, config,
-                #                          tokenizer_deberta, comp_simp_class_model, model_grammar_checker)
-                #     p /= 2.0
 
                 # no repetitive sentence
                 sent_list.append(sent)
@@ -233,23 +209,14 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
     input_sent = input_sent.lower()
     # print(given_complex_sentence)
     # print(reference)
-    print("Input complex sentence")
-    print(given_complex_sentence)
+    # print("Input complex sentence")
+    # print(given_complex_sentence)
     # print("Reference sentence")
     # print(reference)
-    print("Simplified sentence")
-    print(input_sent)
+    # print("Simplified sentence")
+    # print(input_sent)
 
-    # scorel, keepl, deletel, addl = calculate(given_complex_sentence, input_sent.lower(), [reference])
-    # print(scorel)
-    # print(keepl)
-    # print(deletel)
-    # print(addl)
-    # bleul = sentence_bleu([convert_to_blue(reference)], convert_to_blue(input_sent.lower()),
-                          # weights=(0.25, 0.25, 0.25, 0.25), smoothing_function=sf.method3)
-    # print("Blue score")
-    # print(bleul)
-    # print("Perplexity")
+
     if (perpf == -10000):
         # print('sentence remain unchanged therefore calculating perp score for last generated sentence')
         doc = nlp(input_sent)
@@ -267,32 +234,18 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
         perpf = calculate_score(lm_forward, elmo_tensor, best_input_tensor, best_tag_tensor, best_dep_tensor,
                                 input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config,
                                 tokenizer_deberta, comp_simp_class_model, model_grammar_checker)
-        if config['double_LM']:
-            elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b, best_dep_tensor_b = tokenize_sent_special(
-                reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
-                                                                                            tok in doc])), tag_lang,
-                reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang, config)
-            perpf += calculate_score(lm_backward, elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b,
-                                     best_dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent),
-                                     embedding_weights, idf, unigram_prob, False, config, tokenizer_deberta,
-                                     comp_simp_class_model, model_grammar_checker)
-    # print(perpf)
-    # print('fkgl and fre')
-    fkgl_scorel = sentence_fkgl(input_sent)
-    fre_scorel = sentence_fre(input_sent)
-    # print(fkgl_scorel)
-    # print(fre_scorel)
+
+        # if config['double_LM']:
+        #     elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b, best_dep_tensor_b = tokenize_sent_special(
+        #         reverse_sent(input_sent.lower()), input_lang, reverse_sent(convert_to_sent([(tok.tag_).upper() for
+        #                                                                                     tok in doc])), tag_lang,
+        #         reverse_sent(convert_to_sent([(tok.dep_).upper() for tok in doc])), dep_lang, config)
+        #     perpf += calculate_score(lm_backward, elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b,
+        #                              best_dep_tensor_b, input_lang, reverse_sent(input_sent), reverse_sent(orig_sent),
+        #                              embedding_weights, idf, unigram_prob, False, config, tokenizer_deberta,
+        #                              comp_simp_class_model, model_grammar_checker)
+
     with open(config['file_name'], "a") as file:
         file.write(given_complex_sentence + "\n")
-        # file.write(reference + "\n")
-        # file.write(final_sent.lower() + "\n")
-        # file.write(str(perplexity) + " " + str(bleu) + " " + str(score) + " " + str(keep) + " " + str(delete) + " " + str(add) + " " + str(fkgl_score) + " " + str(fre_score) + "\n")
-        # file.write(input_sent.lower() + "\n")
-        # file.write(
-        #     str(perpf) + " " + str(bleul) + " " + str(scorel) + " " + str(keepl) + " " + str(deletel) + " " + str(
-        #         addl) + " " + str(fkgl_scorel) + " " + str(fre_scorel) + "\n")
-        # file.write("\n")
 
-    # new_testing
-    # return scorel, keepl, deletel, addl, bleul, perpf, fkgl_scorel, fre_scorel, all_par_calls, beam_calls, input_sent
     return all_par_calls, beam_calls, input_sent
