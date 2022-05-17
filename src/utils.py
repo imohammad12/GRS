@@ -1065,7 +1065,7 @@ def cos_similarity(new, old, idf):
 
 
 def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphrasing):
-    print(f"negative constraints: {neg_const}\n")
+    # print(f"negative constraints: {neg_const}\n")
 
     if config['paraphrasing_model'] != 'imr':
         bad_word = " ".join(neg_const)
@@ -1103,7 +1103,7 @@ def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphra
         pos_const = []
         inp = sent + "\t" + "|".join(neg_const) + '\t' + "|".join(pos_const)
 
-        print("input: ", inp)
+        # print("input: ", inp)
 
         f = open("inp_par.txt", "w")
         f.write(inp)
@@ -1140,7 +1140,7 @@ def paraph(sent, entities, details_sent, ccd, config, tokenizer_paraphrasing, mo
     if details_sent[1] == 'par':
         neg_consts += details_sent[3]
 
-    print(f"\nsentence is :{sent}")
+    # print(f"\nsentence is :{sent}")
     sents = const_paraph(sent, neg_consts, config, tokenizer_paraphrasing, model_paraphrasing)
 
     # print('new: ', sent)
@@ -1240,7 +1240,7 @@ def get_subphrase_mod(sent, sent_list, input_lang, idf, simplifications, entitie
                       stemmer, details_sent, ccd, config, tokenizer_paraphrasing, model_paraphrasing):
     sent = sent.replace('%', ' percent')
     sent = sent.replace('` `', '`')
-    print('==Given Sentence Before Operations:')
+    # print('==Given Sentence Before Operations:')
     tree = next(parser.raw_parse(sent))
 
     return generate_phrases(sent, tree, sent_list, input_lang, idf, simplifications, entities, synonym_dict, stemmer,

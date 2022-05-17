@@ -122,7 +122,7 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
         # for the first time step the beam size is 1, just the original complex sentence
         if iter == 0:
             beam[input_sent] = [prob_old, 'original']
-        print('Getting candidates for iteration: ', iter)
+        # print('Getting candidates for iteration: ', iter)
         # print(input_sent)
         new_beam = {}
         # intialize the candidate beam
@@ -191,8 +191,8 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
             # record the edit operation by which the candidate sentence was created
             stats[details_sent[1]] += 1
 
-            print(f"accepted sentence: {accepted_sent}\n new prob: {details_sent[0]}, old prob: {prob_old}"
-                  f"operation: {details_sent[1]}")
+            # print(f"accepted sentence: {accepted_sent}\n new prob: {details_sent[0]}, old prob: {prob_old}"
+            #       f"operation: {details_sent[1]}")
             # if the operation used for this candidate sentence is paraphrasing
             # we save the root of negative constraints used in this step and add them to
             # negative constraints in the next steps to prevent from looping between synonym words
