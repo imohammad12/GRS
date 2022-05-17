@@ -1,8 +1,0 @@
-this was demonstrated in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
-this was shown in the miller - urey experiment by stanley l . miller and harold c . urey in 1953 .
-this was shown by stanley l . miller and harold c . urey in 1953 .
-0.8880692198872566 0.6087321338392281 0.5080554861804861 0.8009521728271729 0.2648809523809524 0.4583333333333333 2.187692307692309 102.53230769230771
-
-Number 0: Average Sentence Level Perplexity, Bleu, SARI 
-0.8880692198872566 0.6087321338392281 0.5080554861804861
-

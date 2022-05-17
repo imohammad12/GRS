@@ -1,8 +1,0 @@
-dl:1.25-par:1-asset-mp:80+gV3:67+ent:0.txt" # sari : 36.07
-"/dl:1-par:1-asset-mp.txt" # sari : 39.30
-/RM+LS+RO+EX-dl:1-ls:.8-Asset-norm-me.txt" # sari : 37.59
-/RM+PA-dl:1-par:1.25-Asset-norm.txt" # sari : 38.21
-/RM+PA-dl:1-par:1.25+classifier-Asset-norm.txt" # sari : 38.03
-/dl:1-par:1.1-asset+g+mp.txt" # sari : 36.54
-/dl:false-par:1-asset-comp-simp-class.txt" # sari : 36.84
-"/dl:1-par:1-asset-comp-simp-class.txt" # sari : 35.23
