@@ -1070,7 +1070,7 @@ def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphra
         bad_word = " ".join(neg_const)
         bad_word_ids = tokenizer_paraphrasing(bad_word).input_ids
 
-        paraphrasing_device = "cuda:" + str(self.config['paraphrasing_gpu']) if torch.cuda.is_available() else "cpu"
+        paraphrasing_device = "cuda:" + str(config['paraphrasing_gpu']) if torch.cuda.is_available() else "cpu"
         batch = tokenizer_paraphrasing([sent],
                                        truncation=True,
                                        padding='longest',

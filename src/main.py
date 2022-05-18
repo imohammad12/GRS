@@ -18,7 +18,7 @@ tokenizer_deberta = DebertaTokenizerFast.from_pretrained('microsoft/deberta-base
 root_comp_simp = "/home/m25dehgh/simplification/complex-classifier"
 model_comp_simp = "newsela-auto-high-quality"
 path_comp_simp = root_comp_simp + '/results' + '/' + model_comp_simp + "/whole-high-quality/checkpoint-44361/"
-general_device = "cuda:"+str(self.config['gpu']) if torch.cuda.is_available() else "cpu"
+general_device = "cuda:"+str(config['gpu']) if torch.cuda.is_available() else "cpu"
 comp_simp_class_model = DebertaForSequenceClassification.from_pretrained(path_comp_simp).to(general_device)
 comp_simp_class_model.eval()
 
@@ -33,7 +33,7 @@ model_paraphrasing = None
 
 if config['paraphrasing_model'] != 'imr':
     tokenizer_paraphrasing = AutoTokenizer.from_pretrained(config['paraphrasing_model'])
-    paraphrasing_device = "cuda:" + str(self.config['paraphrasing_gpu']) if torch.cuda.is_available() else "cpu"
+    paraphrasing_device = "cuda:" + str(config['paraphrasing_gpu']) if torch.cuda.is_available() else "cpu"
     model_paraphrasing = AutoModelForSeq2SeqLM.from_pretrained(config['paraphrasing_model']).to(paraphrasing_device)
     model_paraphrasing.eval()
 
