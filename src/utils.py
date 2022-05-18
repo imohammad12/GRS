@@ -74,7 +74,7 @@ if config['lexical_simplification']:
     word2vec = api.load('word2vec-google-news-300')
     our_word2vec = Word2Vec.load(config['dataset'] + '/Word2vec/word2vec.model')  # word2vec_src
 
-device = torch.device("cuda:" + str(config['gpu']) if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:"+str(config['gpu']) if torch.cuda.is_available() and config['gpu'] != 'cpu' else "cpu")
 
 semantic_model = SentenceTransformer('paraphrase-mpnet-base-v2', device=device)
 
@@ -1070,7 +1070,7 @@ def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphra
         bad_word = " ".join(neg_const)
         bad_word_ids = tokenizer_paraphrasing(bad_word).input_ids
 
-        paraphrasing_device = "cuda:" + str(config['paraphrasing_gpu']) if torch.cuda.is_available() else "cpu"
+        paraphrasing_device = "cuda:" + str(config['paraphrasing_gpu']) if torch.cuda.is_available() and config['paraphrasing_gpu'] != 'cpu' else "cpu"
         batch = tokenizer_paraphrasing([sent],
                                        truncation=True,
                                        padding='longest',

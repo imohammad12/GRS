@@ -40,7 +40,7 @@ class ComplexComponentDetector:
         self.nlp.tokenizer = Tokenizer(self.nlp.vocab)
         self.parser = CoreNLPParser('http://localhost:9000')
         self.stemmer = utils.create_reverse_stem()
-        self.device = torch.device("cuda:"+str(self.params['gpu']) if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda:"+str(self.params['gpu']) if torch.cuda.is_available() and self.params['gpu'] != 'cpu' else "cpu")
 
     @classmethod
     def ls_version(cls, idf, output_lang, **config):
