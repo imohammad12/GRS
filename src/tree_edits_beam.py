@@ -10,41 +10,33 @@ from tqdm import tqdm
 sf = SmoothingFunction()
 
 
-def sample(complex_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_backward,
-           embedding_weights, idf, unigram_prob, start_time, config,
+def sample(complex_sentences, input_lang, tag_lang, dep_lang, idf, start_time, config,
            tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker,
            tokenizer_paraphrasing=None, model_paraphrasing=None):
     count = 0
-    sari_scorel = 0
-    keepl = 0
-    deletel = 0
-    addl = 0
-    b_scorel = 0
-    p_scorel = 0
-    fkgl_scorel = 0
-    fre_scorel = 0
     all_par_calls = 0
     beam_calls = 0
     start_index = config['start_index']
     stats = {'ls': 0, 'dl': 0, 'las': 0, 'rl': 0, 'par': 0}
 
-    if config['score_function'] == 'old':
-        lm_forward.load_state_dict(torch.load(config['lm_name'] + '.pt'))
-    if config['double_LM']:
-        lm_backward.load_state_dict(torch.load('structured_lm_backward_300_150_0_4.pt'))
-    lm_forward.eval()
-    lm_backward.eval()
+    # if config['score_function'] == 'old':
+    #     lm_forward.load_state_dict(torch.load(config['lm_name'] + '.pt'))
+    # if config['double_LM']:
+    #     lm_backward.load_state_dict(torch.load('structured_lm_backward_300_150_0_4.pt'))
+    # lm_forward.eval()
+    # lm_backward.eval()
 
-    # sys_sents = read_sys_out_from_file_name(".", config)
-    sys_sents = []
+    if config['start_index'] != 0:
+        sys_sents = read_sys_out_resume(".", config)
+    else:
+        sys_sents = []
 
     for i in tqdm(range(start_index, len(complex_sentences)), desc='Simplifying Sentences'):
         if len(complex_sentences[i].split(' ')) <= config['min_length']:
 
-            par_calls, b_calls, out_sent = mcmc(complex_sentences[i], input_lang, tag_lang, dep_lang, lm_forward,
-                                                lm_backward, embedding_weights, idf, unigram_prob, stats, config,
-                                                tokenizer_deberta, comp_simp_class_model, ccd, model_grammar_checker,
-                                                tokenizer_paraphrasing, model_paraphrasing)
+            par_calls, b_calls, out_sent = mcmc(complex_sentences[i], input_lang, tag_lang, dep_lang, idf, stats,
+                                                config, tokenizer_deberta, comp_simp_class_model, ccd,
+                                                model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
             sys_sents.append(out_sent)
 
@@ -76,8 +68,8 @@ def sample(complex_sentences, input_lang, tag_lang, dep_lang, lm_forward, lm_bac
     print(stats)
 
 
-def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, embedding_weights, idf,
-         unigram_prob, stats, config, tokenizer_deberta, comp_simp_class_model, ccd,
+def mcmc(input_sent, input_lang, tag_lang, dep_lang, idf,
+         stats, config, tokenizer_deberta, comp_simp_class_model, ccd,
          model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing):
     print(stats)
     # input_sent = "highlights 2009 from the 2009 version of 52 seconds setup for passmark 5 32 5 2nd scan time , and 7 mb memory- 7 mb memory ."
@@ -115,9 +107,8 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
                                            convert_to_sent([(tok.tag_).upper() for tok in doc]), tag_lang,
                                            convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
 
-        prob_old = calculate_score(lm_forward, elmo_tensor, input_sent_tensor, tag_tensor, dep_tensor, input_lang,
-                                   input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config,
-                                   tokenizer_deberta, comp_simp_class_model, model_grammar_checker)
+        prob_old = calculate_score(input_sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model,
+                                   model_grammar_checker)
 
         # for the first time step the beam size is 1, just the original complex sentence
         if iter == 0:
@@ -155,9 +146,7 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
                     convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
 
                 # calculate score for each candidate sentence using the scoring function
-                p = calculate_score(lm_forward, elmo_tensor, candidate_tensor, candidate_tag_tensor,
-                                    candidate_dep_tensor, input_lang, sent, orig_sent, embedding_weights, idf,
-                                    unigram_prob, True, config, tokenizer_deberta, comp_simp_class_model,
+                p = calculate_score(sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model,
                                     model_grammar_checker)
 
                 # no repetitive sentence
@@ -231,9 +220,8 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
                                                                                                      [(tok.dep_).upper()
                                                                                                       for tok in doc]),
                                                                                                  dep_lang, config)
-        perpf = calculate_score(lm_forward, elmo_tensor, best_input_tensor, best_tag_tensor, best_dep_tensor,
-                                input_lang, input_sent, orig_sent, embedding_weights, idf, unigram_prob, False, config,
-                                tokenizer_deberta, comp_simp_class_model, model_grammar_checker)
+        perpf = calculate_score(input_sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model,
+                                model_grammar_checker)
 
         # if config['double_LM']:
         #     elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b, best_dep_tensor_b = tokenize_sent_special(
@@ -245,7 +233,7 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, lm_forward, lm_backward, em
         #                              embedding_weights, idf, unigram_prob, False, config, tokenizer_deberta,
         #                              comp_simp_class_model, model_grammar_checker)
 
-    with open(config['file_name'], "a") as file:
+    with open(config['resume_file'], "a") as file:
         file.write(given_complex_sentence + "\n")
 
     return all_par_calls, beam_calls, input_sent

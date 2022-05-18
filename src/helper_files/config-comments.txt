@@ -12,14 +12,20 @@
 'operation': 'sample', # or sample or train_lm,
 "orig_file_path": "/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.norm.orig",
 
-"config['sim_threshold']": Union[bool, str, float]
+"config['simplicity_threshold']": Union[bool, str, float]
     False : similarity threshold will not be used in calculating score.
+
+    ====== Delete =========
     "old_sim" : old version of similarity threshold will be used. Should not be used with new score function.
+    ====== Delete =========
+
     float : similarity threshold used for new score function. Should not be used with old score function
 
+====== Delete =========
 "config['score_function']" : str
     "new": using new score function
     "old": using old score function
+====== Delete =========
 
   "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
   "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",

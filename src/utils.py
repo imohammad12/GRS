@@ -15,8 +15,6 @@ import torch.nn as nn
 from torch.utils import data
 from torch import optim
 import torch.nn.functional as F
-from pytorch_models.BiRNN import BiRNN
-# from nltk.parse.corenlp import CoreNLPServer
 from nltk.parse.corenlp import CoreNLPParser
 import os
 from model.FKGL import sentence_fre, sentence_fkgl
@@ -160,8 +158,8 @@ class Lang:
         test_dst = []
         # Read train file
 
-        if dataset == 'Wikilarge':
-            print('loading Wikilarge data')
+        if dataset == 'Asset':
+            print('loading Asset data')
             # train_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
             #                  '.full.aner.ori.train.src', encoding='utf-8').read().split('\n')
             train_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
@@ -489,42 +487,43 @@ def reverse_file(split_type):
                 dep.write(a + "\n")
 
 
-def load_syntax_file(sentences, split_type, lm_backward, config):
-    if lm_backward:
-        pos_file = config['dataset'] + '/Pos' + split_type + '_backward.txt'
-        dep_file = config['dataset'] + '/Dep' + split_type + '_backward.txt'
-    else:
-        pos_file = config['dataset'] + '/Pos' + split_type + '.txt'
-        dep_file = config['dataset'] + '/Dep' + split_type + '.txt'
-    if os.path.isfile(pos_file) and os.path.isfile(dep_file):
-        print("Sytax files present, loading it...")
-        pos = open(pos_file, encoding='utf-8').read().split('\n')
-        pos_sent = pos[:-1]
-        dep = open(dep_file, encoding='utf-8').read().split('\n')
-        # print(len(dep))
-        dep_sent = dep[:-1]
-    # print(len(dep_sent))
+# def load_syntax_file(sentences, split_type, lm_backward, config):
+#     if lm_backward:
+#         pos_file = config['dataset'] + '/Pos' + split_type + '_backward.txt'
+#         dep_file = config['dataset'] + '/Dep' + split_type + '_backward.txt'
+#     else:
+#         pos_file = config['dataset'] + '/Pos' + split_type + '.txt'
+#         dep_file = config['dataset'] + '/Dep' + split_type + '.txt'
+#     if os.path.isfile(pos_file) and os.path.isfile(dep_file):
+#         print("Sytax files present, loading it...")
+#         pos = open(pos_file, encoding='utf-8').read().split('\n')
+#         pos_sent = pos[:-1]
+#         dep = open(dep_file, encoding='utf-8').read().split('\n')
+#         # print(len(dep))
+#         dep_sent = dep[:-1]
+#     # print(len(dep_sent))
+#
+#     else:
+#         print("Sytax files absent, creating and saving it...")
+#         pos_sent = []
+#         dep_sent = []
+#         with open(pos_file, "a") as pos:
+#             with open(dep_file, "a") as dep:
+#                 for i in range(len(sentences)):
+#                     doc = nlp(sentences[i])
+#                     a = convert_to_sent([(tok.dep_).upper() for tok in doc])
+#                     if lm_backward:
+#                         a = reverse_sent(a)
+#                     dep_sent.append(a)
+#                     dep.write(a + "\n")
+#                     a = convert_to_sent([(tok.tag_).upper() for tok in doc])
+#                     if lm_backward:
+#                         a = reverse_sent(a)
+#                     pos_sent.append(a)
+#                     pos.write(a + "\n")
+#
+#     return pos_sent, dep_sent
 
-    else:
-        print("Sytax files absent, creating and saving it...")
-        pos_sent = []
-        dep_sent = []
-        with open(pos_file, "a") as pos:
-            with open(dep_file, "a") as dep:
-                for i in range(len(sentences)):
-                    doc = nlp(sentences[i])
-                    a = convert_to_sent([(tok.dep_).upper() for tok in doc])
-                    if lm_backward:
-                        a = reverse_sent(a)
-                    dep_sent.append(a)
-                    dep.write(a + "\n")
-                    a = convert_to_sent([(tok.tag_).upper() for tok in doc])
-                    if lm_backward:
-                        a = reverse_sent(a)
-                    pos_sent.append(a)
-                    pos.write(a + "\n")
-
-    return pos_sent, dep_sent
 
 
 def pad_sequences(x, max_len, p):
@@ -1105,13 +1104,14 @@ def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphra
 
         # print("input: ", inp)
 
-        f = open("inp_par.txt", "w")
+        f = open("helper_files/inp_par.txt", "w")
         f.write(inp)
         f.close()
 
         # TODO
         imr_dir_path = '/home/m25dehgh/simplification/improved-ParaBank-rewriter'
-        bashCommand = f"{imr_dir_path}/paraphrase.sh < ./inp_par.txt > ./out_par.txt 2> ./output_error_IMR.txt"
+        bashCommand = f"{imr_dir_path}/paraphrase.sh < ./helper_files/inp_par.txt > ./helper_files/out_par.txt 2> " \
+                      f"./helper_files/output_error_IMR.txt "
 
         # print(bashCommand)
         # process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE)
@@ -1122,7 +1122,7 @@ def const_paraph(sent, neg_const, config, tokenizer_paraphrasing, model_paraphra
         os.system(bashCommand)
         # print("outtt:", os.popen(bashCommand).read())
 
-        ff = open("./out_par.txt", "r")
+        ff = open("helper_files/out_par.txt", "r")
         output_sent = [ff.read()]
 
     return output_sent
@@ -1478,7 +1478,7 @@ def lexical_simplification(sent, phrase, input_lang, idf, orig_sent_words, entit
             # print('synonyms already present')
             synonyms = synonym_dict[word_to_be_replaced]
         else:
-            if config['dataset'] == 'Wikilarge':
+            if config['dataset'] == 'Asset':
                 try:
                     sim = our_word2vec.similar_by_word(word_to_be_replaced, 20)
                     for i in range(len(sim)):
@@ -1544,50 +1544,47 @@ def semantic_sim(sentA, sentB):
     return cosine_scores[0][0]
 
 
-def calculate_score(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang, input_sent, orig_sent,
-                    embedding_weights, idf, unigram_prob, cs, config,
-                    tokenizer_deberta, comp_simp_class_model, model_grammar_checker):
-    score_final = 0
+def calculate_score(input_sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model, model_grammar_checker):
 
     out_simplicity = get_model_out(comp_simp_class_model, tokenizer_deberta, input_sent)
     prob_simplicity = out_simplicity["prob"]
     score_simplicity = 1 - prob_simplicity
 
-    if config['score_function'] == 'new':
-        score_final = score_simplicity
+    # if config['score_function'] == 'new':
+    score_final = score_simplicity
 
-    elif config['score_function'] == 'old':
-        score_final = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang,
-                                               input_sent,
-                                               unigram_prob) ** config['sentence_probability_power']
-        # if cs:
-        #     prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
-        score_final *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
-        if config['check_min_length']:
-            score_final *= check_min_length(input_sent, config)
-        score_final /= len(input_sent.split(' ')) ** config['len_power']
-        if config['fre']:
-            score_final *= sentence_fre(input_sent.lower()) ** config['fre_power']
+    # elif config['score_function'] == 'old':
+    #     score_final = get_sentence_probability(lm_forward, elmo_tensor, tensor, tag_tensor, dep_tensor, input_lang,
+    #                                            input_sent,
+    #                                            unigram_prob) ** config['sentence_probability_power']
+    #     # if cs:
+    #     #     prob *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
+    #     score_final *= (get_named_entity_score(input_sent)) ** config['named_entity_score_power']
+    #     if config['check_min_length']:
+    #         score_final *= check_min_length(input_sent, config)
+    #     score_final /= len(input_sent.split(' ')) ** config['len_power']
+    #     if config['fre']:
+    #         score_final *= sentence_fre(input_sent.lower()) ** config['fre_power']
 
-    else:
-        raise ValueError('Wrong score function')
+    # else:
+    #     raise ValueError('Wrong score function')
 
     # should we use the previous simplicity calculation method or the new one
-    if config['sim_threshold']:
-        if config['sim_threshold'] == "old_sim" and cs:
-            score_final *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
+    if config['simplicity_threshold']:
+        # if config['simplicity_threshold'] == "old_sim" and cs:
+        #     score_final *= cos_similarity(input_sent.lower(), orig_sent.lower(), idf)
 
-        elif config['sim_threshold'] != "old_sim":
-            # if the similarity between the input sentence and the original sentence is less than threshold
-            # the score becomes zero
-            sim_score = semantic_sim(input_sent, orig_sent)
-            if sim_score < config['sim_threshold']:
-                score_final = 0
+        # elif config['simplicity_threshold'] != "old_sim":
+        # if the similarity between the input sentence and the original sentence is less than threshold
+        # the score becomes zero
+        sim_score = semantic_sim(input_sent, orig_sent)
+        if sim_score < config['simplicity_threshold']:
+            score_final = 0
 
     # If the candidate sentence was too simplified do not accepted it.
-    if config['simplicity_thresh'] and score_simplicity > config['simplicity_thresh']:
+    if config['too_simple_thresh'] and score_simplicity > config['too_simple_thresh']:
         print("simplicity score ({}) is lower than simplicity threshold ({})".format(score_simplicity
-                                                                                     , config['simplicity_thresh']))
+                                                                                     , config['too_simple_thresh']))
         score_final = 0
 
     # probably this long sentence is caused by a bug.
@@ -1629,9 +1626,9 @@ class Dataset(data.Dataset):
         return x, y
 
 
-def load_data(dataset, batch_size):
-    dataloader = data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
-    return dataloader
+# def load_data(dataset, batch_size):
+#     dataloader = data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
+#     return dataloader
 
 
 def similarity_simplicity_grammar_assess(sys_sents, orig_file_path, tokenizer_deberta,
@@ -1729,15 +1726,15 @@ def load_config():
     return config_dict
 
 
-def read_sys_out_from_file_name(root_path, config):
-    raw_output = open(root_path + '/' + config["file_name"], encoding='utf-8').read().split('\n')
+def read_sys_out_resume(root_path, config):
+    raw_output = open(root_path + '/' + config["resume_file"], encoding='utf-8').read().split('\n')
     sys_sents = []
 
     for i in range(len(raw_output)):
         # if i % 8 == 2:
         sys_sents.append(raw_output[i])
 
-    print("len of pre-appended sys_sents form file_name:", len(sys_sents))
+    print("len of pre-appended sys_sents form resume_file:", len(sys_sents))
     return sys_sents
 
 

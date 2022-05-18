@@ -43,16 +43,6 @@ tag_embedding_weights, dep_embedding_weights = prepareData(config['embedding_dim
                                                            config['ver'], config['dataset'],
                                                            config['operation'], config)
 
-lm_forward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
-                        config['num_layers'],
-                        output_embedding_weights, tag_embedding_weights, dep_embedding_weights, config['embedding_dim'],
-                        config['tag_dim'], config['dep_dim'], config['dropout'],
-                        config['use_structural_as_standard']).to(device)
-lm_backward = DecoderGRU(config['hidden_size'], output_lang.n_words, tag_lang.n_words, dep_lang.n_words,
-                         config['num_layers'],
-                         output_embedding_weights, tag_embedding_weights, dep_embedding_weights,
-                         config['embedding_dim'], config['tag_dim'], config['dep_dim'], config['dropout'],
-                         config['use_structural_as_standard']).to(device)
 
 print('Creating ccd object...')
 ccd = ComplexComponentDetector.cls_version(idf,
@@ -60,17 +50,15 @@ ccd = ComplexComponentDetector.cls_version(idf,
                                            tokenizer=tokenizer_deberta,
                                            **config)
 
-open(config['file_name'], "w").close()
+open(config['resume_file'], "w").close()
 start_time = time.time()
 ccd.params.update(config)
 if config['set'] == 'valid':
-    sample(valid_complex, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf,
-           unigram_prob, start_time, load_config(), tokenizer_deberta, comp_simp_class_model, ccd,
-           model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+    sample(valid_complex, output_lang, tag_lang, dep_lang, idf, start_time, load_config(), tokenizer_deberta,
+           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
 elif config['set'] == 'test':
-    sample(test_complex, output_lang, tag_lang, dep_lang, lm_forward, lm_backward, output_embedding_weights, idf,
-           unigram_prob, start_time, load_config(), tokenizer_deberta, comp_simp_class_model, ccd,
-           model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
+    sample(test_complex, output_lang, tag_lang, dep_lang, idf, start_time, load_config(), tokenizer_deberta,
+           comp_simp_class_model, ccd, model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing)
 
-open(config['file_name'], "w").close()
+open(config['resume_file'], "w").close()
