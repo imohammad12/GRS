@@ -47,3 +47,6 @@
      else --> hugging face model that is fine-tuned on paraphrasing datasets (Parabank2 or other datasets).
      "tuner007/pegasus_paraphrase"
      "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500"
+
+ "config['grammar_model']"
+    :"/home/m25dehgh/simplification/grammar-checker/results/deberta-base-cola/checkpoint-716",

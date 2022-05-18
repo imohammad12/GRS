@@ -23,7 +23,7 @@ class ComplexComponentDetector:
     default_params = {
         'path_classifier_model': '/home/m25dehgh/simplification/complex-classifier/results/newsela-auto-high-quality'
                                  '/whole-high-quality/checkpoint-44361/',
-        'tokenizer_path': 'microsoft/deberta-base',
+        'ccd_tokenizer': 'microsoft/deberta-base',
         "thresh_coef": 1.3,
         'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
         "UNK_token": 3,
@@ -77,7 +77,7 @@ class ComplexComponentDetector:
         ccd.comp_simp_class_model.eval()
         if tokenizer is None:
             print('Loading Deberta tokenizer')
-            ccd.tokenizer = DebertaTokenizerFast.from_pretrained(ccd.params['tokenizer_path'])
+            ccd.tokenizer = DebertaTokenizerFast.from_pretrained(ccd.params['ccd_tokenizer'])
         else:
             ccd.tokenizer = tokenizer
         ccd.params['ccd_version'] = 'cls'
@@ -109,7 +109,7 @@ class ComplexComponentDetector:
         ccd.comp_simp_class_model.eval()
         if tokenizer is None:
             print('Loading Deberta tokenizer')
-            ccd.tokenizer = DebertaTokenizerFast.from_pretrained(ccd.params['tokenizer_path'])
+            ccd.tokenizer = DebertaTokenizerFast.from_pretrained(ccd.params['ccd_tokenizer'])
         else:
             ccd.tokenizer = tokenizer
 

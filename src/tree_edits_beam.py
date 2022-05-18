@@ -65,7 +65,7 @@ def sample(complex_sentences, input_lang, tag_lang, dep_lang, idf, start_time, c
 
     save_and_log(all_scores, sys_sents, config)
 
-    print(stats)
+    # print(stats)
 
 
 def mcmc(input_sent, input_lang, tag_lang, dep_lang, idf,
@@ -99,13 +99,13 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, idf,
     for iter in range(2 * len(spl)):
 
 
-        doc = nlp(input_sent)
-        elmo_tensor, \
-        input_sent_tensor, \
-        tag_tensor, \
-        dep_tensor = tokenize_sent_special(input_sent.lower(), input_lang,
-                                           convert_to_sent([(tok.tag_).upper() for tok in doc]), tag_lang,
-                                           convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
+        # doc = nlp(input_sent)
+        # elmo_tensor, \
+        # input_sent_tensor, \
+        # tag_tensor, \
+        # dep_tensor = tokenize_sent_special(input_sent.lower(), input_lang,
+        #                                    convert_to_sent([(tok.tag_).upper() for tok in doc]), tag_lang,
+        #                                    convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
 
         prob_old = calculate_score(input_sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model,
                                    model_grammar_checker)
@@ -140,10 +140,10 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, idf,
                 operation = candidates[i][sent]
                 doc = nlp(list(candidates[i].keys())[0])
 
-                elmo_tensor, candidate_tensor, candidate_tag_tensor, candidate_dep_tensor = tokenize_sent_special(
-                    sent.lower(), input_lang, convert_to_sent([(tok.tag_).upper() for
-                                                               tok in doc]), tag_lang,
-                    convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
+                # elmo_tensor, candidate_tensor, candidate_tag_tensor, candidate_dep_tensor = tokenize_sent_special(
+                #     sent.lower(), input_lang, convert_to_sent([(tok.tag_).upper() for
+                #                                                tok in doc]), tag_lang,
+                #     convert_to_sent([(tok.dep_).upper() for tok in doc]), dep_lang, config)
 
                 # calculate score for each candidate sentence using the scoring function
                 p = calculate_score(sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model,
@@ -206,22 +206,22 @@ def mcmc(input_sent, input_lang, tag_lang, dep_lang, idf,
     # print(input_sent)
 
 
-    if (perpf == -10000):
+    # if (perpf == -10000):
         # print('sentence remain unchanged therefore calculating perp score for last generated sentence')
-        doc = nlp(input_sent)
-        elmo_tensor, best_input_tensor, best_tag_tensor, best_dep_tensor = tokenize_sent_special(input_sent.lower(),
-                                                                                                 input_lang,
-                                                                                                 convert_to_sent(
-                                                                                                     [(tok.tag_).upper()
-                                                                                                      for
-                                                                                                      tok in doc]),
-                                                                                                 tag_lang,
-                                                                                                 convert_to_sent(
-                                                                                                     [(tok.dep_).upper()
-                                                                                                      for tok in doc]),
-                                                                                                 dep_lang, config)
-        perpf = calculate_score(input_sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model,
-                                model_grammar_checker)
+        # doc = nlp(input_sent)
+        # elmo_tensor, best_input_tensor, best_tag_tensor, best_dep_tensor = tokenize_sent_special(input_sent.lower(),
+        #                                                                                          input_lang,
+        #                                                                                          convert_to_sent(
+        #                                                                                              [(tok.tag_).upper()
+        #                                                                                               for
+        #                                                                                               tok in doc]),
+        #                                                                                          tag_lang,
+        #                                                                                          convert_to_sent(
+        #                                                                                              [(tok.dep_).upper()
+        #                                                                                               for tok in doc]),
+        #                                                                                          dep_lang, config)
+        # perpf = calculate_score(input_sent, orig_sent, config, tokenizer_deberta, comp_simp_class_model,
+        #                         model_grammar_checker)
 
         # if config['double_LM']:
         #     elmo_tensor_b, best_input_tensor_b, best_tag_tensor_b, best_dep_tensor_b = tokenize_sent_special(

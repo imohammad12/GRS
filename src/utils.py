@@ -615,29 +615,29 @@ def removeUNK(sent):
     return sent[sent != UNK_token]
 
 
-def removeUNKforall(input_tensor, tag_tensor, dep_tensor):
-    # print(input_tensor)
-    # print(tag_tensor)
-    # print(dep_tensor)
-    for i in range(len(input_tensor)):
-        if input_tensor[i] == EOS_token:
-            break
-        elif input_tensor[i] == UNK_token:
-            tag_tensor[i] = UNK_token
-            dep_tensor[i] = UNK_token
-        '''input_sent[0] = input_sent[0][input_sent[0]!=UNK_token]
-		input_sent[0] = pad_sequences(input_sent[0], config['num_steps'])
-		tag_tensor[0] = tag_tensor[0][tag_tensor[0]!=UNK_token]
-		tag_tensor[0] = pad_sequences(tag_tensor[0], config['num_steps'])
-		dep_tensor[0] = dep_tensor[0][dep_tensor[0]!=UNK_token]
-		dep_tensor[0] = pad_sequences(dep_tensor[0], config['num_steps'])'''
-    input_tensor = removeUNK(input_tensor)
-    tag_tensor = removeUNK(tag_tensor)
-    dep_tensor = removeUNK(dep_tensor)
-    # print(input_tensor)
-    # print(tag_tensor)
-    # print(dep_tensor)
-    return input_tensor, tag_tensor, dep_tensor
+# def removeUNKforall(input_tensor, tag_tensor, dep_tensor):
+#     # print(input_tensor)
+#     # print(tag_tensor)
+#     # print(dep_tensor)
+#     for i in range(len(input_tensor)):
+#         if input_tensor[i] == EOS_token:
+#             break
+#         elif input_tensor[i] == UNK_token:
+#             tag_tensor[i] = UNK_token
+#             dep_tensor[i] = UNK_token
+#         '''input_sent[0] = input_sent[0][input_sent[0]!=UNK_token]
+# 		input_sent[0] = pad_sequences(input_sent[0], config['num_steps'])
+# 		tag_tensor[0] = tag_tensor[0][tag_tensor[0]!=UNK_token]
+# 		tag_tensor[0] = pad_sequences(tag_tensor[0], config['num_steps'])
+# 		dep_tensor[0] = dep_tensor[0][dep_tensor[0]!=UNK_token]
+# 		dep_tensor[0] = pad_sequences(dep_tensor[0], config['num_steps'])'''
+#     input_tensor = removeUNK(input_tensor)
+#     tag_tensor = removeUNK(tag_tensor)
+#     dep_tensor = removeUNK(dep_tensor)
+#     # print(input_tensor)
+#     # print(tag_tensor)
+#     # print(dep_tensor)
+#     return input_tensor, tag_tensor, dep_tensor
 
 
 def calculateProbabilitySentence(prob, sent):
@@ -829,9 +829,9 @@ def avg_embedding(sentence, idf):
     return a
 
 
-def avg_embedding_elmo(sentence1, sentence2, idf):
-    # changed
-    raise ValueError('elmo removed, causing error because you are using elmo in config')
+# def avg_embedding_elmo(sentence1, sentence2, idf):
+#     # changed
+#     raise ValueError('elmo removed, causing error because you are using elmo in config')
 
     # sentences = [sentence1.split(' '), sentence2.split(' ')]
     # character_ids = batch_to_ids(sentences)
@@ -851,25 +851,25 @@ def avg_embedding_elmo(sentence1, sentence2, idf):
     # return a[0], a[1]
 
 
-def tokenize_sent_special(input_sent, input_lang, tag_sent, tag_lang, dep_sent, dep_lang, config):
-    input_tensor = tensorFromSentence(input_lang, input_sent)
-    tag_tensor = tensorFromSentence(tag_lang, tag_sent)
-    dep_tensor = tensorFromSentence(dep_lang, dep_sent)
-    input_tensor, tag_tensor, dep_tensor = removeUNKforall(input_tensor, tag_tensor, dep_tensor)
-    # print(input_tensor)
-    # input_tensor = removeUNK(input_tensor)
-    # print(input_tensor)
-    elmo_tensor = []
-    if config['elmo']:
-        # changed
-        raise ValueError('elmo is removed, causing error because you are using elmo in config')
-        # elmo_tensor = batch_to_ids([input_sent.split(' ')])
-        # elmo_tensor = pad_sequences(elmo_tensor[0], config['MAX_LENGTH'], True).unsqueeze(0)
-    input_tensor = pad_sequences(input_tensor, config['num_steps'], False).unsqueeze(0)
-    tag_tensor = pad_sequences(tag_tensor, config['num_steps'], False).unsqueeze(0)
-    dep_tensor = pad_sequences(dep_tensor, config['num_steps'], False).unsqueeze(0)
-
-    return elmo_tensor, input_tensor, tag_tensor, dep_tensor
+# def tokenize_sent_special(input_sent, input_lang, tag_sent, tag_lang, dep_sent, dep_lang, config):
+#     input_tensor = tensorFromSentence(input_lang, input_sent)
+#     tag_tensor = tensorFromSentence(tag_lang, tag_sent)
+#     dep_tensor = tensorFromSentence(dep_lang, dep_sent)
+#     input_tensor, tag_tensor, dep_tensor = removeUNKforall(input_tensor, tag_tensor, dep_tensor)
+#     # print(input_tensor)
+#     # input_tensor = removeUNK(input_tensor)
+#     # print(input_tensor)
+#     elmo_tensor = []
+#     if config['elmo']:
+#         # changed
+#         raise ValueError('elmo is removed, causing error because you are using elmo in config')
+#         # elmo_tensor = batch_to_ids([input_sent.split(' ')])
+#         # elmo_tensor = pad_sequences(elmo_tensor[0], config['MAX_LENGTH'], True).unsqueeze(0)
+#     input_tensor = pad_sequences(input_tensor, config['num_steps'], False).unsqueeze(0)
+#     tag_tensor = pad_sequences(tag_tensor, config['num_steps'], False).unsqueeze(0)
+#     dep_tensor = pad_sequences(dep_tensor, config['num_steps'], False).unsqueeze(0)
+#
+#     return elmo_tensor, input_tensor, tag_tensor, dep_tensor
 
 
 def check_min_length(sent, config):
@@ -893,23 +893,23 @@ def calculate_cos_value(new, old, idf):
     return cos
 
 
-def cos_similarity(new, old, idf):
-    # e1, e2 = avg_embedding_elmo(new, old, idf)
-    # e2 = avg_embedding_elmo(old, idf)
-    cos = calculate_cos_value(new, old, idf)
-    OldMax = 87
-    OldMin = 5
-    OldRange = (OldMax - OldMin)
-    NewMax = 1.6
-    NewMin = 1.005
-    NewRange = (NewMax - NewMin)
-    OldValue = len(old.split(' '))
-    terminal_value = 2 - ((((OldValue - OldMin) * NewRange) / OldRange) + NewMin)
-    # terminal_value = 2/math.log(OldValue)
-    # print(terminal_value)
-    if cos > max(config['cos_similarity_threshold'], terminal_value):
-        return 1.0
-    return 0.0
+# def cos_similarity(new, old, idf):
+#     # e1, e2 = avg_embedding_elmo(new, old, idf)
+#     # e2 = avg_embedding_elmo(old, idf)
+#     cos = calculate_cos_value(new, old, idf)
+#     OldMax = 87
+#     OldMin = 5
+#     OldRange = (OldMax - OldMin)
+#     NewMax = 1.6
+#     NewMin = 1.005
+#     NewRange = (NewMax - NewMin)
+#     OldValue = len(old.split(' '))
+#     terminal_value = 2 - ((((OldValue - OldMin) * NewRange) / OldRange) + NewMin)
+#     # terminal_value = 2/math.log(OldValue)
+#     # print(terminal_value)
+#     if cos > max(config['cos_similarity_threshold'], terminal_value):
+#         return 1.0
+#     return 0.0
 
 
 # changed
