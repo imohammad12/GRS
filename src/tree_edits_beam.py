@@ -71,7 +71,7 @@ def sample(complex_sentences, input_lang, tag_lang, dep_lang, idf, start_time, c
 def mcmc(input_sent, input_lang, tag_lang, dep_lang, idf,
          stats, config, tokenizer_deberta, comp_simp_class_model, ccd,
          model_grammar_checker, tokenizer_paraphrasing, model_paraphrasing):
-    print(stats)
+    # print(stats)
     # input_sent = "highlights 2009 from the 2009 version of 52 seconds setup for passmark 5 32 5 2nd scan time , and 7 mb memory- 7 mb memory ."
     # reference = reference.lower()
     given_complex_sentence = input_sent.lower()
