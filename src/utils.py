@@ -413,6 +413,7 @@ def prepareData(embedding_dim, freq, ver, dataset, operation, config):
     print("Loading/Building vocabulary")
     # vaocab is always made up from all the sentences and not unique since we ahve a min frequency clause
 
+    Path(f"./{config['dataset']}").mkdir(parents=True, exist_ok=True)
     if os.path.isfile(config['dataset'] + '/outputword2count.npy'):
         print('outputword2count (Vocab) file present')
         outputword2count = np.load(config['dataset'] + '/outputword2count.npy', allow_pickle=True).item()
