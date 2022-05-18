@@ -7,7 +7,7 @@ import numpy as np
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from ccd import ComplexComponentDetector
-from model.structural_decoder import DecoderGRU
+# from model.structural_decoder import DecoderGRU
 from tree_edits_beam import *
 
 config = load_config()

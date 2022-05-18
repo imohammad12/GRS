@@ -3,7 +3,7 @@ from utils import *
 import os
 import math
 import numpy as np
-from model.SARI import calculate
+# from model.SARI import calculate
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction, corpus_bleu
 from tqdm import tqdm
 

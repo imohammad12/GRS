@@ -17,7 +17,7 @@ from torch import optim
 import torch.nn.functional as F
 from nltk.parse.corenlp import CoreNLPParser
 import os
-from model.FKGL import sentence_fre, sentence_fkgl
+# from model.FKGL import sentence_fre, sentence_fkgl
 import spacy
 from sklearn.metrics.pairwise import cosine_similarity
 # from allennlp.modules.elmo import batch_to_ids
