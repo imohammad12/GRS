@@ -159,14 +159,14 @@ class Lang:
         # Read train file
 
         if dataset == 'Asset':
-            print('loading Asset data')
-            # train_src = open('../data/wikilarge/data-simplification/wikilarge/wiki'
+            print('loading Wikilarge data')
+            # train_src = open('../data/Wikilarge/wiki'
             #                  '.full.aner.ori.train.src', encoding='utf-8').read().split('\n')
-            train_dst = open('../data/wikilarge/data-simplification/wikilarge/wiki'
+            train_dst = open('../data/Wikilarge/wiki'
                              '.full.aner.ori.train.dst', encoding='utf-8').read().split('\n')
-            valid_src = open('../data/wikilarge/data-simplification/wikilarge/wiki'
+            valid_src = open('../data/Wikilarge/wiki'
                              '.full.aner.ori.valid.src', encoding='utf-8').read().split('\n')
-            # valid_dst = open('../data/wikilarge/data-simplification/wikilarge/wiki'
+            # valid_dst = open('../data/Wikilarge/wiki'
             #                  '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
@@ -175,16 +175,16 @@ class Lang:
         elif dataset == 'Newsela':
             print('loading Newsela data')
             # train_src = open(
-            #     '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.src',
+            #     '../data/Newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.src',
             #     encoding='utf-8').read().split('\n')
             train_dst = open(
-                '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.dst',
+                '../data/Newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.dst',
                 encoding='utf-8').read().split('\n')
             valid_src = open(
-                '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.src',
+                '../data/Newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.src',
                 encoding='utf-8').read().split('\n')
             # valid_dst = open(
-            #     '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
+            #     '../data/Newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
             #     encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
