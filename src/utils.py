@@ -160,13 +160,13 @@ class Lang:
 
         if dataset == 'Asset':
             print('loading Asset data')
-            # train_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+            # train_src = open('../data/wikilarge/data-simplification/wikilarge/wiki'
             #                  '.full.aner.ori.train.src', encoding='utf-8').read().split('\n')
-            train_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+            train_dst = open('../data/wikilarge/data-simplification/wikilarge/wiki'
                              '.full.aner.ori.train.dst', encoding='utf-8').read().split('\n')
-            valid_src = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+            valid_src = open('../data/wikilarge/data-simplification/wikilarge/wiki'
                              '.full.aner.ori.valid.src', encoding='utf-8').read().split('\n')
-            # valid_dst = open('/home/m25dehgh/simplification/datasets/wikilarge/data-simplification/wikilarge/wiki'
+            # valid_dst = open('../data/wikilarge/data-simplification/wikilarge/wiki'
             #                  '.full.aner.ori.valid.dst', encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'asset.test.simp.0',
@@ -175,16 +175,16 @@ class Lang:
         elif dataset == 'Newsela':
             print('loading Newsela data')
             # train_src = open(
-            #     '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.src',
+            #     '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.src',
             #     encoding='utf-8').read().split('\n')
             train_dst = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.dst',
+                '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.train.dst',
                 encoding='utf-8').read().split('\n')
             valid_src = open(
-                '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.src',
+                '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.src',
                 encoding='utf-8').read().split('\n')
             # valid_dst = open(
-            #     '/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
+            #     '../data/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.valid.dst',
             #     encoding='utf-8').read().split('\n')
             test_src = open(config['orig_file_path'], encoding='utf-8').read().split('\n')
             # test_dst = open(config['ref_folder_path'] + "/" + 'V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.dst',
@@ -258,20 +258,20 @@ def reverse_sent(sent):
     return s
 
 
-def load_word_embeddings(embedding_type, embedding_dim, ver):
-    if embedding_type == 'glove':
-        embeddings_index = dict()
-        f = open('/home/m25dehgh/simplification/pretrained_models/glove/' + ver + str(embedding_dim) + 'd.txt',
-                 encoding='utf-8')
-        for line in f:
-            values = line.split()
-            word = values[0]
-            coefs = np.asarray(values[1:], dtype='float32')
-            embeddings_index[word] = coefs
-        f.close()
-        return embeddings_index
-    else:
-        return None
+# def load_word_embeddings(embedding_type, embedding_dim, ver):
+    # if embedding_type == 'glove':
+    #     embeddings_index = dict()
+    #     f = open('/home/m25dehgh/simplification/pretrained_models/glove/' + ver + str(embedding_dim) + 'd.txt',
+    #              encoding='utf-8')
+    #     for line in f:
+    #         values = line.split()
+    #         word = values[0]
+    #         coefs = np.asarray(values[1:], dtype='float32')
+    #         embeddings_index[word] = coefs
+    #     f.close()
+    #     return embeddings_index
+    # else:
+    #     return None
 
 
 # given a text, returns a 2d matrix with its word embeddings.
@@ -442,30 +442,15 @@ def prepareData(embedding_dim, freq, ver, dataset, operation, config):
     idf = getIDF(outputword2count, len(train_simple_unique))
     print("Calculating unigram probabilities")
     unigram_prob = get_unigram_probability(outputword2count, len(train_simple_unique))
-    '''full_vocab, fullword2count = getvocab(train_simple_unique, freq, freq, [], {})
-	full_vocab, fullword2count = getvocab(valid_simple_unique, freq, freq, full_vocab, fullword2count)
-	full_vocab, fullword2count = getvocab(test_simple_unique, freq, freq, full_vocab, fullword2count)
-	full_vocab, fullword2count = getvocab(train_complex, freq, freq, full_vocab, fullword2count)
-	full_vocab, fullword2count = getvocab(valid_complex, freq, freq, full_vocab, fullword2count)
-	full_vocab, fullword2count = getvocab(test_complex, freq, freq, full_vocab, fullword2count)'''
     output_lang.addVocab(output_vocab)
     tag_lang.addVocab(tag_vocab)
     dep_lang.addVocab(dep_vocab)
-    if not config['elmo']:
-        embeddings_index = load_word_embeddings('glove', embedding_dim, ver)
-        output_embedding_weights = get_embedding_matrix(embeddings_index, output_vocab, embedding_dim)
-    else:
-        output_embedding_weights = get_embedding_matrix(None, output_vocab, embedding_dim)
-    tag_embedding_weights = get_embedding_matrix(None, tag_vocab, config['tag_dim'])
-    dep_embedding_weights = get_embedding_matrix(None, dep_vocab, config['dep_dim'])
 
     print("Total vocabulary size:")
     print(output_lang.name, output_lang.n_words)
     # return input_lang, output_lang, train_pairs, valid_pairs, test_pairs, [], []
     if operation == 'sample' or operation == 'train_encoder':
-        return idf, unigram_prob, output_lang, tag_lang, dep_lang, valid_complex, test_complex, \
-               output_embedding_weights, tag_embedding_weights, dep_embedding_weights
-
+        return idf, unigram_prob, output_lang, tag_lang, dep_lang, valid_complex, test_complex
 
 def reverse_file(split_type):
     pos_file_backward = 'Pos' + split_type + '_backward.txt'

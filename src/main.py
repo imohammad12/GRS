@@ -36,8 +36,7 @@ if config['paraphrasing_model'] != 'imr':
 
 save_config(config)
 
-idf, unigram_prob, output_lang, tag_lang, dep_lang, valid_complex, test_complex, output_embedding_weights, \
-tag_embedding_weights, dep_embedding_weights = prepareData(config['embedding_dim'], config['freq'],
+idf, unigram_prob, output_lang, tag_lang, dep_lang, valid_complex, test_complex = prepareData(config['embedding_dim'], config['freq'],
                                                            config['ver'], config['dataset'],
                                                            config['operation'], config)
 

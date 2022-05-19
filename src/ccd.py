@@ -21,8 +21,7 @@ from pyinflect import getAllInflections, getInflection
 
 class ComplexComponentDetector:
     default_params = {
-        'path_classifier_model': '/home/m25dehgh/simplification/complex-classifier/results/newsela-auto-high-quality'
-                                 '/whole-high-quality/checkpoint-44361/',
+        'path_classifier_model': 'imohammad12/GRS-complex-simple-classifier-DeBerta',
         'ccd_tokenizer': 'microsoft/deberta-base',
         "thresh_coef": 1.3,
         'ccd_version': 'combined',  # possible formats : 'combined', 'cls', 'ls'
