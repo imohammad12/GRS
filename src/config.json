@@ -5,14 +5,14 @@
   "orig_file_path": "/home/m25dehgh/simplification/outputs/cleanup-test/input_newsela_test.txt",
   "start_index": 0,
   "too_simple_thresh": false,
-  "paraphrasing_model": "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500",
+  "paraphrasing_model": "imohammad12/GRS-Constrained-Paraphrasing-Bart",
   "paraphrasing_gpu" : 1,
   "grammar_threshold": 0.0,
   "constrained_paraphrasing": true,
   "delete_leaves": true,
   "leaves_as_sent": true,
-  "ccd_tokenizer": "microsoft/deberta-base",
-  "comp_simp_classifier_tokenizer": "microsoft/deberta-base",
-  "grammar_model": "/home/m25dehgh/simplification/grammar-checker/results/deberta-base-cola/checkpoint-716",
-  "comp_simp_classifier_model": "/home/m25dehgh/simplification/complex-classifier/results/newsela-auto-high-quality/whole-high-quality/checkpoint-44361"
+  "ccd_tokenizer": "imohammad12/GRS-complex-simple-classifier-DeBerta",
+  "comp_simp_classifier_tokenizer": "imohammad12/GRS-complex-simple-classifier-DeBerta",
+  "grammar_model": "imohammad12/GRS-Grammar-Checker-DeBerta",
+  "comp_simp_classifier_model": "imohammad12/GRS-complex-simple-classifier-DeBerta"
 }

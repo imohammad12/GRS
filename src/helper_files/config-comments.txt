@@ -50,3 +50,11 @@
 
  "config['grammar_model']"
     :"/home/m25dehgh/simplification/grammar-checker/results/deberta-base-cola/checkpoint-716",
+
+  "ccd_tokenizer": "microsoft/deberta-base",
+  "comp_simp_classifier_tokenizer": "microsoft/deberta-base",
+  "grammar_model": "/home/m25dehgh/simplification/grammar-checker/results/deberta-base-cola/checkpoint-716",
+  "comp_simp_classifier_model": "/home/m25dehgh/simplification/complex-classifier/results/newsela-auto-high-quality/whole-high-quality/checkpoint-44361"
+  "paraphrasing_model": "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500",
+
+
