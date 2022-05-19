@@ -1,0 +1,13 @@
+#src/Newsela/structured_lm_forward_300_150_0_4.pt
+#src/Wikilarge/structured_lm_forward_300_150_0_4_freq5.pt
+*/__pycache__/*
+#src/Wikilarge/Word2vec/
+#src/Newsela/Word2vec/
+src/Newsela/
+data/Newsela/*
+src/Asset/
+src/nohup.out
+/.idea/aws.xml
+/.idea/controllable-simplification.iml
+./nohup.out
+./.DS_Store

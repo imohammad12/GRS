@@ -1,0 +1,53 @@
+Newsela -> {"ls":0.8, "dl":1.1, "las":1.25, "rl":1.25, "par": 0.8}
+Asset - >  {"ls": 0.8, "dl": 1.2, "las": 2.0, "rl": 1.25, "par": 0.8}
+# 'lm_name': 'Newsela/structured_lm_forward_300_150_0_4', #wikilarge -> Wikilarge/structured_lm_forward_300_150_0_4_freq5, newsela -> Newsela/structured_lm_forward_300_150_0_4
+"dataset": 'Wikilarge',  # 'Wikilarge', #Wikilarge, Newsela  #  changed
+'operation': 'sample', # or sample or train_lm,
+"orig_file_path": "/home/m25dehgh/simplification/datasets/asset/dataset/asset.test.norm.orig",
+
+"config['simplicity_threshold']": Union[bool, str, float]
+    False : similarity threshold will not be used in calculating score.
+
+    ====== Delete =========
+    "old_sim" : old version of similarity threshold will be used. Should not be used with new score function.
+    ====== Delete =========
+
+    float : similarity threshold used for new score function. Should not be used with old score function
+
+====== Delete =========
+"config['score_function']" : str
+    "new": using new score function
+    "old": using old score function
+====== Delete =========
+
+  "log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
+  "ref_folder_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/ref-test",
+  "orig_file_path": "/home/m25dehgh/simplification/datasets/asset-from-easse/asset.test.orig",
+  "extra_log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
+
+  "log_directory": "/home/m25dehgh/simplification/outputs/newsela/whole-dataset",
+  "ref_folder_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/ref-test-orig",
+  "orig_file_path": "/home/m25dehgh/simplification/datasets/newsela/dhruv-newsela/V0V4_V1V4_V2V4_V3V4_V0V3_V0V2_V1V3.aner.ori.test.src",
+  "extra_log_directory": "/home/m25dehgh/simplification/outputs/asset/whole-dataset",
+
+  "ref_folder_path": "/home/m25dehgh/simplification/outputs/cleanup-test/ref-folder",
+  "orig_file_path": "/home/m25dehgh/simplification/outputs/cleanup-test/input_newsela_test.txt",
+
+ "config['paraphrasing_model']" : str
+    "imr" : using the original paraphrasing model that was a simple transformer trained on Parabank without
+     using any pretrained language model.
+
+     else --> hugging face model that is fine-tuned on paraphrasing datasets (Parabank2 or other datasets).
+     "tuner007/pegasus_paraphrase"
+     "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500"
+
+ "config['grammar_model']"
+    :"/home/m25dehgh/simplification/grammar-checker/results/deberta-base-cola/checkpoint-716",
+
+  "ccd_tokenizer": "microsoft/deberta-base",
+  "comp_simp_classifier_tokenizer": "microsoft/deberta-base",
+  "grammar_model": "/home/m25dehgh/simplification/grammar-checker/results/deberta-base-cola/checkpoint-716",
+  "comp_simp_classifier_model": "/home/m25dehgh/simplification/complex-classifier/results/newsela-auto-high-quality/whole-high-quality/checkpoint-44361"
+  "paraphrasing_model": "/home/m25dehgh/simplification/testing-notebooks/bart-large-mnli-finetuned-parabank2-selected/checkpoint-5500",
+
+
