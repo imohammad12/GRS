@@ -4,6 +4,7 @@
 #src/Wikilarge/Word2vec/
 #src/Newsela/Word2vec/
 src/Newsela/
+data/Newsela/*
 src/Asset/
 src/nohup.out
 /.idea/aws.xml
