@@ -6,6 +6,7 @@
 src/Newsela/
 data/Newsela/*
 src/Asset/
+src/easse/
 src/nohup.out
 /.idea/aws.xml
 /.idea/controllable-simplification.iml
