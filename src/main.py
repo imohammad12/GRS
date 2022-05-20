@@ -4,11 +4,14 @@ from utils import *
 import json
 import numpy as np
 import torch
+import nltk
 
 from transformers import DebertaForSequenceClassification, Trainer, TrainingArguments, DebertaTokenizerFast
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from ccd import ComplexComponentDetector
 from tree_edits_beam import *
+
+nltk.download('omw-1.4')
 
 config = load_config()
 
