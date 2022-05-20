@@ -1,4 +1,4 @@
-name: simpenv38
+name: grs
 channels:
   - pytorch
   - anaconda
@@ -289,14 +289,14 @@ dependencies:
   - zlib=1.2.11=h7b6447c_3
   - zstd=1.4.9=haebb681_0
   - pip:
+    - git+https://github.com/feralvam/easse.git#egg=easse
     - bert-score==0.3.11
     - blis==0.2.4
     - configargparse==1.3
     - docopt==0.6.2
-    - en-core-web-lg==2.1.0
     - gitdb==4.0.9
     - gitpython==3.1.27
-    - huggingface-hub==0.0.12
+    - huggingface-hub==0.6.0
     - jsonschema==2.6.0
     - logbook==1.5.3
     - networkx==2.4
@@ -326,8 +326,6 @@ dependencies:
     - thinc==7.0.8
     - tokenizers==0.12.1
     - transformers==4.19.2
-    - tseval==1.0
     - ucca==1.2.3
     - word2number==1.1
     - yattag==1.14.0
-prefix: /home/m25dehgh/anaconda3/envs/simpenv38
