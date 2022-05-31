@@ -13,7 +13,7 @@ You will also need to have a CoreNLP Server running on port 9000. You can downlo
 
 ## Constituent Models
 <!-- The models are mentioned below and are available in the hugging face hub. -->
-We have used different models in our score function that can be also used independently from the GRS code. The models are available in the hugging face hub. You can access them from [[here]](https://huggingface.co/imohammad12).
+The GRS system is composed of multiple pre-trained models. These models can be used independently from the GRS system. We have uploaded these models in the hugging face hub. You can find them [[here]](https://huggingface.co/imohammad12).
 <!-- 
 ### Text Simplicity
 This model assigns a simplicity score to a given sentence. Consider that this model is unsupervised.  -->
