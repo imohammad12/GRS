@@ -5,6 +5,7 @@
 #src/Newsela/Word2vec/
 src/Newsela/
 data/Newsela/*
+data/output/Newsela/
 src/Asset/
 src/easse/
 src/nohup.out
